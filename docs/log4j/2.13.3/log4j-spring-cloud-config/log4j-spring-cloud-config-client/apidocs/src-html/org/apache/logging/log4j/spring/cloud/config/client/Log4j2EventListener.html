@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1">/*</a>
+<span class="sourceLineNo">002</span><a name="line.2"> * Licensed to the Apache Software Foundation (ASF) under one or more</a>
+<span class="sourceLineNo">003</span><a name="line.3"> * contributor license agreements. See the NOTICE file distributed with</a>
+<span class="sourceLineNo">004</span><a name="line.4"> * this work for additional information regarding copyright ownership.</a>
+<span class="sourceLineNo">005</span><a name="line.5"> * The ASF licenses this file to You under the Apache license, Version 2.0</a>
+<span class="sourceLineNo">006</span><a name="line.6"> * (the "License"); you may not use this file except in compliance with</a>
+<span class="sourceLineNo">007</span><a name="line.7"> * the License. You may obtain a copy of the License at</a>
+<span class="sourceLineNo">008</span><a name="line.8"> *</a>
+<span class="sourceLineNo">009</span><a name="line.9"> *      http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">010</span><a name="line.10"> *</a>
+<span class="sourceLineNo">011</span><a name="line.11"> * Unless required by applicable law or agreed to in writing, software</a>
+<span class="sourceLineNo">012</span><a name="line.12"> * distributed under the License is distributed on an "AS IS" BASIS,</a>
+<span class="sourceLineNo">013</span><a name="line.13"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</a>
+<span class="sourceLineNo">014</span><a name="line.14"> * See the license for the specific language governing permissions and</a>
+<span class="sourceLineNo">015</span><a name="line.15"> * limitations under the license.</a>
+<span class="sourceLineNo">016</span><a name="line.16"> */</a>
+<span class="sourceLineNo">017</span><a name="line.17">package org.apache.logging.log4j.spring.cloud.config.client;</a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19">import org.apache.logging.log4j.LogManager;</a>
+<span class="sourceLineNo">020</span><a name="line.20">import org.apache.logging.log4j.Logger;</a>
+<span class="sourceLineNo">021</span><a name="line.21">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;</a>
+<span class="sourceLineNo">022</span><a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23">import org.springframework.cloud.bus.ConditionalOnBusEnabled;</a>
+<span class="sourceLineNo">024</span><a name="line.24">import org.springframework.cloud.bus.SpringCloudBusClient;</a>
+<span class="sourceLineNo">025</span><a name="line.25">import org.springframework.cloud.bus.event.RemoteApplicationEvent;</a>
+<span class="sourceLineNo">026</span><a name="line.26">import org.springframework.cloud.stream.annotation.EnableBinding;</a>
+<span class="sourceLineNo">027</span><a name="line.27">import org.springframework.cloud.stream.annotation.StreamListener;</a>
+<span class="sourceLineNo">028</span><a name="line.28">import org.springframework.context.event.EventListener;</a>
+<span class="sourceLineNo">029</span><a name="line.29">import org.springframework.stereotype.Component;</a>
+<span class="sourceLineNo">030</span><a name="line.30"></a>
+<span class="sourceLineNo">031</span><a name="line.31">@Component</a>
+<span class="sourceLineNo">032</span><a name="line.32">@ConditionalOnBusEnabled</a>
+<span class="sourceLineNo">033</span><a name="line.33">@EnableBinding(SpringCloudBusClient.class)</a>
+<span class="sourceLineNo">034</span><a name="line.34">@ConditionalOnProperty(value = "spring.cloud.config.watch.enabled")</a>
+<span class="sourceLineNo">035</span><a name="line.35">public class Log4j2EventListener {</a>
+<span class="sourceLineNo">036</span><a name="line.36">    private static Logger LOGGER = LogManager.getLogger(Log4j2EventListener.class);</a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span><a name="line.38">    @EventListener(classes = RemoteApplicationEvent.class)</a>
+<span class="sourceLineNo">039</span><a name="line.39">    public void acceptLocal(RemoteApplicationEvent event) {</a>
+<span class="sourceLineNo">040</span><a name="line.40">        LOGGER.debug("Refresh application event triggered");</a>
+<span class="sourceLineNo">041</span><a name="line.41">        WatchEventManager.publishEvent();</a>
+<span class="sourceLineNo">042</span><a name="line.42">    }</a>
+<span class="sourceLineNo">043</span><a name="line.43"></a>
+<span class="sourceLineNo">044</span><a name="line.44">    @StreamListener(SpringCloudBusClient.INPUT)</a>
+<span class="sourceLineNo">045</span><a name="line.45">    public void acceptRemote(RemoteApplicationEvent event) {</a>
+<span class="sourceLineNo">046</span><a name="line.46">        LOGGER.debug("Refresh application event triggered");</a>
+<span class="sourceLineNo">047</span><a name="line.47">        WatchEventManager.publishEvent();</a>
+<span class="sourceLineNo">048</span><a name="line.48">    }</a>
+<span class="sourceLineNo">049</span><a name="line.49">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

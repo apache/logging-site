@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span><a name="line.17"></a>
+<span class="sourceLineNo">018</span>package org.apache.logging.log4j.core.appender;<a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19"></a>
+<span class="sourceLineNo">020</span>import java.io.Serializable;<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>import org.apache.logging.log4j.core.Appender;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import org.apache.logging.log4j.core.Core;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import org.apache.logging.log4j.core.Filter;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import org.apache.logging.log4j.core.Layout;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import org.apache.logging.log4j.core.LogEvent;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.logging.log4j.core.config.Configuration;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.apache.logging.log4j.core.config.DefaultConfiguration;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import org.apache.logging.log4j.core.config.Property;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.apache.logging.log4j.core.config.plugins.Plugin;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.apache.logging.log4j.core.config.plugins.PluginAttribute;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.apache.logging.log4j.core.config.plugins.PluginElement;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import org.apache.logging.log4j.core.config.plugins.PluginFactory;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import org.apache.logging.log4j.core.config.plugins.validation.constraints.ValidPort;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import org.apache.logging.log4j.core.filter.ThresholdFilter;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import org.apache.logging.log4j.core.layout.HtmlLayout;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import org.apache.logging.log4j.core.net.SmtpManager;<a name="line.39"></a>
+<span class="sourceLineNo">040</span>import org.apache.logging.log4j.core.util.Booleans;<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span>/**<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * Send an e-mail when a specific logging event occurs, typically on errors or<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * fatal errors.<a name="line.44"></a>
+<span class="sourceLineNo">045</span> *<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * &lt;p&gt;<a name="line.46"></a>
+<span class="sourceLineNo">047</span> * The number of logging events delivered in this e-mail depend on the value of<a name="line.47"></a>
+<span class="sourceLineNo">048</span> * &lt;b&gt;BufferSize&lt;/b&gt; option. The &lt;code&gt;SmtpAppender&lt;/code&gt; keeps only the last<a name="line.48"></a>
+<span class="sourceLineNo">049</span> * &lt;code&gt;BufferSize&lt;/code&gt; logging events in its cyclic buffer. This keeps<a name="line.49"></a>
+<span class="sourceLineNo">050</span> * memory requirements at a reasonable level while still delivering useful<a name="line.50"></a>
+<span class="sourceLineNo">051</span> * application context.<a name="line.51"></a>
+<span class="sourceLineNo">052</span> *<a name="line.52"></a>
+<span class="sourceLineNo">053</span> * By default, an email message will formatted as HTML. This can be modified by<a name="line.53"></a>
+<span class="sourceLineNo">054</span> * setting a layout for the appender.<a name="line.54"></a>
+<span class="sourceLineNo">055</span> *<a name="line.55"></a>
+<span class="sourceLineNo">056</span> * By default, an email message will be sent when an ERROR or higher severity<a name="line.56"></a>
+<span class="sourceLineNo">057</span> * message is appended. This can be modified by setting a filter for the<a name="line.57"></a>
+<span class="sourceLineNo">058</span> * appender.<a name="line.58"></a>
+<span class="sourceLineNo">059</span> */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>@Plugin(name = "SMTP", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE, printObject = true)<a name="line.60"></a>
+<span class="sourceLineNo">061</span>public final class SmtpAppender extends AbstractAppender {<a name="line.61"></a>
+<span class="sourceLineNo">062</span><a name="line.62"></a>
+<span class="sourceLineNo">063</span>    private static final int DEFAULT_BUFFER_SIZE = 512;<a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64"></a>
+<span class="sourceLineNo">065</span>    /** The SMTP Manager */<a name="line.65"></a>
+<span class="sourceLineNo">066</span>    private final SmtpManager manager;<a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>    private SmtpAppender(final String name, final Filter filter, final Layout&lt;? extends Serializable&gt; layout,<a name="line.68"></a>
+<span class="sourceLineNo">069</span>            final SmtpManager manager, final boolean ignoreExceptions, final Property[] properties) {<a name="line.69"></a>
+<span class="sourceLineNo">070</span>        super(name, filter, layout, ignoreExceptions, properties);<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        this.manager = manager;<a name="line.71"></a>
+<span class="sourceLineNo">072</span>    }<a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73"></a>
+<span class="sourceLineNo">074</span>    /**<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * Create a SmtpAppender.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     *<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     * @param name<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     *            The name of the Appender.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * @param to<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     *            The comma-separated list of recipient email addresses.<a name="line.80"></a>
+<span class="sourceLineNo">081</span>     * @param cc<a name="line.81"></a>
+<span class="sourceLineNo">082</span>     *            The comma-separated list of CC email addresses.<a name="line.82"></a>
+<span class="sourceLineNo">083</span>     * @param bcc<a name="line.83"></a>
+<span class="sourceLineNo">084</span>     *            The comma-separated list of BCC email addresses.<a name="line.84"></a>
+<span class="sourceLineNo">085</span>     * @param from<a name="line.85"></a>
+<span class="sourceLineNo">086</span>     *            The email address of the sender.<a name="line.86"></a>
+<span class="sourceLineNo">087</span>     * @param replyTo<a name="line.87"></a>
+<span class="sourceLineNo">088</span>     *            The comma-separated list of reply-to email addresses.<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     * @param subject The subject of the email message.<a name="line.89"></a>
+<span class="sourceLineNo">090</span>     * @param smtpProtocol The SMTP transport protocol (such as "smtps", defaults to "smtp").<a name="line.90"></a>
+<span class="sourceLineNo">091</span>     * @param smtpHost<a name="line.91"></a>
+<span class="sourceLineNo">092</span>     *            The SMTP hostname to send to.<a name="line.92"></a>
+<span class="sourceLineNo">093</span>     * @param smtpPortStr<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     *            The SMTP port to send to.<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     * @param smtpUsername<a name="line.95"></a>
+<span class="sourceLineNo">096</span>     *            The username required to authenticate against the SMTP server.<a name="line.96"></a>
+<span class="sourceLineNo">097</span>     * @param smtpPassword<a name="line.97"></a>
+<span class="sourceLineNo">098</span>     *            The password required to authenticate against the SMTP server.<a name="line.98"></a>
+<span class="sourceLineNo">099</span>     * @param smtpDebug<a name="line.99"></a>
+<span class="sourceLineNo">100</span>     *            Enable mail session debuging on STDOUT.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>     * @param bufferSizeStr<a name="line.101"></a>
+<span class="sourceLineNo">102</span>     *            How many log events should be buffered for inclusion in the<a name="line.102"></a>
+<span class="sourceLineNo">103</span>     *            message?<a name="line.103"></a>
+<span class="sourceLineNo">104</span>     * @param layout<a name="line.104"></a>
+<span class="sourceLineNo">105</span>     *            The layout to use (defaults to HtmlLayout).<a name="line.105"></a>
+<span class="sourceLineNo">106</span>     * @param filter<a name="line.106"></a>
+<span class="sourceLineNo">107</span>     *            The Filter or null (defaults to ThresholdFilter, level of<a name="line.107"></a>
+<span class="sourceLineNo">108</span>     *            ERROR).<a name="line.108"></a>
+<span class="sourceLineNo">109</span>     * @param ignore If {@code "true"} (default) exceptions encountered when appending events are logged; otherwise<a name="line.109"></a>
+<span class="sourceLineNo">110</span>     *               they are propagated to the caller.<a name="line.110"></a>
+<span class="sourceLineNo">111</span>     * @return The SmtpAppender.<a name="line.111"></a>
+<span class="sourceLineNo">112</span>     */<a name="line.112"></a>
+<span class="sourceLineNo">113</span>    @PluginFactory<a name="line.113"></a>
+<span class="sourceLineNo">114</span>    public static SmtpAppender createAppender(<a name="line.114"></a>
+<span class="sourceLineNo">115</span>            @PluginConfiguration final Configuration config,<a name="line.115"></a>
+<span class="sourceLineNo">116</span>            @PluginAttribute("name") @Required final String name,<a name="line.116"></a>
+<span class="sourceLineNo">117</span>            @PluginAttribute("to") final String to,<a name="line.117"></a>
+<span class="sourceLineNo">118</span>            @PluginAttribute("cc") final String cc,<a name="line.118"></a>
+<span class="sourceLineNo">119</span>            @PluginAttribute("bcc") final String bcc,<a name="line.119"></a>
+<span class="sourceLineNo">120</span>            @PluginAttribute("from") final String from,<a name="line.120"></a>
+<span class="sourceLineNo">121</span>            @PluginAttribute("replyTo") final String replyTo,<a name="line.121"></a>
+<span class="sourceLineNo">122</span>            @PluginAttribute("subject") final String subject,<a name="line.122"></a>
+<span class="sourceLineNo">123</span>            @PluginAttribute("smtpProtocol") final String smtpProtocol,<a name="line.123"></a>
+<span class="sourceLineNo">124</span>            @PluginAttribute("smtpHost") final String smtpHost,<a name="line.124"></a>
+<span class="sourceLineNo">125</span>            @PluginAttribute(value = "smtpPort", defaultString = "0") @ValidPort final String smtpPortStr,<a name="line.125"></a>
+<span class="sourceLineNo">126</span>            @PluginAttribute("smtpUsername") final String smtpUsername,<a name="line.126"></a>
+<span class="sourceLineNo">127</span>            @PluginAttribute(value = "smtpPassword", sensitive = true) final String smtpPassword,<a name="line.127"></a>
+<span class="sourceLineNo">128</span>            @PluginAttribute("smtpDebug") final String smtpDebug,<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            @PluginAttribute("bufferSize") final String bufferSizeStr,<a name="line.129"></a>
+<span class="sourceLineNo">130</span>            @PluginElement("Layout") Layout&lt;? extends Serializable&gt; layout,<a name="line.130"></a>
+<span class="sourceLineNo">131</span>            @PluginElement("Filter") Filter filter,<a name="line.131"></a>
+<span class="sourceLineNo">132</span>            @PluginAttribute("ignoreExceptions") final String ignore) {<a name="line.132"></a>
+<span class="sourceLineNo">133</span>        if (name == null) {<a name="line.133"></a>
+<span class="sourceLineNo">134</span>            LOGGER.error("No name provided for SmtpAppender");<a name="line.134"></a>
+<span class="sourceLineNo">135</span>            return null;<a name="line.135"></a>
+<span class="sourceLineNo">136</span>        }<a name="line.136"></a>
+<span class="sourceLineNo">137</span><a name="line.137"></a>
+<span class="sourceLineNo">138</span>        final boolean ignoreExceptions = Booleans.parseBoolean(ignore, true);<a name="line.138"></a>
+<span class="sourceLineNo">139</span>        final int smtpPort = AbstractAppender.parseInt(smtpPortStr, 0);<a name="line.139"></a>
+<span class="sourceLineNo">140</span>        final boolean isSmtpDebug = Boolean.parseBoolean(smtpDebug);<a name="line.140"></a>
+<span class="sourceLineNo">141</span>        final int bufferSize = bufferSizeStr == null ? DEFAULT_BUFFER_SIZE : Integer.parseInt(bufferSizeStr);<a name="line.141"></a>
+<span class="sourceLineNo">142</span><a name="line.142"></a>
+<span class="sourceLineNo">143</span>        if (layout == null) {<a name="line.143"></a>
+<span class="sourceLineNo">144</span>            layout = HtmlLayout.createDefaultLayout();<a name="line.144"></a>
+<span class="sourceLineNo">145</span>        }<a name="line.145"></a>
+<span class="sourceLineNo">146</span>        if (filter == null) {<a name="line.146"></a>
+<span class="sourceLineNo">147</span>            filter = ThresholdFilter.createFilter(null, null, null);<a name="line.147"></a>
+<span class="sourceLineNo">148</span>        }<a name="line.148"></a>
+<span class="sourceLineNo">149</span>        final Configuration configuration = config != null ? config : new DefaultConfiguration();<a name="line.149"></a>
+<span class="sourceLineNo">150</span><a name="line.150"></a>
+<span class="sourceLineNo">151</span>        final SmtpManager manager = SmtpManager.getSmtpManager(configuration, to, cc, bcc, from, replyTo, subject, smtpProtocol,<a name="line.151"></a>
+<span class="sourceLineNo">152</span>            smtpHost, smtpPort, smtpUsername, smtpPassword, isSmtpDebug, filter.toString(),  bufferSize);<a name="line.152"></a>
+<span class="sourceLineNo">153</span>        if (manager == null) {<a name="line.153"></a>
+<span class="sourceLineNo">154</span>            return null;<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        }<a name="line.155"></a>
+<span class="sourceLineNo">156</span><a name="line.156"></a>
+<span class="sourceLineNo">157</span>        return new SmtpAppender(name, filter, layout, manager, ignoreExceptions, null);<a name="line.157"></a>
+<span class="sourceLineNo">158</span>    }<a name="line.158"></a>
+<span class="sourceLineNo">159</span><a name="line.159"></a>
+<span class="sourceLineNo">160</span>    /**<a name="line.160"></a>
+<span class="sourceLineNo">161</span>     * Capture all events in CyclicBuffer.<a name="line.161"></a>
+<span class="sourceLineNo">162</span>     * @param event The Log event.<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * @return true if the event should be filtered.<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     */<a name="line.164"></a>
+<span class="sourceLineNo">165</span>    @Override<a name="line.165"></a>
+<span class="sourceLineNo">166</span>    public boolean isFiltered(final LogEvent event) {<a name="line.166"></a>
+<span class="sourceLineNo">167</span>        final boolean filtered = super.isFiltered(event);<a name="line.167"></a>
+<span class="sourceLineNo">168</span>        if (filtered) {<a name="line.168"></a>
+<span class="sourceLineNo">169</span>            manager.add(event);<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        }<a name="line.170"></a>
+<span class="sourceLineNo">171</span>        return filtered;<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    }<a name="line.172"></a>
+<span class="sourceLineNo">173</span><a name="line.173"></a>
+<span class="sourceLineNo">174</span>    /**<a name="line.174"></a>
+<span class="sourceLineNo">175</span>     * Perform SmtpAppender specific appending actions, mainly adding the event<a name="line.175"></a>
+<span class="sourceLineNo">176</span>     * to a cyclic buffer and checking if the event triggers an e-mail to be<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * sent.<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     * @param event The Log event.<a name="line.178"></a>
+<span class="sourceLineNo">179</span>     */<a name="line.179"></a>
+<span class="sourceLineNo">180</span>    @Override<a name="line.180"></a>
+<span class="sourceLineNo">181</span>    public void append(final LogEvent event) {<a name="line.181"></a>
+<span class="sourceLineNo">182</span>        manager.sendEvents(getLayout(), event);<a name="line.182"></a>
+<span class="sourceLineNo">183</span>    }<a name="line.183"></a>
+<span class="sourceLineNo">184</span>}<a name="line.184"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Log4j 2 Tag Library
+          (Apache Log4j Tag Library Tag library documentation)
+        </title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="Log4j 2 Tag Library (Apache Log4j Tag Library Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>Log4j 2 Tag Library</h2>
+<hr>
+<b>Standard Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;%@ taglib prefix="log" uri="http://logging.apache.org/log4j/tld/log" %&gt;<br>
+</code>
+<br>
+<b>XML Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;anyxmlelement xmlns:log="http://logging.apache.org/log4j/tld/log" /&gt;<br>
+</code>
+<hr>
+<pre>The Log4j Log Tag Library creates the capability of inserting log
+statements in JSPs without the use of Java scripting. It uses the standard Log4j 2 API to log
+messages according to your Log4j configuration. You can learn more about Log4j 2 on the
+<a href="http://logging.apache.org/log4j/2.x/">Log4j 2</a> website.
+
+This tag library is based on the Jakarta Commons Log Taglib by Joseph Ottinger and James
+Strachan. For the most part, logging tags written against Jakarta Commons Log Taglib should
+work against this library as well. However, the "category" attribute from Jakarta has become
+the "logger" attribute in this library.
+
+In accordance with the org.apache.logging.log4j.Logger API, this tag library has tags to
+support the following logging calls: "catching", "entry", "exit", "log", "trace", "debug",
+"info", "warn", "error", and "fatal". The "trace" tag was not supported in Jakarta Commons Log
+Taglib. The "setLogger", "catching", "entry", and "trace" tags are new to this library. This
+tag library also supports the conditional tag "ifEnabled" (new) and troubleshooting tag "dump"
+(existed in Jakarta Commons Log Taglib).
+
+By default, this tag library uses a different Logger for each JSP named after the JSP ID.
+You can customize the Logger in any of the logging tags or the "ifEnabled" tag with the
+"logger" attribute. You can also use the "setLogger" tag to specify the Logger that should apply
+for the rest of a JSP's execution. If the "setLogger" tag comes before any other logging tags in
+a JSP, the default Logger for that JSP will not be created, but instead the specified logger is
+the only one that will be used.
+
+Every effort was made to optimize these tags and ensure decent performance, but users of
+this library should keep in mind that the creation and execution of JSP tags adds significant
+overhead to the standard Log4j method calls. While the "trace", "debug", and "info" options are
+available in this library, their uses are not nanosecond order of magnitude with logging off
+that users may be used to with standard Log4j method calls. Therefore, they should be used
+sparingly. Use of the "ifEnabled" tag does not improve this performance; this tag is available
+to conditionally evaluate other actions in addition to logging actions.</pre>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+</tr>
+<tr>
+<td>Display Name</td><td>Log4j 2 Tag Library</td>
+</tr>
+<tr>
+<td>Version</td><td>1.0</td>
+</tr>
+<tr>
+<td>Short Name</td><td>log</td>
+</tr>
+<tr>
+<td>URI</td><td>http://logging.apache.org/log4j/tld/log</td>
+</tr>
+</table>
+            &nbsp;
+            <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="setLogger.html">setLogger</a></b></td><td>Sets the default Logger to use for the rest of this JSP's execution OR exports
+      an org.apache.logging.log4j.Logger instance as the specified EL variable. The "value"
+      attribute specifies either the String name of a Logger to create or an actual Logger instance.
+      By default, Loggers are constructed and assigned the standard
+      org.apache.logging.log4j.message.ParameterizedMessageFactory. The optional "factory" attribute
+      can be used to override the default message factory.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="ifEnabled.html">ifEnabled</a></b></td><td>Conditional tag that evaluates its body only if the specified log level and
+      marker are enabled.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="catching.html">catching</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#catching().</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="entry.html">entry</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#entry(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values
+      will be logged with this entry (TRACE) statement. The attribute names will be
+      ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="exit.html">exit</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#exit().</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="log.html">log</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#log(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="trace.html">trace</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#trace(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="debug.html">debug</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#debug(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="info.html">info</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#info(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="warn.html">warn</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#warn(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="error.html">error</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#error(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="fatal.html">fatal</a></b></td><td>Equivalent of org.apache.logging.log4j.Logger#fatal(). This tag has dynamic
+      attributes enabled. You may specify any number of arbitrary attributes whose values will be
+      substituted in the String message. The "message" must be a String for this to work correctly.
+      See the Log4j 2 manual for more information about message parameters and substitution. Only
+      attribute values are used; attribute names are ignored.</td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="dump.html">dump</a></b></td><td>Displays all variables bound to the specified scope.</td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Java, JSP, and JavaServer Pages are trademarks or registered 
+            trademarks of Sun Microsystems, Inc. in the US and other countries.
+            Copyright 2002-3 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

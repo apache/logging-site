@@ -1,0 +1,26 @@
+var classlog4cxx_1_1net_1_1_syslog_appender =
+[
+    [ "SyslogAppender", "classlog4cxx_1_1net_1_1_syslog_appender.html#ae47c980aa543b85d2fb6500b5e7482b5", null ],
+    [ "SyslogAppender", "classlog4cxx_1_1net_1_1_syslog_appender.html#a7e702347ed221f452b5a843e34a9c39e", null ],
+    [ "SyslogAppender", "classlog4cxx_1_1net_1_1_syslog_appender.html#a8ed5850c43c1d0eacf57149b26ecf9cd", null ],
+    [ "~SyslogAppender", "classlog4cxx_1_1net_1_1_syslog_appender.html#a73ca108f80997a2278ca8a6a3196b22e", null ],
+    [ "activateOptions", "classlog4cxx_1_1net_1_1_syslog_appender.html#aa3df68f8aae152299471992071e202f5", null ],
+    [ "append", "classlog4cxx_1_1net_1_1_syslog_appender.html#a77865c6199c0128510162f6a598f2f41", null ],
+    [ "close", "classlog4cxx_1_1net_1_1_syslog_appender.html#a5ae591df94fc66ccb85cbb6565368bca", null ],
+    [ "getFacility", "classlog4cxx_1_1net_1_1_syslog_appender.html#a7d398008aef6746228f16915ee9ee8a8", null ],
+    [ "getFacility", "classlog4cxx_1_1net_1_1_syslog_appender.html#ae73e5e3083de8146ce4c662eb5d89c56", null ],
+    [ "getFacilityPrinting", "classlog4cxx_1_1net_1_1_syslog_appender.html#aea55c55a58b3127e4c628c39bc15329c", null ],
+    [ "getFacilityString", "classlog4cxx_1_1net_1_1_syslog_appender.html#aaf365cb50db7ff7ca2fd5d784dc07e74", null ],
+    [ "getSyslogHost", "classlog4cxx_1_1net_1_1_syslog_appender.html#a9d8d6e4e39bbc97815537ca470ed02e0", null ],
+    [ "initSyslogFacilityStr", "classlog4cxx_1_1net_1_1_syslog_appender.html#af3c6e52e33f4066c751b613f71d8d0b8", null ],
+    [ "requiresLayout", "classlog4cxx_1_1net_1_1_syslog_appender.html#a4312e727a9ea814779d2c9950dc3c73e", null ],
+    [ "setFacility", "classlog4cxx_1_1net_1_1_syslog_appender.html#a8ef6f5fc7bac499368350543740bd38f", null ],
+    [ "setFacilityPrinting", "classlog4cxx_1_1net_1_1_syslog_appender.html#aa1452821e8afb10aaa35440a0f13befa", null ],
+    [ "setOption", "classlog4cxx_1_1net_1_1_syslog_appender.html#ac1d269357907e0809687a2bec962e1c8", null ],
+    [ "setSyslogHost", "classlog4cxx_1_1net_1_1_syslog_appender.html#a72536ece7b9003657beca1ff895365ce", null ],
+    [ "facilityPrinting", "classlog4cxx_1_1net_1_1_syslog_appender.html#a1d20f717189f264675a37f109a4a506f", null ],
+    [ "facilityStr", "classlog4cxx_1_1net_1_1_syslog_appender.html#ad57f3a73b26a95e4dec1ca822f0c9036", null ],
+    [ "sw", "classlog4cxx_1_1net_1_1_syslog_appender.html#ab882875801824b6bd2c76b43dd747da7", null ],
+    [ "syslogFacility", "classlog4cxx_1_1net_1_1_syslog_appender.html#a9fff72c89a4bc7a02b6abe8ec1780e11", null ],
+    [ "syslogHost", "classlog4cxx_1_1net_1_1_syslog_appender.html#a7c9850c48f6a28ef127d3c1525168f2b", null ]
+];

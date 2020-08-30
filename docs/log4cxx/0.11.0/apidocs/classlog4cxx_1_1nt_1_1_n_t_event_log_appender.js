@@ -1,0 +1,28 @@
+var classlog4cxx_1_1nt_1_1_n_t_event_log_appender =
+[
+    [ "HANDLE", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aa8c0374618b33785ccb02f74bcfebc46", null ],
+    [ "SID", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a10944383935144eb8e9b645c080daf22", null ],
+    [ "NTEventLogAppender", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aa55bd7d104d78902486ce4e12ebb5917", null ],
+    [ "NTEventLogAppender", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a1380c8f82d7e98b0e3a4f654d63c5854", null ],
+    [ "~NTEventLogAppender", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a1843e572b88ed6d58b2e631598b1ebf6", null ],
+    [ "activateOptions", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#af1f3ced78d335ec9c2b800d6d5aa3ef8", null ],
+    [ "addRegistryInfo", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ad9e955b703cf4d19ae52581e72ecf16b", null ],
+    [ "append", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ac0184656854a0362e99b46512b6a1761", null ],
+    [ "close", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a47feccb1873356363e4d0e302bc3822c", null ],
+    [ "getErrorString", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a877ed7bfcb25cb5c028f2c5f0f955123", null ],
+    [ "getEventCategory", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aff26f855fda73ef5e6feeb5773b59d11", null ],
+    [ "getEventType", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a4ec149a77ad41420d3098f50b77ccf38", null ],
+    [ "getLog", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ad1fe110fde36e4acf7a79d8f13bd4600", null ],
+    [ "getServer", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a10305fb6113278cced70a045c57e69db", null ],
+    [ "getSource", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ad9dab0606d9a5cdf3c4257c1be68e904", null ],
+    [ "requiresLayout", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aa401613183830542f9c6b1c425198cdc", null ],
+    [ "setLog", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a610b5b58552efb3d30475c95e2ce5794", null ],
+    [ "setOption", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aee5023c29cca9dc68164b22a01cb7c6e", null ],
+    [ "setServer", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a3d86c973a9d514545af3d36681107b6d", null ],
+    [ "setSource", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ae194003ef6544de478fe86966730bfc2", null ],
+    [ "hEventLog", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a74326e9902ed9397a9fc75a09325e9d7", null ],
+    [ "log", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a11416a575a38b46bc9e2d0ebd2bc5416", null ],
+    [ "pCurrentUserSID", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#ac21f5f7e907ccd7944b5e7ee1793ad5c", null ],
+    [ "server", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#aefa021dda167a4f884a59a7cbe925c3e", null ],
+    [ "source", "classlog4cxx_1_1nt_1_1_n_t_event_log_appender.html#a6c68a7052b617adbe98daab6f12f6ee0", null ]
+];

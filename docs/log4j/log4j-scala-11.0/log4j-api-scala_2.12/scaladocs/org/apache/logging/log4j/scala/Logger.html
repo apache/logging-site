@@ -1,0 +1,2064 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <title>Scala 2.12 wrapper for Log4j API 11.0 API  - org.apache.logging.log4j.scala.Logger</title>
+          <meta name="description" content="Scala 2.12 wrapper for Log4j API 11.0 API - org.apache.logging.log4j.scala.Logger" />
+          <meta name="keywords" content="Scala 2.12 wrapper for Log4j API 11.0 API org.apache.logging.log4j.scala.Logger" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../';
+      </script>
+    
+        </head>
+        <body>
+      <div id="search">
+        <span id="doc-title">Scala 2.12 wrapper for Log4j API 11.0 API<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/" />
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="index.html#_root_" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html">
+              <span class="name">root</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.org" visbl="pub" class="indented1 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="org"></a><a id="org:org"></a>
+      <span class="permalink">
+      <a href="index.html#org" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html">
+              <span class="name">org</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="org.apache" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apache"></a><a id="apache:apache"></a>
+      <span class="permalink">
+      <a href="../org/index.html#apache" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html">
+              <span class="name">apache</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="org">org</a></dd></dl></div>
+    </li><li name="org.apache.logging" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logging"></a><a id="logging:logging"></a>
+      <span class="permalink">
+      <a href="../../org/apache/index.html#logging" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html">
+              <span class="name">logging</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="org.apache">apache</a></dd></dl></div>
+    </li><li name="org.apache.logging.log4j" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="log4j"></a><a id="log4j:log4j"></a>
+      <span class="permalink">
+      <a href="../../../org/apache/logging/index.html#log4j" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html">
+              <span class="name">log4j</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="org.apache.logging">logging</a></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scala"></a><a id="scala:scala"></a>
+      <span class="permalink">
+      <a href="../../../../org/apache/logging/log4j/index.html#scala" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="index.html">
+              <span class="name">scala</span>
+            </a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="org.apache.logging.log4j">log4j</a></dd></dl></div>
+    </li><li class="current-entities indented5">
+                        <a class="object" href="Logger$.html" title="Factory for Loggers."></a>
+                        <a class="class" href="" title="Scala wrapper for the Log4j Logger interface."></a>
+                        <a href="" title="Scala wrapper for the Log4j Logger interface.">
+                          Logger
+                        </a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="Logging.html" title="Mix in this trait into classes from which you want to log,
+give you a logger value with a Logger named according to the class."></a>
+                        <a href="Logging.html" title="Mix in this trait into classes from which you want to log,
+give you a logger value with a Logger named according to the class.">
+                          Logging
+                        </a>
+                      </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="object" href="LoggingContext$.html" title="Manages the context data (context map, MDC) that is added to log events."></a>
+                        <a href="LoggingContext$.html" title="Manages the context data (context map, MDC) that is added to log events.">
+                          LoggingContext
+                        </a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            <body class="class type">
+      <div id="definition">
+        <a href="Logger$.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
+        <p id="owner"><a href="../../../../index.html" class="extype" name="org">org</a>.<a href="../../../index.html" class="extype" name="org.apache">apache</a>.<a href="../../index.html" class="extype" name="org.apache.logging">logging</a>.<a href="../index.html" class="extype" name="org.apache.logging.log4j">log4j</a>.<a href="index.html" class="extype" name="org.apache.logging.log4j.scala">scala</a></p>
+        <h1><a href="Logger$.html" title="See companion object">Logger</a><span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"><div>
+            Companion <a href="Logger$.html" title="See companion object">object Logger</a>
+          </div></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Logger</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Scala wrapper for the Log4j <code>Logger</code> interface.</p><p>Frequently the purpose of logging is to provide information about what is happening in the system,
+which requires including information about the objects being manipulated. In Scala, you can use
+<a href="http://docs.scala-lang.org/overviews/core/string-interpolation.html" target="_blank">string interpolation</a>
+to achieve this:</p><pre>logger.debug(s<span class="lit">"Logging in user ${user.getName} with birthday ${user.calcBirthday}"</span>)</pre><p>Since this wrapper is implemented with macros, the String construction and method invocations
+will only occur when debug logging is enabled.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyVal">AnyVal</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/" />
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br />
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="org.apache.logging.log4j.scala.Logger"><span>Logger</span></li><li class="in" name="scala.AnyVal"><span>AnyVal</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.Any#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#!=(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#==(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:AnyRef,cause:Throwable):Unit"></a><a id="apply(Level,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an object at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an object at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>a <code>Throwable</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:CharSequence,cause:Throwable):Unit"></a><a id="apply(Level,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a string at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a string at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>a <code>Throwable</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="apply(Level,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a <code>Message</code> at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a <code>Message</code> at the given <code>Level</code> including the stack trace of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>a <code>Throwable</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:AnyRef):Unit"></a><a id="apply(Level,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an object at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an object at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:CharSequence):Unit"></a><a id="apply(Level,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a string at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a string at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="apply(Level,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a <code>Message</code> at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a <code>Message</code> at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="apply(Level,Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an object with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an object with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>the cause</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="apply(Level,Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a string with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a string with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>the cause</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="apply(Level,Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a <code>Message</code> with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a <code>Message</code> with the specific <code>Marker</code> at the given <code>Level</code> including the stack trace
+of the given <code>Throwable</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd><dt class="param">cause</dt><dd class="cmt"><p>the cause</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="apply(Level,Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an object with the specific <code>Marker</code> at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an object with the specific <code>Marker</code> at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="apply(Level,Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a string with the specific <code>Marker</code> at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a string with the specific <code>Marker</code> at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="apply(Level,Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#apply(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs a <code>Message</code> with the specific <code>Marker</code> at the given <code>Level</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Logs a <code>Message</code> with the specific <code>Marker</code> at the given <code>Level</code>.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>the marker data specific to this log statement</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be logged</p></dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#asInstanceOf[T0]:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#catching" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="catching(level:org.apache.logging.log4j.Level,t:Throwable):Unit"></a><a id="catching(Level,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#catching(level:org.apache.logging.log4j.Level,t:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">catching</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an exception or error that has been caught to a specific logging level.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an exception or error that has been caught to a specific logging level.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>The logging Level.</p></dd><dt class="param">t</dt><dd class="cmt"><p>The Throwable.</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#catching" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="catching(t:Throwable):Unit"></a><a id="catching(Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#catching(t:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">catching</span><span class="params">(<span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an exception or error that has been caught.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an exception or error that has been caught.
+</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>the Throwable.</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:AnyRef,cause:Throwable):Unit"></a><a id="debug(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:CharSequence,cause:Throwable):Unit"></a><a id="debug(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="debug(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:AnyRef):Unit"></a><a id="debug(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:CharSequence):Unit"></a><a id="debug(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="debug(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="debug(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="debug(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="debug(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="debug(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="debug(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="debug(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#debug(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#delegate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="delegate:org.apache.logging.log4j.spi.ExtendedLogger"></a><a id="delegate:ExtendedLogger"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#delegate:org.apache.logging.log4j.spi.ExtendedLogger" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delegate</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.spi.ExtendedLogger">ExtendedLogger</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:AnyRef,cause:Throwable):Unit"></a><a id="error(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:CharSequence,cause:Throwable):Unit"></a><a id="error(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="error(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:AnyRef):Unit"></a><a id="error(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:CharSequence):Unit"></a><a id="error(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="error(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="error(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="error(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="error(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="error(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="error(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="error(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#error(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:AnyRef,cause:Throwable):Unit"></a><a id="fatal(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:CharSequence,cause:Throwable):Unit"></a><a id="fatal(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="fatal(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:AnyRef):Unit"></a><a id="fatal(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:CharSequence):Unit"></a><a id="fatal(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="fatal(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="fatal(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="fatal(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="fatal(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="fatal(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="fatal(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="fatal(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#fatal(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fatal</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="scala.AnyVal#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_&lt;:AnyVal]"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#getClass():Class[_&lt;:AnyVal]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyVal → Any</dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:AnyRef,cause:Throwable):Unit"></a><a id="info(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:CharSequence,cause:Throwable):Unit"></a><a id="info(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="info(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:AnyRef):Unit"></a><a id="info(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:CharSequence):Unit"></a><a id="info(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="info(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="info(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="info(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="info(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="info(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="info(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="info(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#info(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#isInstanceOf[T0]:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#logMessage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="logMessage(Level,Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logMessage</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Always logs a message at the specified level.</p><div class="fullcomment"><div class="comment cmt"><p>Always logs a message at the specified level. It is the responsibility of the caller to ensure the specified
+level is enabled.</p><p>Should normally not be used directly from application code, but needs to be public for access by macros.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>log level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>marker or <code>null</code></p></dd><dt class="param">message</dt><dd class="cmt"><p>message</p></dd><dt class="param">cause</dt><dd class="cmt"><p>cause or <code>null</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#logMessage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="logMessage(Level,Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logMessage</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Always logs a message at the specified level.</p><div class="fullcomment"><div class="comment cmt"><p>Always logs a message at the specified level. It is the responsibility of the caller to ensure the specified
+level is enabled.</p><p>Should normally not be used directly from application code, but needs to be public for access by macros.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>log level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>marker or <code>null</code></p></dd><dt class="param">message</dt><dd class="cmt"><p>message</p></dd><dt class="param">cause</dt><dd class="cmt"><p>cause or <code>null</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#logMessage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="logMessage(Level,Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#logMessage(level:org.apache.logging.log4j.Level,marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logMessage</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Always logs a message at the specified level.</p><div class="fullcomment"><div class="comment cmt"><p>Always logs a message at the specified level. It is the responsibility of the caller to ensure the specified
+level is enabled.</p><p>Should normally not be used directly from application code, but needs to be public for access by macros.
+</p></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>log level</p></dd><dt class="param">marker</dt><dd class="cmt"><p>marker or <code>null</code></p></dd><dt class="param">message</dt><dd class="cmt"><p>message</p></dd><dt class="param">cause</dt><dd class="cmt"><p>cause or <code>null</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#throwing" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="throwing[T&lt;:Throwable](level:org.apache.logging.log4j.Level,t:T):T"></a><a id="throwing[T&lt;:Throwable](Level,T):T"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#throwing[T&lt;:Throwable](level:org.apache.logging.log4j.Level,t:T):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">throwing</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.Throwable">Throwable</span></span>]</span><span class="params">(<span name="level">level: <span class="extype" name="org.apache.logging.log4j.Level">Level</span></span>, <span name="t">t: <span class="extype" name="org.apache.logging.log4j.scala.Logger.throwing.T">T</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.scala.Logger.throwing.T">T</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an exception or error to be thrown to a specific logging level.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an exception or error to be thrown to a specific logging level.</p><pre><span class="kw">throw</span> logger.throwing(Level.DEBUG, myException)</pre></div><dl class="paramcmts block"><dt class="param">level</dt><dd class="cmt"><p>the logging Level.</p></dd><dt class="param">t</dt><dd class="cmt"><p>the Throwable</p></dd><dt>returns</dt><dd class="cmt"><p><code>t</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#throwing" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="throwing[T&lt;:Throwable](t:T):T"></a><a id="throwing[T&lt;:Throwable](T):T"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#throwing[T&lt;:Throwable](t:T):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">throwing</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.Throwable">Throwable</span></span>]</span><span class="params">(<span name="t">t: <span class="extype" name="org.apache.logging.log4j.scala.Logger.throwing.T">T</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.scala.Logger.throwing.T">T</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs an exception or error to be thrown.</p><div class="fullcomment"><div class="comment cmt"><p>Logs an exception or error to be thrown.</p><pre><span class="kw">throw</span> logger.throwing(myException)</pre></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>the Throwable</p></dd><dt>returns</dt><dd class="cmt"><p><code>t</code></p></dd></dl></div>
+    </li><li name="scala.Any#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:AnyRef,cause:Throwable):Unit"></a><a id="trace(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:CharSequence,cause:Throwable):Unit"></a><a id="trace(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="trace(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:AnyRef):Unit"></a><a id="trace(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:CharSequence):Unit"></a><a id="trace(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="trace(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="trace(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="trace(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="trace(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="trace(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="trace(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="trace(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#trace(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceEntry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceEntry(message:org.apache.logging.log4j.message.Message):org.apache.logging.log4j.message.EntryMessage"></a><a id="traceEntry(Message):EntryMessage"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceEntry(message:org.apache.logging.log4j.message.Message):org.apache.logging.log4j.message.EntryMessage" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceEntry</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.message.EntryMessage">EntryMessage</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs entry to a method using a <code>Message</code> to describe the parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Logs entry to a method using a <code>Message</code> to describe the parameters.</p><pre><span class="kw">def</span> doSomething(foo: Request): <span class="std">Unit</span> = {
+  logger.traceEntry(JsonMessage(foo))
+  <span class="cmt">// do something</span>
+}</pre></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>the message</p></dd><dt>returns</dt><dd class="cmt"><p>The built <code>EntryMessage</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceEntry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceEntry(params:AnyRef*):org.apache.logging.log4j.message.EntryMessage"></a><a id="traceEntry(AnyRef*):EntryMessage"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceEntry(params:AnyRef*):org.apache.logging.log4j.message.EntryMessage" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceEntry</span><span class="params">(<span name="params">params: <span class="extype" name="scala.AnyRef">AnyRef</span>*</span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.message.EntryMessage">EntryMessage</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs entry to a method along with its parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Logs entry to a method along with its parameters.</p><pre><span class="kw">def</span> doSomething(foo: <span class="std">String</span>, bar: <span class="std">Int</span>): <span class="std">Unit</span> = {
+  logger.traceEntry(foo, bar)
+  <span class="cmt">// do something</span>
+}</pre></div><dl class="paramcmts block"><dt class="param">params</dt><dd class="cmt"><p>the parameters to the method.</p></dd><dt>returns</dt><dd class="cmt"><p>The built <code>EntryMessage</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceEntry" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceEntry():org.apache.logging.log4j.message.EntryMessage"></a><a id="traceEntry():EntryMessage"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceEntry():org.apache.logging.log4j.message.EntryMessage" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceEntry</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.message.EntryMessage">EntryMessage</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs entry to a method.</p><div class="fullcomment"><div class="comment cmt"><p>Logs entry to a method. Used when the method in question has no parameters or when the parameters should not be
+logged.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The built <code>EntryMessage</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceExit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceExit[R](message:org.apache.logging.log4j.message.Message,result:R):R"></a><a id="traceExit[R](Message,R):R"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceExit[R](message:org.apache.logging.log4j.message.Message,result:R):R" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceExit</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="result">result: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs exiting from a method with result.</p><div class="fullcomment"><div class="comment cmt"><p>Logs exiting from a method with result. Allows custom formatting of the result.
+</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>the Message containing the formatted result</p></dd><dt class="param">result</dt><dd class="cmt"><p>The result being returned from the method call.</p></dd><dt>returns</dt><dd class="cmt"><p><code>result</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceExit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceExit[R](entryMessage:org.apache.logging.log4j.message.EntryMessage,result:R):R"></a><a id="traceExit[R](EntryMessage,R):R"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceExit[R](entryMessage:org.apache.logging.log4j.message.EntryMessage,result:R):R" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceExit</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="entryMessage">entryMessage: <span class="extype" name="org.apache.logging.log4j.message.EntryMessage">EntryMessage</span></span>, <span name="result">result: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs exiting from a method with result.</p><div class="fullcomment"><div class="comment cmt"><p>Logs exiting from a method with result.</p><pre><span class="kw">def</span> doSomething(foo: <span class="std">String</span>, bar: <span class="std">Int</span>): <span class="std">Int</span> = {
+  <span class="kw">val</span> entryMessage = logger.traceEntry(foo, bar)
+  <span class="cmt">// do something</span>
+  traceExit(entryMessage, value)
+}</pre></div><dl class="paramcmts block"><dt class="param">entryMessage</dt><dd class="cmt"><p>the <code>EntryMessage</code> returned from one of the <code>traceEntry</code> methods</p></dd><dt class="param">result</dt><dd class="cmt"><p>The result being returned from the method call</p></dd><dt>returns</dt><dd class="cmt"><p><code>result</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceExit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceExit(entryMessage:org.apache.logging.log4j.message.EntryMessage):Unit"></a><a id="traceExit(EntryMessage):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceExit(entryMessage:org.apache.logging.log4j.message.EntryMessage):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceExit</span><span class="params">(<span name="entryMessage">entryMessage: <span class="extype" name="org.apache.logging.log4j.message.EntryMessage">EntryMessage</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs exiting from a method with no result.</p><div class="fullcomment"><div class="comment cmt"><p>Logs exiting from a method with no result.
+</p></div><dl class="paramcmts block"><dt class="param">entryMessage</dt><dd class="cmt"><p>the <code>EntryMessage</code> returned from one of the <code>traceEntry</code> methods</p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceExit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="traceExit[R](result:R):R"></a><a id="traceExit[R](R):R"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceExit[R](result:R):R" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceExit</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="result">result: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>)</span><span class="result">: <span class="extype" name="org.apache.logging.log4j.scala.Logger.traceExit.R">R</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs exiting from a method with result.</p><div class="fullcomment"><div class="comment cmt"><p>Logs exiting from a method with result.
+</p></div><dl class="paramcmts block"><dt class="param">result</dt><dd class="cmt"><p>The result being returned from the method call</p></dd><dt>returns</dt><dd class="cmt"><p><code>result</code></p></dd></dl></div>
+    </li><li name="org.apache.logging.log4j.scala.Logger#traceExit" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="traceExit():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#traceExit():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">traceExit</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Logs exit from a method with no result.</p>
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:AnyRef,cause:Throwable):Unit"></a><a id="warn(AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:CharSequence,cause:Throwable):Unit"></a><a id="warn(CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="warn(Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:AnyRef):Unit"></a><a id="warn(AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:CharSequence):Unit"></a><a id="warn(CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:org.apache.logging.log4j.message.Message):Unit"></a><a id="warn(Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit"></a><a id="warn(Marker,AnyRef,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:AnyRef,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit"></a><a id="warn(Marker,CharSequence,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:CharSequence,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit"></a><a id="warn(Marker,Message,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message,cause:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>, <span name="cause">cause: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit"></a><a id="warn(Marker,AnyRef):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:AnyRef):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit"></a><a id="warn(Marker,CharSequence):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:CharSequence):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="java.lang.CharSequence">CharSequence</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li><li name="org.apache.logging.log4j.scala.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit"></a><a id="warn(Marker,Message):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../org/apache/logging/log4j/scala/Logger.html#warn(marker:org.apache.logging.log4j.Marker,message:org.apache.logging.log4j.message.Message):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="marker">marker: <span class="extype" name="org.apache.logging.log4j.Marker">Marker</span></span>, <span name="message">message: <span class="extype" name="org.apache.logging.log4j.message.Message">Message</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyVal">
+              <h3>Inherited from <span class="extype" name="scala.AnyVal">AnyVal</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    </body>
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>

@@ -1,0 +1,10 @@
+org.apache.logging.log4j.audit
+org.apache.logging.log4j.audit.catalog
+org.apache.logging.log4j.audit.event
+org.apache.logging.log4j.audit.generator
+org.apache.logging.log4j.audit.service
+org.apache.logging.log4j.audit.util
+org.apache.logging.log4j.catalog.git
+org.apache.logging.log4j.catalog.git.config
+org.apache.logging.log4j.catalog.jpa
+org.apache.logging.log4j.catalog.jpa.config

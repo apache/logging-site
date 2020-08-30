@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1">/*</a>
+<span class="sourceLineNo">002</span><a name="line.2"> * Licensed to the Apache Software Foundation (ASF) under one or more</a>
+<span class="sourceLineNo">003</span><a name="line.3"> * contributor license agreements. See the NOTICE file distributed with</a>
+<span class="sourceLineNo">004</span><a name="line.4"> * this work for additional information regarding copyright ownership.</a>
+<span class="sourceLineNo">005</span><a name="line.5"> * The ASF licenses this file to You under the Apache license, Version 2.0</a>
+<span class="sourceLineNo">006</span><a name="line.6"> * (the "License"); you may not use this file except in compliance with</a>
+<span class="sourceLineNo">007</span><a name="line.7"> * the License. You may obtain a copy of the License at</a>
+<span class="sourceLineNo">008</span><a name="line.8"> *</a>
+<span class="sourceLineNo">009</span><a name="line.9"> *      http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">010</span><a name="line.10"> *</a>
+<span class="sourceLineNo">011</span><a name="line.11"> * Unless required by applicable law or agreed to in writing, software</a>
+<span class="sourceLineNo">012</span><a name="line.12"> * distributed under the License is distributed on an "AS IS" BASIS,</a>
+<span class="sourceLineNo">013</span><a name="line.13"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</a>
+<span class="sourceLineNo">014</span><a name="line.14"> * See the license for the specific language governing permissions and</a>
+<span class="sourceLineNo">015</span><a name="line.15"> * limitations under the license.</a>
+<span class="sourceLineNo">016</span><a name="line.16"> */</a>
+<span class="sourceLineNo">017</span><a name="line.17">package org.apache.logging.log4j.docker.model;</a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19">import java.util.Map;</a>
+<span class="sourceLineNo">020</span><a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21">import com.fasterxml.jackson.annotation.JsonProperty;</a>
+<span class="sourceLineNo">022</span><a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23">/**</a>
+<span class="sourceLineNo">024</span><a name="line.24"> *</a>
+<span class="sourceLineNo">025</span><a name="line.25"> */</a>
+<span class="sourceLineNo">026</span><a name="line.26">public class NetworkSettings {</a>
+<span class="sourceLineNo">027</span><a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28">    @JsonProperty("Networks")</a>
+<span class="sourceLineNo">029</span><a name="line.29">    private Map&lt;String, Network&gt; networks;</a>
+<span class="sourceLineNo">030</span><a name="line.30"></a>
+<span class="sourceLineNo">031</span><a name="line.31">    @JsonProperty("Bridge")</a>
+<span class="sourceLineNo">032</span><a name="line.32">    private String bridge;</a>
+<span class="sourceLineNo">033</span><a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34">    @JsonProperty("SandboxID")</a>
+<span class="sourceLineNo">035</span><a name="line.35">    private String sandboxId;</a>
+<span class="sourceLineNo">036</span><a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37">    @JsonProperty("HairpinMode")</a>
+<span class="sourceLineNo">038</span><a name="line.38">    private boolean hairpinMode;</a>
+<span class="sourceLineNo">039</span><a name="line.39"></a>
+<span class="sourceLineNo">040</span><a name="line.40">    @JsonProperty("LinkLocalIPv6Address")</a>
+<span class="sourceLineNo">041</span><a name="line.41">    private String linkLocalIPv6Address;</a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43">    @JsonProperty("LinkLocalIPv6PrefixLen")</a>
+<span class="sourceLineNo">044</span><a name="line.44">    private int linkLocalIPv6PrefixLen;</a>
+<span class="sourceLineNo">045</span><a name="line.45"></a>
+<span class="sourceLineNo">046</span><a name="line.46">    @JsonProperty("Ports")</a>
+<span class="sourceLineNo">047</span><a name="line.47">    private Map&lt;String, String&gt; ports;</a>
+<span class="sourceLineNo">048</span><a name="line.48"></a>
+<span class="sourceLineNo">049</span><a name="line.49">    @JsonProperty("SandboxKey")</a>
+<span class="sourceLineNo">050</span><a name="line.50">    private String sandboxKey;</a>
+<span class="sourceLineNo">051</span><a name="line.51"></a>
+<span class="sourceLineNo">052</span><a name="line.52">    @JsonProperty("SecondaryIPAddresses")</a>
+<span class="sourceLineNo">053</span><a name="line.53">    private String secondaryIPaddresses;</a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55">    @JsonProperty("EndpointID")</a>
+<span class="sourceLineNo">056</span><a name="line.56">    private String endpointId;</a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span><a name="line.58">    @JsonProperty("Gateway")</a>
+<span class="sourceLineNo">059</span><a name="line.59">    private String gateway;</a>
+<span class="sourceLineNo">060</span><a name="line.60"></a>
+<span class="sourceLineNo">061</span><a name="line.61">    @JsonProperty("GlobalIPv6Address")</a>
+<span class="sourceLineNo">062</span><a name="line.62">    private String globalIPv6Address;</a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64">    @JsonProperty("GlobalIPv6PrefixLen")</a>
+<span class="sourceLineNo">065</span><a name="line.65">    private int globalIPv6PrefixLen;</a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67">    @JsonProperty("IPAddress")</a>
+<span class="sourceLineNo">068</span><a name="line.68">    private String ipAddress;</a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70">    @JsonProperty("IPPrefixLen")</a>
+<span class="sourceLineNo">071</span><a name="line.71">    private int ipPrefixLen;</a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73">    @JsonProperty("IPv6Gateway")</a>
+<span class="sourceLineNo">074</span><a name="line.74">    private String ipv6Gateway;</a>
+<span class="sourceLineNo">075</span><a name="line.75"></a>
+<span class="sourceLineNo">076</span><a name="line.76">    @JsonProperty("MacAddress")</a>
+<span class="sourceLineNo">077</span><a name="line.77">    private String macAddress;</a>
+<span class="sourceLineNo">078</span><a name="line.78"></a>
+<span class="sourceLineNo">079</span><a name="line.79"></a>
+<span class="sourceLineNo">080</span><a name="line.80">    public Map&lt;String, Network&gt; getNetworks() {</a>
+<span class="sourceLineNo">081</span><a name="line.81">        return networks;</a>
+<span class="sourceLineNo">082</span><a name="line.82">    }</a>
+<span class="sourceLineNo">083</span><a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84">    public void setNetworks(Map&lt;String, Network&gt; networks) {</a>
+<span class="sourceLineNo">085</span><a name="line.85">        this.networks = networks;</a>
+<span class="sourceLineNo">086</span><a name="line.86">    }</a>
+<span class="sourceLineNo">087</span><a name="line.87"></a>
+<span class="sourceLineNo">088</span><a name="line.88">    public String getBridge() {</a>
+<span class="sourceLineNo">089</span><a name="line.89">        return bridge;</a>
+<span class="sourceLineNo">090</span><a name="line.90">    }</a>
+<span class="sourceLineNo">091</span><a name="line.91"></a>
+<span class="sourceLineNo">092</span><a name="line.92">    public void setBridge(String bridge) {</a>
+<span class="sourceLineNo">093</span><a name="line.93">        this.bridge = bridge;</a>
+<span class="sourceLineNo">094</span><a name="line.94">    }</a>
+<span class="sourceLineNo">095</span><a name="line.95"></a>
+<span class="sourceLineNo">096</span><a name="line.96">    public String getSandboxId() {</a>
+<span class="sourceLineNo">097</span><a name="line.97">        return sandboxId;</a>
+<span class="sourceLineNo">098</span><a name="line.98">    }</a>
+<span class="sourceLineNo">099</span><a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100">    public void setSandboxId(String sandboxId) {</a>
+<span class="sourceLineNo">101</span><a name="line.101">        this.sandboxId = sandboxId;</a>
+<span class="sourceLineNo">102</span><a name="line.102">    }</a>
+<span class="sourceLineNo">103</span><a name="line.103"></a>
+<span class="sourceLineNo">104</span><a name="line.104">    public boolean isHairpinMode() {</a>
+<span class="sourceLineNo">105</span><a name="line.105">        return hairpinMode;</a>
+<span class="sourceLineNo">106</span><a name="line.106">    }</a>
+<span class="sourceLineNo">107</span><a name="line.107"></a>
+<span class="sourceLineNo">108</span><a name="line.108">    public void setHairpinMode(boolean hairpinMode) {</a>
+<span class="sourceLineNo">109</span><a name="line.109">        this.hairpinMode = hairpinMode;</a>
+<span class="sourceLineNo">110</span><a name="line.110">    }</a>
+<span class="sourceLineNo">111</span><a name="line.111"></a>
+<span class="sourceLineNo">112</span><a name="line.112">    public String getLinkLocalIPv6Address() {</a>
+<span class="sourceLineNo">113</span><a name="line.113">        return linkLocalIPv6Address;</a>
+<span class="sourceLineNo">114</span><a name="line.114">    }</a>
+<span class="sourceLineNo">115</span><a name="line.115"></a>
+<span class="sourceLineNo">116</span><a name="line.116">    public void setLinkLocalIPv6Address(String linkLocalIPv6Address) {</a>
+<span class="sourceLineNo">117</span><a name="line.117">        this.linkLocalIPv6Address = linkLocalIPv6Address;</a>
+<span class="sourceLineNo">118</span><a name="line.118">    }</a>
+<span class="sourceLineNo">119</span><a name="line.119"></a>
+<span class="sourceLineNo">120</span><a name="line.120">    public int getLinkLocalIPv6PrefixLen() {</a>
+<span class="sourceLineNo">121</span><a name="line.121">        return linkLocalIPv6PrefixLen;</a>
+<span class="sourceLineNo">122</span><a name="line.122">    }</a>
+<span class="sourceLineNo">123</span><a name="line.123"></a>
+<span class="sourceLineNo">124</span><a name="line.124">    public void setLinkLocalIPv6PrefixLen(int linkLocalIPv6PrefixLen) {</a>
+<span class="sourceLineNo">125</span><a name="line.125">        this.linkLocalIPv6PrefixLen = linkLocalIPv6PrefixLen;</a>
+<span class="sourceLineNo">126</span><a name="line.126">    }</a>
+<span class="sourceLineNo">127</span><a name="line.127"></a>
+<span class="sourceLineNo">128</span><a name="line.128">    public Map&lt;String, String&gt; getPorts() {</a>
+<span class="sourceLineNo">129</span><a name="line.129">        return ports;</a>
+<span class="sourceLineNo">130</span><a name="line.130">    }</a>
+<span class="sourceLineNo">131</span><a name="line.131"></a>
+<span class="sourceLineNo">132</span><a name="line.132">    public void setPorts(Map&lt;String, String&gt; ports) {</a>
+<span class="sourceLineNo">133</span><a name="line.133">        this.ports = ports;</a>
+<span class="sourceLineNo">134</span><a name="line.134">    }</a>
+<span class="sourceLineNo">135</span><a name="line.135"></a>
+<span class="sourceLineNo">136</span><a name="line.136">    public String getSandboxKey() {</a>
+<span class="sourceLineNo">137</span><a name="line.137">        return sandboxKey;</a>
+<span class="sourceLineNo">138</span><a name="line.138">    }</a>
+<span class="sourceLineNo">139</span><a name="line.139"></a>
+<span class="sourceLineNo">140</span><a name="line.140">    public void setSandboxKey(String sandboxKey) {</a>
+<span class="sourceLineNo">141</span><a name="line.141">        this.sandboxKey = sandboxKey;</a>
+<span class="sourceLineNo">142</span><a name="line.142">    }</a>
+<span class="sourceLineNo">143</span><a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144">    public String getSecondaryIPaddresses() {</a>
+<span class="sourceLineNo">145</span><a name="line.145">        return secondaryIPaddresses;</a>
+<span class="sourceLineNo">146</span><a name="line.146">    }</a>
+<span class="sourceLineNo">147</span><a name="line.147"></a>
+<span class="sourceLineNo">148</span><a name="line.148">    public void setSecondaryIPaddresses(String secondaryIPaddresses) {</a>
+<span class="sourceLineNo">149</span><a name="line.149">        this.secondaryIPaddresses = secondaryIPaddresses;</a>
+<span class="sourceLineNo">150</span><a name="line.150">    }</a>
+<span class="sourceLineNo">151</span><a name="line.151"></a>
+<span class="sourceLineNo">152</span><a name="line.152">    public String getEndpointId() {</a>
+<span class="sourceLineNo">153</span><a name="line.153">        return endpointId;</a>
+<span class="sourceLineNo">154</span><a name="line.154">    }</a>
+<span class="sourceLineNo">155</span><a name="line.155"></a>
+<span class="sourceLineNo">156</span><a name="line.156">    public void setEndpointId(String endpointId) {</a>
+<span class="sourceLineNo">157</span><a name="line.157">        this.endpointId = endpointId;</a>
+<span class="sourceLineNo">158</span><a name="line.158">    }</a>
+<span class="sourceLineNo">159</span><a name="line.159"></a>
+<span class="sourceLineNo">160</span><a name="line.160">    public String getGateway() {</a>
+<span class="sourceLineNo">161</span><a name="line.161">        return gateway;</a>
+<span class="sourceLineNo">162</span><a name="line.162">    }</a>
+<span class="sourceLineNo">163</span><a name="line.163"></a>
+<span class="sourceLineNo">164</span><a name="line.164">    public void setGateway(String gateway) {</a>
+<span class="sourceLineNo">165</span><a name="line.165">        this.gateway = gateway;</a>
+<span class="sourceLineNo">166</span><a name="line.166">    }</a>
+<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">168</span><a name="line.168">    public String getGlobalIPv6Address() {</a>
+<span class="sourceLineNo">169</span><a name="line.169">        return globalIPv6Address;</a>
+<span class="sourceLineNo">170</span><a name="line.170">    }</a>
+<span class="sourceLineNo">171</span><a name="line.171"></a>
+<span class="sourceLineNo">172</span><a name="line.172">    public void setGlobalIPv6Address(String globalIPv6Address) {</a>
+<span class="sourceLineNo">173</span><a name="line.173">        this.globalIPv6Address = globalIPv6Address;</a>
+<span class="sourceLineNo">174</span><a name="line.174">    }</a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span><a name="line.176">    public int getGlobalIPv6PrefixLen() {</a>
+<span class="sourceLineNo">177</span><a name="line.177">        return globalIPv6PrefixLen;</a>
+<span class="sourceLineNo">178</span><a name="line.178">    }</a>
+<span class="sourceLineNo">179</span><a name="line.179"></a>
+<span class="sourceLineNo">180</span><a name="line.180">    public void setGlobalIPv6PrefixLen(int globalIPv6PrefixLen) {</a>
+<span class="sourceLineNo">181</span><a name="line.181">        this.globalIPv6PrefixLen = globalIPv6PrefixLen;</a>
+<span class="sourceLineNo">182</span><a name="line.182">    }</a>
+<span class="sourceLineNo">183</span><a name="line.183"></a>
+<span class="sourceLineNo">184</span><a name="line.184">    public String getIpAddress() {</a>
+<span class="sourceLineNo">185</span><a name="line.185">        return ipAddress;</a>
+<span class="sourceLineNo">186</span><a name="line.186">    }</a>
+<span class="sourceLineNo">187</span><a name="line.187"></a>
+<span class="sourceLineNo">188</span><a name="line.188">    public void setIpAddress(String ipAddress) {</a>
+<span class="sourceLineNo">189</span><a name="line.189">        this.ipAddress = ipAddress;</a>
+<span class="sourceLineNo">190</span><a name="line.190">    }</a>
+<span class="sourceLineNo">191</span><a name="line.191"></a>
+<span class="sourceLineNo">192</span><a name="line.192">    public int getIpPrefixLen() {</a>
+<span class="sourceLineNo">193</span><a name="line.193">        return ipPrefixLen;</a>
+<span class="sourceLineNo">194</span><a name="line.194">    }</a>
+<span class="sourceLineNo">195</span><a name="line.195"></a>
+<span class="sourceLineNo">196</span><a name="line.196">    public void setIpPrefixLen(int ipPrefixLen) {</a>
+<span class="sourceLineNo">197</span><a name="line.197">        this.ipPrefixLen = ipPrefixLen;</a>
+<span class="sourceLineNo">198</span><a name="line.198">    }</a>
+<span class="sourceLineNo">199</span><a name="line.199"></a>
+<span class="sourceLineNo">200</span><a name="line.200">    public String getIpv6Gateway() {</a>
+<span class="sourceLineNo">201</span><a name="line.201">        return ipv6Gateway;</a>
+<span class="sourceLineNo">202</span><a name="line.202">    }</a>
+<span class="sourceLineNo">203</span><a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204">    public void setIpv6Gateway(String ipv6Gateway) {</a>
+<span class="sourceLineNo">205</span><a name="line.205">        this.ipv6Gateway = ipv6Gateway;</a>
+<span class="sourceLineNo">206</span><a name="line.206">    }</a>
+<span class="sourceLineNo">207</span><a name="line.207"></a>
+<span class="sourceLineNo">208</span><a name="line.208">    public String getMacAddress() {</a>
+<span class="sourceLineNo">209</span><a name="line.209">        return macAddress;</a>
+<span class="sourceLineNo">210</span><a name="line.210">    }</a>
+<span class="sourceLineNo">211</span><a name="line.211"></a>
+<span class="sourceLineNo">212</span><a name="line.212">    public void setMacAddress(String macAddress) {</a>
+<span class="sourceLineNo">213</span><a name="line.213">        this.macAddress = macAddress;</a>
+<span class="sourceLineNo">214</span><a name="line.214">    }</a>
+<span class="sourceLineNo">215</span><a name="line.215">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Apache Logging Services</title>
+
+    <link href="css/asciidoctor-default.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/site.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/site.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ googleAnalyticsID }}']);
+        _gaq.push (['_gat._anonymizeIp']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="https://logging.apache.org">Apache Logging Services&trade;</a>
+            <ul class="nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="guidelines.html">Guidelines</a></li>
+                        <li><a target="_blank" href="charter.html">Charter</a></li>
+                        <li><a target="_blank" href="team-list.html">Team</a></li>
+                        <li><a target="_blank" href="mailing-lists.html">Mailing lists</a></li>
+                        <li><a target="_blank" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="chainsaw/2.x/index.html">Apache chainsaw</a></li>
+                        <li><a target="_blank" href="log4cxx/latest_stable/index.html">Apache log4cxx</a></li>
+                        <li><a target="_blank" href="log4j/2.x/index.html">Apache log4j</a></li>
+                        <li><a target="_blank" href="log4j-audit/latest/index.html">Apache log4j-audit</a></li>
+                        <li><a target="_blank" href="log4j/kotlin/index.html">Apache log4j Kotlin API</a></li>
+                        <li><a target="_blank" href="log4j/scala/index.html">Apache log4j Scala API</a></li>
+                        <li><a target="_blank" href="log4net/2.x/index.html">Apache log4net</a></li>
+                        <li><a target="_blank" href="log4php/latest/index.html">Apache log4php</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dormant<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="log4j/1.2/index.html">Apache log4j 1.x</a></li>
+                        <li><a target="_blank" href="log4j/extras/index.html">Apache log4j 1.x extras</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav pull-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Apache<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a target="_blank" href="https://www.apache.org/">Home</a></li>
+                        <li><a target="_blank" href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a target="_blank" href="https://www.apache.org/licenses/">License</a></li>
+                        <li><a target="_blank" href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <li><a target="_blank" href="https://www.apache.org/events/current-event.html">Current Events</a></li>
+                        <li><a target="_blank" href="https://www.apache.org/security/">Security</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+        <div class="sect1">
+<h2 id="_project_team">Project Team</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A successful project requires many people to play many roles. Some members write code or documentation, while others are valuable as testers, submitting patches and suggestions.&lt;/p&gt;</p>
+</div>
+<div class="paragraph">
+<p>The team is comprised of Members and Contributors. Members have direct access to the source of a project and actively evolve the code-base. Contributors improve the project through submission of patches and suggestions to the Members. The number of Contributors to the project is unbounded. Get involved today. All contributions to the project are greatly appreciated.&lt;/p&gt;</p>
+</div>
+<div class="sect2">
+<h3 id="_active_team_members">Active Team Members</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Email</th>
+<th class="tableblock halign-left valign-top">Role</th>
+<th class="tableblock halign-left valign-top">Projects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scott Deboy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sdeboy at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j, Log4j2, Chainsaw</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ralph Goers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rgoers at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2, Log4j-Audit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gary Gregory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ggregory at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raman Gupta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rgupta at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j-Kotlin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Andrei Ivanov</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shadow at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j-Audit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Carter Kozak</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ckozak at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Davyd McColl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">davydm at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Christian Grobmeier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grobmeier at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4jphp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robert Middleton</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rmiddleton at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remko Popma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rpopma at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dominik Psenner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dpsenner at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thorsten Schöning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tschoening at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Matt Sicker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mattsicker at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Chair</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stephen Webb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">swebb2066 at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_inactive_team_members">Inactive Team Members</h3>
+<div class="paragraph">
+<p>Inactive members have either requested Emeritus status or have not participated in the community
+in the last few years. Inactive members are welcome to continue participating at any time.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Email</th>
+<th class="tableblock halign-left valign-top">Role</th>
+<th class="tableblock halign-left valign-top">Projects</th>
+<th class="tableblock halign-left valign-top">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Curt Arnold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">carnold at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j, Log4cxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stefan Bodewig</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bodewig at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bruce Brouwer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bbrouwer at apache.org&lt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicko Cadell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nicko at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alvero Carraso</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alvero at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4php</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unknown</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ron Grabowski</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rgrabowski at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ceki Gülcü</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ceki at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ivan Habunek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ihabunek at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4php</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Christian Hammers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chammers at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4php</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jacob Kjome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hoju at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4j</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paul Smith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">psmith at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4j, chainsaw</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emeritus 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mikael Ståldal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mikes at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC&lt;/span&gt; Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4j2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Knut Urdalen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kurdalen at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4php</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nick Williams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nickwilliams at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4j2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2014</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mark Womack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mwomack at apache.org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PMC Member</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log4j</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last Active 2006</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+    </div>
+
+<div class="footer">
+        <p>
+            Copyright © 2017-2020 <a href="https://www.apache.org" target="external">The Apache Software Foundation</>.
+            Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0"
+            target="external">Apache Software License, Version 2.0</> Please read our "privacy policy":privacy-policy.html.
+        </p><p>
+            Apache, Apache chainsaw, Apache log4cxx, Apache log4j, Apache log4net, Apache log4php and the Apache
+            feather logo are trademarks of The Apache Software Foundation.	Oracle and Java are registered trademarks
+            of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
+        </p><p>
+            Site powered by <a href="https://getbootstrap.com/" target="external">Bootstrap</a>
+            and <a href="https://jquery.com/" target="external">jQuery</a>.
+        </p>
+</div>
+</div>
+</body>
+</html>

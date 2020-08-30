@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j.util;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import java.lang.reflect.Method;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import java.util.Stack;<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>import org.apache.logging.log4j.LogBuilder;<a name="line.22"></a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span>/**<a name="line.24"></a>
+<span class="sourceLineNo">025</span> * &lt;em&gt;Consider this class private.&lt;/em&gt; Provides various methods to determine the caller class. &lt;h3&gt;Background&lt;/h3&gt;<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * &lt;p&gt;<a name="line.26"></a>
+<span class="sourceLineNo">027</span> * This method, available only in the Oracle/Sun/OpenJDK implementations of the Java Virtual Machine, is a much more<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * efficient mechanism for determining the {@link Class} of the caller of a particular method. When it is not available,<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * a {@link SecurityManager} is the second-best option. When this is also not possible, the {@code StackTraceElement[]}<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * returned by {@link Throwable#getStackTrace()} must be used, and its {@code String} class name converted to a<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * {@code Class} using the slow {@link Class#forName} (which can add an extra microsecond or more for each invocation<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * depending on the runtime ClassLoader hierarchy).<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * &lt;/p&gt;<a name="line.33"></a>
+<span class="sourceLineNo">034</span> * &lt;p&gt;<a name="line.34"></a>
+<span class="sourceLineNo">035</span> * During Java 8 development, the {@code sun.reflect.Reflection.getCallerClass(int)} was removed from OpenJDK, and this<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * change was back-ported to Java 7 in version 1.7.0_25 which changed the behavior of the call and caused it to be off<a name="line.36"></a>
+<span class="sourceLineNo">037</span> * by one stack frame. This turned out to be beneficial for the survival of this API as the change broke hundreds of<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * libraries and frameworks relying on the API which brought much more attention to the intended API removal.<a name="line.38"></a>
+<span class="sourceLineNo">039</span> * &lt;/p&gt;<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * &lt;p&gt;<a name="line.40"></a>
+<span class="sourceLineNo">041</span> * After much community backlash, the JDK team agreed to restore {@code getCallerClass(int)} and keep its existing<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * behavior for the rest of Java 7. However, the method is deprecated in Java 8, and current Java 9 development has not<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * addressed this API. Therefore, the functionality of this class cannot be relied upon for all future versions of Java.<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * It does, however, work just fine in Sun JDK 1.6, OpenJDK 1.6, Oracle/OpenJDK 1.7, and Oracle/OpenJDK 1.8. Other Java<a name="line.44"></a>
+<span class="sourceLineNo">045</span> * environments may fall back to using {@link Throwable#getStackTrace()} which is significantly slower due to<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * examination of every virtual frame of execution.<a name="line.46"></a>
+<span class="sourceLineNo">047</span> * &lt;/p&gt;<a name="line.47"></a>
+<span class="sourceLineNo">048</span> */<a name="line.48"></a>
+<span class="sourceLineNo">049</span>public final class StackLocator {<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span>    // Checkstyle Suppress: the lower-case 'u' ticks off CheckStyle...<a name="line.51"></a>
+<span class="sourceLineNo">052</span>    // CHECKSTYLE:OFF<a name="line.52"></a>
+<span class="sourceLineNo">053</span>    static final int JDK_7u25_OFFSET;<a name="line.53"></a>
+<span class="sourceLineNo">054</span>    // CHECKSTYLE:OFF<a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55"></a>
+<span class="sourceLineNo">056</span>    private static final Method GET_CALLER_CLASS;<a name="line.56"></a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span>    private static final StackLocator INSTANCE;<a name="line.58"></a>
+<span class="sourceLineNo">059</span><a name="line.59"></a>
+<span class="sourceLineNo">060</span>    static {<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        Method getCallerClass;<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        int java7u25CompensationOffset = 0;<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        try {<a name="line.63"></a>
+<span class="sourceLineNo">064</span>            final Class&lt;?&gt; sunReflectionClass = LoaderUtil.loadClass("sun.reflect.Reflection");<a name="line.64"></a>
+<span class="sourceLineNo">065</span>            getCallerClass = sunReflectionClass.getDeclaredMethod("getCallerClass", int.class);<a name="line.65"></a>
+<span class="sourceLineNo">066</span>            Object o = getCallerClass.invoke(null, 0);<a name="line.66"></a>
+<span class="sourceLineNo">067</span>            getCallerClass.invoke(null, 0);<a name="line.67"></a>
+<span class="sourceLineNo">068</span>            if (o == null || o != sunReflectionClass) {<a name="line.68"></a>
+<span class="sourceLineNo">069</span>                getCallerClass = null;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>                java7u25CompensationOffset = -1;<a name="line.70"></a>
+<span class="sourceLineNo">071</span>            } else {<a name="line.71"></a>
+<span class="sourceLineNo">072</span>                o = getCallerClass.invoke(null, 1);<a name="line.72"></a>
+<span class="sourceLineNo">073</span>                if (o == sunReflectionClass) {<a name="line.73"></a>
+<span class="sourceLineNo">074</span>                    System.out.println("WARNING: Java 1.7.0_25 is in use which has a broken implementation of Reflection.getCallerClass(). " +<a name="line.74"></a>
+<span class="sourceLineNo">075</span>                        " Please consider upgrading to Java 1.7.0_40 or later.");<a name="line.75"></a>
+<span class="sourceLineNo">076</span>                    java7u25CompensationOffset = 1;<a name="line.76"></a>
+<span class="sourceLineNo">077</span>                }<a name="line.77"></a>
+<span class="sourceLineNo">078</span>            }<a name="line.78"></a>
+<span class="sourceLineNo">079</span>        } catch (final Exception | LinkageError e) {<a name="line.79"></a>
+<span class="sourceLineNo">080</span>            System.out.println("WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.");<a name="line.80"></a>
+<span class="sourceLineNo">081</span>            getCallerClass = null;<a name="line.81"></a>
+<span class="sourceLineNo">082</span>            java7u25CompensationOffset = -1;<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        }<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>        GET_CALLER_CLASS = getCallerClass;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        JDK_7u25_OFFSET = java7u25CompensationOffset;<a name="line.86"></a>
+<span class="sourceLineNo">087</span><a name="line.87"></a>
+<span class="sourceLineNo">088</span>        INSTANCE = new StackLocator();<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    }<a name="line.89"></a>
+<span class="sourceLineNo">090</span><a name="line.90"></a>
+<span class="sourceLineNo">091</span>    public static StackLocator getInstance() {<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        return INSTANCE;<a name="line.92"></a>
+<span class="sourceLineNo">093</span>    }<a name="line.93"></a>
+<span class="sourceLineNo">094</span><a name="line.94"></a>
+<span class="sourceLineNo">095</span>    private StackLocator() {<a name="line.95"></a>
+<span class="sourceLineNo">096</span>    }<a name="line.96"></a>
+<span class="sourceLineNo">097</span><a name="line.97"></a>
+<span class="sourceLineNo">098</span>    // TODO: return Object.class instead of null (though it will have a null ClassLoader)<a name="line.98"></a>
+<span class="sourceLineNo">099</span>    // (MS) I believe this would work without any modifications elsewhere, but I could be wrong<a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>    // migrated from ReflectiveCallerClassUtility<a name="line.101"></a>
+<span class="sourceLineNo">102</span>    @PerformanceSensitive<a name="line.102"></a>
+<span class="sourceLineNo">103</span>    public Class&lt;?&gt; getCallerClass(final int depth) {<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        if (depth &lt; 0) {<a name="line.104"></a>
+<span class="sourceLineNo">105</span>            throw new IndexOutOfBoundsException(Integer.toString(depth));<a name="line.105"></a>
+<span class="sourceLineNo">106</span>        }<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        // note that we need to add 1 to the depth value to compensate for this method, but not for the Method.invoke<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        // since Reflection.getCallerClass ignores the call to Method.invoke()<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        try {<a name="line.109"></a>
+<span class="sourceLineNo">110</span>            return (Class&lt;?&gt;) GET_CALLER_CLASS.invoke(null, depth + 1 + JDK_7u25_OFFSET);<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        } catch (final Exception e) {<a name="line.111"></a>
+<span class="sourceLineNo">112</span>            // theoretically this could happen if the caller class were native code<a name="line.112"></a>
+<span class="sourceLineNo">113</span>            // TODO: return Object.class<a name="line.113"></a>
+<span class="sourceLineNo">114</span>            return null;<a name="line.114"></a>
+<span class="sourceLineNo">115</span>        }<a name="line.115"></a>
+<span class="sourceLineNo">116</span>    }<a name="line.116"></a>
+<span class="sourceLineNo">117</span><a name="line.117"></a>
+<span class="sourceLineNo">118</span>    // migrated from Log4jLoggerFactory<a name="line.118"></a>
+<span class="sourceLineNo">119</span>    @PerformanceSensitive<a name="line.119"></a>
+<span class="sourceLineNo">120</span>    public Class&lt;?&gt; getCallerClass(final String fqcn, final String pkg) {<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        boolean next = false;<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        Class&lt;?&gt; clazz;<a name="line.122"></a>
+<span class="sourceLineNo">123</span>        for (int i = 2; null != (clazz = getCallerClass(i)); i++) {<a name="line.123"></a>
+<span class="sourceLineNo">124</span>            if (fqcn.equals(clazz.getName())) {<a name="line.124"></a>
+<span class="sourceLineNo">125</span>                next = true;<a name="line.125"></a>
+<span class="sourceLineNo">126</span>                continue;<a name="line.126"></a>
+<span class="sourceLineNo">127</span>            }<a name="line.127"></a>
+<span class="sourceLineNo">128</span>            if (next &amp;&amp; clazz.getName().startsWith(pkg)) {<a name="line.128"></a>
+<span class="sourceLineNo">129</span>                return clazz;<a name="line.129"></a>
+<span class="sourceLineNo">130</span>            }<a name="line.130"></a>
+<span class="sourceLineNo">131</span>        }<a name="line.131"></a>
+<span class="sourceLineNo">132</span>        // TODO: return Object.class<a name="line.132"></a>
+<span class="sourceLineNo">133</span>        return null;<a name="line.133"></a>
+<span class="sourceLineNo">134</span>    }<a name="line.134"></a>
+<span class="sourceLineNo">135</span><a name="line.135"></a>
+<span class="sourceLineNo">136</span>    // added for use in LoggerAdapter implementations mainly<a name="line.136"></a>
+<span class="sourceLineNo">137</span>    @PerformanceSensitive<a name="line.137"></a>
+<span class="sourceLineNo">138</span>    public Class&lt;?&gt; getCallerClass(final Class&lt;?&gt; anchor) {<a name="line.138"></a>
+<span class="sourceLineNo">139</span>        boolean next = false;<a name="line.139"></a>
+<span class="sourceLineNo">140</span>        Class&lt;?&gt; clazz;<a name="line.140"></a>
+<span class="sourceLineNo">141</span>        for (int i = 2; null != (clazz = getCallerClass(i)); i++) {<a name="line.141"></a>
+<span class="sourceLineNo">142</span>            if (anchor.equals(clazz)) {<a name="line.142"></a>
+<span class="sourceLineNo">143</span>                next = true;<a name="line.143"></a>
+<span class="sourceLineNo">144</span>                continue;<a name="line.144"></a>
+<span class="sourceLineNo">145</span>            }<a name="line.145"></a>
+<span class="sourceLineNo">146</span>            if (next) {<a name="line.146"></a>
+<span class="sourceLineNo">147</span>                return clazz;<a name="line.147"></a>
+<span class="sourceLineNo">148</span>            }<a name="line.148"></a>
+<span class="sourceLineNo">149</span>        }<a name="line.149"></a>
+<span class="sourceLineNo">150</span>        return Object.class;<a name="line.150"></a>
+<span class="sourceLineNo">151</span>    }<a name="line.151"></a>
+<span class="sourceLineNo">152</span><a name="line.152"></a>
+<span class="sourceLineNo">153</span>    // migrated from ThrowableProxy<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    @PerformanceSensitive<a name="line.154"></a>
+<span class="sourceLineNo">155</span>    public Stack&lt;Class&lt;?&gt;&gt; getCurrentStackTrace() {<a name="line.155"></a>
+<span class="sourceLineNo">156</span>        // benchmarks show that using the SecurityManager is much faster than looping through getCallerClass(int)<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        if (PrivateSecurityManagerStackTraceUtil.isEnabled()) {<a name="line.157"></a>
+<span class="sourceLineNo">158</span>            return PrivateSecurityManagerStackTraceUtil.getCurrentStackTrace();<a name="line.158"></a>
+<span class="sourceLineNo">159</span>        }<a name="line.159"></a>
+<span class="sourceLineNo">160</span>        // slower version using getCallerClass where we cannot use a SecurityManager<a name="line.160"></a>
+<span class="sourceLineNo">161</span>        final Stack&lt;Class&lt;?&gt;&gt; classes = new Stack&lt;&gt;();<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        Class&lt;?&gt; clazz;<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        for (int i = 1; null != (clazz = getCallerClass(i)); i++) {<a name="line.163"></a>
+<span class="sourceLineNo">164</span>            classes.push(clazz);<a name="line.164"></a>
+<span class="sourceLineNo">165</span>        }<a name="line.165"></a>
+<span class="sourceLineNo">166</span>        return classes;<a name="line.166"></a>
+<span class="sourceLineNo">167</span>    }<a name="line.167"></a>
+<span class="sourceLineNo">168</span><a name="line.168"></a>
+<span class="sourceLineNo">169</span>    public StackTraceElement calcLocation(final String fqcnOfLogger) {<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        if (fqcnOfLogger == null) {<a name="line.170"></a>
+<span class="sourceLineNo">171</span>            return null;<a name="line.171"></a>
+<span class="sourceLineNo">172</span>        }<a name="line.172"></a>
+<span class="sourceLineNo">173</span>        // LOG4J2-1029 new Throwable().getStackTrace is faster than Thread.currentThread().getStackTrace().<a name="line.173"></a>
+<span class="sourceLineNo">174</span>        final StackTraceElement[] stackTrace = new Throwable().getStackTrace();<a name="line.174"></a>
+<span class="sourceLineNo">175</span>        boolean found = false;<a name="line.175"></a>
+<span class="sourceLineNo">176</span>        for (int i = 0; i &lt; stackTrace.length; i++) {<a name="line.176"></a>
+<span class="sourceLineNo">177</span>            final String className = stackTrace[i].getClassName();<a name="line.177"></a>
+<span class="sourceLineNo">178</span>            if (fqcnOfLogger.equals(className)) {<a name="line.178"></a>
+<span class="sourceLineNo">179</span><a name="line.179"></a>
+<span class="sourceLineNo">180</span>                found = true;<a name="line.180"></a>
+<span class="sourceLineNo">181</span>                continue;<a name="line.181"></a>
+<span class="sourceLineNo">182</span>            }<a name="line.182"></a>
+<span class="sourceLineNo">183</span>            if (found &amp;&amp; !fqcnOfLogger.equals(className)) {<a name="line.183"></a>
+<span class="sourceLineNo">184</span>                return stackTrace[i];<a name="line.184"></a>
+<span class="sourceLineNo">185</span>            }<a name="line.185"></a>
+<span class="sourceLineNo">186</span>        }<a name="line.186"></a>
+<span class="sourceLineNo">187</span>        return null;<a name="line.187"></a>
+<span class="sourceLineNo">188</span>    }<a name="line.188"></a>
+<span class="sourceLineNo">189</span><a name="line.189"></a>
+<span class="sourceLineNo">190</span>    public StackTraceElement getStackTraceElement(final int depth) {<a name="line.190"></a>
+<span class="sourceLineNo">191</span>        // (MS) I tested the difference between using Throwable.getStackTrace() and Thread.getStackTrace(), and<a name="line.191"></a>
+<span class="sourceLineNo">192</span>        // the version using Throwable was surprisingly faster! at least on Java 1.8. See ReflectionBenchmark.<a name="line.192"></a>
+<span class="sourceLineNo">193</span>        final StackTraceElement[] elements = new Throwable().getStackTrace();<a name="line.193"></a>
+<span class="sourceLineNo">194</span>        int i = 0;<a name="line.194"></a>
+<span class="sourceLineNo">195</span>        for (final StackTraceElement element : elements) {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>            if (isValid(element)) {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                if (i == depth) {<a name="line.197"></a>
+<span class="sourceLineNo">198</span>                    return element;<a name="line.198"></a>
+<span class="sourceLineNo">199</span>                }<a name="line.199"></a>
+<span class="sourceLineNo">200</span>                ++i;<a name="line.200"></a>
+<span class="sourceLineNo">201</span>            }<a name="line.201"></a>
+<span class="sourceLineNo">202</span>        }<a name="line.202"></a>
+<span class="sourceLineNo">203</span>        throw new IndexOutOfBoundsException(Integer.toString(depth));<a name="line.203"></a>
+<span class="sourceLineNo">204</span>    }<a name="line.204"></a>
+<span class="sourceLineNo">205</span><a name="line.205"></a>
+<span class="sourceLineNo">206</span>    private boolean isValid(final StackTraceElement element) {<a name="line.206"></a>
+<span class="sourceLineNo">207</span>        // ignore native methods (oftentimes are repeated frames)<a name="line.207"></a>
+<span class="sourceLineNo">208</span>        if (element.isNativeMethod()) {<a name="line.208"></a>
+<span class="sourceLineNo">209</span>            return false;<a name="line.209"></a>
+<span class="sourceLineNo">210</span>        }<a name="line.210"></a>
+<span class="sourceLineNo">211</span>        final String cn = element.getClassName();<a name="line.211"></a>
+<span class="sourceLineNo">212</span>        // ignore OpenJDK internal classes involved with reflective invocation<a name="line.212"></a>
+<span class="sourceLineNo">213</span>        if (cn.startsWith("sun.reflect.")) {<a name="line.213"></a>
+<span class="sourceLineNo">214</span>            return false;<a name="line.214"></a>
+<span class="sourceLineNo">215</span>        }<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        final String mn = element.getMethodName();<a name="line.216"></a>
+<span class="sourceLineNo">217</span>        // ignore use of reflection including:<a name="line.217"></a>
+<span class="sourceLineNo">218</span>        // Method.invoke<a name="line.218"></a>
+<span class="sourceLineNo">219</span>        // InvocationHandler.invoke<a name="line.219"></a>
+<span class="sourceLineNo">220</span>        // Constructor.newInstance<a name="line.220"></a>
+<span class="sourceLineNo">221</span>        if (cn.startsWith("java.lang.reflect.") &amp;&amp; (mn.equals("invoke") || mn.equals("newInstance"))) {<a name="line.221"></a>
+<span class="sourceLineNo">222</span>            return false;<a name="line.222"></a>
+<span class="sourceLineNo">223</span>        }<a name="line.223"></a>
+<span class="sourceLineNo">224</span>        // ignore use of Java 1.9+ reflection classes<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        if (cn.startsWith("jdk.internal.reflect.")) {<a name="line.225"></a>
+<span class="sourceLineNo">226</span>            return false;<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        }<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        // ignore Class.newInstance<a name="line.228"></a>
+<span class="sourceLineNo">229</span>        if (cn.equals("java.lang.Class") &amp;&amp; mn.equals("newInstance")) {<a name="line.229"></a>
+<span class="sourceLineNo">230</span>            return false;<a name="line.230"></a>
+<span class="sourceLineNo">231</span>        }<a name="line.231"></a>
+<span class="sourceLineNo">232</span>        // ignore use of Java 1.7+ MethodHandle.invokeFoo() methods<a name="line.232"></a>
+<span class="sourceLineNo">233</span>        if (cn.equals("java.lang.invoke.MethodHandle") &amp;&amp; mn.startsWith("invoke")) {<a name="line.233"></a>
+<span class="sourceLineNo">234</span>            return false;<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        }<a name="line.235"></a>
+<span class="sourceLineNo">236</span>        // any others?<a name="line.236"></a>
+<span class="sourceLineNo">237</span>        return true;<a name="line.237"></a>
+<span class="sourceLineNo">238</span>    }<a name="line.238"></a>
+<span class="sourceLineNo">239</span>}<a name="line.239"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

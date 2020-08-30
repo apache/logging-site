@@ -1,0 +1,83 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Log4j 2 Tag Library
+              (The Log4j Log Tag Library creates the capability of inserting log
+statements in JSPs without the use of Java scripting. It uses the standard Log4j 2 API to log
+messages according to your Log4j configuration. You can learn more about Log4j 2 on the
+&lt;a href="http://logging.apache.org/log4j/2.x/"&gt;Log4j 2&lt;/a&gt; website.
+
+This tag library is based on the Jakarta Commons Log Taglib by Joseph Ottinger and James
+Strachan. For the most part, logging tags written against Jakarta Commons Log Taglib should
+work against this library as well. However, the "category" attribute from Jakarta has become
+the "logger" attribute in this library.
+
+In accordance with the org.apache.logging.log4j.Logger API, this tag library has tags to
+support the following logging calls: "catching", "entry", "exit", "log", "trace", "debug",
+"info", "warn", "error", and "fatal". The "trace" tag was not supported in Jakarta Commons Log
+Taglib. The "setLogger", "catching", "entry", and "trace" tags are new to this library. This
+tag library also supports the conditional tag "ifEnabled" (new) and troubleshooting tag "dump"
+(existed in Jakarta Commons Log Taglib).
+
+By default, this tag library uses a different Logger for each JSP named after the JSP ID.
+You can customize the Logger in any of the logging tags or the "ifEnabled" tag with the
+"logger" attribute. You can also use the "setLogger" tag to specify the Logger that should apply
+for the rest of a JSP's execution. If the "setLogger" tag comes before any other logging tags in
+a JSP, the default Logger for that JSP will not be created, but instead the specified logger is
+the only one that will be used.
+
+Every effort was made to optimize these tags and ensure decent performance, but users of
+this library should keep in mind that the creation and execution of JSP tags adds significant
+overhead to the standard Log4j method calls. While the "trace", "debug", and "info" options are
+available in this library, their uses are not nanosecond order of magnitude with logging off
+that users may be used to with standard Log4j method calls. Therefore, they should be used
+sparingly. Use of the "ifEnabled" tag does not improve this performance; this tag is available
+to conditionally evaluate other actions in addition to logging actions.)
+            </title>
+<meta name="keywords" content="$tldfull">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+<script>
+              function asd()
+              {
+              parent.document.title="Log4j 2 Tag Library (The Log4j Log Tag Library creates the capability of inserting log statements in JSPs without the use of Java scripting. It uses the standard Log4j 2 API to log messages according to your Log4j configuration. You can learn more about Log4j 2 on the <a href="http://logging.apache.org/log4j/2.x/">Log4j 2</a> website. This tag library is based on the Jakarta Commons Log Taglib by Joseph Ottinger and James Strachan. For the most part, logging tags written against Jakarta Commons Log Taglib should work against this library as well. However, the "category" attribute from Jakarta has become the "logger" attribute in this library. In accordance with the org.apache.logging.log4j.Logger API, this tag library has tags to support the following logging calls: "catching", "entry", "exit", "log", "trace", "debug", "info", "warn", "error", and "fatal". The "trace" tag was not supported in Jakarta Commons Log Taglib. The "setLogger", "catching", "entry", and "trace" tags are new to this library. This tag library also supports the conditional tag "ifEnabled" (new) and troubleshooting tag "dump" (existed in Jakarta Commons Log Taglib). By default, this tag library uses a different Logger for each JSP named after the JSP ID. You can customize the Logger in any of the logging tags or the "ifEnabled" tag with the "logger" attribute. You can also use the "setLogger" tag to specify the Logger that should apply for the rest of a JSP's execution. If the "setLogger" tag comes before any other logging tags in a JSP, the default Logger for that JSP will not be created, but instead the specified logger is the only one that will be used. Every effort was made to optimize these tags and ensure decent performance, but users of this library should keep in mind that the creation and execution of JSP tags adds significant overhead to the standard Log4j method calls. While the "trace", "debug", and "info" options are available in this library, their uses are not nanosecond order of magnitude with logging off that users may be used to with standard Log4j method calls. Therefore, they should be used sparingly. Use of the "ifEnabled" tag does not improve this performance; this tag is available to conditionally evaluate other actions in addition to logging actions.)";
+              }
+            </script>
+</head>
+<body bgcolor="white" onload="asd();">
+<font size="+1" class="FrameTitleFont"><a href="tld-summary.html" target="tagFrame">Log4j 2 Tag Library</a></font>
+<table border="0" width="100%">
+<tr>
+<td nowrap="true"><font size="+1" class="FrameHeadingFont">
+                      Tags
+                    </font>&nbsp;
+                    <font class="FrameItemFont">
+<br>
+<a href="setLogger.html" target="tagFrame">log:setLogger</a>
+<br>
+<a href="ifEnabled.html" target="tagFrame">log:ifEnabled</a>
+<br>
+<a href="catching.html" target="tagFrame">log:catching</a>
+<br>
+<a href="entry.html" target="tagFrame">log:entry</a>
+<br>
+<a href="exit.html" target="tagFrame">log:exit</a>
+<br>
+<a href="log.html" target="tagFrame">log:log</a>
+<br>
+<a href="trace.html" target="tagFrame">log:trace</a>
+<br>
+<a href="debug.html" target="tagFrame">log:debug</a>
+<br>
+<a href="info.html" target="tagFrame">log:info</a>
+<br>
+<a href="warn.html" target="tagFrame">log:warn</a>
+<br>
+<a href="error.html" target="tagFrame">log:error</a>
+<br>
+<a href="fatal.html" target="tagFrame">log:fatal</a>
+<br>
+<a href="dump.html" target="tagFrame">log:dump</a></font></td>
+</tr>
+</table>
+</body>
+</html>

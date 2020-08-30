@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j.core.pattern;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import static org.fusesource.jansi.AnsiRenderer.Code.BG_RED;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import static org.fusesource.jansi.AnsiRenderer.Code.BOLD;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>import static org.fusesource.jansi.AnsiRenderer.Code.RED;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import static org.fusesource.jansi.AnsiRenderer.Code.WHITE;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import static org.fusesource.jansi.AnsiRenderer.Code.YELLOW;<a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24"></a>
+<span class="sourceLineNo">025</span>import java.util.Collections;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import java.util.HashMap;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import java.util.Locale;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import java.util.Map;<a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.apache.logging.log4j.status.StatusLogger;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.fusesource.jansi.Ansi;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.fusesource.jansi.AnsiRenderer;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.fusesource.jansi.AnsiRenderer.Code;<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>/**<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * Renders an input as ANSI escaped output.<a name="line.36"></a>
+<span class="sourceLineNo">037</span> *<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * Uses the JAnsi rendering syntax as the default to render a message into an ANSI escaped string.<a name="line.38"></a>
+<span class="sourceLineNo">039</span> *<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * The default syntax for embedded ANSI codes is:<a name="line.40"></a>
+<span class="sourceLineNo">041</span> *<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * &lt;pre&gt;<a name="line.42"></a>
+<span class="sourceLineNo">043</span> *   &amp;#64;|&lt;em&gt;code&lt;/em&gt;(,&lt;em&gt;code&lt;/em&gt;)* &lt;em&gt;text&lt;/em&gt;|@<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * &lt;/pre&gt;<a name="line.44"></a>
+<span class="sourceLineNo">045</span> *<a name="line.45"></a>
+<span class="sourceLineNo">046</span> * For example, to render the message {@code "Hello"} in green, use:<a name="line.46"></a>
+<span class="sourceLineNo">047</span> *<a name="line.47"></a>
+<span class="sourceLineNo">048</span> * &lt;pre&gt;<a name="line.48"></a>
+<span class="sourceLineNo">049</span> *   &amp;#64;|green Hello|@<a name="line.49"></a>
+<span class="sourceLineNo">050</span> * &lt;/pre&gt;<a name="line.50"></a>
+<span class="sourceLineNo">051</span> *<a name="line.51"></a>
+<span class="sourceLineNo">052</span> * To render the message {@code "Hello"} in bold and red, use:<a name="line.52"></a>
+<span class="sourceLineNo">053</span> *<a name="line.53"></a>
+<span class="sourceLineNo">054</span> * &lt;pre&gt;<a name="line.54"></a>
+<span class="sourceLineNo">055</span> *   &amp;#64;|bold,red Warning!|@<a name="line.55"></a>
+<span class="sourceLineNo">056</span> * &lt;/pre&gt;<a name="line.56"></a>
+<span class="sourceLineNo">057</span> *<a name="line.57"></a>
+<span class="sourceLineNo">058</span> * You can also define custom style names in the configuration with the syntax:<a name="line.58"></a>
+<span class="sourceLineNo">059</span> *<a name="line.59"></a>
+<span class="sourceLineNo">060</span> * &lt;pre&gt;<a name="line.60"></a>
+<span class="sourceLineNo">061</span> * %message{ansi}{StyleName=value(,value)*( StyleName=value(,value)*)*}%n<a name="line.61"></a>
+<span class="sourceLineNo">062</span> * &lt;/pre&gt;<a name="line.62"></a>
+<span class="sourceLineNo">063</span> *<a name="line.63"></a>
+<span class="sourceLineNo">064</span> * For example:<a name="line.64"></a>
+<span class="sourceLineNo">065</span> *<a name="line.65"></a>
+<span class="sourceLineNo">066</span> * &lt;pre&gt;<a name="line.66"></a>
+<span class="sourceLineNo">067</span> * %message{ansi}{WarningStyle=red,bold KeyStyle=white ValueStyle=blue}%n<a name="line.67"></a>
+<span class="sourceLineNo">068</span> * &lt;/pre&gt;<a name="line.68"></a>
+<span class="sourceLineNo">069</span> *<a name="line.69"></a>
+<span class="sourceLineNo">070</span> * The call site can look like this:<a name="line.70"></a>
+<span class="sourceLineNo">071</span> *<a name="line.71"></a>
+<span class="sourceLineNo">072</span> * &lt;pre&gt;<a name="line.72"></a>
+<span class="sourceLineNo">073</span> * logger.info("@|KeyStyle {}|@ = @|ValueStyle {}|@", entry.getKey(), entry.getValue());<a name="line.73"></a>
+<span class="sourceLineNo">074</span> * &lt;/pre&gt;<a name="line.74"></a>
+<span class="sourceLineNo">075</span> *<a name="line.75"></a>
+<span class="sourceLineNo">076</span> * Note: This class originally copied and then heavily modified code from JAnsi's AnsiRenderer (which is licensed as<a name="line.76"></a>
+<span class="sourceLineNo">077</span> * Apache 2.0.)<a name="line.77"></a>
+<span class="sourceLineNo">078</span> *<a name="line.78"></a>
+<span class="sourceLineNo">079</span> * @see AnsiRenderer<a name="line.79"></a>
+<span class="sourceLineNo">080</span> */<a name="line.80"></a>
+<span class="sourceLineNo">081</span>public final class JAnsiTextRenderer implements TextRenderer {<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>    public static final Map&lt;String, Code[]&gt; DefaultExceptionStyleMap;<a name="line.83"></a>
+<span class="sourceLineNo">084</span>    static final Map&lt;String, Code[]&gt; DefaultMessageStyleMap;<a name="line.84"></a>
+<span class="sourceLineNo">085</span>    private static final Map&lt;String, Map&lt;String, Code[]&gt;&gt; PrefedinedStyleMaps;<a name="line.85"></a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span>    private static void put(final Map&lt;String, Code[]&gt; map, final String name, final Code... codes) {<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        map.put(name, codes);<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    }<a name="line.89"></a>
+<span class="sourceLineNo">090</span><a name="line.90"></a>
+<span class="sourceLineNo">091</span>    static {<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        final Map&lt;String, Map&lt;String, Code[]&gt;&gt; tempPreDefs = new HashMap&lt;&gt;();<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        // Default style: Spock<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        {<a name="line.94"></a>
+<span class="sourceLineNo">095</span>            // TODO Should the keys be in an enum?<a name="line.95"></a>
+<span class="sourceLineNo">096</span>            final Map&lt;String, Code[]&gt; map = new HashMap&lt;&gt;();<a name="line.96"></a>
+<span class="sourceLineNo">097</span>            put(map, "Prefix", WHITE);<a name="line.97"></a>
+<span class="sourceLineNo">098</span>            put(map, "Name", BG_RED, WHITE);<a name="line.98"></a>
+<span class="sourceLineNo">099</span>            put(map, "NameMessageSeparator", BG_RED, WHITE);<a name="line.99"></a>
+<span class="sourceLineNo">100</span>            put(map, "Message", BG_RED, WHITE, BOLD);<a name="line.100"></a>
+<span class="sourceLineNo">101</span>            put(map, "At", WHITE);<a name="line.101"></a>
+<span class="sourceLineNo">102</span>            put(map, "CauseLabel", WHITE);<a name="line.102"></a>
+<span class="sourceLineNo">103</span>            put(map, "Text", WHITE);<a name="line.103"></a>
+<span class="sourceLineNo">104</span>            put(map, "More", WHITE);<a name="line.104"></a>
+<span class="sourceLineNo">105</span>            put(map, "Suppressed", WHITE);<a name="line.105"></a>
+<span class="sourceLineNo">106</span>            // StackTraceElement<a name="line.106"></a>
+<span class="sourceLineNo">107</span>            put(map, "StackTraceElement.ClassName", YELLOW);<a name="line.107"></a>
+<span class="sourceLineNo">108</span>            put(map, "StackTraceElement.ClassMethodSeparator", YELLOW);<a name="line.108"></a>
+<span class="sourceLineNo">109</span>            put(map, "StackTraceElement.MethodName", YELLOW);<a name="line.109"></a>
+<span class="sourceLineNo">110</span>            put(map, "StackTraceElement.NativeMethod", YELLOW);<a name="line.110"></a>
+<span class="sourceLineNo">111</span>            put(map, "StackTraceElement.FileName", RED);<a name="line.111"></a>
+<span class="sourceLineNo">112</span>            put(map, "StackTraceElement.LineNumber", RED);<a name="line.112"></a>
+<span class="sourceLineNo">113</span>            put(map, "StackTraceElement.Container", RED);<a name="line.113"></a>
+<span class="sourceLineNo">114</span>            put(map, "StackTraceElement.ContainerSeparator", WHITE);<a name="line.114"></a>
+<span class="sourceLineNo">115</span>            put(map, "StackTraceElement.UnknownSource", RED);<a name="line.115"></a>
+<span class="sourceLineNo">116</span>            // ExtraClassInfo<a name="line.116"></a>
+<span class="sourceLineNo">117</span>            put(map, "ExtraClassInfo.Inexact", YELLOW);<a name="line.117"></a>
+<span class="sourceLineNo">118</span>            put(map, "ExtraClassInfo.Container", YELLOW);<a name="line.118"></a>
+<span class="sourceLineNo">119</span>            put(map, "ExtraClassInfo.ContainerSeparator", YELLOW);<a name="line.119"></a>
+<span class="sourceLineNo">120</span>            put(map, "ExtraClassInfo.Location", YELLOW);<a name="line.120"></a>
+<span class="sourceLineNo">121</span>            put(map, "ExtraClassInfo.Version", YELLOW);<a name="line.121"></a>
+<span class="sourceLineNo">122</span>            // Save<a name="line.122"></a>
+<span class="sourceLineNo">123</span>            DefaultExceptionStyleMap = Collections.unmodifiableMap(map);<a name="line.123"></a>
+<span class="sourceLineNo">124</span>            tempPreDefs.put("Spock", DefaultExceptionStyleMap);<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        }<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        // Style: Kirk<a name="line.126"></a>
+<span class="sourceLineNo">127</span>        {<a name="line.127"></a>
+<span class="sourceLineNo">128</span>            // TODO Should the keys be in an enum?<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            final Map&lt;String, Code[]&gt; map = new HashMap&lt;&gt;();<a name="line.129"></a>
+<span class="sourceLineNo">130</span>            put(map, "Prefix", WHITE);<a name="line.130"></a>
+<span class="sourceLineNo">131</span>            put(map, "Name", BG_RED, YELLOW, BOLD);<a name="line.131"></a>
+<span class="sourceLineNo">132</span>            put(map, "NameMessageSeparator", BG_RED, YELLOW);<a name="line.132"></a>
+<span class="sourceLineNo">133</span>            put(map, "Message", BG_RED, WHITE, BOLD);<a name="line.133"></a>
+<span class="sourceLineNo">134</span>            put(map, "At", WHITE);<a name="line.134"></a>
+<span class="sourceLineNo">135</span>            put(map, "CauseLabel", WHITE);<a name="line.135"></a>
+<span class="sourceLineNo">136</span>            put(map, "Text", WHITE);<a name="line.136"></a>
+<span class="sourceLineNo">137</span>            put(map, "More", WHITE);<a name="line.137"></a>
+<span class="sourceLineNo">138</span>            put(map, "Suppressed", WHITE);<a name="line.138"></a>
+<span class="sourceLineNo">139</span>            // StackTraceElement<a name="line.139"></a>
+<span class="sourceLineNo">140</span>            put(map, "StackTraceElement.ClassName", BG_RED, WHITE);<a name="line.140"></a>
+<span class="sourceLineNo">141</span>            put(map, "StackTraceElement.ClassMethodSeparator", BG_RED, YELLOW);<a name="line.141"></a>
+<span class="sourceLineNo">142</span>            put(map, "StackTraceElement.MethodName", BG_RED, YELLOW);<a name="line.142"></a>
+<span class="sourceLineNo">143</span>            put(map, "StackTraceElement.NativeMethod", BG_RED, YELLOW);<a name="line.143"></a>
+<span class="sourceLineNo">144</span>            put(map, "StackTraceElement.FileName", RED);<a name="line.144"></a>
+<span class="sourceLineNo">145</span>            put(map, "StackTraceElement.LineNumber", RED);<a name="line.145"></a>
+<span class="sourceLineNo">146</span>            put(map, "StackTraceElement.Container", RED);<a name="line.146"></a>
+<span class="sourceLineNo">147</span>            put(map, "StackTraceElement.ContainerSeparator", WHITE);<a name="line.147"></a>
+<span class="sourceLineNo">148</span>            put(map, "StackTraceElement.UnknownSource", RED);<a name="line.148"></a>
+<span class="sourceLineNo">149</span>            // ExtraClassInfo<a name="line.149"></a>
+<span class="sourceLineNo">150</span>            put(map, "ExtraClassInfo.Inexact", YELLOW);<a name="line.150"></a>
+<span class="sourceLineNo">151</span>            put(map, "ExtraClassInfo.Container", WHITE);<a name="line.151"></a>
+<span class="sourceLineNo">152</span>            put(map, "ExtraClassInfo.ContainerSeparator", WHITE);<a name="line.152"></a>
+<span class="sourceLineNo">153</span>            put(map, "ExtraClassInfo.Location", YELLOW);<a name="line.153"></a>
+<span class="sourceLineNo">154</span>            put(map, "ExtraClassInfo.Version", YELLOW);<a name="line.154"></a>
+<span class="sourceLineNo">155</span>            // Save<a name="line.155"></a>
+<span class="sourceLineNo">156</span>            tempPreDefs.put("Kirk", Collections.unmodifiableMap(map));<a name="line.156"></a>
+<span class="sourceLineNo">157</span>        }<a name="line.157"></a>
+<span class="sourceLineNo">158</span>        {<a name="line.158"></a>
+<span class="sourceLineNo">159</span>            final Map&lt;String, Code[]&gt; temp = new HashMap&lt;&gt;();<a name="line.159"></a>
+<span class="sourceLineNo">160</span>            // TODO<a name="line.160"></a>
+<span class="sourceLineNo">161</span>            DefaultMessageStyleMap = Collections.unmodifiableMap(temp);<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        }<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        PrefedinedStyleMaps = Collections.unmodifiableMap(tempPreDefs);<a name="line.163"></a>
+<span class="sourceLineNo">164</span>    }<a name="line.164"></a>
+<span class="sourceLineNo">165</span><a name="line.165"></a>
+<span class="sourceLineNo">166</span>    private final String beginToken;<a name="line.166"></a>
+<span class="sourceLineNo">167</span>    private final int beginTokenLen;<a name="line.167"></a>
+<span class="sourceLineNo">168</span>    private final String endToken;<a name="line.168"></a>
+<span class="sourceLineNo">169</span>    private final int endTokenLen;<a name="line.169"></a>
+<span class="sourceLineNo">170</span>    private final Map&lt;String, Code[]&gt; styleMap;<a name="line.170"></a>
+<span class="sourceLineNo">171</span><a name="line.171"></a>
+<span class="sourceLineNo">172</span>    public JAnsiTextRenderer(final String[] formats, final Map&lt;String, Code[]&gt; defaultStyleMap) {<a name="line.172"></a>
+<span class="sourceLineNo">173</span>        String tempBeginToken = AnsiRenderer.BEGIN_TOKEN;<a name="line.173"></a>
+<span class="sourceLineNo">174</span>        String tempEndToken = AnsiRenderer.END_TOKEN;<a name="line.174"></a>
+<span class="sourceLineNo">175</span>        Map&lt;String, Code[]&gt; map;<a name="line.175"></a>
+<span class="sourceLineNo">176</span>        if (formats.length &gt; 1) {<a name="line.176"></a>
+<span class="sourceLineNo">177</span>            final String allStylesStr = formats[1];<a name="line.177"></a>
+<span class="sourceLineNo">178</span>            // Style def split<a name="line.178"></a>
+<span class="sourceLineNo">179</span>            final String[] allStyleAssignmentsArr = allStylesStr.split(" ");<a name="line.179"></a>
+<span class="sourceLineNo">180</span>            map = new HashMap&lt;&gt;(allStyleAssignmentsArr.length + defaultStyleMap.size());<a name="line.180"></a>
+<span class="sourceLineNo">181</span>            map.putAll(defaultStyleMap);<a name="line.181"></a>
+<span class="sourceLineNo">182</span>            for (final String styleAssignmentStr : allStyleAssignmentsArr) {<a name="line.182"></a>
+<span class="sourceLineNo">183</span>                final String[] styleAssignmentArr = styleAssignmentStr.split("=");<a name="line.183"></a>
+<span class="sourceLineNo">184</span>                if (styleAssignmentArr.length != 2) {<a name="line.184"></a>
+<span class="sourceLineNo">185</span>                    StatusLogger.getLogger().warn("{} parsing style \"{}\", expected format: StyleName=Code(,Code)*",<a name="line.185"></a>
+<span class="sourceLineNo">186</span>                            getClass().getSimpleName(), styleAssignmentStr);<a name="line.186"></a>
+<span class="sourceLineNo">187</span>                } else {<a name="line.187"></a>
+<span class="sourceLineNo">188</span>                    final String styleName = styleAssignmentArr[0];<a name="line.188"></a>
+<span class="sourceLineNo">189</span>                    final String codeListStr = styleAssignmentArr[1];<a name="line.189"></a>
+<span class="sourceLineNo">190</span>                    final String[] codeNames = codeListStr.split(",");<a name="line.190"></a>
+<span class="sourceLineNo">191</span>                    if (codeNames.length == 0) {<a name="line.191"></a>
+<span class="sourceLineNo">192</span>                        StatusLogger.getLogger().warn(<a name="line.192"></a>
+<span class="sourceLineNo">193</span>                                "{} parsing style \"{}\", expected format: StyleName=Code(,Code)*",<a name="line.193"></a>
+<span class="sourceLineNo">194</span>                                getClass().getSimpleName(), styleAssignmentStr);<a name="line.194"></a>
+<span class="sourceLineNo">195</span>                    } else {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>                        switch (styleName) {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                        case "BeginToken":<a name="line.197"></a>
+<span class="sourceLineNo">198</span>                            tempBeginToken = codeNames[0];<a name="line.198"></a>
+<span class="sourceLineNo">199</span>                            break;<a name="line.199"></a>
+<span class="sourceLineNo">200</span>                        case "EndToken":<a name="line.200"></a>
+<span class="sourceLineNo">201</span>                            tempEndToken = codeNames[0];<a name="line.201"></a>
+<span class="sourceLineNo">202</span>                            break;<a name="line.202"></a>
+<span class="sourceLineNo">203</span>                        case "StyleMapName":<a name="line.203"></a>
+<span class="sourceLineNo">204</span>                            final String predefinedMapName = codeNames[0];<a name="line.204"></a>
+<span class="sourceLineNo">205</span>                            final Map&lt;String, Code[]&gt; predefinedMap = PrefedinedStyleMaps.get(predefinedMapName);<a name="line.205"></a>
+<span class="sourceLineNo">206</span>                            if (predefinedMap != null) {<a name="line.206"></a>
+<span class="sourceLineNo">207</span>                                map.putAll(predefinedMap);<a name="line.207"></a>
+<span class="sourceLineNo">208</span>                            } else {<a name="line.208"></a>
+<span class="sourceLineNo">209</span>                                StatusLogger.getLogger().warn("Unknown predefined map name {}, pick one of {}",<a name="line.209"></a>
+<span class="sourceLineNo">210</span>                                        predefinedMapName, null);<a name="line.210"></a>
+<span class="sourceLineNo">211</span>                            }<a name="line.211"></a>
+<span class="sourceLineNo">212</span>                            break;<a name="line.212"></a>
+<span class="sourceLineNo">213</span>                        default:<a name="line.213"></a>
+<span class="sourceLineNo">214</span>                            final Code[] codes = new Code[codeNames.length];<a name="line.214"></a>
+<span class="sourceLineNo">215</span>                            for (int i = 0; i &lt; codes.length; i++) {<a name="line.215"></a>
+<span class="sourceLineNo">216</span>                                codes[i] = toCode(codeNames[i]);<a name="line.216"></a>
+<span class="sourceLineNo">217</span>                            }<a name="line.217"></a>
+<span class="sourceLineNo">218</span>                            map.put(styleName, codes);<a name="line.218"></a>
+<span class="sourceLineNo">219</span>                        }<a name="line.219"></a>
+<span class="sourceLineNo">220</span>                    }<a name="line.220"></a>
+<span class="sourceLineNo">221</span>                }<a name="line.221"></a>
+<span class="sourceLineNo">222</span>            }<a name="line.222"></a>
+<span class="sourceLineNo">223</span>        } else {<a name="line.223"></a>
+<span class="sourceLineNo">224</span>            map = defaultStyleMap;<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        }<a name="line.225"></a>
+<span class="sourceLineNo">226</span>        styleMap = map;<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        beginToken = tempBeginToken;<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        endToken = tempEndToken;<a name="line.228"></a>
+<span class="sourceLineNo">229</span>        beginTokenLen = tempBeginToken.length();<a name="line.229"></a>
+<span class="sourceLineNo">230</span>        endTokenLen = tempEndToken.length();<a name="line.230"></a>
+<span class="sourceLineNo">231</span>    }<a name="line.231"></a>
+<span class="sourceLineNo">232</span><a name="line.232"></a>
+<span class="sourceLineNo">233</span>    public Map&lt;String, Code[]&gt; getStyleMap() {<a name="line.233"></a>
+<span class="sourceLineNo">234</span>        return styleMap;<a name="line.234"></a>
+<span class="sourceLineNo">235</span>    }<a name="line.235"></a>
+<span class="sourceLineNo">236</span><a name="line.236"></a>
+<span class="sourceLineNo">237</span>    private void render(final Ansi ansi, final Code code) {<a name="line.237"></a>
+<span class="sourceLineNo">238</span>        if (code.isColor()) {<a name="line.238"></a>
+<span class="sourceLineNo">239</span>            if (code.isBackground()) {<a name="line.239"></a>
+<span class="sourceLineNo">240</span>                ansi.bg(code.getColor());<a name="line.240"></a>
+<span class="sourceLineNo">241</span>            } else {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>                ansi.fg(code.getColor());<a name="line.242"></a>
+<span class="sourceLineNo">243</span>            }<a name="line.243"></a>
+<span class="sourceLineNo">244</span>        } else if (code.isAttribute()) {<a name="line.244"></a>
+<span class="sourceLineNo">245</span>            ansi.a(code.getAttribute());<a name="line.245"></a>
+<span class="sourceLineNo">246</span>        }<a name="line.246"></a>
+<span class="sourceLineNo">247</span>    }<a name="line.247"></a>
+<span class="sourceLineNo">248</span><a name="line.248"></a>
+<span class="sourceLineNo">249</span>    private void render(final Ansi ansi, final Code... codes) {<a name="line.249"></a>
+<span class="sourceLineNo">250</span>        for (final Code code : codes) {<a name="line.250"></a>
+<span class="sourceLineNo">251</span>            render(ansi, code);<a name="line.251"></a>
+<span class="sourceLineNo">252</span>        }<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    }<a name="line.253"></a>
+<span class="sourceLineNo">254</span><a name="line.254"></a>
+<span class="sourceLineNo">255</span>    /**<a name="line.255"></a>
+<span class="sourceLineNo">256</span>     * Renders the given text with the given names which can be ANSI code names or Log4j style names.<a name="line.256"></a>
+<span class="sourceLineNo">257</span>     *<a name="line.257"></a>
+<span class="sourceLineNo">258</span>     * @param text<a name="line.258"></a>
+<span class="sourceLineNo">259</span>     *            The text to render<a name="line.259"></a>
+<span class="sourceLineNo">260</span>     * @param names<a name="line.260"></a>
+<span class="sourceLineNo">261</span>     *            ANSI code names or Log4j style names.<a name="line.261"></a>
+<span class="sourceLineNo">262</span>     * @return A rendered string containing ANSI codes.<a name="line.262"></a>
+<span class="sourceLineNo">263</span>     */<a name="line.263"></a>
+<span class="sourceLineNo">264</span>    private String render(final String text, final String... names) {<a name="line.264"></a>
+<span class="sourceLineNo">265</span>        final Ansi ansi = Ansi.ansi();<a name="line.265"></a>
+<span class="sourceLineNo">266</span>        for (final String name : names) {<a name="line.266"></a>
+<span class="sourceLineNo">267</span>            final Code[] codes = styleMap.get(name);<a name="line.267"></a>
+<span class="sourceLineNo">268</span>            if (codes != null) {<a name="line.268"></a>
+<span class="sourceLineNo">269</span>                render(ansi, codes);<a name="line.269"></a>
+<span class="sourceLineNo">270</span>            } else {<a name="line.270"></a>
+<span class="sourceLineNo">271</span>                render(ansi, toCode(name));<a name="line.271"></a>
+<span class="sourceLineNo">272</span>            }<a name="line.272"></a>
+<span class="sourceLineNo">273</span>        }<a name="line.273"></a>
+<span class="sourceLineNo">274</span>        return ansi.a(text).reset().toString();<a name="line.274"></a>
+<span class="sourceLineNo">275</span>    }<a name="line.275"></a>
+<span class="sourceLineNo">276</span><a name="line.276"></a>
+<span class="sourceLineNo">277</span>    // EXACT COPY OF StringBuilder version of the method but typed as String for input<a name="line.277"></a>
+<span class="sourceLineNo">278</span>    @Override<a name="line.278"></a>
+<span class="sourceLineNo">279</span>    public void render(final String input, final StringBuilder output, final String styleName)<a name="line.279"></a>
+<span class="sourceLineNo">280</span>            throws IllegalArgumentException {<a name="line.280"></a>
+<span class="sourceLineNo">281</span>        output.append(render(input, styleName));<a name="line.281"></a>
+<span class="sourceLineNo">282</span>    }<a name="line.282"></a>
+<span class="sourceLineNo">283</span><a name="line.283"></a>
+<span class="sourceLineNo">284</span>    @Override<a name="line.284"></a>
+<span class="sourceLineNo">285</span>    public void render(final StringBuilder input, final StringBuilder output) throws IllegalArgumentException {<a name="line.285"></a>
+<span class="sourceLineNo">286</span>        int i = 0;<a name="line.286"></a>
+<span class="sourceLineNo">287</span>        int j, k;<a name="line.287"></a>
+<span class="sourceLineNo">288</span><a name="line.288"></a>
+<span class="sourceLineNo">289</span>        while (true) {<a name="line.289"></a>
+<span class="sourceLineNo">290</span>            j = input.indexOf(beginToken, i);<a name="line.290"></a>
+<span class="sourceLineNo">291</span>            if (j == -1) {<a name="line.291"></a>
+<span class="sourceLineNo">292</span>                if (i == 0) {<a name="line.292"></a>
+<span class="sourceLineNo">293</span>                    output.append(input);<a name="line.293"></a>
+<span class="sourceLineNo">294</span>                    return;<a name="line.294"></a>
+<span class="sourceLineNo">295</span>                }<a name="line.295"></a>
+<span class="sourceLineNo">296</span>                output.append(input.substring(i, input.length()));<a name="line.296"></a>
+<span class="sourceLineNo">297</span>                return;<a name="line.297"></a>
+<span class="sourceLineNo">298</span>            }<a name="line.298"></a>
+<span class="sourceLineNo">299</span>            output.append(input.substring(i, j));<a name="line.299"></a>
+<span class="sourceLineNo">300</span>            k = input.indexOf(endToken, j);<a name="line.300"></a>
+<span class="sourceLineNo">301</span><a name="line.301"></a>
+<span class="sourceLineNo">302</span>            if (k == -1) {<a name="line.302"></a>
+<span class="sourceLineNo">303</span>                output.append(input);<a name="line.303"></a>
+<span class="sourceLineNo">304</span>                return;<a name="line.304"></a>
+<span class="sourceLineNo">305</span>            }<a name="line.305"></a>
+<span class="sourceLineNo">306</span>            j += beginTokenLen;<a name="line.306"></a>
+<span class="sourceLineNo">307</span>            final String spec = input.substring(j, k);<a name="line.307"></a>
+<span class="sourceLineNo">308</span><a name="line.308"></a>
+<span class="sourceLineNo">309</span>            final String[] items = spec.split(AnsiRenderer.CODE_TEXT_SEPARATOR, 2);<a name="line.309"></a>
+<span class="sourceLineNo">310</span>            if (items.length == 1) {<a name="line.310"></a>
+<span class="sourceLineNo">311</span>                output.append(input);<a name="line.311"></a>
+<span class="sourceLineNo">312</span>                return;<a name="line.312"></a>
+<span class="sourceLineNo">313</span>            }<a name="line.313"></a>
+<span class="sourceLineNo">314</span>            final String replacement = render(items[1], items[0].split(","));<a name="line.314"></a>
+<span class="sourceLineNo">315</span><a name="line.315"></a>
+<span class="sourceLineNo">316</span>            output.append(replacement);<a name="line.316"></a>
+<span class="sourceLineNo">317</span><a name="line.317"></a>
+<span class="sourceLineNo">318</span>            i = k + endTokenLen;<a name="line.318"></a>
+<span class="sourceLineNo">319</span>        }<a name="line.319"></a>
+<span class="sourceLineNo">320</span>    }<a name="line.320"></a>
+<span class="sourceLineNo">321</span><a name="line.321"></a>
+<span class="sourceLineNo">322</span>    private Code toCode(final String name) {<a name="line.322"></a>
+<span class="sourceLineNo">323</span>        return Code.valueOf(name.toUpperCase(Locale.ENGLISH));<a name="line.323"></a>
+<span class="sourceLineNo">324</span>    }<a name="line.324"></a>
+<span class="sourceLineNo">325</span><a name="line.325"></a>
+<span class="sourceLineNo">326</span>    @Override<a name="line.326"></a>
+<span class="sourceLineNo">327</span>    public String toString() {<a name="line.327"></a>
+<span class="sourceLineNo">328</span>        return "JAnsiMessageRenderer [beginToken=" + beginToken + ", beginTokenLen=" + beginTokenLen + ", endToken="<a name="line.328"></a>
+<span class="sourceLineNo">329</span>                + endToken + ", endTokenLen=" + endTokenLen + ", styleMap=" + styleMap + "]";<a name="line.329"></a>
+<span class="sourceLineNo">330</span>    }<a name="line.330"></a>
+<span class="sourceLineNo">331</span><a name="line.331"></a>
+<span class="sourceLineNo">332</span>}<a name="line.332"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

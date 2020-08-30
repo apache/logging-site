@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"org.apache.logging.log4j.spring.cloud.config.client"}]
