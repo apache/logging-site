@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j.util;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>/**<a name="line.19"></a>
+<span class="sourceLineNo">020</span> * Log4j API Constants.<a name="line.20"></a>
+<span class="sourceLineNo">021</span> *<a name="line.21"></a>
+<span class="sourceLineNo">022</span> * @since 2.6.2<a name="line.22"></a>
+<span class="sourceLineNo">023</span> */<a name="line.23"></a>
+<span class="sourceLineNo">024</span>public final class Constants {<a name="line.24"></a>
+<span class="sourceLineNo">025</span>    /**<a name="line.25"></a>
+<span class="sourceLineNo">026</span>     * {@code true} if we think we are running in a web container, based on the boolean value of system property<a name="line.26"></a>
+<span class="sourceLineNo">027</span>     * "log4j2.is.webapp", or (if this system property is not set) whether the  {@code javax.servlet.Servlet} class<a name="line.27"></a>
+<span class="sourceLineNo">028</span>     * is present in the classpath.<a name="line.28"></a>
+<span class="sourceLineNo">029</span>     */<a name="line.29"></a>
+<span class="sourceLineNo">030</span>    public static final boolean IS_WEB_APP = PropertiesUtil.getProperties().getBooleanProperty(<a name="line.30"></a>
+<span class="sourceLineNo">031</span>            "log4j2.is.webapp", isClassAvailable("javax.servlet.Servlet"));<a name="line.31"></a>
+<span class="sourceLineNo">032</span><a name="line.32"></a>
+<span class="sourceLineNo">033</span>    /**<a name="line.33"></a>
+<span class="sourceLineNo">034</span>     * Kill switch for object pooling in ThreadLocals that enables much of the LOG4J2-1270 no-GC behaviour.<a name="line.34"></a>
+<span class="sourceLineNo">035</span>     * &lt;p&gt;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>     * {@code True} for non-{@link #IS_WEB_APP web apps}, disable by setting system property<a name="line.36"></a>
+<span class="sourceLineNo">037</span>     * "log4j2.enable.threadlocals" to "false".<a name="line.37"></a>
+<span class="sourceLineNo">038</span>     * &lt;/p&gt;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>     */<a name="line.39"></a>
+<span class="sourceLineNo">040</span>    public static final boolean ENABLE_THREADLOCALS = !IS_WEB_APP &amp;&amp; PropertiesUtil.getProperties().getBooleanProperty(<a name="line.40"></a>
+<span class="sourceLineNo">041</span>            "log4j2.enable.threadlocals", true);<a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span>    public static final int JAVA_MAJOR_VERSION = getMajorVersion();<a name="line.43"></a>
+<span class="sourceLineNo">044</span><a name="line.44"></a>
+<span class="sourceLineNo">045</span>    /**<a name="line.45"></a>
+<span class="sourceLineNo">046</span>     * Maximum size of the StringBuilders used in RingBuffer LogEvents to store the contents of reusable Messages.<a name="line.46"></a>
+<span class="sourceLineNo">047</span>     * After a large message has been delivered to the appenders, the StringBuilder is trimmed to this size.<a name="line.47"></a>
+<span class="sourceLineNo">048</span>     * &lt;p&gt;<a name="line.48"></a>
+<span class="sourceLineNo">049</span>     * The default value is {@value}, which allows the StringBuilder to resize three times from its initial size.<a name="line.49"></a>
+<span class="sourceLineNo">050</span>     * Users can override with system property "log4j.maxReusableMsgSize".<a name="line.50"></a>
+<span class="sourceLineNo">051</span>     * &lt;/p&gt;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     * @since 2.9<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     */<a name="line.53"></a>
+<span class="sourceLineNo">054</span>    public static final int MAX_REUSABLE_MESSAGE_SIZE = size("log4j.maxReusableMsgSize", (128 * 2 + 2) * 2 + 2);<a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55"></a>
+<span class="sourceLineNo">056</span>    /**<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     * Name of the system property that will turn on TRACE level internal log4j2 status logging.<a name="line.57"></a>
+<span class="sourceLineNo">058</span>     * &lt;p&gt;<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     * If system property {@value} is defined, regardless of the property value, all internal log4j2 logging will be<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     * printed to the console. The presence of this system property overrides any value set in the configuration's<a name="line.60"></a>
+<span class="sourceLineNo">061</span>     * {@code &lt;Configuration status="&lt;level&gt;" ...&gt;} status attribute, as well as any value set for<a name="line.61"></a>
+<span class="sourceLineNo">062</span>     * system property {@code org.apache.logging.log4j.simplelog.StatusLogger.level}.<a name="line.62"></a>
+<span class="sourceLineNo">063</span>     * &lt;/p&gt;<a name="line.63"></a>
+<span class="sourceLineNo">064</span>     */<a name="line.64"></a>
+<span class="sourceLineNo">065</span>    public static final String LOG4J2_DEBUG = "log4j2.debug";<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>    private static int size(final String property, final int defaultValue) {<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        return PropertiesUtil.getProperties().getIntegerProperty(property, defaultValue);<a name="line.68"></a>
+<span class="sourceLineNo">069</span>    }<a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70"></a>
+<span class="sourceLineNo">071</span>    /**<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     * Determines if a named Class can be loaded or not.<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     *<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * @param className The class name.<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * @return {@code true} if the class could be found or {@code false} otherwise.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     */<a name="line.76"></a>
+<span class="sourceLineNo">077</span>    private static boolean isClassAvailable(final String className) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>        try {<a name="line.78"></a>
+<span class="sourceLineNo">079</span>            return LoaderUtil.loadClass(className) != null;<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        } catch (final Throwable e) {<a name="line.80"></a>
+<span class="sourceLineNo">081</span>            return false;<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        }<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    }<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>    /**<a name="line.85"></a>
+<span class="sourceLineNo">086</span>     * Prevent class instantiation.<a name="line.86"></a>
+<span class="sourceLineNo">087</span>     */<a name="line.87"></a>
+<span class="sourceLineNo">088</span>    private Constants() {<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    }<a name="line.89"></a>
+<span class="sourceLineNo">090</span><a name="line.90"></a>
+<span class="sourceLineNo">091</span>    private static int getMajorVersion() {<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        return getMajorVersion(System.getProperty("java.version"));<a name="line.92"></a>
+<span class="sourceLineNo">093</span>    }<a name="line.93"></a>
+<span class="sourceLineNo">094</span><a name="line.94"></a>
+<span class="sourceLineNo">095</span>    static int getMajorVersion(final String version) {<a name="line.95"></a>
+<span class="sourceLineNo">096</span>        final String[] parts = version.split("-|\\.");<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        boolean isJEP223;<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        try {<a name="line.98"></a>
+<span class="sourceLineNo">099</span>            final int token = Integer.parseInt(parts[0]);<a name="line.99"></a>
+<span class="sourceLineNo">100</span>            isJEP223 = token != 1;<a name="line.100"></a>
+<span class="sourceLineNo">101</span>            if (isJEP223) {<a name="line.101"></a>
+<span class="sourceLineNo">102</span>                return token;<a name="line.102"></a>
+<span class="sourceLineNo">103</span>            }<a name="line.103"></a>
+<span class="sourceLineNo">104</span>            return Integer.parseInt(parts[1]);<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        } catch (final Exception ex) {<a name="line.105"></a>
+<span class="sourceLineNo">106</span>            return 0;<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        }<a name="line.107"></a>
+<span class="sourceLineNo">108</span>    }<a name="line.108"></a>
+<span class="sourceLineNo">109</span>}<a name="line.109"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

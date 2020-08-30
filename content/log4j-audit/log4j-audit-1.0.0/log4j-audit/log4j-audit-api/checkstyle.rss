@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Log4j Audit API - Checkstyle report</title>
+    <link>http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api</link>
+    <description>Log4j Audit API - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2016 - 2018 Apache Software Foundation</copyright>
+    <item>
+      <title>File: 44,
+             Errors: 151,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.Chained.java">org/apache/logging/log4j/audit/annotation/Chained.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.ConstructorDefinition.java">org/apache/logging/log4j/audit/generator/ConstructorDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.AuditLogger.java">org/apache/logging/log4j/audit/AuditLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.Constraint.java">org/apache/logging/log4j/audit/annotation/Constraint.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.Scope.java">org/apache/logging/log4j/audit/request/Scope.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.RequestContextMapping.java">org/apache/logging/log4j/audit/request/RequestContextMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.dto.AuditDto.java">org/apache/logging/log4j/audit/dto/AuditDto.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.ClientServerMapping.java">org/apache/logging/log4j/audit/request/ClientServerMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.rest.RequestContextFilter.java">org/apache/logging/log4j/audit/rest/RequestContextFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.util.StringUtil.java">org/apache/logging/log4j/audit/util/StringUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.RequestContext.java">org/apache/logging/log4j/audit/annotation/RequestContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.util.JsonObjectMapperFactory.java">org/apache/logging/log4j/audit/util/JsonObjectMapperFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.AuditMessage.java">org/apache/logging/log4j/audit/AuditMessage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.MaxLength.java">org/apache/logging/log4j/audit/annotation/MaxLength.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.layout.AuditLayout.java">org/apache/logging/log4j/audit/layout/AuditLayout.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.ChainedMapping.java">org/apache/logging/log4j/audit/request/ChainedMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.ClientServer.java">org/apache/logging/log4j/audit/annotation/ClientServer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.rest.RequestContextHeaderInterceptor.java">org/apache/logging/log4j/audit/rest/RequestContextHeaderInterceptor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.VariableDefinition.java">org/apache/logging/log4j/audit/generator/VariableDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.rest.ElapsedUtil.java">org/apache/logging/log4j/audit/rest/ElapsedUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.RequestContextConstraints.java">org/apache/logging/log4j/audit/annotation/RequestContextConstraints.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.HeaderPrefix.java">org/apache/logging/log4j/audit/annotation/HeaderPrefix.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.AbstractEventLogger.java">org/apache/logging/log4j/audit/AbstractEventLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.Local.java">org/apache/logging/log4j/audit/annotation/Local.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.catalog.CatalogManager.java">org/apache/logging/log4j/audit/catalog/CatalogManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.catalog.CatalogManagerImpl.java">org/apache/logging/log4j/audit/catalog/CatalogManagerImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.Parameter.java">org/apache/logging/log4j/audit/generator/Parameter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.AuditExceptionHandler.java">org/apache/logging/log4j/audit/AuditExceptionHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.ActivityLogger.java">org/apache/logging/log4j/audit/ActivityLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.Constants.java">org/apache/logging/log4j/audit/generator/Constants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.Constraints.java">org/apache/logging/log4j/audit/annotation/Constraints.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.LogEventFactory.java">org/apache/logging/log4j/audit/LogEventFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.Required.java">org/apache/logging/log4j/audit/annotation/Required.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.MethodDefinition.java">org/apache/logging/log4j/audit/generator/MethodDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  18
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.ClassGenerator.java">org/apache/logging/log4j/audit/generator/ClassGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.AuditEvent.java">org/apache/logging/log4j/audit/AuditEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.annotation.ChainedSupplier.java">org/apache/logging/log4j/audit/annotation/ChainedSupplier.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.rest.RequestContextHandlerInterceptor.java">org/apache/logging/log4j/audit/rest/RequestContextHandlerInterceptor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.InterfacesGenerator.java">org/apache/logging/log4j/audit/generator/InterfacesGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.exception.AuditException.java">org/apache/logging/log4j/audit/exception/AuditException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.LocalMapping.java">org/apache/logging/log4j/audit/request/LocalMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.generator.AccessorDefinition.java">org/apache/logging/log4j/audit/generator/AccessorDefinition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.request.RequestContextMappings.java">org/apache/logging/log4j/audit/request/RequestContextMappings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://logging.apache.org/log4j-audit/log4j-audit/log4j-audit-api/checkstyle.html#org.apache.logging.log4j.audit.util.NamingUtils.java">org/apache/logging/log4j/audit/util/NamingUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

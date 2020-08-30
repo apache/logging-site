@@ -1,0 +1,154 @@
+title=Guidelines
+status=published
+type=page
+~~~~~~
+
+<h1>Guidelines</h1>
+
+<p>This document defines the guidelines under which the Apache Logging Services project operates. It defines the roles and responsibilities of the project, who may vote, how voting works, how conflicts are resolved, etc.</p>
+
+<p>The Logging Services is a project of the <a href="http://www.apache.org/foundation/" class="external">Apache Software Foundation</a>. The foundation holds the copyright on Apache code including the code in the Logging Services codebase. The <a href="http://www.apache.org/foundation/faq.html" class="external">foundation <span class="caps">FAQ</span></a> explains the operation and background of the foundation.</p>
+
+<p>Logging Services is typical of Apache projects in that it operates under a set of principles, known collectively as the "Apache Way". If you are new to Apache development, please refer to the <a href="http://incubator.apache.org" class="external">Incubator project</a> for more information on how Apache projects operate.</p>
+
+<h2>Roles and Responsibilities</h2>
+
+<p>Apache projects define a set of roles with associated rights and responsibilities. These roles govern what tasks an individual may perform within the project.</p>
+
+<h3>Users</h3>
+
+<p>The most important participants in the project are people who use our software. The majority of our developers start out as users and guide their development efforts from the user's perspective.</p>
+
+<p>Users contribute to the Apache projects by providing feedback to developers in the form of bug reports and feature suggestions. As well, users participate in the Apache community by helping other users on mailing lists and user support forums.</p>
+
+<h3>Developers</h3>
+
+<p>All of the volunteers who are contributing time, code, documentation, or resources to the Logging Services Project. A developer that makes sustained, welcome contributions to the project may be invited to become a Committer, though the exact timing of such invitations depends on many factors.</p>
+
+<h3>Committers</h3>
+
+<p>The project's Committers are responsible for the project's technical management. All committers have write access to the project's source repositories. Committers may cast binding votes on any technical discussion regarding the project.</p>
+
+<p>Committer access is by invitation only and must be approved by lazy consensus of the active <span class="caps">PMC </span>members. A Committer is considered emeritus by their own declaration or by not contributing in any form to the project for over six months. An emeritus committer may request reinstatement of commit access from the <span class="caps">PMC.</span> Such reinstatement is subject to lazy consensus of active <span class="caps">PMC </span>members.</p>
+
+<p>Commit access can be revoked by a unanimous vote of all the active <span class="caps">PMC </span>members (except the committer in question if they are also a <span class="caps">PMC </span>member).</p>
+
+<p>All Apache committers are required to have a signed Contributor License Agreement (CLA) on file with the Apache Software Foundation. There is a <a href="http://www.apache.org/dev/committers.html" class="external">Committer <span class="caps">FAQ</span></a> which provides more details on the requirements for Committers.</p>
+
+<p>A committer who makes a sustained contribution to the project may be invited to become a member of the <span class="caps">PMC.</span> The form of contribution is not limited to code. It can also include code review, helping out users on the mailing lists, documentation, etc.</p>
+
+<h3>Project Management Committee</h3>
+
+<p>The Project Management Committee (PMC) for Apache Logging Services was created by a <a href="http://charter.html">resolution</a> of the board of the Apache Software Foundation on 18<sup>th</sup> November 2002. The <span class="caps">PMC </span>is responsible to the board and the <span class="caps">ASF </span>for the management and oversight of the Apache Logging Services codebase. The responsibilities of the <span class="caps">PMC </span>include</p>
+
+<ul>
+<li>Deciding what is distributed as products of the Apache Logging Services project. In particular all releases must be approved by the <span class="caps">PMC</span></li>
+<li>Maintaining the project's shared resources, including the codebase repository, mailing lists, websites.</li>
+<li>Speaking on behalf of the project.</li>
+<li>Resolving license disputes regarding products of the project</li>
+<li>Nominating new <span class="caps">PMC </span>members and committers</li>
+<li>Maintaining these bylaws and other guidelines of the project</li>
+</ul>
+
+<p>Membership of the <span class="caps">PMC </span>is by invitation only and must be approved by a lazy consensus of active <span class="caps">PMC </span>members. A <span class="caps">PMC </span>member is considered "emeritus" by their own declaration or by not contributing in any form to the project for over six months. An emeritus member may request reinstatement to the <span class="caps">PMC.</span> Such reinstatement is subject to lazy consensus of the active <span class="caps">PMC </span>members. Membership of the <span class="caps">PMC </span>can be revoked by an unanimous vote of all the active <span class="caps">PMC </span>members other than the member in question.</p>
+
+<p>The chair of the <span class="caps">PMC </span>is appointed by the <span class="caps">ASF </span>board. The chair is an office holder of the Apache Software Foundation (Vice President, Apache Logging Services) and has primary responsibility to the board for the management of the projects within the scope of the Logging Services <span class="caps">PMC.</span> The chair reports to the board quarterly on developments within the Logging Services project. The <span class="caps">PMC </span>may consider the position of <span class="caps">PMC </span>chair annually and if supported by 2/3 Majority may recommend a new chair to the board. Ultimately, however, it is the board's responsibility who it chooses to appoint as the <span class="caps">PMC </span>chair.</p>
+
+<h3>Decision making</h3>
+
+<p>Within the Logging Services project, different types of decisions require different forms of approval. For example, the previous section describes several decisions which require "lazy consensus" approval. This section defines how voting is performed, the types of approvals, and which types of decision require which type of approval.</p>
+
+<h3>Voting</h3>
+
+<p>Decisions regarding the project are made by votes on the primary project mailing list (general@logging.apache.org). Where necessary, <span class="caps">PMC </span>voting may take place on the private Logging Services <span class="caps">PMC </span>mailing list. Votes are clearly indicated by subject line starting with [VOTE] or [PMC-VOTE]. Votes may contain multiple items for approval and these should be clearly separated. Voting is carried out by replying to the vote mail. Voting may take four flavours.</p>
+
+<table class="table table-bordered" cellspacing="0"><tr><td><strong>+1</strong></td><td>"Yes," "Agree," or "the action should be performed." In general, this vote also indicates a willingness on the behalf of the voter in "making it happen"</td></tr><tr><td><strong>+0</strong></td><td>This vote indicates a willingness for the action under consideration to go ahead. The voter, however will not be able to help.</td></tr><tr><td><strong>-0</strong></td><td>This vote indicates that the voter does not, in general, agree with the proposed action but is not concerned enough to prevent the action going ahead.</td></tr><tr><td><strong>-1</strong></td><td>This is a negative vote. On issues where consensus is required, this vote counts as a <strong>veto</strong>. All vetoes must contain an explanation of why the veto is appropriate. Vetoes with no explanation are void. It may also be appropriate for a -1 vote to include an alternative course of action.</td></tr></table>
+
+<p>All participants in the Logging Services project are encouraged to show their agreement with or against a particular action by voting. For technical decisions, only the votes of active committers are binding. Non binding votes are still useful for those with binding votes to understand the perception of an action in the wider Logging Services community. For <span class="caps">PMC </span>decisions, only the votes of <span class="caps">PMC </span>members are binding.</p>
+
+<p>Voting can also be applied to changes made to the Logging Services codebase. These typically take the form of a veto (-1) in reply to the commit message sent when the commit is made.</p>
+
+<h3>Approvals</h3>
+
+<p>These are the types of approvals that can be sought. Different actions require different types of approvals.</p>
+
+<table class="table table-bordered" cellspacing="0"><tr><th>Consensus</th><td>For this to pass, all voters with binding votes must vote and there can be no binding vetoes (-1). Consensus votes are rarely required due to the impracticality of getting all eligible voters to cast a vote.</td></tr><tr><th>Lazy&nbsp;Consensus</th><td>Lazy consensus requires 3 binding +1 votes and no binding vetoes.</td></tr><tr><th>Lazy&nbsp;Majority</th><td>A lazy majority vote requires 3 binding +1 votes and more binding +1 votes that -1 votes.</td></tr><tr><th>Lazy&nbsp;Approval</th><td>An action with lazy approval is implicitly allowed unless a -1 vote is received, at which time, depending on the type of action, either lazy majority or lazy consensus approval must be obtained.</td></tr><tr><th>2/3&nbsp;Majority</th><td>Some actions require a 2/3 majority of active committers or <span class="caps">PMC </span>members to pass. Such actions typically affect the foundation of the project (e.g. adopting a new codebase to replace an existing product). The higher threshold is designed to ensure such changes are strongly supported. To pass this vote requires at least 2/3 of binding vote holders to vote +1</td></tr></table>
+
+<h3>Vetoes</h3>
+
+<p>A valid, binding veto cannot be overruled. If a veto is cast, it must be accompanied by a valid reason explaining the reasons for the veto. The validity of a veto, if challenged, can be confirmed by anyone who has a binding vote. This does not necessarily signify agreement with the veto - merely that the veto is valid.</p>
+
+<p>If you disagree with a valid veto, you must lobby the person casting the veto to withdraw their veto. If a veto is not withdrawn, the action that has been vetoed must be reversed in a timely manner.</p>
+
+<h3>Actions</h3>
+
+<p>This section describes the various actions which are undertaken within the project, the corresponding approval required for that action and those who have binding votes over the action.</p>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Action</th>
+		<th>Description</th>
+		<th>Approval</th>
+		<th>Binding Votes</th>
+	</tr>
+	<tr>
+		<td><strong>Code Change</strong></td>
+		<td>A change made to the codebase of a sub-project and committed by a committer. This includes source code, documentation, website content, etc.</td>
+		<td>Lazy approval and then lazy consensus.</td>
+		<td>Active committers of the relevant sub-project.</td>
+	</tr>
+	<tr valign="top">
+		<td><strong>Release Plan</strong></td>
+		<td>Defines the timetable and actions for a release. The plan also nominates a Release Manager.</td>
+		<td>Lazy majority</td>
+		<td>Active committers of the relevant sub-project</td>
+	</tr>
+	<tr>
+		<td><strong>Product Release</strong></td>
+		<td>When a release of one of the sub-project's products is ready, a vote is required to accept the release as an official release of the Logging Services project. This step ensures the overall supervision by the Logging Services <span class="caps">PMC </span>over its sub-projects.</td>
+		<td>Lazy Majority</td>
+		<td><b>Active <span class="caps">PMC </span>members</b></td>
+	</tr>
+	<tr>
+		<td><strong>Adoption of New Codebase</strong></td>
+		<td>When the codebase for an existing, released product is to be replaced with an alternative codebase. If such a vote fails to gain approval, the existing code base will continue. This also covers the creation of new sub-projects within the project.</td>
+		<td>2/3 majority</td>
+		<td>Active <span class="caps">PMC </span>members</td>
+	</tr>
+	<tr>
+		<td><strong>Modification of the Bylaws</strong></td>
+		<td>Modification of this document</td>
+		<td>2/3 majority</td>
+		<td>Active <span class="caps">PMC </span>members</td>
+	</tr>
+	<tr>
+		<td><strong>New Committer</strong></td>
+		<td>When a new committer is proposed for a sub-project.The <span class="caps">PMC </span>must be informed of the result of the sub-project's vote.</td>
+		<td>Lazy consensus</td>
+		<td>Active committers of the relevant sub-project</td>
+	</tr>
+	<tr>
+		<td><strong>New <span class="caps">PMC</span> Member</strong></td>
+		<td>When a committer is proposed for the <span class="caps">PMC</span></td>
+		<td>Lazy consensus</td>
+		<td>Active <span class="caps">PMC </span>members</td>
+	</tr>
+	<tr>
+		<td><strong>Committer Removal</strong></td>
+		<td>When removal of commit privileges is sought.<br />
+			<strong>Note:</strong> Such actions will also be referred to the <span class="caps">ASF </span>board by the <span class="caps">PMC </span>chair.</td>
+		<td>Consensus</td>
+		<td>Active <span class="caps">PMC </span>members (excluding the committer in question if a member of the <span class="caps">PMC</span>).</td>
+	</tr>
+	<tr>
+		<td><strong><span class="caps">PMC</span> Member Removal</strong></td>
+		<td>When removal of a <span class="caps">PMC </span>member is sought.<br />
+			<strong>Note:</strong> Such actions will also be referred to the <span class="caps">ASF </span>board by the <span class="caps">PMC </span>chair.</td>
+		<td>Consensus</td>
+		<td>Active <span class="caps">PMC </span>members (excluding the member in question).</td>
+	</tr>
+</table>
+
+<h3>Voting Timeframes</h3>
+
+<p>Votes are open for a period of 72 hours to allow all active voters time to consider the vote. Votes relating to code changes are not subject to a strict timetable but should be made as timely as possible.</p>

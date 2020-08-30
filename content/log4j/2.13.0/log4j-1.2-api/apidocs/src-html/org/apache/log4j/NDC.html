@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.log4j;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import java.util.Stack;<a name="line.19"></a>
+<span class="sourceLineNo">020</span><a name="line.20"></a>
+<span class="sourceLineNo">021</span>/**<a name="line.21"></a>
+<span class="sourceLineNo">022</span> *<a name="line.22"></a>
+<span class="sourceLineNo">023</span> */<a name="line.23"></a>
+<span class="sourceLineNo">024</span>public final class NDC {<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>    private NDC() {<a name="line.26"></a>
+<span class="sourceLineNo">027</span>    }<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>    /**<a name="line.29"></a>
+<span class="sourceLineNo">030</span>     * Clear any nested diagnostic information if any. This method is<a name="line.30"></a>
+<span class="sourceLineNo">031</span>     * useful in cases where the same thread can be potentially used<a name="line.31"></a>
+<span class="sourceLineNo">032</span>     * over and over in different unrelated contexts.<a name="line.32"></a>
+<span class="sourceLineNo">033</span>     * &lt;p&gt;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>     * This method is equivalent to calling the {@link #setMaxDepth}<a name="line.34"></a>
+<span class="sourceLineNo">035</span>     * method with a zero &lt;code&gt;maxDepth&lt;/code&gt; argument.<a name="line.35"></a>
+<span class="sourceLineNo">036</span>     * &lt;/p&gt;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>     */<a name="line.37"></a>
+<span class="sourceLineNo">038</span>    public static void clear() {<a name="line.38"></a>
+<span class="sourceLineNo">039</span>        org.apache.logging.log4j.ThreadContext.clearStack();<a name="line.39"></a>
+<span class="sourceLineNo">040</span>    }<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span>    /**<a name="line.43"></a>
+<span class="sourceLineNo">044</span>     * Clone the diagnostic context for the current thread.<a name="line.44"></a>
+<span class="sourceLineNo">045</span>     * &lt;p&gt;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>     * Internally a diagnostic context is represented as a stack.  A<a name="line.46"></a>
+<span class="sourceLineNo">047</span>     * given thread can supply the stack (i.e. diagnostic context) to a<a name="line.47"></a>
+<span class="sourceLineNo">048</span>     * child thread so that the child can inherit the parent thread's<a name="line.48"></a>
+<span class="sourceLineNo">049</span>     * diagnostic context.<a name="line.49"></a>
+<span class="sourceLineNo">050</span>     * &lt;/p&gt;<a name="line.50"></a>
+<span class="sourceLineNo">051</span>     * &lt;p&gt;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     * The child thread uses the {@link #inherit inherit} method to<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     * inherit the parent's diagnostic context.<a name="line.53"></a>
+<span class="sourceLineNo">054</span>     * &lt;/p&gt;<a name="line.54"></a>
+<span class="sourceLineNo">055</span>     * @return Stack A clone of the current thread's  diagnostic context.<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     */<a name="line.56"></a>
+<span class="sourceLineNo">057</span>    @SuppressWarnings("rawtypes")<a name="line.57"></a>
+<span class="sourceLineNo">058</span>    public static Stack cloneStack() {<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        final Stack&lt;String&gt; stack = new Stack&lt;&gt;();<a name="line.59"></a>
+<span class="sourceLineNo">060</span>        for (final String element : org.apache.logging.log4j.ThreadContext.cloneStack().asList()) {<a name="line.60"></a>
+<span class="sourceLineNo">061</span>            stack.push(element);<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        }<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        return stack;<a name="line.63"></a>
+<span class="sourceLineNo">064</span>    }<a name="line.64"></a>
+<span class="sourceLineNo">065</span><a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>    /**<a name="line.67"></a>
+<span class="sourceLineNo">068</span>     * Inherit the diagnostic context of another thread.<a name="line.68"></a>
+<span class="sourceLineNo">069</span>     * &lt;p&gt;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>     * The parent thread can obtain a reference to its diagnostic<a name="line.70"></a>
+<span class="sourceLineNo">071</span>     * context using the {@link #cloneStack} method.  It should<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     * communicate this information to its child so that it may inherit<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     * the parent's diagnostic context.<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * &lt;/p&gt;<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * &lt;p&gt;<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * The parent's diagnostic context is cloned before being<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     * inherited. In other words, once inherited, the two diagnostic<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * contexts can be managed independently.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * &lt;/p&gt;<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     * &lt;p&gt;<a name="line.80"></a>
+<span class="sourceLineNo">081</span>     * In java, a child thread cannot obtain a reference to its<a name="line.81"></a>
+<span class="sourceLineNo">082</span>     * parent, unless it is directly handed the reference. Consequently,<a name="line.82"></a>
+<span class="sourceLineNo">083</span>     * there is no client-transparent way of inheriting diagnostic<a name="line.83"></a>
+<span class="sourceLineNo">084</span>     * contexts. Do you know any solution to this problem?<a name="line.84"></a>
+<span class="sourceLineNo">085</span>     * &lt;/p&gt;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>     * @param stack The diagnostic context of the parent thread.<a name="line.86"></a>
+<span class="sourceLineNo">087</span>     */<a name="line.87"></a>
+<span class="sourceLineNo">088</span>    public static void inherit(final Stack&lt;String&gt; stack) {<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        org.apache.logging.log4j.ThreadContext.setStack(stack);<a name="line.89"></a>
+<span class="sourceLineNo">090</span>    }<a name="line.90"></a>
+<span class="sourceLineNo">091</span><a name="line.91"></a>
+<span class="sourceLineNo">092</span><a name="line.92"></a>
+<span class="sourceLineNo">093</span>    /**<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     * &lt;strong style="color:#FF4040"&gt;Never use this method directly.&lt;/strong&gt;<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     *<a name="line.95"></a>
+<span class="sourceLineNo">096</span>     * @return The string value of the specified key.<a name="line.96"></a>
+<span class="sourceLineNo">097</span>     */<a name="line.97"></a>
+<span class="sourceLineNo">098</span>    public static String get() {<a name="line.98"></a>
+<span class="sourceLineNo">099</span>        return org.apache.logging.log4j.ThreadContext.peek();<a name="line.99"></a>
+<span class="sourceLineNo">100</span>    }<a name="line.100"></a>
+<span class="sourceLineNo">101</span><a name="line.101"></a>
+<span class="sourceLineNo">102</span>    /**<a name="line.102"></a>
+<span class="sourceLineNo">103</span>     * Get the current nesting depth of this diagnostic context.<a name="line.103"></a>
+<span class="sourceLineNo">104</span>     * @return int The number of elements in the call stack.<a name="line.104"></a>
+<span class="sourceLineNo">105</span>     * @see #setMaxDepth<a name="line.105"></a>
+<span class="sourceLineNo">106</span>     */<a name="line.106"></a>
+<span class="sourceLineNo">107</span>    public static int getDepth() {<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        return org.apache.logging.log4j.ThreadContext.getDepth();<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    }<a name="line.109"></a>
+<span class="sourceLineNo">110</span><a name="line.110"></a>
+<span class="sourceLineNo">111</span>    /**<a name="line.111"></a>
+<span class="sourceLineNo">112</span>     * Clients should call this method before leaving a diagnostic<a name="line.112"></a>
+<span class="sourceLineNo">113</span>     * context.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>     * &lt;p&gt;<a name="line.114"></a>
+<span class="sourceLineNo">115</span>     * The returned value is the value that was pushed last. If no<a name="line.115"></a>
+<span class="sourceLineNo">116</span>     * context is available, then the empty string "" is returned.<a name="line.116"></a>
+<span class="sourceLineNo">117</span>     * &lt;/p&gt;<a name="line.117"></a>
+<span class="sourceLineNo">118</span>     * @return String The innermost diagnostic context.<a name="line.118"></a>
+<span class="sourceLineNo">119</span>     */<a name="line.119"></a>
+<span class="sourceLineNo">120</span>    public static String pop() {<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        return org.apache.logging.log4j.ThreadContext.pop();<a name="line.121"></a>
+<span class="sourceLineNo">122</span>    }<a name="line.122"></a>
+<span class="sourceLineNo">123</span><a name="line.123"></a>
+<span class="sourceLineNo">124</span>    /**<a name="line.124"></a>
+<span class="sourceLineNo">125</span>     * Looks at the last diagnostic context at the top of this NDC<a name="line.125"></a>
+<span class="sourceLineNo">126</span>     * without removing it.<a name="line.126"></a>
+<span class="sourceLineNo">127</span>     * &lt;p&gt;<a name="line.127"></a>
+<span class="sourceLineNo">128</span>     * The returned value is the value that was pushed last. If no<a name="line.128"></a>
+<span class="sourceLineNo">129</span>     * context is available, then the empty string "" is returned.<a name="line.129"></a>
+<span class="sourceLineNo">130</span>     * &lt;/p&gt;<a name="line.130"></a>
+<span class="sourceLineNo">131</span>     * @return String The innermost diagnostic context.<a name="line.131"></a>
+<span class="sourceLineNo">132</span>     */<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    public static String peek() {<a name="line.133"></a>
+<span class="sourceLineNo">134</span>        return org.apache.logging.log4j.ThreadContext.peek();<a name="line.134"></a>
+<span class="sourceLineNo">135</span>    }<a name="line.135"></a>
+<span class="sourceLineNo">136</span><a name="line.136"></a>
+<span class="sourceLineNo">137</span>    /**<a name="line.137"></a>
+<span class="sourceLineNo">138</span>     * Push new diagnostic context information for the current thread.<a name="line.138"></a>
+<span class="sourceLineNo">139</span>     * &lt;p&gt;<a name="line.139"></a>
+<span class="sourceLineNo">140</span>     * The contents of the &lt;code&gt;message&lt;/code&gt; parameter is<a name="line.140"></a>
+<span class="sourceLineNo">141</span>     * determined solely by the client.<a name="line.141"></a>
+<span class="sourceLineNo">142</span>     * &lt;/p&gt;<a name="line.142"></a>
+<span class="sourceLineNo">143</span>     * @param message The new diagnostic context information.<a name="line.143"></a>
+<span class="sourceLineNo">144</span>     */<a name="line.144"></a>
+<span class="sourceLineNo">145</span>    public static void push(final String message) {<a name="line.145"></a>
+<span class="sourceLineNo">146</span>        org.apache.logging.log4j.ThreadContext.push(message);<a name="line.146"></a>
+<span class="sourceLineNo">147</span>    }<a name="line.147"></a>
+<span class="sourceLineNo">148</span><a name="line.148"></a>
+<span class="sourceLineNo">149</span>    /**<a name="line.149"></a>
+<span class="sourceLineNo">150</span>     * Remove the diagnostic context for this thread.<a name="line.150"></a>
+<span class="sourceLineNo">151</span>     * &lt;p&gt;<a name="line.151"></a>
+<span class="sourceLineNo">152</span>     * Each thread that created a diagnostic context by calling<a name="line.152"></a>
+<span class="sourceLineNo">153</span>     * {@link #push} should call this method before exiting. Otherwise,<a name="line.153"></a>
+<span class="sourceLineNo">154</span>     * the memory used by the &lt;b&gt;thread&lt;/b&gt; cannot be reclaimed by the<a name="line.154"></a>
+<span class="sourceLineNo">155</span>     * VM.<a name="line.155"></a>
+<span class="sourceLineNo">156</span>     * &lt;/p&gt;<a name="line.156"></a>
+<span class="sourceLineNo">157</span>     * &lt;p&gt;<a name="line.157"></a>
+<span class="sourceLineNo">158</span>     * As this is such an important problem in heavy duty systems and<a name="line.158"></a>
+<span class="sourceLineNo">159</span>     * because it is difficult to always guarantee that the remove<a name="line.159"></a>
+<span class="sourceLineNo">160</span>     * method is called before exiting a thread, this method has been<a name="line.160"></a>
+<span class="sourceLineNo">161</span>     * augmented to lazily remove references to dead threads. In<a name="line.161"></a>
+<span class="sourceLineNo">162</span>     * practice, this means that you can be a little sloppy and<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * occasionally forget to call {@code remove} before exiting a<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     * thread. However, you must call &lt;code&gt;remove&lt;/code&gt; sometime. If<a name="line.164"></a>
+<span class="sourceLineNo">165</span>     * you never call it, then your application is sure to run out of<a name="line.165"></a>
+<span class="sourceLineNo">166</span>     * memory.<a name="line.166"></a>
+<span class="sourceLineNo">167</span>     * &lt;/p&gt;<a name="line.167"></a>
+<span class="sourceLineNo">168</span>     */<a name="line.168"></a>
+<span class="sourceLineNo">169</span>    public static void remove() {<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        org.apache.logging.log4j.ThreadContext.removeStack();<a name="line.170"></a>
+<span class="sourceLineNo">171</span>    }<a name="line.171"></a>
+<span class="sourceLineNo">172</span><a name="line.172"></a>
+<span class="sourceLineNo">173</span>    /**<a name="line.173"></a>
+<span class="sourceLineNo">174</span>     * Set maximum depth of this diagnostic context. If the current<a name="line.174"></a>
+<span class="sourceLineNo">175</span>     * depth is smaller or equal to &lt;code&gt;maxDepth&lt;/code&gt;, then no<a name="line.175"></a>
+<span class="sourceLineNo">176</span>     * action is taken.<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * &lt;p&gt;<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     * This method is a convenient alternative to multiple {@link<a name="line.178"></a>
+<span class="sourceLineNo">179</span>     * #pop} calls. Moreover, it is often the case that at the end of<a name="line.179"></a>
+<span class="sourceLineNo">180</span>     * complex call sequences, the depth of the NDC is<a name="line.180"></a>
+<span class="sourceLineNo">181</span>     * unpredictable. The &lt;code&gt;setMaxDepth&lt;/code&gt; method circumvents<a name="line.181"></a>
+<span class="sourceLineNo">182</span>     * this problem.<a name="line.182"></a>
+<span class="sourceLineNo">183</span>     * &lt;/p&gt;<a name="line.183"></a>
+<span class="sourceLineNo">184</span>     * &lt;p&gt;<a name="line.184"></a>
+<span class="sourceLineNo">185</span>     * For example, the combination<a name="line.185"></a>
+<span class="sourceLineNo">186</span>     * &lt;/p&gt;<a name="line.186"></a>
+<span class="sourceLineNo">187</span>     * &lt;pre&gt;<a name="line.187"></a>
+<span class="sourceLineNo">188</span>     * void foo() {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>     * &amp;nbsp;  int depth = NDC.getDepth();<a name="line.189"></a>
+<span class="sourceLineNo">190</span>     *<a name="line.190"></a>
+<span class="sourceLineNo">191</span>     * &amp;nbsp;  ... complex sequence of calls<a name="line.191"></a>
+<span class="sourceLineNo">192</span>     *<a name="line.192"></a>
+<span class="sourceLineNo">193</span>     * &amp;nbsp;  NDC.setMaxDepth(depth);<a name="line.193"></a>
+<span class="sourceLineNo">194</span>     * }<a name="line.194"></a>
+<span class="sourceLineNo">195</span>     * &lt;/pre&gt;<a name="line.195"></a>
+<span class="sourceLineNo">196</span>     * &lt;p&gt;<a name="line.196"></a>
+<span class="sourceLineNo">197</span>     * ensures that between the entry and exit of foo the depth of the<a name="line.197"></a>
+<span class="sourceLineNo">198</span>     * diagnostic stack is conserved.<a name="line.198"></a>
+<span class="sourceLineNo">199</span>     * &lt;/p&gt;<a name="line.199"></a>
+<span class="sourceLineNo">200</span>     *<a name="line.200"></a>
+<span class="sourceLineNo">201</span>     * @see #getDepth<a name="line.201"></a>
+<span class="sourceLineNo">202</span>     * @param maxDepth The maximum depth of the stack.<a name="line.202"></a>
+<span class="sourceLineNo">203</span>     */<a name="line.203"></a>
+<span class="sourceLineNo">204</span>    public static void setMaxDepth(final int maxDepth) {<a name="line.204"></a>
+<span class="sourceLineNo">205</span>        org.apache.logging.log4j.ThreadContext.trim(maxDepth);<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    }<a name="line.206"></a>
+<span class="sourceLineNo">207</span>}<a name="line.207"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

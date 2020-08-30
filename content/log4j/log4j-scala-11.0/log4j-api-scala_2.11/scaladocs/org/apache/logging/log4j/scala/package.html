@@ -1,0 +1,180 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>scala - Scala 2.11 wrapper for Log4j API 11.0 API - org.apache.logging.log4j.scala</title>
+          <meta name="description" content="scala - Scala 2.11 wrapper for Log4j API 11.0 API - org.apache.logging.log4j.scala" />
+          <meta name="keywords" content="scala Scala 2.11 wrapper for Log4j API 11.0 API org.apache.logging.log4j.scala" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'org.apache.logging.log4j.scala.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="org">org</a>.<a href="../../../package.html" class="extype" name="org.apache">apache</a>.<a href="../../package.html" class="extype" name="org.apache.logging">logging</a>.<a href="../package.html" class="extype" name="org.apache.logging.log4j">log4j</a></p>
+        <h1>scala</h1><span class="permalink">
+      <a href="../../../../../index.html#org.apache.logging.log4j.scala.package" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scala</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.apache.logging.log4j.scala.Logger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LoggerextendsAnyVal"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.apache.logging.log4j.scala.package@LoggerextendsAnyVal" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Scala wrapper for the Log4j <code>Logger</code> interface.</p><div class="fullcomment"><div class="comment cmt"><p>Scala wrapper for the Log4j <code>Logger</code> interface.</p><p>Frequently the purpose of logging is to provide information about what is happening in the system,
+which requires including information about the objects being manipulated. In Scala, you can use
+<a href="http://docs.scala-lang.org/overviews/core/string-interpolation.html" target="_blank">string interpolation</a>
+to achieve this:</p><pre>logger.debug(s<span class="lit">"Logging in user ${user.getName} with birthday ${user.calcBirthday}"</span>)</pre><p>Since this wrapper is implemented with macros, the String construction and method invocations
+will only occur when debug logging is enabled.
+</p></div></div>
+    </li><li name="org.apache.logging.log4j.scala.Logging" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggingextendsAnyRef"></a>
+      <a id="Logging:Logging"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Logging.html"><span class="name">Logging</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.apache.logging.log4j.scala.package@LoggingextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Mix in this trait into classes from which you want to log,
+give you a <code>logger</code> value with a <a href="Logger.html" class="extype" name="org.apache.logging.log4j.scala.Logger">Logger</a> named according to the class.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.apache.logging.log4j.scala.Logger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Logger"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger$.html"><span class="name">Logger</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.apache.logging.log4j.scala.package@Logger" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory for <a href="Logger.html" class="extype" name="org.apache.logging.log4j.scala.Logger">Logger</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Factory for <a href="Logger.html" class="extype" name="org.apache.logging.log4j.scala.Logger">Logger</a>s.</p><p>The <a href="Logging.html" class="extype" name="org.apache.logging.log4j.scala.Logging">Logging</a> trait provides a simple way to get a properly named logger into a class.
+</p></div></div>
+    </li><li name="org.apache.logging.log4j.scala.LoggingContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LoggingContext"></a>
+      <a id="LoggingContext:LoggingContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LoggingContext$.html"><span class="name">LoggingContext</span></a><span class="result"> extends <span class="extype" name="scala.collection.mutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#org.apache.logging.log4j.scala.package@LoggingContext" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Manages the context data (context map, MDC) that is added to log events.</p><div class="fullcomment"><div class="comment cmt"><p>Manages the context data (context map, MDC) that is added to log events.</p><p>A wrapper around <code>org.apache.logging.log4j.ThreadContext</code>.
+</p></div></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

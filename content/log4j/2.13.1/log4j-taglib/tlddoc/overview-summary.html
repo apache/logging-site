@@ -1,0 +1,117 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+            Overview (Apache Log4j Tag Library Tag library documentation)
+          </title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
+</head>
+<script>
+          function asd() {
+            parent.document.title="Overview (Apache Log4j Tag Library Tag library documentation)";
+          }
+        </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"><font CLASS="NavBarFont1Rev"><b>&nbsp;Overview&nbsp;</b></font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Library&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="overview-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>Tag Library Documentation Generator - Generated Documentation</h2>
+</center>
+<table BORDER="1" CELLPADDING="3" CELLSPACING="0" WIDTH="100%">
+<tr BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<td COLSPAN="2"><font SIZE="+2"><b>Tag Libraries</b></font></td>
+</tr>
+<tr BGCOLOR="white" valign="top" CLASS="TableRowColor">
+<td WIDTH="20%"><b><a href="log/tld-summary.html">Log4j 2 Tag Library</a></b></td><td>
+<pre>The Log4j Log Tag Library creates the capability of inserting log
+statements in JSPs without the use of Java scripting. It uses the standard Log4j 2 API to log
+messages according to your Log4j configuration. You can learn more about Log4j 2 on the
+<a href="http://logging.apache.org/log4j/2.x/">Log4j 2</a> website.
+
+This tag library is based on the Jakarta Commons Log Taglib by Joseph Ottinger and James
+Strachan. For the most part, logging tags written against Jakarta Commons Log Taglib should
+work against this library as well. However, the "category" attribute from Jakarta has become
+the "logger" attribute in this library.
+
+In accordance with the org.apache.logging.log4j.Logger API, this tag library has tags to
+support the following logging calls: "catching", "entry", "exit", "log", "trace", "debug",
+"info", "warn", "error", and "fatal". The "trace" tag was not supported in Jakarta Commons Log
+Taglib. The "setLogger", "catching", "entry", and "trace" tags are new to this library. This
+tag library also supports the conditional tag "ifEnabled" (new) and troubleshooting tag "dump"
+(existed in Jakarta Commons Log Taglib).
+
+By default, this tag library uses a different Logger for each JSP named after the JSP ID.
+You can customize the Logger in any of the logging tags or the "ifEnabled" tag with the
+"logger" attribute. You can also use the "setLogger" tag to specify the Logger that should apply
+for the rest of a JSP's execution. If the "setLogger" tag comes before any other logging tags in
+a JSP, the default Logger for that JSP will not be created, but instead the specified logger is
+the only one that will be used.
+
+Every effort was made to optimize these tags and ensure decent performance, but users of
+this library should keep in mind that the creation and execution of JSP tags adds significant
+overhead to the standard Log4j method calls. While the "trace", "debug", and "info" options are
+available in this library, their uses are not nanosecond order of magnitude with logging off
+that users may be used to with standard Log4j method calls. Therefore, they should be used
+sparingly. Use of the "ifEnabled" tag does not improve this performance; this tag is available
+to conditionally evaluate other actions in addition to logging actions.</pre>
+</td>
+</tr>
+</table>
+<p></p>
+<hr>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"><font CLASS="NavBarFont1Rev"><b>&nbsp;Overview&nbsp;</b></font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Library&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="overview-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+          Output Generated by 
+          <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+          Java, JSP, and JavaServer Pages are trademarks or 
+          registered trademarks of Sun Microsystems, Inc. in the US and other
+          countries.  Copyright 2002-4 Sun Microsystems, Inc.
+          4150 Network Circle
+          Santa Clara, CA 95054, U.S.A.
+          All Rights Reserved. 
+          </i></small>
+</body>
+</html>

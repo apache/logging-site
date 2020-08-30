@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class LoggerAppenderMongoDB</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class LoggerAppenderMongoDB</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Appender for writing to MongoDB.</p>
+<p class="description"><p>This class was originally contributed by Vladimir Gorej.</p></p>
+	<ul class="tags">
+				<li><span class="field">version:</span> $Revision: 806678 $</li>
+				<li><span class="field">link:</span> <a href="http://www.mongodb.org/">MongoDB website.</a></li>
+				<li><span class="field">link:</span> <a href="http://github.com/log4mongo/log4mongo-php">Vladimir Gorej's original submission.</a></li>
+				<li><span class="field">since:</span> 2.1</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_appenders---LoggerAppenderMongoDB.php.html">/appenders/LoggerAppenderMongoDB.php</a> (line <span class="field">34</span>)
+		</p>
+		
+				
+		<pre><a href="../../log4php/LoggerConfigurable.html">LoggerConfigurable</a>
+   |
+   --<a href="../../log4php/LoggerAppender.html">LoggerAppender</a>
+      |
+      --LoggerAppenderMongoDB</pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_COLLECTION_NAME" title="details" class="const-name">DEFAULT_COLLECTION_NAME</a> = 					<span class="var-type"> 'logs'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_DB_NAME" title="details" class="const-name">DEFAULT_DB_NAME</a> = 					<span class="var-type"> 'log4php_mongodb'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_MONGO_HOST" title="details" class="const-name">DEFAULT_MONGO_HOST</a> = 					<span class="var-type"> 'localhost'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_MONGO_PORT" title="details" class="const-name">DEFAULT_MONGO_PORT</a> = 					<span class="var-type"> 27017</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_MONGO_URL_PREFIX" title="details" class="const-name">DEFAULT_MONGO_URL_PREFIX</a> = 					<span class="var-type"> 'mongodb://'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#DEFAULT_TIMEOUT_VALUE" title="details" class="const-name">DEFAULT_TIMEOUT_VALUE</a> = 					<span class="var-type"> 3000</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																																																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$canAppend" title="details" class="var-name">$canAppend</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">MongoCollection</span>
+					<a href="#$collection" title="details" class="var-name">$collection</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$collectionName" title="details" class="var-name">$collectionName</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">Mongo</span>
+					<a href="#$connection" title="details" class="var-name">$connection</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$databaseName" title="details" class="var-name">$databaseName</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$host" title="details" class="var-name">$host</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$password" title="details" class="var-name">$password</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$port" title="details" class="var-name">$port</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$requiresLayout" title="details" class="var-name">$requiresLayout</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$timeout" title="details" class="var-name">$timeout</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$userName" title="details" class="var-name">$userName</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																														
+				<div class="method-definition">
+											<span class="method-result">LoggerAppenderMongoDB</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">''</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#activateOptions" title="details" class="method-name">activateOptions</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#append" title="details" class="method-name">append</a>
+											(<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>&nbsp;<span class="var-name">$event</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#close" title="details" class="method-name">close</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#format" title="details" class="method-name">format</a>
+											(<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>&nbsp;<span class="var-name">$event</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#formatThrowable" title="details" class="method-name">formatThrowable</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$ex</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">MongoCollection</span>
+										<a href="#getCollection" title="details" class="method-name">getCollection</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getCollectionName" title="details" class="method-name">getCollectionName</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">Mongo</span>
+										<a href="#getConnection" title="details" class="method-name">getConnection</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getDatabaseName" title="details" class="method-name">getDatabaseName</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getHost" title="details" class="method-name">getHost</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getPassword" title="details" class="method-name">getPassword</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getPort" title="details" class="method-name">getPort</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getTimeout" title="details" class="method-name">getTimeout</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserName" title="details" class="method-name">getUserName</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setCollectionName" title="details" class="method-name">setCollectionName</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$collectionName</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setDatabaseName" title="details" class="method-name">setDatabaseName</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$databaseName</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setHost" title="details" class="method-name">setHost</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$host</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPassword" title="details" class="method-name">setPassword</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPort" title="details" class="method-name">setPort</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$port</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setTimeout" title="details" class="method-name">setTimeout</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$timeout</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setUserName" title="details" class="method-name">setUserName</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$userName</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$canAppend" id="$canAppend"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$canAppend</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">103</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set to true if the appender can append.</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> Maybe we should use $closed here instead?</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$collection" id="$collection"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">MongoCollection</span>
+			<span class="var-name">$collection</span>
+						(line <span class="line-number">97</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The collection to which log is written.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$collectionName" id="$collectionName"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$collectionName</span>
+						(line <span class="line-number">72</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Name of the collection within the given database.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$connection" id="$connection"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">Mongo</span>
+			<span class="var-name">$connection</span>
+						(line <span class="line-number">91</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Connection to the MongoDB instance.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$databaseName" id="$databaseName"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$databaseName</span>
+						(line <span class="line-number">69</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Name of the database to which to log.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$host" id="$host"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$host</span>
+						(line <span class="line-number">63</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Server on which mongodb instance is located.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$password" id="$password"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$password</span>
+						(line <span class="line-number">78</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Password used to connect to the database.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$port" id="$port"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$port</span>
+						(line <span class="line-number">66</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Port on which the instance is bound.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$requiresLayout" id="$requiresLayout"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$requiresLayout</span>
+			 = <span class="var-default"> false</span>			(line <span class="line-number">106</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Appender does not require a layout.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../log4php/LoggerAppender.html#var$requiresLayout">LoggerAppender::$requiresLayout</a></dt>
+						<dd>Set to true if the appender requires a layout.</dd>
+					</dl>
+		
+		
+
+</div>
+<a name="var$timeout" id="$timeout"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$timeout</span>
+						(line <span class="line-number">81</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Timeout value used when connecting to the database (in milliseconds).</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$userName" id="$userName"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$userName</span>
+						(line <span class="line-number">75</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Username used to connect to the database.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../log4php/LoggerAppender.html">LoggerAppender</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../log4php/LoggerAppender.html#var$closed">LoggerAppender::$closed</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../log4php/LoggerAppender.html#var$filter">LoggerAppender::$filter</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../log4php/LoggerAppender.html#var$layout">LoggerAppender::$layout</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../log4php/LoggerAppender.html#var$name">LoggerAppender::$name</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../log4php/LoggerAppender.html#var$threshold">LoggerAppender::$threshold</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">108</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">LoggerAppenderMongoDB</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$name</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$name</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../log4php/LoggerAppender.html#method__construct">LoggerAppender::__construct()</a></dt>
+						<dd>Default constructor.</dd>
+					</dl>
+			
+	</div>
+<a name="methodactivateOptions" id="activateOptions"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">activateOptions</span> (line <span class="line-number">124</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Setup db connection.</p>
+<p class="description"><p>Based on defined options, this method connects to the database and  creates a <a href="../../log4php/appenders/LoggerAppenderMongoDB.html#var$collection">$collection</a>.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Exception if the attempt to connect to the requested database fails.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			activateOptions
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../log4php/LoggerAppender.html#methodactivateOptions">LoggerAppender::activateOptions()</a></dt>
+						<dd>Prepares the appender for logging.</dd>
+					</dl>
+			
+	</div>
+<a name="methodappend" id="append"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">append</span> (line <span class="line-number">149</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Appends a new event to the mongo database.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> LoggerException If the pattern conversion or the INSERT statement fails.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			append
+		</span>
+					(<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>&nbsp;<span class="var-name">$event</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>
+				<span class="var-name">$event</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../log4php/LoggerAppender.html#methodappend">LoggerAppender::append()</a></dt>
+						<dd>Forwards the logging event to the destination.</dd>
+					</dl>
+			
+	</div>
+<a name="methodclose" id="close"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">close</span> (line <span class="line-number">215</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Closes the connection to the logging database</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			close
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../log4php/LoggerAppender.html#methodclose">LoggerAppender::close()</a></dt>
+						<dd>Releases any resources allocated by the appender.</dd>
+					</dl>
+			
+	</div>
+<a name="methodformat" id="format"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">format</span> (line <span class="line-number">162</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Converts the logging event into an array which can be logged to mongodb.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The array representation of the logging event.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			format
+		</span>
+					(<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>&nbsp;<span class="var-name">$event</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../log4php/LoggerLoggingEvent.html">LoggerLoggingEvent</a></span>
+				<span class="var-name">$event</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodformatThrowable" id="formatThrowable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">formatThrowable</span> (line <span class="line-number">198</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Converts an Exception into an array which can be logged to mongodb.</p>
+<p class="description"><p>Supports innner exceptions (PHP &gt;= 5.3)</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			formatThrowable
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$ex</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">Exception</span>
+				<span class="var-name">$ex</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetCollection" id="getCollection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCollection</span> (line <span class="line-number">310</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the active mongodb collection.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">MongoCollection</span>
+		<span class="method-name">
+			getCollection
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetCollectionName" id="getCollectionName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCollectionName</span> (line <span class="line-number">265</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $collectionName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getCollectionName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetConnection" id="getConnection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getConnection</span> (line <span class="line-number">302</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the mongodb connection.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Mongo</span>
+		<span class="method-name">
+			getConnection
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetDatabaseName" id="getDatabaseName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDatabaseName</span> (line <span class="line-number">255</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $databaseName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getDatabaseName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetHost" id="getHost"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getHost</span> (line <span class="line-number">235</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $host parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getHost
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPassword" id="getPassword"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPassword</span> (line <span class="line-number">285</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $password parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getPassword
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPort" id="getPort"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPort</span> (line <span class="line-number">245</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $port parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getPort
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetTimeout" id="getTimeout"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getTimeout</span> (line <span class="line-number">295</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $timeout parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getTimeout
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserName" id="getUserName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserName</span> (line <span class="line-number">275</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value of $userName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsetCollectionName" id="setCollectionName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setCollectionName</span> (line <span class="line-number">260</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $collectionName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setCollectionName
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$collectionName</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$collectionName</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetDatabaseName" id="setDatabaseName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setDatabaseName</span> (line <span class="line-number">250</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $databaseName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setDatabaseName
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$databaseName</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$databaseName</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetHost" id="setHost"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setHost</span> (line <span class="line-number">227</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $host parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setHost
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$host</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$host</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPassword" id="setPassword"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPassword</span> (line <span class="line-number">280</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $password parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$password</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPort" id="setPort"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPort</span> (line <span class="line-number">240</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $port parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPort
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$port</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$port</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetTimeout" id="setTimeout"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setTimeout</span> (line <span class="line-number">290</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $timeout parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setTimeout
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$timeout</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$timeout</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUserName" id="setUserName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setUserName</span> (line <span class="line-number">270</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the value of $userName parameter.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setUserName
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$userName</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$userName</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../log4php/LoggerAppender.html">LoggerAppender</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#method__construct">LoggerAppender::__construct()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodactivateOptions">LoggerAppender::activateOptions()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodaddFilter">LoggerAppender::addFilter()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodappend">LoggerAppender::append()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodclearFilters">LoggerAppender::clearFilters()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodclose">LoggerAppender::close()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methoddoAppend">LoggerAppender::doAppend()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetDefaultLayout">LoggerAppender::getDefaultLayout()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetFilter">LoggerAppender::getFilter()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetFirstFilter">LoggerAppender::getFirstFilter()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetLayout">LoggerAppender::getLayout()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetName">LoggerAppender::getName()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodgetThreshold">LoggerAppender::getThreshold()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodisAsSevereAsThreshold">LoggerAppender::isAsSevereAsThreshold()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodrequiresLayout">LoggerAppender::requiresLayout()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodsetLayout">LoggerAppender::setLayout()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodsetName">LoggerAppender::setName()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodsetThreshold">LoggerAppender::setThreshold()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerAppender.html#methodwarn">LoggerAppender::warn()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../log4php/LoggerConfigurable.html">LoggerConfigurable</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetBoolean">LoggerConfigurable::setBoolean()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetFileSize">LoggerConfigurable::setFileSize()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetInteger">LoggerConfigurable::setInteger()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetLevel">LoggerConfigurable::setLevel()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetNumeric">LoggerConfigurable::setNumeric()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetPositiveInteger">LoggerConfigurable::setPositiveInteger()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodsetString">LoggerConfigurable::setString()</a></span><br>
+													<span class="method-name"><a href="../../log4php/LoggerConfigurable.html#methodwarn">LoggerConfigurable::warn()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constDEFAULT_COLLECTION_NAME" id="DEFAULT_COLLECTION_NAME"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_COLLECTION_NAME</span>
+			 = <span class="const-default"> 'logs'</span>
+			(line <span class="line-number">53</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default value for $collectionName</p>
+	
+	
+</div>
+<a name="constDEFAULT_DB_NAME" id="DEFAULT_DB_NAME"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_DB_NAME</span>
+			 = <span class="const-default"> 'log4php_mongodb'</span>
+			(line <span class="line-number">50</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default value for $databaseName</p>
+	
+	
+</div>
+<a name="constDEFAULT_MONGO_HOST" id="DEFAULT_MONGO_HOST"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_MONGO_HOST</span>
+			 = <span class="const-default"> 'localhost'</span>
+			(line <span class="line-number">44</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default value for $host, without a prefix.</p>
+	
+	
+</div>
+<a name="constDEFAULT_MONGO_PORT" id="DEFAULT_MONGO_PORT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_MONGO_PORT</span>
+			 = <span class="const-default"> 27017</span>
+			(line <span class="line-number">47</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default value for $port</p>
+	
+	
+</div>
+<a name="constDEFAULT_MONGO_URL_PREFIX" id="DEFAULT_MONGO_URL_PREFIX"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_MONGO_URL_PREFIX</span>
+			 = <span class="const-default"> 'mongodb://'</span>
+			(line <span class="line-number">41</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default prefix for the $host.</p>
+	
+	
+</div>
+<a name="constDEFAULT_TIMEOUT_VALUE" id="DEFAULT_TIMEOUT_VALUE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DEFAULT_TIMEOUT_VALUE</span>
+			 = <span class="const-default"> 3000</span>
+			(line <span class="line-number">56</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default value for $timeout</p>
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 18 Feb 2012 22:32:22 +0000 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

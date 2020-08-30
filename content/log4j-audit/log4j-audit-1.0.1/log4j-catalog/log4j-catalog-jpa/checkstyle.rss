@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Log4j Catalog JPA DAO - Checkstyle report</title>
+    <link>http://maven.apache.org</link>
+    <description>Log4j Catalog JPA DAO - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2016 - 2018 Apache Software Foundation</copyright>
+    <item>
+      <title>File: 49,
+             Errors: 122,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://maven.apache.org/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://maven.apache.org/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.ConstraintModel.java">org/apache/logging/log4j/catalog/jpa/model/ConstraintModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.ProductModel.java">org/apache/logging/log4j/catalog/jpa/model/ProductModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.ProductServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/ProductServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.AttributeConverter.java">org/apache/logging/log4j/catalog/jpa/converter/AttributeConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.CategoryService.java">org/apache/logging/log4j/catalog/jpa/service/CategoryService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.EventAttributeModel.java">org/apache/logging/log4j/catalog/jpa/model/EventAttributeModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.EventServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/EventServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.AttributeModel.java">org/apache/logging/log4j/catalog/jpa/model/AttributeModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.AttributeRepository.java">org/apache/logging/log4j/catalog/jpa/dao/AttributeRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.ConstraintServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/ConstraintServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.PostgresqlDataSourceConfig.java">org/apache/logging/log4j/catalog/jpa/config/PostgresqlDataSourceConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.BaseRepository.java">org/apache/logging/log4j/catalog/jpa/dao/BaseRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.ProductRepository.java">org/apache/logging/log4j/catalog/jpa/dao/ProductRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.package-info.java">org/apache/logging/log4j/catalog/jpa/dao/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.package-info.java">org/apache/logging/log4j/catalog/jpa/converter/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.PagingAndSortingRepository.java">org/apache/logging/log4j/catalog/jpa/dao/PagingAndSortingRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.EventService.java">org/apache/logging/log4j/catalog/jpa/service/EventService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.ProductModelConverter.java">org/apache/logging/log4j/catalog/jpa/converter/ProductModelConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.EventModelConverter.java">org/apache/logging/log4j/catalog/jpa/converter/EventModelConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.ConstraintRepository.java">org/apache/logging/log4j/catalog/jpa/dao/ConstraintRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.ProductService.java">org/apache/logging/log4j/catalog/jpa/service/ProductService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.CatalogService.java">org/apache/logging/log4j/catalog/jpa/service/CatalogService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.DataTypeConverter.java">org/apache/logging/log4j/catalog/jpa/converter/DataTypeConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.EventConverter.java">org/apache/logging/log4j/catalog/jpa/converter/EventConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.EclipseLinkConfig.java">org/apache/logging/log4j/catalog/jpa/config/EclipseLinkConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.CategoryModelConverter.java">org/apache/logging/log4j/catalog/jpa/converter/CategoryModelConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.HsqldbDataSourceConfig.java">org/apache/logging/log4j/catalog/jpa/config/HsqldbDataSourceConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.CategoryRepository.java">org/apache/logging/log4j/catalog/jpa/dao/CategoryRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.ProductConverter.java">org/apache/logging/log4j/catalog/jpa/converter/ProductConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.CatalogServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/CatalogServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.CatalogModel.java">org/apache/logging/log4j/catalog/jpa/model/CatalogModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.ConstraintService.java">org/apache/logging/log4j/catalog/jpa/service/ConstraintService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.DateTimeConverter.java">org/apache/logging/log4j/catalog/jpa/converter/DateTimeConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.CatalogRepository.java">org/apache/logging/log4j/catalog/jpa/dao/CatalogRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.AttributeModelConverter.java">org/apache/logging/log4j/catalog/jpa/converter/AttributeModelConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.CategoryConverter.java">org/apache/logging/log4j/catalog/jpa/converter/CategoryConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.CategoryModel.java">org/apache/logging/log4j/catalog/jpa/model/CategoryModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.AttributeService.java">org/apache/logging/log4j/catalog/jpa/service/AttributeService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.AbstractPagingAndSortingService.java">org/apache/logging/log4j/catalog/jpa/service/AbstractPagingAndSortingService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.EventModel.java">org/apache/logging/log4j/catalog/jpa/model/EventModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.converter.BooleanToStringConverter.java">org/apache/logging/log4j/catalog/jpa/converter/BooleanToStringConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.package-info.java">org/apache/logging/log4j/catalog/jpa/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.model.package-info.java">org/apache/logging/log4j/catalog/jpa/model/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.package-info.java">org/apache/logging/log4j/catalog/jpa/config/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.DataSourceConfig.java">org/apache/logging/log4j/catalog/jpa/config/DataSourceConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.dao.EventRepository.java">org/apache/logging/log4j/catalog/jpa/dao/EventRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.CategoryServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/CategoryServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.config.HibernateConfig.java">org/apache/logging/log4j/catalog/jpa/config/HibernateConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#org.apache.logging.log4j.catalog.jpa.service.AttributeServiceImpl.java">org/apache/logging/log4j/catalog/jpa/service/AttributeServiceImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

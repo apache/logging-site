@@ -1,0 +1,26 @@
+var classlog4cxx_1_1helpers_1_1_uni_char_message_buffer =
+[
+    [ "uostream", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ab45bfc130a798486ef0a3a2ccf1a84d3", null ],
+    [ "UniCharMessageBuffer", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a4c47932a36dfd803b808ee29dc730849", null ],
+    [ "~UniCharMessageBuffer", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a1e668fa9c5315d737e79dbedd85f8628", null ],
+    [ "hasStream", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ae82e6b5eeb965fd5e976d81d8229ab2a", null ],
+    [ "operator uostream &", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#aa6caa06b5e504a51162e3f428e88e7c7", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a9289a85ba1cbe5bcea11534c4c4f2351", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#aa6c38ce8484d9ed0df382b9113f5c2f3", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#aad05066e32ffb5913d98dc437f6f99fb", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#aa0142a55ba4a372d57d94f30d546d968", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a73ff1261f3ff1a9e11603becd7a58fd3", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a0747e832c7ea6a4b7469ff12318d8bbd", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a6ee9ec914c146b6c35dc41f06a962d83", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a7beffde4af195d905754ce8825878715", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a54d04521cff6ce6d36ab772e95137c38", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a766adffd64188fab58cff46e92543529", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ab30d4ec477264d0b13a18621985a6955", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ad54c2263209934f19f8763b968e5c20b", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ad9e1ff1154b3997d9a1e083c35f0aff3", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a10715bfabc943fb14e10e7381b9c4265", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#a7da9c6a6e6d5753a324487357d9adc7a", null ],
+    [ "operator<<", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#aa013678fb4f7925003c70e9029b1c537", null ],
+    [ "str", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ac87d7ec1ca8932639319177364d02054", null ],
+    [ "str", "classlog4cxx_1_1helpers_1_1_uni_char_message_buffer.html#ae331388ef89d16174675770938bc9bd1", null ]
+];

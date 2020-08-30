@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1">/*</a>
+<span class="sourceLineNo">002</span><a name="line.2"> * Licensed to the Apache Software Foundation (ASF) under one or more</a>
+<span class="sourceLineNo">003</span><a name="line.3"> * contributor license agreements. See the NOTICE file distributed with</a>
+<span class="sourceLineNo">004</span><a name="line.4"> * this work for additional information regarding copyright ownership.</a>
+<span class="sourceLineNo">005</span><a name="line.5"> * The ASF licenses this file to You under the Apache license, Version 2.0</a>
+<span class="sourceLineNo">006</span><a name="line.6"> * (the "License"); you may not use this file except in compliance with</a>
+<span class="sourceLineNo">007</span><a name="line.7"> * the License. You may obtain a copy of the License at</a>
+<span class="sourceLineNo">008</span><a name="line.8"> *</a>
+<span class="sourceLineNo">009</span><a name="line.9"> *      http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">010</span><a name="line.10"> *</a>
+<span class="sourceLineNo">011</span><a name="line.11"> * Unless required by applicable law or agreed to in writing, software</a>
+<span class="sourceLineNo">012</span><a name="line.12"> * distributed under the License is distributed on an "AS IS" BASIS,</a>
+<span class="sourceLineNo">013</span><a name="line.13"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</a>
+<span class="sourceLineNo">014</span><a name="line.14"> * See the license for the specific language governing permissions and</a>
+<span class="sourceLineNo">015</span><a name="line.15"> * limitations under the license.</a>
+<span class="sourceLineNo">016</span><a name="line.16"> */</a>
+<span class="sourceLineNo">017</span><a name="line.17">package org.apache.logging.log4j.spring.cloud.config.client;</a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19">import java.io.File;</a>
+<span class="sourceLineNo">020</span><a name="line.20">import java.io.IOException;</a>
+<span class="sourceLineNo">021</span><a name="line.21">import java.net.URISyntaxException;</a>
+<span class="sourceLineNo">022</span><a name="line.22">import java.net.URL;</a>
+<span class="sourceLineNo">023</span><a name="line.23">import java.net.URLConnection;</a>
+<span class="sourceLineNo">024</span><a name="line.24">import java.util.Arrays;</a>
+<span class="sourceLineNo">025</span><a name="line.25">import java.util.List;</a>
+<span class="sourceLineNo">026</span><a name="line.26">import java.util.Properties;</a>
+<span class="sourceLineNo">027</span><a name="line.27">import javax.net.ssl.HttpsURLConnection;</a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29">import org.apache.logging.log4j.LogManager;</a>
+<span class="sourceLineNo">030</span><a name="line.30">import org.apache.logging.log4j.core.LoggerContext;</a>
+<span class="sourceLineNo">031</span><a name="line.31">import org.apache.logging.log4j.core.config.ConfigurationFactory;</a>
+<span class="sourceLineNo">032</span><a name="line.32">import org.apache.logging.log4j.core.config.ConfigurationSource;</a>
+<span class="sourceLineNo">033</span><a name="line.33">import org.apache.logging.log4j.core.net.ssl.LaxHostnameVerifier;</a>
+<span class="sourceLineNo">034</span><a name="line.34">import org.apache.logging.log4j.core.net.ssl.SslConfiguration;</a>
+<span class="sourceLineNo">035</span><a name="line.35">import org.apache.logging.log4j.core.net.ssl.SslConfigurationFactory;</a>
+<span class="sourceLineNo">036</span><a name="line.36">import org.apache.logging.log4j.core.util.AuthorizationProvider;</a>
+<span class="sourceLineNo">037</span><a name="line.37">import org.apache.logging.log4j.core.util.BasicAuthorizationProvider;</a>
+<span class="sourceLineNo">038</span><a name="line.38">import org.apache.logging.log4j.core.util.FileUtils;</a>
+<span class="sourceLineNo">039</span><a name="line.39">import org.apache.logging.log4j.util.PropertiesUtil;</a>
+<span class="sourceLineNo">040</span><a name="line.40">import org.springframework.boot.logging.LogFile;</a>
+<span class="sourceLineNo">041</span><a name="line.41">import org.springframework.boot.logging.LoggingInitializationContext;</a>
+<span class="sourceLineNo">042</span><a name="line.42">import org.springframework.boot.logging.log4j2.Log4J2LoggingSystem;</a>
+<span class="sourceLineNo">043</span><a name="line.43">import org.springframework.util.Assert;</a>
+<span class="sourceLineNo">044</span><a name="line.44">import org.springframework.util.ClassUtils;</a>
+<span class="sourceLineNo">045</span><a name="line.45">import org.springframework.util.ResourceUtils;</a>
+<span class="sourceLineNo">046</span><a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47">/**</a>
+<span class="sourceLineNo">048</span><a name="line.48"> * Override Spring's implementation of the Log4j 2 Logging System to properly support Spring Cloud Config.</a>
+<span class="sourceLineNo">049</span><a name="line.49"> */</a>
+<span class="sourceLineNo">050</span><a name="line.50">public class Log4j2CloudConfigLoggingSystem extends Log4J2LoggingSystem {</a>
+<span class="sourceLineNo">051</span><a name="line.51">    private static final String HTTPS = "https";</a>
+<span class="sourceLineNo">052</span><a name="line.52">    public static final String ENVIRONMENT_KEY = "SpringEnvironment";</a>
+<span class="sourceLineNo">053</span><a name="line.53"></a>
+<span class="sourceLineNo">054</span><a name="line.54">    public Log4j2CloudConfigLoggingSystem(ClassLoader loader) {</a>
+<span class="sourceLineNo">055</span><a name="line.55">        super(loader);</a>
+<span class="sourceLineNo">056</span><a name="line.56">    }</a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span><a name="line.58">    /**</a>
+<span class="sourceLineNo">059</span><a name="line.59">     * Set the environment into the ExternalContext field so that it can be obtained by SpringLookup when it</a>
+<span class="sourceLineNo">060</span><a name="line.60">     * is constructed. Spring will replace the ExternalContext field with a String once initialization is</a>
+<span class="sourceLineNo">061</span><a name="line.61">     * complete.</a>
+<span class="sourceLineNo">062</span><a name="line.62">     * @param initializationContext The initialization context.</a>
+<span class="sourceLineNo">063</span><a name="line.63">     * @param configLocation The configuration location.</a>
+<span class="sourceLineNo">064</span><a name="line.64">     * @param logFile the log file.</a>
+<span class="sourceLineNo">065</span><a name="line.65">     */</a>
+<span class="sourceLineNo">066</span><a name="line.66">    @Override</a>
+<span class="sourceLineNo">067</span><a name="line.67">    public void initialize(LoggingInitializationContext initializationContext, String configLocation, LogFile logFile) {</a>
+<span class="sourceLineNo">068</span><a name="line.68">        getLoggerContext().putObjectIfAbsent(ENVIRONMENT_KEY, initializationContext.getEnvironment());</a>
+<span class="sourceLineNo">069</span><a name="line.69">        super.initialize(initializationContext, configLocation, logFile);</a>
+<span class="sourceLineNo">070</span><a name="line.70">    }</a>
+<span class="sourceLineNo">071</span><a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72">    @Override</a>
+<span class="sourceLineNo">073</span><a name="line.73">    protected String[] getStandardConfigLocations() {</a>
+<span class="sourceLineNo">074</span><a name="line.74">        String[] locations = super.getStandardConfigLocations();</a>
+<span class="sourceLineNo">075</span><a name="line.75">        PropertiesUtil props = new PropertiesUtil(new Properties());</a>
+<span class="sourceLineNo">076</span><a name="line.76">        String location = props.getStringProperty(ConfigurationFactory.CONFIGURATION_FILE_PROPERTY);</a>
+<span class="sourceLineNo">077</span><a name="line.77">        if (location != null) {</a>
+<span class="sourceLineNo">078</span><a name="line.78">            List&lt;String&gt; list = Arrays.asList(super.getStandardConfigLocations());</a>
+<span class="sourceLineNo">079</span><a name="line.79">            list.add(location);</a>
+<span class="sourceLineNo">080</span><a name="line.80">            locations = list.toArray(new String[0]);</a>
+<span class="sourceLineNo">081</span><a name="line.81">        }</a>
+<span class="sourceLineNo">082</span><a name="line.82">        return locations;</a>
+<span class="sourceLineNo">083</span><a name="line.83">    }</a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span><a name="line.85">    @Override</a>
+<span class="sourceLineNo">086</span><a name="line.86">    protected void loadDefaults(LoggingInitializationContext initializationContext, LogFile logFile) {</a>
+<span class="sourceLineNo">087</span><a name="line.87">        if (logFile != null) {</a>
+<span class="sourceLineNo">088</span><a name="line.88">            this.loadConfiguration(this.getBootPackagedConfigFile("log4j2-file.xml"), logFile);</a>
+<span class="sourceLineNo">089</span><a name="line.89">        } else {</a>
+<span class="sourceLineNo">090</span><a name="line.90">            this.loadConfiguration(this.getBootPackagedConfigFile("log4j2.xml"), logFile);</a>
+<span class="sourceLineNo">091</span><a name="line.91">        }</a>
+<span class="sourceLineNo">092</span><a name="line.92">    }</a>
+<span class="sourceLineNo">093</span><a name="line.93"></a>
+<span class="sourceLineNo">094</span><a name="line.94">    private String getBootPackagedConfigFile(String fileName) {</a>
+<span class="sourceLineNo">095</span><a name="line.95">        String defaultPath = ClassUtils.getPackageName(Log4J2LoggingSystem.class);</a>
+<span class="sourceLineNo">096</span><a name="line.96">        defaultPath = defaultPath.replace('.', '/');</a>
+<span class="sourceLineNo">097</span><a name="line.97">        defaultPath = defaultPath + "/" + fileName;</a>
+<span class="sourceLineNo">098</span><a name="line.98">        defaultPath = "classpath:" + defaultPath;</a>
+<span class="sourceLineNo">099</span><a name="line.99">        return defaultPath;</a>
+<span class="sourceLineNo">100</span><a name="line.100">    }</a>
+<span class="sourceLineNo">101</span><a name="line.101"></a>
+<span class="sourceLineNo">102</span><a name="line.102">    @Override</a>
+<span class="sourceLineNo">103</span><a name="line.103">    protected void loadConfiguration(String location, LogFile logFile) {</a>
+<span class="sourceLineNo">104</span><a name="line.104">        Assert.notNull(location, "Location must not be null");</a>
+<span class="sourceLineNo">105</span><a name="line.105">        try {</a>
+<span class="sourceLineNo">106</span><a name="line.106">            LoggerContext ctx = getLoggerContext();</a>
+<span class="sourceLineNo">107</span><a name="line.107">            URL url = ResourceUtils.getURL(location);</a>
+<span class="sourceLineNo">108</span><a name="line.108">            ConfigurationSource source = getConfigurationSource(url);</a>
+<span class="sourceLineNo">109</span><a name="line.109">            ctx.start(ConfigurationFactory.getInstance().getConfiguration(ctx, source));</a>
+<span class="sourceLineNo">110</span><a name="line.110">        }</a>
+<span class="sourceLineNo">111</span><a name="line.111">        catch (Exception ex) {</a>
+<span class="sourceLineNo">112</span><a name="line.112">            throw new IllegalStateException(</a>
+<span class="sourceLineNo">113</span><a name="line.113">                "Could not initialize Log4J2 logging from " + location, ex);</a>
+<span class="sourceLineNo">114</span><a name="line.114">        }</a>
+<span class="sourceLineNo">115</span><a name="line.115">    }</a>
+<span class="sourceLineNo">116</span><a name="line.116"></a>
+<span class="sourceLineNo">117</span><a name="line.117">    @Override</a>
+<span class="sourceLineNo">118</span><a name="line.118">    public void cleanUp() {</a>
+<span class="sourceLineNo">119</span><a name="line.119">        getLoggerContext().removeObject(ENVIRONMENT_KEY);</a>
+<span class="sourceLineNo">120</span><a name="line.120">        super.cleanUp();</a>
+<span class="sourceLineNo">121</span><a name="line.121">    }</a>
+<span class="sourceLineNo">122</span><a name="line.122"></a>
+<span class="sourceLineNo">123</span><a name="line.123">    private ConfigurationSource getConfigurationSource(URL url) throws IOException, URISyntaxException {</a>
+<span class="sourceLineNo">124</span><a name="line.124">        URLConnection urlConnection = url.openConnection();</a>
+<span class="sourceLineNo">125</span><a name="line.125">        AuthorizationProvider provider = ConfigurationFactory.authorizationProvider(PropertiesUtil.getProperties());</a>
+<span class="sourceLineNo">126</span><a name="line.126">        provider.addAuthorization(urlConnection);</a>
+<span class="sourceLineNo">127</span><a name="line.127">        if (url.getProtocol().equals(HTTPS)) {</a>
+<span class="sourceLineNo">128</span><a name="line.128">            SslConfiguration sslConfiguration = SslConfigurationFactory.getSslConfiguration();</a>
+<span class="sourceLineNo">129</span><a name="line.129">            if (sslConfiguration != null) {</a>
+<span class="sourceLineNo">130</span><a name="line.130">                ((HttpsURLConnection) urlConnection).setSSLSocketFactory(sslConfiguration.getSslSocketFactory());</a>
+<span class="sourceLineNo">131</span><a name="line.131">                if (!sslConfiguration.isVerifyHostName()) {</a>
+<span class="sourceLineNo">132</span><a name="line.132">                    ((HttpsURLConnection) urlConnection).setHostnameVerifier(LaxHostnameVerifier.INSTANCE);</a>
+<span class="sourceLineNo">133</span><a name="line.133">                }</a>
+<span class="sourceLineNo">134</span><a name="line.134">            }</a>
+<span class="sourceLineNo">135</span><a name="line.135">        }</a>
+<span class="sourceLineNo">136</span><a name="line.136">        File file = FileUtils.fileFromUri(url.toURI());</a>
+<span class="sourceLineNo">137</span><a name="line.137">        if (file != null) {</a>
+<span class="sourceLineNo">138</span><a name="line.138">            return new ConfigurationSource(urlConnection.getInputStream(), FileUtils.fileFromUri(url.toURI()));</a>
+<span class="sourceLineNo">139</span><a name="line.139">        } else {</a>
+<span class="sourceLineNo">140</span><a name="line.140">            return new ConfigurationSource(urlConnection.getInputStream(), url, urlConnection.getLastModified());</a>
+<span class="sourceLineNo">141</span><a name="line.141">        }</a>
+<span class="sourceLineNo">142</span><a name="line.142">    }</a>
+<span class="sourceLineNo">143</span><a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144">    private LoggerContext getLoggerContext() {</a>
+<span class="sourceLineNo">145</span><a name="line.145">        return (LoggerContext) LogManager.getContext(false);</a>
+<span class="sourceLineNo">146</span><a name="line.146">    }</a>
+<span class="sourceLineNo">147</span><a name="line.147">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j.message;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import java.io.Serializable;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import org.apache.logging.log4j.util.StringBuilderFormattable;<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>/**<a name="line.22"></a>
+<span class="sourceLineNo">023</span> * An interface for various Message implementations that can be logged. Messages can act as wrappers<a name="line.23"></a>
+<span class="sourceLineNo">024</span> * around Objects so that user can have control over converting Objects to Strings when necessary without<a name="line.24"></a>
+<span class="sourceLineNo">025</span> * requiring complicated formatters and as a way to manipulate the message based on information available<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * at runtime such as the locale of the system.<a name="line.26"></a>
+<span class="sourceLineNo">027</span> * &lt;p&gt;<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * Custom Message implementations should consider implementing the {@link StringBuilderFormattable}<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * interface for more efficient processing. Garbage-free Layouts will call<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * {@link StringBuilderFormattable#formatTo(StringBuilder) formatTo(StringBuilder)} instead of<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * {@link Message#getFormattedMessage()} if the Message implements StringBuilderFormattable.<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * &lt;/p&gt;<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * &lt;p&gt;<a name="line.33"></a>
+<span class="sourceLineNo">034</span> * Note: Message objects should not be considered to be thread safe nor should they be assumed to be<a name="line.34"></a>
+<span class="sourceLineNo">035</span> * safely reusable even on the same thread. The logging system may provide information to the Message<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * objects and the Messages might be queued for asynchronous delivery. Thus, any modifications to a<a name="line.36"></a>
+<span class="sourceLineNo">037</span> * Message object by an application should by avoided after the Message has been passed as a parameter on<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * a Logger method.<a name="line.38"></a>
+<span class="sourceLineNo">039</span> * &lt;/p&gt;<a name="line.39"></a>
+<span class="sourceLineNo">040</span> *<a name="line.40"></a>
+<span class="sourceLineNo">041</span> * @see StringBuilderFormattable<a name="line.41"></a>
+<span class="sourceLineNo">042</span> */<a name="line.42"></a>
+<span class="sourceLineNo">043</span>/*<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * Implementation note: this interface extends Serializable since LogEvents must be serializable.<a name="line.44"></a>
+<span class="sourceLineNo">045</span> */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>public interface Message extends Serializable {<a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47"></a>
+<span class="sourceLineNo">048</span>    /**<a name="line.48"></a>
+<span class="sourceLineNo">049</span>     * Gets the Message formatted as a String. Each Message implementation determines the<a name="line.49"></a>
+<span class="sourceLineNo">050</span>     * appropriate way to format the data encapsulated in the Message. Messages that provide<a name="line.50"></a>
+<span class="sourceLineNo">051</span>     * more than one way of formatting the Message will implement MultiformatMessage.<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     * &lt;p&gt;<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     * When configured to log asynchronously, this method is called before the Message is queued, unless this<a name="line.53"></a>
+<span class="sourceLineNo">054</span>     * message implements {@link ReusableMessage} or is annotated with {@link AsynchronouslyFormattable}.<a name="line.54"></a>
+<span class="sourceLineNo">055</span>     * This gives the Message implementation class a chance to create a formatted message String with the current value<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * of any mutable objects.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     * The intention is that the Message implementation caches this formatted message and returns it on subsequent<a name="line.57"></a>
+<span class="sourceLineNo">058</span>     * calls. (See &lt;a href="https://issues.apache.org/jira/browse/LOG4J2-763"&gt;LOG4J2-763&lt;/a&gt;.)<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     * &lt;/p&gt;<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     * &lt;p&gt;<a name="line.60"></a>
+<span class="sourceLineNo">061</span>     * When logging synchronously, this method will not be called for Messages that implement the<a name="line.61"></a>
+<span class="sourceLineNo">062</span>     * {@link StringBuilderFormattable} interface: instead, the<a name="line.62"></a>
+<span class="sourceLineNo">063</span>     * {@link StringBuilderFormattable#formatTo(StringBuilder) formatTo(StringBuilder)} method will be called so the<a name="line.63"></a>
+<span class="sourceLineNo">064</span>     * Message can format its contents without creating intermediate String objects.<a name="line.64"></a>
+<span class="sourceLineNo">065</span>     * &lt;/p&gt;<a name="line.65"></a>
+<span class="sourceLineNo">066</span>     *<a name="line.66"></a>
+<span class="sourceLineNo">067</span>     * @return The message String.<a name="line.67"></a>
+<span class="sourceLineNo">068</span>     */<a name="line.68"></a>
+<span class="sourceLineNo">069</span>    String getFormattedMessage();<a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70"></a>
+<span class="sourceLineNo">071</span>    /**<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     * Gets the format portion of the Message.<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     *<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * @return The message format. Some implementations, such as ParameterizedMessage, will use this as<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * the message "pattern". Other Messages may simply return an empty String.<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * TODO Do all messages have a format?  What syntax?  Using a Formatter object could be cleaner.<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     * (RG) In SimpleMessage the format is identical to the formatted message. In ParameterizedMessage and<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * StructuredDataMessage it is not. It is up to the Message implementer to determine what this<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * method will return. A Formatter is inappropriate as this is very specific to the Message<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     * implementation so it isn't clear to me how having a Formatter separate from the Message would be cleaner.<a name="line.80"></a>
+<span class="sourceLineNo">081</span>     */<a name="line.81"></a>
+<span class="sourceLineNo">082</span>    String getFormat();<a name="line.82"></a>
+<span class="sourceLineNo">083</span><a name="line.83"></a>
+<span class="sourceLineNo">084</span>    /**<a name="line.84"></a>
+<span class="sourceLineNo">085</span>     * Gets parameter values, if any.<a name="line.85"></a>
+<span class="sourceLineNo">086</span>     *<a name="line.86"></a>
+<span class="sourceLineNo">087</span>     * @return An array of parameter values or null.<a name="line.87"></a>
+<span class="sourceLineNo">088</span>     */<a name="line.88"></a>
+<span class="sourceLineNo">089</span>    Object[] getParameters();<a name="line.89"></a>
+<span class="sourceLineNo">090</span><a name="line.90"></a>
+<span class="sourceLineNo">091</span>    /**<a name="line.91"></a>
+<span class="sourceLineNo">092</span>     * Gets the throwable, if any.<a name="line.92"></a>
+<span class="sourceLineNo">093</span>     *<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     * @return the throwable or null.<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     */<a name="line.95"></a>
+<span class="sourceLineNo">096</span>    Throwable getThrowable();<a name="line.96"></a>
+<span class="sourceLineNo">097</span>}<a name="line.97"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

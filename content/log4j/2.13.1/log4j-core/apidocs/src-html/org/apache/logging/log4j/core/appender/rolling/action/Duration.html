@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span><a name="line.17"></a>
+<span class="sourceLineNo">018</span>package org.apache.logging.log4j.core.appender.rolling.action;<a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19"></a>
+<span class="sourceLineNo">020</span>import java.io.Serializable;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>import java.util.Objects;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import java.util.regex.Matcher;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import java.util.regex.Pattern;<a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24"></a>
+<span class="sourceLineNo">025</span>/**<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * Simplified implementation of the &lt;a href="https://en.wikipedia.org/wiki/ISO_8601#Durations"&gt;ISO-8601 Durations&lt;/a&gt;<a name="line.26"></a>
+<span class="sourceLineNo">027</span> * standard. The supported format is {@code PnDTnHnMnS}, with 'P' and 'T' optional. Days are considered to be exactly 24<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * hours.<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * &lt;p&gt;<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * Similarly to the {@code java.time.Duration} class, this class does not support year or month sections in the format.<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * This implementation does not support fractions or negative values.<a name="line.31"></a>
+<span class="sourceLineNo">032</span> *<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * @see #parse(CharSequence)<a name="line.33"></a>
+<span class="sourceLineNo">034</span> */<a name="line.34"></a>
+<span class="sourceLineNo">035</span>public class Duration implements Serializable, Comparable&lt;Duration&gt; {<a name="line.35"></a>
+<span class="sourceLineNo">036</span>    private static final long serialVersionUID = -3756810052716342061L;<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>    /**<a name="line.38"></a>
+<span class="sourceLineNo">039</span>     * Constant for a duration of zero.<a name="line.39"></a>
+<span class="sourceLineNo">040</span>     */<a name="line.40"></a>
+<span class="sourceLineNo">041</span>    public static final Duration ZERO = new Duration(0);<a name="line.41"></a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span>    /**<a name="line.43"></a>
+<span class="sourceLineNo">044</span>     * Hours per day.<a name="line.44"></a>
+<span class="sourceLineNo">045</span>     */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>    private static final int HOURS_PER_DAY = 24;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>    /**<a name="line.47"></a>
+<span class="sourceLineNo">048</span>     * Minutes per hour.<a name="line.48"></a>
+<span class="sourceLineNo">049</span>     */<a name="line.49"></a>
+<span class="sourceLineNo">050</span>    private static final int MINUTES_PER_HOUR = 60;<a name="line.50"></a>
+<span class="sourceLineNo">051</span>    /**<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     * Seconds per minute.<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     */<a name="line.53"></a>
+<span class="sourceLineNo">054</span>    private static final int SECONDS_PER_MINUTE = 60;<a name="line.54"></a>
+<span class="sourceLineNo">055</span>    /**<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * Seconds per hour.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     */<a name="line.57"></a>
+<span class="sourceLineNo">058</span>    private static final int SECONDS_PER_HOUR = SECONDS_PER_MINUTE * MINUTES_PER_HOUR;<a name="line.58"></a>
+<span class="sourceLineNo">059</span>    /**<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     * Seconds per day.<a name="line.60"></a>
+<span class="sourceLineNo">061</span>     */<a name="line.61"></a>
+<span class="sourceLineNo">062</span>    private static final int SECONDS_PER_DAY = SECONDS_PER_HOUR * HOURS_PER_DAY;<a name="line.62"></a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span>    /**<a name="line.64"></a>
+<span class="sourceLineNo">065</span>     * The pattern for parsing.<a name="line.65"></a>
+<span class="sourceLineNo">066</span>     */<a name="line.66"></a>
+<span class="sourceLineNo">067</span>    private static final Pattern PATTERN = Pattern.compile("P?(?:([0-9]+)D)?"<a name="line.67"></a>
+<span class="sourceLineNo">068</span>            + "(T?(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+)?S)?)?", Pattern.CASE_INSENSITIVE);<a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span>    /**<a name="line.70"></a>
+<span class="sourceLineNo">071</span>     * The number of seconds in the duration.<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     */<a name="line.72"></a>
+<span class="sourceLineNo">073</span>    private final long seconds;<a name="line.73"></a>
+<span class="sourceLineNo">074</span><a name="line.74"></a>
+<span class="sourceLineNo">075</span>    /**<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * Constructs an instance of {@code Duration} using seconds.<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     *<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * @param seconds the length of the duration in seconds, positive or negative<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>    private Duration(final long seconds) {<a name="line.80"></a>
+<span class="sourceLineNo">081</span>        super();<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        this.seconds = seconds;<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    }<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>    /**<a name="line.85"></a>
+<span class="sourceLineNo">086</span>     * Obtains a {@code Duration} from a text string such as {@code PnDTnHnMnS}.<a name="line.86"></a>
+<span class="sourceLineNo">087</span>     * &lt;p&gt;<a name="line.87"></a>
+<span class="sourceLineNo">088</span>     * This will parse a textual representation of a duration, including the string produced by {@code toString()}. The<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     * formats accepted are based on the ISO-8601 duration format {@code PnDTnHnMnS} with days considered to be exactly<a name="line.89"></a>
+<span class="sourceLineNo">090</span>     * 24 hours.<a name="line.90"></a>
+<span class="sourceLineNo">091</span>     * &lt;p&gt;<a name="line.91"></a>
+<span class="sourceLineNo">092</span>     * This implementation does not support negative numbers or fractions (so the smallest non-zero value a Duration can<a name="line.92"></a>
+<span class="sourceLineNo">093</span>     * have is one second).<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     * &lt;p&gt;<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     * The string optionally starts with the ASCII letter "P" in upper or lower case. There are then four sections, each<a name="line.95"></a>
+<span class="sourceLineNo">096</span>     * consisting of a number and a suffix. The sections have suffixes in ASCII of "D", "H", "M" and "S" for days,<a name="line.96"></a>
+<span class="sourceLineNo">097</span>     * hours, minutes and seconds, accepted in upper or lower case. The suffixes must occur in order. The ASCII letter<a name="line.97"></a>
+<span class="sourceLineNo">098</span>     * "T" may occur before the first occurrence, if any, of an hour, minute or second section. At least one of the four<a name="line.98"></a>
+<span class="sourceLineNo">099</span>     * sections must be present, and if "T" is present there must be at least one section after the "T". The number part<a name="line.99"></a>
+<span class="sourceLineNo">100</span>     * of each section must consist of one or more ASCII digits. The number may not be prefixed by the ASCII negative or<a name="line.100"></a>
+<span class="sourceLineNo">101</span>     * positive symbol. The number of days, hours, minutes and seconds must parse to a {@code long}.<a name="line.101"></a>
+<span class="sourceLineNo">102</span>     * &lt;p&gt;<a name="line.102"></a>
+<span class="sourceLineNo">103</span>     * Examples:<a name="line.103"></a>
+<span class="sourceLineNo">104</span>     *<a name="line.104"></a>
+<span class="sourceLineNo">105</span>     * &lt;pre&gt;<a name="line.105"></a>
+<span class="sourceLineNo">106</span>     *    "PT20S" -- parses as "20 seconds"<a name="line.106"></a>
+<span class="sourceLineNo">107</span>     *    "PT15M"     -- parses as "15 minutes" (where a minute is 60 seconds)<a name="line.107"></a>
+<span class="sourceLineNo">108</span>     *    "PT10H"     -- parses as "10 hours" (where an hour is 3600 seconds)<a name="line.108"></a>
+<span class="sourceLineNo">109</span>     *    "P2D"       -- parses as "2 days" (where a day is 24 hours or 86400 seconds)<a name="line.109"></a>
+<span class="sourceLineNo">110</span>     *    "P2DT3H4M"  -- parses as "2 days, 3 hours and 4 minutes"<a name="line.110"></a>
+<span class="sourceLineNo">111</span>     * &lt;/pre&gt;<a name="line.111"></a>
+<span class="sourceLineNo">112</span>     *<a name="line.112"></a>
+<span class="sourceLineNo">113</span>     * @param text the text to parse, not null<a name="line.113"></a>
+<span class="sourceLineNo">114</span>     * @return the parsed duration, not null<a name="line.114"></a>
+<span class="sourceLineNo">115</span>     * @throws IllegalArgumentException if the text cannot be parsed to a duration<a name="line.115"></a>
+<span class="sourceLineNo">116</span>     */<a name="line.116"></a>
+<span class="sourceLineNo">117</span>    public static Duration parse(final CharSequence text) {<a name="line.117"></a>
+<span class="sourceLineNo">118</span>        Objects.requireNonNull(text, "text");<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        final Matcher matcher = PATTERN.matcher(text);<a name="line.119"></a>
+<span class="sourceLineNo">120</span>        if (matcher.matches()) {<a name="line.120"></a>
+<span class="sourceLineNo">121</span>            // check for letter T but no time sections<a name="line.121"></a>
+<span class="sourceLineNo">122</span>            if ("T".equals(matcher.group(2)) == false) {<a name="line.122"></a>
+<span class="sourceLineNo">123</span>                final String dayMatch = matcher.group(1);<a name="line.123"></a>
+<span class="sourceLineNo">124</span>                final String hourMatch = matcher.group(3);<a name="line.124"></a>
+<span class="sourceLineNo">125</span>                final String minuteMatch = matcher.group(4);<a name="line.125"></a>
+<span class="sourceLineNo">126</span>                final String secondMatch = matcher.group(5);<a name="line.126"></a>
+<span class="sourceLineNo">127</span>                if (dayMatch != null || hourMatch != null || minuteMatch != null || secondMatch != null) {<a name="line.127"></a>
+<span class="sourceLineNo">128</span>                    final long daysAsSecs = parseNumber(text, dayMatch, SECONDS_PER_DAY, "days");<a name="line.128"></a>
+<span class="sourceLineNo">129</span>                    final long hoursAsSecs = parseNumber(text, hourMatch, SECONDS_PER_HOUR, "hours");<a name="line.129"></a>
+<span class="sourceLineNo">130</span>                    final long minsAsSecs = parseNumber(text, minuteMatch, SECONDS_PER_MINUTE, "minutes");<a name="line.130"></a>
+<span class="sourceLineNo">131</span>                    final long seconds = parseNumber(text, secondMatch, 1, "seconds");<a name="line.131"></a>
+<span class="sourceLineNo">132</span>                    try {<a name="line.132"></a>
+<span class="sourceLineNo">133</span>                        return create(daysAsSecs, hoursAsSecs, minsAsSecs, seconds);<a name="line.133"></a>
+<span class="sourceLineNo">134</span>                    } catch (final ArithmeticException ex) {<a name="line.134"></a>
+<span class="sourceLineNo">135</span>                        throw new IllegalArgumentException("Text cannot be parsed to a Duration (overflow) " + text, ex);<a name="line.135"></a>
+<span class="sourceLineNo">136</span>                    }<a name="line.136"></a>
+<span class="sourceLineNo">137</span>                }<a name="line.137"></a>
+<span class="sourceLineNo">138</span>            }<a name="line.138"></a>
+<span class="sourceLineNo">139</span>        }<a name="line.139"></a>
+<span class="sourceLineNo">140</span>        throw new IllegalArgumentException("Text cannot be parsed to a Duration: " + text);<a name="line.140"></a>
+<span class="sourceLineNo">141</span>    }<a name="line.141"></a>
+<span class="sourceLineNo">142</span><a name="line.142"></a>
+<span class="sourceLineNo">143</span>    private static long parseNumber(final CharSequence text, final String parsed, final int multiplier,<a name="line.143"></a>
+<span class="sourceLineNo">144</span>            final String errorText) {<a name="line.144"></a>
+<span class="sourceLineNo">145</span>        // regex limits to [0-9]+<a name="line.145"></a>
+<span class="sourceLineNo">146</span>        if (parsed == null) {<a name="line.146"></a>
+<span class="sourceLineNo">147</span>            return 0;<a name="line.147"></a>
+<span class="sourceLineNo">148</span>        }<a name="line.148"></a>
+<span class="sourceLineNo">149</span>        try {<a name="line.149"></a>
+<span class="sourceLineNo">150</span>            final long val = Long.parseLong(parsed);<a name="line.150"></a>
+<span class="sourceLineNo">151</span>            return val * multiplier;<a name="line.151"></a>
+<span class="sourceLineNo">152</span>        } catch (final Exception ex) {<a name="line.152"></a>
+<span class="sourceLineNo">153</span>            throw new IllegalArgumentException("Text cannot be parsed to a Duration: " + errorText + " (in " + text<a name="line.153"></a>
+<span class="sourceLineNo">154</span>                    + ")", ex);<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        }<a name="line.155"></a>
+<span class="sourceLineNo">156</span>    }<a name="line.156"></a>
+<span class="sourceLineNo">157</span><a name="line.157"></a>
+<span class="sourceLineNo">158</span>    private static Duration create(final long daysAsSecs, final long hoursAsSecs, final long minsAsSecs, final long secs) {<a name="line.158"></a>
+<span class="sourceLineNo">159</span>        return create(daysAsSecs + hoursAsSecs + minsAsSecs + secs);<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    }<a name="line.160"></a>
+<span class="sourceLineNo">161</span><a name="line.161"></a>
+<span class="sourceLineNo">162</span>    /**<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * Obtains an instance of {@code Duration} using seconds.<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     *<a name="line.164"></a>
+<span class="sourceLineNo">165</span>     * @param seconds the length of the duration in seconds, positive only<a name="line.165"></a>
+<span class="sourceLineNo">166</span>     */<a name="line.166"></a>
+<span class="sourceLineNo">167</span>    private static Duration create(final long seconds) {<a name="line.167"></a>
+<span class="sourceLineNo">168</span>        if ((seconds) == 0) {<a name="line.168"></a>
+<span class="sourceLineNo">169</span>            return ZERO;<a name="line.169"></a>
+<span class="sourceLineNo">170</span>        }<a name="line.170"></a>
+<span class="sourceLineNo">171</span>        return new Duration(seconds);<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    }<a name="line.172"></a>
+<span class="sourceLineNo">173</span><a name="line.173"></a>
+<span class="sourceLineNo">174</span>    /**<a name="line.174"></a>
+<span class="sourceLineNo">175</span>     * Converts this duration to the total length in milliseconds.<a name="line.175"></a>
+<span class="sourceLineNo">176</span>     *<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * @return the total length of the duration in milliseconds<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     */<a name="line.178"></a>
+<span class="sourceLineNo">179</span>    public long toMillis() {<a name="line.179"></a>
+<span class="sourceLineNo">180</span>        return seconds * 1000L;<a name="line.180"></a>
+<span class="sourceLineNo">181</span>    }<a name="line.181"></a>
+<span class="sourceLineNo">182</span><a name="line.182"></a>
+<span class="sourceLineNo">183</span>    @Override<a name="line.183"></a>
+<span class="sourceLineNo">184</span>    public boolean equals(final Object obj) {<a name="line.184"></a>
+<span class="sourceLineNo">185</span>        if (obj == this) {<a name="line.185"></a>
+<span class="sourceLineNo">186</span>            return true;<a name="line.186"></a>
+<span class="sourceLineNo">187</span>        }<a name="line.187"></a>
+<span class="sourceLineNo">188</span>        if (!(obj instanceof Duration)) {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>            return false;<a name="line.189"></a>
+<span class="sourceLineNo">190</span>        }<a name="line.190"></a>
+<span class="sourceLineNo">191</span>        final Duration other = (Duration) obj;<a name="line.191"></a>
+<span class="sourceLineNo">192</span>        return other.seconds == this.seconds;<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    }<a name="line.193"></a>
+<span class="sourceLineNo">194</span><a name="line.194"></a>
+<span class="sourceLineNo">195</span>    @Override<a name="line.195"></a>
+<span class="sourceLineNo">196</span>    public int hashCode() {<a name="line.196"></a>
+<span class="sourceLineNo">197</span>        return (int) (seconds ^ (seconds &gt;&gt;&gt; 32));<a name="line.197"></a>
+<span class="sourceLineNo">198</span>    }<a name="line.198"></a>
+<span class="sourceLineNo">199</span><a name="line.199"></a>
+<span class="sourceLineNo">200</span>    /**<a name="line.200"></a>
+<span class="sourceLineNo">201</span>     * A string representation of this duration using ISO-8601 seconds based representation, such as {@code PT8H6M12S}.<a name="line.201"></a>
+<span class="sourceLineNo">202</span>     * &lt;p&gt;<a name="line.202"></a>
+<span class="sourceLineNo">203</span>     * The format of the returned string will be {@code PnDTnHnMnS}, where n is the relevant days, hours, minutes or<a name="line.203"></a>
+<span class="sourceLineNo">204</span>     * seconds part of the duration. If a section has a zero value, it is omitted. The hours, minutes and seconds are<a name="line.204"></a>
+<span class="sourceLineNo">205</span>     * all positive.<a name="line.205"></a>
+<span class="sourceLineNo">206</span>     * &lt;p&gt;<a name="line.206"></a>
+<span class="sourceLineNo">207</span>     * Examples:<a name="line.207"></a>
+<span class="sourceLineNo">208</span>     *<a name="line.208"></a>
+<span class="sourceLineNo">209</span>     * &lt;pre&gt;<a name="line.209"></a>
+<span class="sourceLineNo">210</span>     *    "20 seconds"                     -- "PT20S<a name="line.210"></a>
+<span class="sourceLineNo">211</span>     *    "15 minutes" (15 * 60 seconds)   -- "PT15M"<a name="line.211"></a>
+<span class="sourceLineNo">212</span>     *    "10 hours" (10 * 3600 seconds)   -- "PT10H"<a name="line.212"></a>
+<span class="sourceLineNo">213</span>     *    "2 days" (2 * 86400 seconds)     -- "P2D"<a name="line.213"></a>
+<span class="sourceLineNo">214</span>     * &lt;/pre&gt;<a name="line.214"></a>
+<span class="sourceLineNo">215</span>     *<a name="line.215"></a>
+<span class="sourceLineNo">216</span>     * @return an ISO-8601 representation of this duration, not null<a name="line.216"></a>
+<span class="sourceLineNo">217</span>     */<a name="line.217"></a>
+<span class="sourceLineNo">218</span>    @Override<a name="line.218"></a>
+<span class="sourceLineNo">219</span>    public String toString() {<a name="line.219"></a>
+<span class="sourceLineNo">220</span>        if (this == ZERO) {<a name="line.220"></a>
+<span class="sourceLineNo">221</span>            return "PT0S";<a name="line.221"></a>
+<span class="sourceLineNo">222</span>        }<a name="line.222"></a>
+<span class="sourceLineNo">223</span>        final long days = seconds / SECONDS_PER_DAY;<a name="line.223"></a>
+<span class="sourceLineNo">224</span>        final long hours = (seconds % SECONDS_PER_DAY) / SECONDS_PER_HOUR;<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        final int minutes = (int) ((seconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE);<a name="line.225"></a>
+<span class="sourceLineNo">226</span>        final int secs = (int) (seconds % SECONDS_PER_MINUTE);<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        final StringBuilder buf = new StringBuilder(24);<a name="line.227"></a>
+<span class="sourceLineNo">228</span>        buf.append("P");<a name="line.228"></a>
+<span class="sourceLineNo">229</span>        if (days != 0) {<a name="line.229"></a>
+<span class="sourceLineNo">230</span>            buf.append(days).append('D');<a name="line.230"></a>
+<span class="sourceLineNo">231</span>        }<a name="line.231"></a>
+<span class="sourceLineNo">232</span>        if ((hours | minutes | secs) != 0) {<a name="line.232"></a>
+<span class="sourceLineNo">233</span>            buf.append('T');<a name="line.233"></a>
+<span class="sourceLineNo">234</span>        }<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        if (hours != 0) {<a name="line.235"></a>
+<span class="sourceLineNo">236</span>            buf.append(hours).append('H');<a name="line.236"></a>
+<span class="sourceLineNo">237</span>        }<a name="line.237"></a>
+<span class="sourceLineNo">238</span>        if (minutes != 0) {<a name="line.238"></a>
+<span class="sourceLineNo">239</span>            buf.append(minutes).append('M');<a name="line.239"></a>
+<span class="sourceLineNo">240</span>        }<a name="line.240"></a>
+<span class="sourceLineNo">241</span>        if (secs == 0 &amp;&amp; buf.length() &gt; 0) {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>            return buf.toString();<a name="line.242"></a>
+<span class="sourceLineNo">243</span>        }<a name="line.243"></a>
+<span class="sourceLineNo">244</span>        buf.append(secs).append('S');<a name="line.244"></a>
+<span class="sourceLineNo">245</span>        return buf.toString();<a name="line.245"></a>
+<span class="sourceLineNo">246</span>    }<a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a>
+<span class="sourceLineNo">248</span>    /*<a name="line.248"></a>
+<span class="sourceLineNo">249</span>     * (non-Javadoc)<a name="line.249"></a>
+<span class="sourceLineNo">250</span>     *<a name="line.250"></a>
+<span class="sourceLineNo">251</span>     * @see java.lang.Comparable#compareTo(java.lang.Object)<a name="line.251"></a>
+<span class="sourceLineNo">252</span>     */<a name="line.252"></a>
+<span class="sourceLineNo">253</span>    @Override<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    public int compareTo(final Duration other) {<a name="line.254"></a>
+<span class="sourceLineNo">255</span>        return Long.signum(toMillis() - other.toMillis());<a name="line.255"></a>
+<span class="sourceLineNo">256</span>    }<a name="line.256"></a>
+<span class="sourceLineNo">257</span>}<a name="line.257"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

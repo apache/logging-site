@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import java.io.Serializable;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import java.util.Collection;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>import java.util.Locale;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import java.util.Objects;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import java.util.concurrent.ConcurrentHashMap;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import java.util.concurrent.ConcurrentMap;<a name="line.24"></a>
+<span class="sourceLineNo">025</span><a name="line.25"></a>
+<span class="sourceLineNo">026</span>import org.apache.logging.log4j.spi.StandardLevel;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.logging.log4j.util.Strings;<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>/**<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * Levels used for identifying the severity of an event. Levels are organized from most specific to least:<a name="line.30"></a>
+<span class="sourceLineNo">031</span> * &lt;ul&gt;<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * &lt;li&gt;{@link #OFF} (most specific, no logging)&lt;/li&gt;<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * &lt;li&gt;{@link #FATAL} (most specific, little data)&lt;/li&gt;<a name="line.33"></a>
+<span class="sourceLineNo">034</span> * &lt;li&gt;{@link #ERROR}&lt;/li&gt;<a name="line.34"></a>
+<span class="sourceLineNo">035</span> * &lt;li&gt;{@link #WARN}&lt;/li&gt;<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * &lt;li&gt;{@link #INFO}&lt;/li&gt;<a name="line.36"></a>
+<span class="sourceLineNo">037</span> * &lt;li&gt;{@link #DEBUG}&lt;/li&gt;<a name="line.37"></a>
+<span class="sourceLineNo">038</span> * &lt;li&gt;{@link #TRACE} (least specific, a lot of data)&lt;/li&gt;<a name="line.38"></a>
+<span class="sourceLineNo">039</span> * &lt;li&gt;{@link #ALL} (least specific, all data)&lt;/li&gt;<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * &lt;/ul&gt;<a name="line.40"></a>
+<span class="sourceLineNo">041</span> *<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * Typically, configuring a level in a filter or on a logger will cause logging events of that level and those that are<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * more specific to pass through the filter. A special level, {@link #ALL}, is guaranteed to capture all levels when<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * used in logging configurations.<a name="line.44"></a>
+<span class="sourceLineNo">045</span> */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>public final class Level implements Comparable&lt;Level&gt;, Serializable {<a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47"></a>
+<span class="sourceLineNo">048</span>    /**<a name="line.48"></a>
+<span class="sourceLineNo">049</span>     * No events will be logged.<a name="line.49"></a>
+<span class="sourceLineNo">050</span>     */<a name="line.50"></a>
+<span class="sourceLineNo">051</span>    public static final Level OFF;<a name="line.51"></a>
+<span class="sourceLineNo">052</span><a name="line.52"></a>
+<span class="sourceLineNo">053</span>    /**<a name="line.53"></a>
+<span class="sourceLineNo">054</span>     * A severe error that will prevent the application from continuing.<a name="line.54"></a>
+<span class="sourceLineNo">055</span>     */<a name="line.55"></a>
+<span class="sourceLineNo">056</span>    public static final Level FATAL;<a name="line.56"></a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span>    /**<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     * An error in the application, possibly recoverable.<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     */<a name="line.60"></a>
+<span class="sourceLineNo">061</span>    public static final Level ERROR;<a name="line.61"></a>
+<span class="sourceLineNo">062</span><a name="line.62"></a>
+<span class="sourceLineNo">063</span>    /**<a name="line.63"></a>
+<span class="sourceLineNo">064</span>     * An event that might possible lead to an error.<a name="line.64"></a>
+<span class="sourceLineNo">065</span>     */<a name="line.65"></a>
+<span class="sourceLineNo">066</span>    public static final Level WARN;<a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>    /**<a name="line.68"></a>
+<span class="sourceLineNo">069</span>     * An event for informational purposes.<a name="line.69"></a>
+<span class="sourceLineNo">070</span>     */<a name="line.70"></a>
+<span class="sourceLineNo">071</span>    public static final Level INFO;<a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span>    /**<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * A general debugging event.<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     */<a name="line.75"></a>
+<span class="sourceLineNo">076</span>    public static final Level DEBUG;<a name="line.76"></a>
+<span class="sourceLineNo">077</span><a name="line.77"></a>
+<span class="sourceLineNo">078</span>    /**<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * A fine-grained debug message, typically capturing the flow through the application.<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     */<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    public static final Level TRACE;<a name="line.81"></a>
+<span class="sourceLineNo">082</span><a name="line.82"></a>
+<span class="sourceLineNo">083</span>    /**<a name="line.83"></a>
+<span class="sourceLineNo">084</span>     * All events should be logged.<a name="line.84"></a>
+<span class="sourceLineNo">085</span>     */<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    public static final Level ALL;<a name="line.86"></a>
+<span class="sourceLineNo">087</span><a name="line.87"></a>
+<span class="sourceLineNo">088</span>    /**<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     * @since 2.1<a name="line.89"></a>
+<span class="sourceLineNo">090</span>     */<a name="line.90"></a>
+<span class="sourceLineNo">091</span>    public static final String CATEGORY = "Level";<a name="line.91"></a>
+<span class="sourceLineNo">092</span><a name="line.92"></a>
+<span class="sourceLineNo">093</span>    private static final ConcurrentMap&lt;String, Level&gt; LEVELS = new ConcurrentHashMap&lt;&gt;(); // SUPPRESS CHECKSTYLE<a name="line.93"></a>
+<span class="sourceLineNo">094</span><a name="line.94"></a>
+<span class="sourceLineNo">095</span>    private static final long serialVersionUID = 1581082L;<a name="line.95"></a>
+<span class="sourceLineNo">096</span><a name="line.96"></a>
+<span class="sourceLineNo">097</span>    static {<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        OFF = new Level("OFF", StandardLevel.OFF.intLevel());<a name="line.98"></a>
+<span class="sourceLineNo">099</span>        FATAL = new Level("FATAL", StandardLevel.FATAL.intLevel());<a name="line.99"></a>
+<span class="sourceLineNo">100</span>        ERROR = new Level("ERROR", StandardLevel.ERROR.intLevel());<a name="line.100"></a>
+<span class="sourceLineNo">101</span>        WARN = new Level("WARN", StandardLevel.WARN.intLevel());<a name="line.101"></a>
+<span class="sourceLineNo">102</span>        INFO = new Level("INFO", StandardLevel.INFO.intLevel());<a name="line.102"></a>
+<span class="sourceLineNo">103</span>        DEBUG = new Level("DEBUG", StandardLevel.DEBUG.intLevel());<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        TRACE = new Level("TRACE", StandardLevel.TRACE.intLevel());<a name="line.104"></a>
+<span class="sourceLineNo">105</span>        ALL = new Level("ALL", StandardLevel.ALL.intLevel());<a name="line.105"></a>
+<span class="sourceLineNo">106</span>    }<a name="line.106"></a>
+<span class="sourceLineNo">107</span><a name="line.107"></a>
+<span class="sourceLineNo">108</span>    private final String name;<a name="line.108"></a>
+<span class="sourceLineNo">109</span>    private final int intLevel;<a name="line.109"></a>
+<span class="sourceLineNo">110</span>    private final StandardLevel standardLevel;<a name="line.110"></a>
+<span class="sourceLineNo">111</span><a name="line.111"></a>
+<span class="sourceLineNo">112</span>    private Level(final String name, final int intLevel) {<a name="line.112"></a>
+<span class="sourceLineNo">113</span>        if (Strings.isEmpty(name)) {<a name="line.113"></a>
+<span class="sourceLineNo">114</span>            throw new IllegalArgumentException("Illegal null or empty Level name.");<a name="line.114"></a>
+<span class="sourceLineNo">115</span>        }<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        if (intLevel &lt; 0) {<a name="line.116"></a>
+<span class="sourceLineNo">117</span>            throw new IllegalArgumentException("Illegal Level int less than zero.");<a name="line.117"></a>
+<span class="sourceLineNo">118</span>        }<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        this.name = name;<a name="line.119"></a>
+<span class="sourceLineNo">120</span>        this.intLevel = intLevel;<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        this.standardLevel = StandardLevel.getStandardLevel(intLevel);<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        if (LEVELS.putIfAbsent(name, this) != null) {<a name="line.122"></a>
+<span class="sourceLineNo">123</span>            throw new IllegalStateException("Level " + name + " has already been defined.");<a name="line.123"></a>
+<span class="sourceLineNo">124</span>        }<a name="line.124"></a>
+<span class="sourceLineNo">125</span>    }<a name="line.125"></a>
+<span class="sourceLineNo">126</span><a name="line.126"></a>
+<span class="sourceLineNo">127</span>    /**<a name="line.127"></a>
+<span class="sourceLineNo">128</span>     * Gets the integral value of this Level.<a name="line.128"></a>
+<span class="sourceLineNo">129</span>     *<a name="line.129"></a>
+<span class="sourceLineNo">130</span>     * @return the value of this Level.<a name="line.130"></a>
+<span class="sourceLineNo">131</span>     */<a name="line.131"></a>
+<span class="sourceLineNo">132</span>    public int intLevel() {<a name="line.132"></a>
+<span class="sourceLineNo">133</span>        return this.intLevel;<a name="line.133"></a>
+<span class="sourceLineNo">134</span>    }<a name="line.134"></a>
+<span class="sourceLineNo">135</span><a name="line.135"></a>
+<span class="sourceLineNo">136</span>    /**<a name="line.136"></a>
+<span class="sourceLineNo">137</span>     * Gets the standard Level values as an enum.<a name="line.137"></a>
+<span class="sourceLineNo">138</span>     *<a name="line.138"></a>
+<span class="sourceLineNo">139</span>     * @return an enum of the standard Levels.<a name="line.139"></a>
+<span class="sourceLineNo">140</span>     */<a name="line.140"></a>
+<span class="sourceLineNo">141</span>    public StandardLevel getStandardLevel() {<a name="line.141"></a>
+<span class="sourceLineNo">142</span>        return standardLevel;<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    }<a name="line.143"></a>
+<span class="sourceLineNo">144</span><a name="line.144"></a>
+<span class="sourceLineNo">145</span>    /**<a name="line.145"></a>
+<span class="sourceLineNo">146</span>     * Compares this level against the levels passed as arguments and returns true if this level is in between the given<a name="line.146"></a>
+<span class="sourceLineNo">147</span>     * levels.<a name="line.147"></a>
+<span class="sourceLineNo">148</span>     *<a name="line.148"></a>
+<span class="sourceLineNo">149</span>     * @param minLevel The minimum level to test.<a name="line.149"></a>
+<span class="sourceLineNo">150</span>     * @param maxLevel The maximum level to test.<a name="line.150"></a>
+<span class="sourceLineNo">151</span>     * @return True true if this level is in between the given levels<a name="line.151"></a>
+<span class="sourceLineNo">152</span>     * @since 2.4<a name="line.152"></a>
+<span class="sourceLineNo">153</span>     */<a name="line.153"></a>
+<span class="sourceLineNo">154</span>    public boolean isInRange(final Level minLevel, final Level maxLevel) {<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        return this.intLevel &gt;= minLevel.intLevel &amp;&amp; this.intLevel &lt;= maxLevel.intLevel;<a name="line.155"></a>
+<span class="sourceLineNo">156</span>    }<a name="line.156"></a>
+<span class="sourceLineNo">157</span><a name="line.157"></a>
+<span class="sourceLineNo">158</span>    /**<a name="line.158"></a>
+<span class="sourceLineNo">159</span>     * Compares this level against the level passed as an argument and returns true if this level is the same or is less<a name="line.159"></a>
+<span class="sourceLineNo">160</span>     * specific.<a name="line.160"></a>
+<span class="sourceLineNo">161</span>     * &lt;p&gt;<a name="line.161"></a>
+<span class="sourceLineNo">162</span>     * Concretely, {@link #ALL} is less specific than {@link #TRACE}, which is less specific than {@link #DEBUG}, which<a name="line.162"></a>
+<span class="sourceLineNo">163</span>     * is less specific than {@link #INFO}, which is less specific than {@link #WARN}, which is less specific than<a name="line.163"></a>
+<span class="sourceLineNo">164</span>     * {@link #ERROR}, which is less specific than {@link #FATAL}, and finally {@link #OFF}, which is the most specific<a name="line.164"></a>
+<span class="sourceLineNo">165</span>     * standard level.<a name="line.165"></a>
+<span class="sourceLineNo">166</span>     * &lt;/p&gt;<a name="line.166"></a>
+<span class="sourceLineNo">167</span>     *<a name="line.167"></a>
+<span class="sourceLineNo">168</span>     * @param level<a name="line.168"></a>
+<span class="sourceLineNo">169</span>     *            The level to test.<a name="line.169"></a>
+<span class="sourceLineNo">170</span>     * @return True if this level Level is less specific or the same as the given Level.<a name="line.170"></a>
+<span class="sourceLineNo">171</span>     */<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    public boolean isLessSpecificThan(final Level level) {<a name="line.172"></a>
+<span class="sourceLineNo">173</span>        return this.intLevel &gt;= level.intLevel;<a name="line.173"></a>
+<span class="sourceLineNo">174</span>    }<a name="line.174"></a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span>    /**<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * Compares this level against the level passed as an argument and returns true if this level is the same or is more<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     * specific.<a name="line.178"></a>
+<span class="sourceLineNo">179</span>     * &lt;p&gt;<a name="line.179"></a>
+<span class="sourceLineNo">180</span>     * Concretely, {@link #FATAL} is more specific than {@link #ERROR}, which is more specific than {@link #WARN},<a name="line.180"></a>
+<span class="sourceLineNo">181</span>     * etc., until {@link #TRACE}, and finally {@link #ALL}, which is the least specific standard level.<a name="line.181"></a>
+<span class="sourceLineNo">182</span>     * The most specific level is {@link #OFF}.<a name="line.182"></a>
+<span class="sourceLineNo">183</span>     * &lt;/p&gt;<a name="line.183"></a>
+<span class="sourceLineNo">184</span>     *<a name="line.184"></a>
+<span class="sourceLineNo">185</span>     * @param level The level to test.<a name="line.185"></a>
+<span class="sourceLineNo">186</span>     * @return True if this level Level is more specific or the same as the given Level.<a name="line.186"></a>
+<span class="sourceLineNo">187</span>     */<a name="line.187"></a>
+<span class="sourceLineNo">188</span>    public boolean isMoreSpecificThan(final Level level) {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>        return this.intLevel &lt;= level.intLevel;<a name="line.189"></a>
+<span class="sourceLineNo">190</span>    }<a name="line.190"></a>
+<span class="sourceLineNo">191</span><a name="line.191"></a>
+<span class="sourceLineNo">192</span>    @Override<a name="line.192"></a>
+<span class="sourceLineNo">193</span>    @SuppressWarnings("CloneDoesntCallSuperClone")<a name="line.193"></a>
+<span class="sourceLineNo">194</span>    // CHECKSTYLE:OFF<a name="line.194"></a>
+<span class="sourceLineNo">195</span>    public Level clone() throws CloneNotSupportedException {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        throw new CloneNotSupportedException();<a name="line.196"></a>
+<span class="sourceLineNo">197</span>    }<a name="line.197"></a>
+<span class="sourceLineNo">198</span>    // CHECKSTYLE:ON<a name="line.198"></a>
+<span class="sourceLineNo">199</span><a name="line.199"></a>
+<span class="sourceLineNo">200</span>    @Override<a name="line.200"></a>
+<span class="sourceLineNo">201</span>    public int compareTo(final Level other) {<a name="line.201"></a>
+<span class="sourceLineNo">202</span>        return intLevel &lt; other.intLevel ? -1 : (intLevel &gt; other.intLevel ? 1 : 0);<a name="line.202"></a>
+<span class="sourceLineNo">203</span>    }<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>    @Override<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    public boolean equals(final Object other) {<a name="line.206"></a>
+<span class="sourceLineNo">207</span>        return other instanceof Level &amp;&amp; other == this;<a name="line.207"></a>
+<span class="sourceLineNo">208</span>    }<a name="line.208"></a>
+<span class="sourceLineNo">209</span><a name="line.209"></a>
+<span class="sourceLineNo">210</span>    public Class&lt;Level&gt; getDeclaringClass() {<a name="line.210"></a>
+<span class="sourceLineNo">211</span>        return Level.class;<a name="line.211"></a>
+<span class="sourceLineNo">212</span>    }<a name="line.212"></a>
+<span class="sourceLineNo">213</span><a name="line.213"></a>
+<span class="sourceLineNo">214</span>    @Override<a name="line.214"></a>
+<span class="sourceLineNo">215</span>    public int hashCode() {<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        return this.name.hashCode();<a name="line.216"></a>
+<span class="sourceLineNo">217</span>    }<a name="line.217"></a>
+<span class="sourceLineNo">218</span><a name="line.218"></a>
+<span class="sourceLineNo">219</span>    /**<a name="line.219"></a>
+<span class="sourceLineNo">220</span>     * Gets the symbolic name of this Level. Equivalent to calling {@link #toString()}.<a name="line.220"></a>
+<span class="sourceLineNo">221</span>     *<a name="line.221"></a>
+<span class="sourceLineNo">222</span>     * @return the name of this Level.<a name="line.222"></a>
+<span class="sourceLineNo">223</span>     */<a name="line.223"></a>
+<span class="sourceLineNo">224</span>    public String name() {<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        return this.name;<a name="line.225"></a>
+<span class="sourceLineNo">226</span>    }<a name="line.226"></a>
+<span class="sourceLineNo">227</span><a name="line.227"></a>
+<span class="sourceLineNo">228</span>    @Override<a name="line.228"></a>
+<span class="sourceLineNo">229</span>    public String toString() {<a name="line.229"></a>
+<span class="sourceLineNo">230</span>        return this.name;<a name="line.230"></a>
+<span class="sourceLineNo">231</span>    }<a name="line.231"></a>
+<span class="sourceLineNo">232</span><a name="line.232"></a>
+<span class="sourceLineNo">233</span>    /**<a name="line.233"></a>
+<span class="sourceLineNo">234</span>     * Retrieves an existing Level or creates on if it didn't previously exist.<a name="line.234"></a>
+<span class="sourceLineNo">235</span>     *<a name="line.235"></a>
+<span class="sourceLineNo">236</span>     * @param name The name of the level.<a name="line.236"></a>
+<span class="sourceLineNo">237</span>     * @param intValue The integer value for the Level. If the level was previously created this value is ignored.<a name="line.237"></a>
+<span class="sourceLineNo">238</span>     * @return The Level.<a name="line.238"></a>
+<span class="sourceLineNo">239</span>     * @throws java.lang.IllegalArgumentException if the name is null or intValue is less than zero.<a name="line.239"></a>
+<span class="sourceLineNo">240</span>     */<a name="line.240"></a>
+<span class="sourceLineNo">241</span>    public static Level forName(final String name, final int intValue) {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>        final Level level = LEVELS.get(name);<a name="line.242"></a>
+<span class="sourceLineNo">243</span>        if (level != null) {<a name="line.243"></a>
+<span class="sourceLineNo">244</span>            return level;<a name="line.244"></a>
+<span class="sourceLineNo">245</span>        }<a name="line.245"></a>
+<span class="sourceLineNo">246</span>        try {<a name="line.246"></a>
+<span class="sourceLineNo">247</span>            return new Level(name, intValue);<a name="line.247"></a>
+<span class="sourceLineNo">248</span>        } catch (final IllegalStateException ex) {<a name="line.248"></a>
+<span class="sourceLineNo">249</span>            // The level was added by something else so just return that one.<a name="line.249"></a>
+<span class="sourceLineNo">250</span>            return LEVELS.get(name);<a name="line.250"></a>
+<span class="sourceLineNo">251</span>        }<a name="line.251"></a>
+<span class="sourceLineNo">252</span>    }<a name="line.252"></a>
+<span class="sourceLineNo">253</span><a name="line.253"></a>
+<span class="sourceLineNo">254</span>    /**<a name="line.254"></a>
+<span class="sourceLineNo">255</span>     * Return the Level associated with the name or null if the Level cannot be found.<a name="line.255"></a>
+<span class="sourceLineNo">256</span>     *<a name="line.256"></a>
+<span class="sourceLineNo">257</span>     * @param name The name of the Level.<a name="line.257"></a>
+<span class="sourceLineNo">258</span>     * @return The Level or null.<a name="line.258"></a>
+<span class="sourceLineNo">259</span>     */<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    public static Level getLevel(final String name) {<a name="line.260"></a>
+<span class="sourceLineNo">261</span>        return LEVELS.get(name);<a name="line.261"></a>
+<span class="sourceLineNo">262</span>    }<a name="line.262"></a>
+<span class="sourceLineNo">263</span><a name="line.263"></a>
+<span class="sourceLineNo">264</span>    /**<a name="line.264"></a>
+<span class="sourceLineNo">265</span>     * Converts the string passed as argument to a level. If the conversion fails, then this method returns<a name="line.265"></a>
+<span class="sourceLineNo">266</span>     * {@link #DEBUG}.<a name="line.266"></a>
+<span class="sourceLineNo">267</span>     *<a name="line.267"></a>
+<span class="sourceLineNo">268</span>     * @param sArg The name of the desired Level.<a name="line.268"></a>
+<span class="sourceLineNo">269</span>     * @return The Level associated with the String.<a name="line.269"></a>
+<span class="sourceLineNo">270</span>     */<a name="line.270"></a>
+<span class="sourceLineNo">271</span>    public static Level toLevel(final String sArg) {<a name="line.271"></a>
+<span class="sourceLineNo">272</span>        return toLevel(sArg, Level.DEBUG);<a name="line.272"></a>
+<span class="sourceLineNo">273</span>    }<a name="line.273"></a>
+<span class="sourceLineNo">274</span><a name="line.274"></a>
+<span class="sourceLineNo">275</span>    /**<a name="line.275"></a>
+<span class="sourceLineNo">276</span>     * Converts the string passed as argument to a level. If the conversion fails, then this method returns the value of<a name="line.276"></a>
+<span class="sourceLineNo">277</span>     * &lt;code&gt;defaultLevel&lt;/code&gt;.<a name="line.277"></a>
+<span class="sourceLineNo">278</span>     *<a name="line.278"></a>
+<span class="sourceLineNo">279</span>     * @param name The name of the desired Level.<a name="line.279"></a>
+<span class="sourceLineNo">280</span>     * @param defaultLevel The Level to use if the String is invalid.<a name="line.280"></a>
+<span class="sourceLineNo">281</span>     * @return The Level associated with the String.<a name="line.281"></a>
+<span class="sourceLineNo">282</span>     */<a name="line.282"></a>
+<span class="sourceLineNo">283</span>    public static Level toLevel(final String name, final Level defaultLevel) {<a name="line.283"></a>
+<span class="sourceLineNo">284</span>        if (name == null) {<a name="line.284"></a>
+<span class="sourceLineNo">285</span>            return defaultLevel;<a name="line.285"></a>
+<span class="sourceLineNo">286</span>        }<a name="line.286"></a>
+<span class="sourceLineNo">287</span>        final Level level = LEVELS.get(toUpperCase(name.trim()));<a name="line.287"></a>
+<span class="sourceLineNo">288</span>        return level == null ? defaultLevel : level;<a name="line.288"></a>
+<span class="sourceLineNo">289</span>    }<a name="line.289"></a>
+<span class="sourceLineNo">290</span><a name="line.290"></a>
+<span class="sourceLineNo">291</span>    private static String toUpperCase(final String name) {<a name="line.291"></a>
+<span class="sourceLineNo">292</span>        return name.toUpperCase(Locale.ENGLISH);<a name="line.292"></a>
+<span class="sourceLineNo">293</span>    }<a name="line.293"></a>
+<span class="sourceLineNo">294</span><a name="line.294"></a>
+<span class="sourceLineNo">295</span>    /**<a name="line.295"></a>
+<span class="sourceLineNo">296</span>     * Return an array of all the Levels that have been registered.<a name="line.296"></a>
+<span class="sourceLineNo">297</span>     *<a name="line.297"></a>
+<span class="sourceLineNo">298</span>     * @return An array of Levels.<a name="line.298"></a>
+<span class="sourceLineNo">299</span>     */<a name="line.299"></a>
+<span class="sourceLineNo">300</span>    public static Level[] values() {<a name="line.300"></a>
+<span class="sourceLineNo">301</span>        final Collection&lt;Level&gt; values = Level.LEVELS.values();<a name="line.301"></a>
+<span class="sourceLineNo">302</span>        return values.toArray(new Level[values.size()]);<a name="line.302"></a>
+<span class="sourceLineNo">303</span>    }<a name="line.303"></a>
+<span class="sourceLineNo">304</span><a name="line.304"></a>
+<span class="sourceLineNo">305</span>    /**<a name="line.305"></a>
+<span class="sourceLineNo">306</span>     * Return the Level associated with the name.<a name="line.306"></a>
+<span class="sourceLineNo">307</span>     *<a name="line.307"></a>
+<span class="sourceLineNo">308</span>     * @param name The name of the Level to return.<a name="line.308"></a>
+<span class="sourceLineNo">309</span>     * @return The Level.<a name="line.309"></a>
+<span class="sourceLineNo">310</span>     * @throws java.lang.NullPointerException if the Level name is {@code null}.<a name="line.310"></a>
+<span class="sourceLineNo">311</span>     * @throws java.lang.IllegalArgumentException if the Level name is not registered.<a name="line.311"></a>
+<span class="sourceLineNo">312</span>     */<a name="line.312"></a>
+<span class="sourceLineNo">313</span>    public static Level valueOf(final String name) {<a name="line.313"></a>
+<span class="sourceLineNo">314</span>        Objects.requireNonNull(name, "No level name given.");<a name="line.314"></a>
+<span class="sourceLineNo">315</span>        final String levelName = toUpperCase(name.trim());<a name="line.315"></a>
+<span class="sourceLineNo">316</span>        final Level level = LEVELS.get(levelName);<a name="line.316"></a>
+<span class="sourceLineNo">317</span>        if (level != null) {<a name="line.317"></a>
+<span class="sourceLineNo">318</span>            return level;<a name="line.318"></a>
+<span class="sourceLineNo">319</span>        }<a name="line.319"></a>
+<span class="sourceLineNo">320</span>        throw new IllegalArgumentException("Unknown level constant [" + levelName + "].");<a name="line.320"></a>
+<span class="sourceLineNo">321</span>    }<a name="line.321"></a>
+<span class="sourceLineNo">322</span><a name="line.322"></a>
+<span class="sourceLineNo">323</span>    /**<a name="line.323"></a>
+<span class="sourceLineNo">324</span>     * Returns the enum constant of the specified enum type with the specified name. The name must match exactly an<a name="line.324"></a>
+<span class="sourceLineNo">325</span>     * identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)<a name="line.325"></a>
+<span class="sourceLineNo">326</span>     *<a name="line.326"></a>
+<span class="sourceLineNo">327</span>     * @param enumType the {@code Class} object of the enum type from which to return a constant<a name="line.327"></a>
+<span class="sourceLineNo">328</span>     * @param name the name of the constant to return<a name="line.328"></a>
+<span class="sourceLineNo">329</span>     * @param &lt;T&gt; The enum type whose constant is to be returned<a name="line.329"></a>
+<span class="sourceLineNo">330</span>     * @return the enum constant of the specified enum type with the specified name<a name="line.330"></a>
+<span class="sourceLineNo">331</span>     * @throws java.lang.IllegalArgumentException if the specified enum type has no constant with the specified name, or<a name="line.331"></a>
+<span class="sourceLineNo">332</span>     *             the specified class object does not represent an enum type<a name="line.332"></a>
+<span class="sourceLineNo">333</span>     * @throws java.lang.NullPointerException if {@code enumType} or {@code name} are {@code null}<a name="line.333"></a>
+<span class="sourceLineNo">334</span>     * @see java.lang.Enum#valueOf(Class, String)<a name="line.334"></a>
+<span class="sourceLineNo">335</span>     */<a name="line.335"></a>
+<span class="sourceLineNo">336</span>    public static &lt;T extends Enum&lt;T&gt;&gt; T valueOf(final Class&lt;T&gt; enumType, final String name) {<a name="line.336"></a>
+<span class="sourceLineNo">337</span>        return Enum.valueOf(enumType, name);<a name="line.337"></a>
+<span class="sourceLineNo">338</span>    }<a name="line.338"></a>
+<span class="sourceLineNo">339</span><a name="line.339"></a>
+<span class="sourceLineNo">340</span>    // for deserialization<a name="line.340"></a>
+<span class="sourceLineNo">341</span>    protected Object readResolve() {<a name="line.341"></a>
+<span class="sourceLineNo">342</span>        return Level.valueOf(this.name);<a name="line.342"></a>
+<span class="sourceLineNo">343</span>    }<a name="line.343"></a>
+<span class="sourceLineNo">344</span>}<a name="line.344"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

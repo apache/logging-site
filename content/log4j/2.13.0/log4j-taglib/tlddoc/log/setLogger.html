@@ -1,0 +1,153 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>setLogger
+          (Apache Log4j Tag Library Tag library documentation)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="setLogger (Apache Log4j Tag Library Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="setLogger.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">Log4j 2 Tag Library</font>
+<br>
+            Tag setLogger</h2>
+<hr>Sets the default Logger to use for the rest of this JSP's execution OR exports
+      an org.apache.logging.log4j.Logger instance as the specified EL variable. The "value"
+      attribute specifies either the String name of a Logger to create or an actual Logger instance.
+      By default, Loggers are constructed and assigned the standard
+      org.apache.logging.log4j.message.ParameterizedMessageFactory. The optional "factory" attribute
+      can be used to override the default message factory.<br>
+<p></p>
+<b>Example:</b>
+<br>
+<pre>
+&lt;log:logger value="com.foo.bar" /&gt;
+&lt;log:logger value="com.bar.foo" var="myLogger" /&gt;
+&lt;log:debug message="This should log with com.foo.bar." /&gt;
+&lt;log:debug logger="${myLogger}" message="This should log with com.bar.foo." /&gt;
+    </pre>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.logging.log4j.taglib.SetLoggerTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>empty</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>logger</td><td>true</td><td>true</td><td><code>java.lang.Object</code></td><td>The name or instance of the Logger to set as the JSP's default Logger or
+        the name of the Logger to export as the specified EL variable.</td>
+</tr>
+<tr valign="top">
+<td>factory</td><td>false</td><td>true</td><td><code>org.apache.logging.log4j.message.MessageFactory</code></td><td>Specify this optional tag to provide a message factory other than the default
+        ParameterizedMessageFactory message factory to use for the Logger. If the Logger has already
+        been created with a different message factory, this will be ignored. Using this attribute
+        makes no sense if the "value" attribute's value is an actual Logger instance, since its
+        message factory cannot be changed.</td>
+</tr>
+<tr valign="top">
+<td>var</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>The optional name of the EL variable to export this Logger as. Using this
+        attribute makes no sense if the "value" attribute's value is an actual Logger instance.
+        That would result in an existing Logger on the scope being re-added to the
+        scope.</td>
+</tr>
+<tr valign="top">
+<td>scope</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>Either "page," "request," "session," or "application," the optional scope that
+        the EL variable should be exported to (defaults to "page").</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="setLogger.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

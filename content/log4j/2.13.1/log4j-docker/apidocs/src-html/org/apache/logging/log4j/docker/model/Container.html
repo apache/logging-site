@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1">/*</a>
+<span class="sourceLineNo">002</span><a name="line.2"> * Licensed to the Apache Software Foundation (ASF) under one or more</a>
+<span class="sourceLineNo">003</span><a name="line.3"> * contributor license agreements. See the NOTICE file distributed with</a>
+<span class="sourceLineNo">004</span><a name="line.4"> * this work for additional information regarding copyright ownership.</a>
+<span class="sourceLineNo">005</span><a name="line.5"> * The ASF licenses this file to You under the Apache license, Version 2.0</a>
+<span class="sourceLineNo">006</span><a name="line.6"> * (the "License"); you may not use this file except in compliance with</a>
+<span class="sourceLineNo">007</span><a name="line.7"> * the License. You may obtain a copy of the License at</a>
+<span class="sourceLineNo">008</span><a name="line.8"> *</a>
+<span class="sourceLineNo">009</span><a name="line.9"> *      http://www.apache.org/licenses/LICENSE-2.0</a>
+<span class="sourceLineNo">010</span><a name="line.10"> *</a>
+<span class="sourceLineNo">011</span><a name="line.11"> * Unless required by applicable law or agreed to in writing, software</a>
+<span class="sourceLineNo">012</span><a name="line.12"> * distributed under the License is distributed on an "AS IS" BASIS,</a>
+<span class="sourceLineNo">013</span><a name="line.13"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</a>
+<span class="sourceLineNo">014</span><a name="line.14"> * See the license for the specific language governing permissions and</a>
+<span class="sourceLineNo">015</span><a name="line.15"> * limitations under the license.</a>
+<span class="sourceLineNo">016</span><a name="line.16"> */</a>
+<span class="sourceLineNo">017</span><a name="line.17">package org.apache.logging.log4j.docker.model;</a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19">import java.util.List;</a>
+<span class="sourceLineNo">020</span><a name="line.20">import java.util.Map;</a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span><a name="line.22">import com.fasterxml.jackson.annotation.JsonProperty;</a>
+<span class="sourceLineNo">023</span><a name="line.23"></a>
+<span class="sourceLineNo">024</span><a name="line.24">/**</a>
+<span class="sourceLineNo">025</span><a name="line.25"> * Definition of a Docker Container</a>
+<span class="sourceLineNo">026</span><a name="line.26"> */</a>
+<span class="sourceLineNo">027</span><a name="line.27">public class Container {</a>
+<span class="sourceLineNo">028</span><a name="line.28">    @JsonProperty("Id")</a>
+<span class="sourceLineNo">029</span><a name="line.29">    private String id;</a>
+<span class="sourceLineNo">030</span><a name="line.30">    </a>
+<span class="sourceLineNo">031</span><a name="line.31">    @JsonProperty("Names")</a>
+<span class="sourceLineNo">032</span><a name="line.32">    private List&lt;String&gt; names;</a>
+<span class="sourceLineNo">033</span><a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34">    @JsonProperty("Path")</a>
+<span class="sourceLineNo">035</span><a name="line.35">    private String path;</a>
+<span class="sourceLineNo">036</span><a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37">    @JsonProperty("Args")</a>
+<span class="sourceLineNo">038</span><a name="line.38">    private String[] args;</a>
+<span class="sourceLineNo">039</span><a name="line.39"></a>
+<span class="sourceLineNo">040</span><a name="line.40">    @JsonProperty("Image")</a>
+<span class="sourceLineNo">041</span><a name="line.41">    private String image;</a>
+<span class="sourceLineNo">042</span><a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43">    @JsonProperty("ImageID")</a>
+<span class="sourceLineNo">044</span><a name="line.44">    private String imageId;</a>
+<span class="sourceLineNo">045</span><a name="line.45"></a>
+<span class="sourceLineNo">046</span><a name="line.46">    @JsonProperty("Command")</a>
+<span class="sourceLineNo">047</span><a name="line.47">    private String command;</a>
+<span class="sourceLineNo">048</span><a name="line.48"></a>
+<span class="sourceLineNo">049</span><a name="line.49">    @JsonProperty("Created")</a>
+<span class="sourceLineNo">050</span><a name="line.50">    private Long created;</a>
+<span class="sourceLineNo">051</span><a name="line.51"></a>
+<span class="sourceLineNo">052</span><a name="line.52">    @JsonProperty("Ports")</a>
+<span class="sourceLineNo">053</span><a name="line.53">    private List&lt;PortDefinition&gt; ports;</a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span><a name="line.55">    @JsonProperty("Labels")</a>
+<span class="sourceLineNo">056</span><a name="line.56">    private Map&lt;String, String&gt; labels;</a>
+<span class="sourceLineNo">057</span><a name="line.57"></a>
+<span class="sourceLineNo">058</span><a name="line.58">    @JsonProperty("State")</a>
+<span class="sourceLineNo">059</span><a name="line.59">    private String state;</a>
+<span class="sourceLineNo">060</span><a name="line.60"></a>
+<span class="sourceLineNo">061</span><a name="line.61">    @JsonProperty("Status")</a>
+<span class="sourceLineNo">062</span><a name="line.62">    private String status;</a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64">    @JsonProperty("HostConfig")</a>
+<span class="sourceLineNo">065</span><a name="line.65">    private HostConfig hostConfig;</a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67">    @JsonProperty("NetworkSettings")</a>
+<span class="sourceLineNo">068</span><a name="line.68">    private NetworkSettings networkSettings;</a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span><a name="line.70">    @JsonProperty("Mounts")</a>
+<span class="sourceLineNo">071</span><a name="line.71">    private List&lt;Mount&gt; mounts;</a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span><a name="line.73">    public String getId() {</a>
+<span class="sourceLineNo">074</span><a name="line.74">        return id;</a>
+<span class="sourceLineNo">075</span><a name="line.75">    }</a>
+<span class="sourceLineNo">076</span><a name="line.76"></a>
+<span class="sourceLineNo">077</span><a name="line.77">    public void setId(String id) {</a>
+<span class="sourceLineNo">078</span><a name="line.78">        this.id = id;</a>
+<span class="sourceLineNo">079</span><a name="line.79">    }</a>
+<span class="sourceLineNo">080</span><a name="line.80"></a>
+<span class="sourceLineNo">081</span><a name="line.81">    public List&lt;String&gt; getNames() {</a>
+<span class="sourceLineNo">082</span><a name="line.82">        return names;</a>
+<span class="sourceLineNo">083</span><a name="line.83">    }</a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span><a name="line.85">    public void setNames(List&lt;String&gt; names) {</a>
+<span class="sourceLineNo">086</span><a name="line.86">        this.names = names;</a>
+<span class="sourceLineNo">087</span><a name="line.87">    }</a>
+<span class="sourceLineNo">088</span><a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89">    public String getImage() {</a>
+<span class="sourceLineNo">090</span><a name="line.90">        return image;</a>
+<span class="sourceLineNo">091</span><a name="line.91">    }</a>
+<span class="sourceLineNo">092</span><a name="line.92"></a>
+<span class="sourceLineNo">093</span><a name="line.93">    public void setImage(String image) {</a>
+<span class="sourceLineNo">094</span><a name="line.94">        this.image = image;</a>
+<span class="sourceLineNo">095</span><a name="line.95">    }</a>
+<span class="sourceLineNo">096</span><a name="line.96"></a>
+<span class="sourceLineNo">097</span><a name="line.97">    public String getImageId() {</a>
+<span class="sourceLineNo">098</span><a name="line.98">        return imageId;</a>
+<span class="sourceLineNo">099</span><a name="line.99">    }</a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span><a name="line.101">    public void setImageId(String imageId) {</a>
+<span class="sourceLineNo">102</span><a name="line.102">        this.imageId = imageId;</a>
+<span class="sourceLineNo">103</span><a name="line.103">    }</a>
+<span class="sourceLineNo">104</span><a name="line.104"></a>
+<span class="sourceLineNo">105</span><a name="line.105">    public String getCommand() {</a>
+<span class="sourceLineNo">106</span><a name="line.106">        return command;</a>
+<span class="sourceLineNo">107</span><a name="line.107">    }</a>
+<span class="sourceLineNo">108</span><a name="line.108"></a>
+<span class="sourceLineNo">109</span><a name="line.109">    public void setCommand(String command) {</a>
+<span class="sourceLineNo">110</span><a name="line.110">        this.command = command;</a>
+<span class="sourceLineNo">111</span><a name="line.111">    }</a>
+<span class="sourceLineNo">112</span><a name="line.112"></a>
+<span class="sourceLineNo">113</span><a name="line.113">    public Long getCreated() {</a>
+<span class="sourceLineNo">114</span><a name="line.114">        return created;</a>
+<span class="sourceLineNo">115</span><a name="line.115">    }</a>
+<span class="sourceLineNo">116</span><a name="line.116"></a>
+<span class="sourceLineNo">117</span><a name="line.117">    public void setCreated(Long created) {</a>
+<span class="sourceLineNo">118</span><a name="line.118">        this.created = created;</a>
+<span class="sourceLineNo">119</span><a name="line.119">    }</a>
+<span class="sourceLineNo">120</span><a name="line.120"></a>
+<span class="sourceLineNo">121</span><a name="line.121">    public List&lt;PortDefinition&gt; getPorts() {</a>
+<span class="sourceLineNo">122</span><a name="line.122">        return ports;</a>
+<span class="sourceLineNo">123</span><a name="line.123">    }</a>
+<span class="sourceLineNo">124</span><a name="line.124"></a>
+<span class="sourceLineNo">125</span><a name="line.125">    public void setPorts(List&lt;PortDefinition&gt; ports) {</a>
+<span class="sourceLineNo">126</span><a name="line.126">        this.ports = ports;</a>
+<span class="sourceLineNo">127</span><a name="line.127">    }</a>
+<span class="sourceLineNo">128</span><a name="line.128"></a>
+<span class="sourceLineNo">129</span><a name="line.129">    public Map&lt;String, String&gt; getLabels() {</a>
+<span class="sourceLineNo">130</span><a name="line.130">        return labels;</a>
+<span class="sourceLineNo">131</span><a name="line.131">    }</a>
+<span class="sourceLineNo">132</span><a name="line.132"></a>
+<span class="sourceLineNo">133</span><a name="line.133">    public void setLabels(Map&lt;String, String&gt; labels) {</a>
+<span class="sourceLineNo">134</span><a name="line.134">        this.labels = labels;</a>
+<span class="sourceLineNo">135</span><a name="line.135">    }</a>
+<span class="sourceLineNo">136</span><a name="line.136"></a>
+<span class="sourceLineNo">137</span><a name="line.137">    public String getState() {</a>
+<span class="sourceLineNo">138</span><a name="line.138">        return state;</a>
+<span class="sourceLineNo">139</span><a name="line.139">    }</a>
+<span class="sourceLineNo">140</span><a name="line.140"></a>
+<span class="sourceLineNo">141</span><a name="line.141">    public void setState(String state) {</a>
+<span class="sourceLineNo">142</span><a name="line.142">        this.state = state;</a>
+<span class="sourceLineNo">143</span><a name="line.143">    }</a>
+<span class="sourceLineNo">144</span><a name="line.144"></a>
+<span class="sourceLineNo">145</span><a name="line.145">    public String getStatus() {</a>
+<span class="sourceLineNo">146</span><a name="line.146">        return status;</a>
+<span class="sourceLineNo">147</span><a name="line.147">    }</a>
+<span class="sourceLineNo">148</span><a name="line.148"></a>
+<span class="sourceLineNo">149</span><a name="line.149">    public void setStatus(String status) {</a>
+<span class="sourceLineNo">150</span><a name="line.150">        this.status = status;</a>
+<span class="sourceLineNo">151</span><a name="line.151">    }</a>
+<span class="sourceLineNo">152</span><a name="line.152"></a>
+<span class="sourceLineNo">153</span><a name="line.153">    public HostConfig getHostConfig() {</a>
+<span class="sourceLineNo">154</span><a name="line.154">        return hostConfig;</a>
+<span class="sourceLineNo">155</span><a name="line.155">    }</a>
+<span class="sourceLineNo">156</span><a name="line.156"></a>
+<span class="sourceLineNo">157</span><a name="line.157">    public void setHostConfig(HostConfig hostConfig) {</a>
+<span class="sourceLineNo">158</span><a name="line.158">        this.hostConfig = hostConfig;</a>
+<span class="sourceLineNo">159</span><a name="line.159">    }</a>
+<span class="sourceLineNo">160</span><a name="line.160"></a>
+<span class="sourceLineNo">161</span><a name="line.161">    public NetworkSettings getNetworkSettings() {</a>
+<span class="sourceLineNo">162</span><a name="line.162">        return networkSettings;</a>
+<span class="sourceLineNo">163</span><a name="line.163">    }</a>
+<span class="sourceLineNo">164</span><a name="line.164"></a>
+<span class="sourceLineNo">165</span><a name="line.165">    public void setNetworkSettings(NetworkSettings networkSettings) {</a>
+<span class="sourceLineNo">166</span><a name="line.166">        this.networkSettings = networkSettings;</a>
+<span class="sourceLineNo">167</span><a name="line.167">    }</a>
+<span class="sourceLineNo">168</span><a name="line.168"></a>
+<span class="sourceLineNo">169</span><a name="line.169">    public List&lt;Mount&gt; getMounts() {</a>
+<span class="sourceLineNo">170</span><a name="line.170">        return mounts;</a>
+<span class="sourceLineNo">171</span><a name="line.171">    }</a>
+<span class="sourceLineNo">172</span><a name="line.172"></a>
+<span class="sourceLineNo">173</span><a name="line.173">    public void setMounts(List&lt;Mount&gt; mounts) {</a>
+<span class="sourceLineNo">174</span><a name="line.174">        this.mounts = mounts;</a>
+<span class="sourceLineNo">175</span><a name="line.175">    }</a>
+<span class="sourceLineNo">176</span><a name="line.176">}</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

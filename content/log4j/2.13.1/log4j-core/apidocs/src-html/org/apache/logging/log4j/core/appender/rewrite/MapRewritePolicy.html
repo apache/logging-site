@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Licensed to the Apache Software Foundation (ASF) under one or more<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * contributor license agreements. See the NOTICE file distributed with<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * this work for additional information regarding copyright ownership.<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The ASF licenses this file to You under the Apache license, Version 2.0<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * (the "License"); you may not use this file except in compliance with<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * the License. You may obtain a copy of the License at<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *      http://www.apache.org/licenses/LICENSE-2.0<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * Unless required by applicable law or agreed to in writing, software<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * See the license for the specific language governing permissions and<a name="line.14"></a>
+<span class="sourceLineNo">015</span> * limitations under the license.<a name="line.15"></a>
+<span class="sourceLineNo">016</span> */<a name="line.16"></a>
+<span class="sourceLineNo">017</span>package org.apache.logging.log4j.core.appender.rewrite;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import java.util.HashMap;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import java.util.Map;<a name="line.20"></a>
+<span class="sourceLineNo">021</span><a name="line.21"></a>
+<span class="sourceLineNo">022</span>import org.apache.logging.log4j.Logger;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import org.apache.logging.log4j.core.Core;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import org.apache.logging.log4j.core.LogEvent;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import org.apache.logging.log4j.core.config.plugins.Plugin;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import org.apache.logging.log4j.core.config.plugins.PluginAttribute;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import org.apache.logging.log4j.core.config.plugins.PluginElement;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.apache.logging.log4j.core.config.plugins.PluginFactory;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import org.apache.logging.log4j.core.impl.Log4jLogEvent;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.apache.logging.log4j.core.util.KeyValuePair;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.apache.logging.log4j.message.MapMessage;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.apache.logging.log4j.message.Message;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.apache.logging.log4j.status.StatusLogger;<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>/**<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * This policy modifies events by replacing or possibly adding keys and values to the MapMessage.<a name="line.36"></a>
+<span class="sourceLineNo">037</span> */<a name="line.37"></a>
+<span class="sourceLineNo">038</span>@Plugin(name = "MapRewritePolicy", category = Core.CATEGORY_NAME, elementType = "rewritePolicy", printObject = true)<a name="line.38"></a>
+<span class="sourceLineNo">039</span>public final class MapRewritePolicy implements RewritePolicy {<a name="line.39"></a>
+<span class="sourceLineNo">040</span><a name="line.40"></a>
+<span class="sourceLineNo">041</span>    /**<a name="line.41"></a>
+<span class="sourceLineNo">042</span>     * Allow subclasses access to the status logger without creating another instance.<a name="line.42"></a>
+<span class="sourceLineNo">043</span>     */<a name="line.43"></a>
+<span class="sourceLineNo">044</span>    protected static final Logger LOGGER = StatusLogger.getLogger();<a name="line.44"></a>
+<span class="sourceLineNo">045</span><a name="line.45"></a>
+<span class="sourceLineNo">046</span>    private final Map&lt;String, Object&gt; map;<a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47"></a>
+<span class="sourceLineNo">048</span>    private final Mode mode;<a name="line.48"></a>
+<span class="sourceLineNo">049</span><a name="line.49"></a>
+<span class="sourceLineNo">050</span>    private MapRewritePolicy(final Map&lt;String, Object&gt; map, final Mode mode) {<a name="line.50"></a>
+<span class="sourceLineNo">051</span>        this.map = map;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>        this.mode = mode;<a name="line.52"></a>
+<span class="sourceLineNo">053</span>    }<a name="line.53"></a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span>    /**<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * Rewrite the event.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     * @param source a logging event that may be returned or<a name="line.57"></a>
+<span class="sourceLineNo">058</span>     * used to create a new logging event.<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     * @return The LogEvent after rewriting.<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     */<a name="line.60"></a>
+<span class="sourceLineNo">061</span>    @Override<a name="line.61"></a>
+<span class="sourceLineNo">062</span>    public LogEvent rewrite(final LogEvent source) {<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        final Message msg = source.getMessage();<a name="line.63"></a>
+<span class="sourceLineNo">064</span>        if (msg == null || !(msg instanceof MapMessage)) {<a name="line.64"></a>
+<span class="sourceLineNo">065</span>            return source;<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        }<a name="line.66"></a>
+<span class="sourceLineNo">067</span><a name="line.67"></a>
+<span class="sourceLineNo">068</span>        @SuppressWarnings("unchecked")<a name="line.68"></a>
+<span class="sourceLineNo">069</span>        final MapMessage&lt;?, Object&gt; mapMsg = (MapMessage&lt;?, Object&gt;) msg;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>        final Map&lt;String, Object&gt; newMap = new HashMap&lt;&gt;(mapMsg.getData());<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        switch (mode) {<a name="line.71"></a>
+<span class="sourceLineNo">072</span>            case Add: {<a name="line.72"></a>
+<span class="sourceLineNo">073</span>                newMap.putAll(map);<a name="line.73"></a>
+<span class="sourceLineNo">074</span>                break;<a name="line.74"></a>
+<span class="sourceLineNo">075</span>            }<a name="line.75"></a>
+<span class="sourceLineNo">076</span>            default: {<a name="line.76"></a>
+<span class="sourceLineNo">077</span>                for (final Map.Entry&lt;String, Object&gt; entry : map.entrySet()) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>                    if (newMap.containsKey(entry.getKey())) {<a name="line.78"></a>
+<span class="sourceLineNo">079</span>                        newMap.put(entry.getKey(), entry.getValue());<a name="line.79"></a>
+<span class="sourceLineNo">080</span>                    }<a name="line.80"></a>
+<span class="sourceLineNo">081</span>                }<a name="line.81"></a>
+<span class="sourceLineNo">082</span>            }<a name="line.82"></a>
+<span class="sourceLineNo">083</span>        }<a name="line.83"></a>
+<span class="sourceLineNo">084</span>        final Message message = mapMsg.newInstance(newMap);<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        return new Log4jLogEvent.Builder(source).setMessage(message).build();<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    }<a name="line.86"></a>
+<span class="sourceLineNo">087</span><a name="line.87"></a>
+<span class="sourceLineNo">088</span>    /**<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     * An enumeration to identify whether keys not in the MapMessage should be added or whether only existing<a name="line.89"></a>
+<span class="sourceLineNo">090</span>     * keys should be updated.<a name="line.90"></a>
+<span class="sourceLineNo">091</span>     */<a name="line.91"></a>
+<span class="sourceLineNo">092</span>    public enum Mode {<a name="line.92"></a>
+<span class="sourceLineNo">093</span><a name="line.93"></a>
+<span class="sourceLineNo">094</span>        /**<a name="line.94"></a>
+<span class="sourceLineNo">095</span>         * Keys should be added.<a name="line.95"></a>
+<span class="sourceLineNo">096</span>         */<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        Add,<a name="line.97"></a>
+<span class="sourceLineNo">098</span><a name="line.98"></a>
+<span class="sourceLineNo">099</span>        /**<a name="line.99"></a>
+<span class="sourceLineNo">100</span>         * Keys should be updated.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>         */<a name="line.101"></a>
+<span class="sourceLineNo">102</span>        Update<a name="line.102"></a>
+<span class="sourceLineNo">103</span>    }<a name="line.103"></a>
+<span class="sourceLineNo">104</span><a name="line.104"></a>
+<span class="sourceLineNo">105</span>    @Override<a name="line.105"></a>
+<span class="sourceLineNo">106</span>    public String toString() {<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        final StringBuilder sb = new StringBuilder();<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        sb.append("mode=").append(mode);<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        sb.append(" {");<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        boolean first = true;<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        for (final Map.Entry&lt;String, Object&gt; entry : map.entrySet()) {<a name="line.111"></a>
+<span class="sourceLineNo">112</span>            if (!first) {<a name="line.112"></a>
+<span class="sourceLineNo">113</span>                sb.append(", ");<a name="line.113"></a>
+<span class="sourceLineNo">114</span>            }<a name="line.114"></a>
+<span class="sourceLineNo">115</span>            sb.append(entry.getKey()).append('=').append(entry.getValue());<a name="line.115"></a>
+<span class="sourceLineNo">116</span>            first = false;<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        }<a name="line.117"></a>
+<span class="sourceLineNo">118</span>        sb.append('}');<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        return sb.toString();<a name="line.119"></a>
+<span class="sourceLineNo">120</span>    }<a name="line.120"></a>
+<span class="sourceLineNo">121</span><a name="line.121"></a>
+<span class="sourceLineNo">122</span>    /**<a name="line.122"></a>
+<span class="sourceLineNo">123</span>     * The factory method to create the MapRewritePolicy.<a name="line.123"></a>
+<span class="sourceLineNo">124</span>     * @param mode The string representation of the Mode.<a name="line.124"></a>
+<span class="sourceLineNo">125</span>     * @param pairs key/value pairs for the new Map keys and values.<a name="line.125"></a>
+<span class="sourceLineNo">126</span>     * @return The MapRewritePolicy.<a name="line.126"></a>
+<span class="sourceLineNo">127</span>     */<a name="line.127"></a>
+<span class="sourceLineNo">128</span>    @PluginFactory<a name="line.128"></a>
+<span class="sourceLineNo">129</span>    public static MapRewritePolicy createPolicy(<a name="line.129"></a>
+<span class="sourceLineNo">130</span>            @PluginAttribute("mode") final String mode,<a name="line.130"></a>
+<span class="sourceLineNo">131</span>            @PluginElement("KeyValuePair") final KeyValuePair[] pairs) {<a name="line.131"></a>
+<span class="sourceLineNo">132</span>        Mode op = mode == null ? op = Mode.Add : Mode.valueOf(mode);<a name="line.132"></a>
+<span class="sourceLineNo">133</span>        if (pairs == null || pairs.length == 0) {<a name="line.133"></a>
+<span class="sourceLineNo">134</span>            LOGGER.error("keys and values must be specified for the MapRewritePolicy");<a name="line.134"></a>
+<span class="sourceLineNo">135</span>            return null;<a name="line.135"></a>
+<span class="sourceLineNo">136</span>        }<a name="line.136"></a>
+<span class="sourceLineNo">137</span>        final Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();<a name="line.137"></a>
+<span class="sourceLineNo">138</span>        for (final KeyValuePair pair : pairs) {<a name="line.138"></a>
+<span class="sourceLineNo">139</span>            final String key = pair.getKey();<a name="line.139"></a>
+<span class="sourceLineNo">140</span>            if (key == null) {<a name="line.140"></a>
+<span class="sourceLineNo">141</span>                LOGGER.error("A null key is not valid in MapRewritePolicy");<a name="line.141"></a>
+<span class="sourceLineNo">142</span>                continue;<a name="line.142"></a>
+<span class="sourceLineNo">143</span>            }<a name="line.143"></a>
+<span class="sourceLineNo">144</span>            final String value = pair.getValue();<a name="line.144"></a>
+<span class="sourceLineNo">145</span>            if (value == null) {<a name="line.145"></a>
+<span class="sourceLineNo">146</span>                LOGGER.error("A null value for key " + key + " is not allowed in MapRewritePolicy");<a name="line.146"></a>
+<span class="sourceLineNo">147</span>                continue;<a name="line.147"></a>
+<span class="sourceLineNo">148</span>            }<a name="line.148"></a>
+<span class="sourceLineNo">149</span>            map.put(pair.getKey(), pair.getValue());<a name="line.149"></a>
+<span class="sourceLineNo">150</span>        }<a name="line.150"></a>
+<span class="sourceLineNo">151</span>        if (map.isEmpty()) {<a name="line.151"></a>
+<span class="sourceLineNo">152</span>            LOGGER.error("MapRewritePolicy is not configured with any valid key value pairs");<a name="line.152"></a>
+<span class="sourceLineNo">153</span>            return null;<a name="line.153"></a>
+<span class="sourceLineNo">154</span>        }<a name="line.154"></a>
+<span class="sourceLineNo">155</span>        return new MapRewritePolicy(map, op);<a name="line.155"></a>
+<span class="sourceLineNo">156</span>    }<a name="line.156"></a>
+<span class="sourceLineNo">157</span>}<a name="line.157"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
