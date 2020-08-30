@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"org.apache.logging.log4j.kubernetes"}]

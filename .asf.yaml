@@ -8,7 +8,6 @@ staging:
   profile: ~
   whoami: asf-staging
 
-github:
-  ghp_branch:  master
-  ghp_path: /docs
-
+publish:
+  profile: ~
+  whoami: asf-site

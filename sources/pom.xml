@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <build>
-        <finalName>roller-website</finalName>
+        <finalName>logging-services-website</finalName>
 
         <plugins>
 
@@ -16,7 +16,7 @@
                 <artifactId>jbake-maven-plugin</artifactId>
                 <version>0.3.2</version>
                 <configuration>
-                    <outputDirectory>../docs</outputDirectory>
+                    <outputDirectory>../content</outputDirectory>
                 </configuration>
                 
                 <executions>

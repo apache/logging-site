@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.apache.logging.log4j.jpl","l":"Log4jSystemLogger"},{"p":"org.apache.logging.log4j.jpl","l":"Log4jSystemLoggerAdapter"},{"p":"org.apache.logging.log4j.jpl","l":"Log4jSystemLoggerFinder"}]
