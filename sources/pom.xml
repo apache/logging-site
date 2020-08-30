@@ -16,7 +16,7 @@
                 <artifactId>jbake-maven-plugin</artifactId>
                 <version>0.3.2</version>
                 <configuration>
-                    <outputDirectory>../content</outputDirectory>
+                    <outputDirectory>../docs</outputDirectory>
                 </configuration>
                 
                 <executions>

@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"org.apache.logging.log4j.kubernetes","l":"KubernetesClientBuilder"},{"p":"org.apache.logging.log4j.kubernetes","l":"KubernetesClientProperties"},{"p":"org.apache.logging.log4j.kubernetes","l":"KubernetesLookup"}]
