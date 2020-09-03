@@ -24,12 +24,12 @@
             <h2>Apache log4php</h2>
             <p>A versatile logging framework for PHP. Originally a port of Apache log4j to PHP, it has grown to include
               various PHP specific features.</p>
-            <p><a target="_blank" class="btn" href="log4php/latest/index.html">Project site &raquo;</a></p>
+            <p><a target="_blank" class="btn" href="log4php">Project site &raquo;</a></p>
           </div>
           <div class="span4">
             <h2>Apache log4cxx</h2>
             <p>Apache log4cxx is a logging framework for C++ patterned after log4j.</p>
-            <p><a target="_blank" class="btn" href="log4cxx/latest_stable/index.html">Project site &raquo;</a></p>
+            <p><a target="_blank" class="btn" href="log4cxx">Project site &raquo;</a></p>
           </div>
 
         </div>
@@ -64,7 +64,7 @@
           <div class="span4">
             <h2>Apache Log4Net</h2>
             <p>A port of the original Apache log4j framework to the Microsoft .NET runtime.</p>
-            <p><a target="_blank" class="btn" href="log4net/2.x/index.html">Project site &raquo;</a></p>
+            <p><a target="_blank" class="btn" href="log4net">Project site &raquo;</a></p>
           </div>
           <div class="span4">
             <h2>Dormant Projects</h2>
