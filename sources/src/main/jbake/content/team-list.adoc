@@ -25,11 +25,13 @@ Active Team Members
 | Carter Kozak | ckozak at apache.org | PMC Member | Log4j2
 | Davyd McColl | davydm at apache.org | Committer | Log4net
 | Christian Grobmeier | grobmeier at apache.org | PMC Member | Log4jphp
+| Ron Grabowski | rgrabowski at apache.org | PMC Chair | Log4net, Log4j
 | Robert Middleton | rmiddleton at apache.org | Committer | Log4cxx
 | Remko Popma | rpopma at apache.org | PMC Member | Log4j2
 | Dominik Psenner | dpsenner at apache.org | PMC Member | Log4net
 | Thorsten Schöning | tschoening at apache.org | Committer | Log4cxx
-| Matt Sicker | mattsicker at apache.org | PMC Chair | Log4j2
+| Matt Sicker | mattsicker at apache.org | PMC Member | Log4j2
+| Volkan Yazici | vy at apache.org | PMC Member | Log4j2 
 | Stephen Webb | swebb2066 at apache.org | Committer | Log4cxx
 |===========================
 
@@ -49,7 +51,6 @@ in the last few years. Inactive members are welcome to continue participating at
 | Bruce Brouwer | bbrouwer at apache.org< | Committer | Log4j2 | Last Active 2015
 | Nicko Cadell | nicko at apache.org | PMC Member | Log4net | Emeritus 2014
 | Alvero Carraso | alvero at apache.org | Committer | Log4php | Unknown
-| Ron Grabowski | rgrabowski at apache.org | PMC Member | Log4net | Last Active 2010
 | Ceki Gülcü | ceki at apache.org | PMC Member | Log4j | Emeritus 2014
 | Ivan Habunek | ihabunek at apache.org | PMC Member | log4php | Last Active 2015
 | Christian Hammers | chammers at apache.org | Committer | log4php | Last Active 2010
