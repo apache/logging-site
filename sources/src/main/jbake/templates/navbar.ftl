@@ -26,7 +26,6 @@
                         <li><a target="_blank" href="log4j/kotlin/index.html">Apache log4j Kotlin API</a></li>
                         <li><a target="_blank" href="log4j/scala/index.html">Apache log4j Scala API</a></li>
                         <li><a target="_blank" href="log4net">Apache log4net</a></li>
-                        <li><a target="_blank" href="log4php">Apache log4php</a></li>
                     </ul>
                 </li>
             </ul>
@@ -36,6 +35,7 @@
                     <ul class="dropdown-menu">
                         <li><a target="_blank" href="log4j/1.2/index.html">Apache log4j 1.x</a></li>
                         <li><a target="_blank" href="log4j/extras/index.html">Apache log4j 1.x extras</a></li>
+                        <li><a target="_blank" href="log4php">Apache log4php</a></li>
                     </ul>
                 </li>
             </ul>
