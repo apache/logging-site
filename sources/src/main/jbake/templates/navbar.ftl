@@ -50,6 +50,7 @@
                         <li><a target="_blank" href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
                         <li><a target="_blank" href="https://www.apache.org/events/current-event.html">Current Events</a></li>
                         <li><a target="_blank" href="https://www.apache.org/security/">Security</a></li>
+                        <li><a target="_blank" href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
                     </ul>
                 </li>
             </ul>
