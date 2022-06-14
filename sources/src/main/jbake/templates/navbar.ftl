@@ -11,6 +11,7 @@
                         <li><a target="_blank" href="team-list.html">Team</a></li>
                         <li><a target="_blank" href="mailing-lists.html">Mailing lists</a></li>
                         <li><a target="_blank" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+                        <li><a target="_blank" href="what-is-logging.html">What is logging?</a>
                         </li>
                     </ul>
                 </li>
