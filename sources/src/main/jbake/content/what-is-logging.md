@@ -3,6 +3,8 @@ status=published
 type=page
 ~~~~~~
 
+[TOC bullet hierarchy levels=1-3]
+
 # What is logging?
 At a high level, logging is used to capture information during the run of an
 application.  This can include different types of information about both the
@@ -30,16 +32,16 @@ At a minimum, a logging framework needs to be able to do the following:
 behave exactly the same no matter if logging is enabled or disabled
 
 However, a logging framework that does only these things is not particularly 
-useful, and no better than using System.out.println() or printf().  Common 
+useful, and no better than using `System.out.println()` or `printf()`.  Common 
 features of logging frameworks generally include:
 
 * Ability to send log messages to other places than just stdout/stderr.  For 
 example, common places to send logs could be:
-** syslog
-** A file on the local filesystem
-** Remote log server(e.g. ELK, Splunk, kibana, etc.)
-** Windows event log
-** Database
+   1. syslog
+   2. A file on the local filesystem
+   3. Remote log server(e.g. ELK, Splunk, kibana, etc.)
+   4. Windows event log
+   5. Database
 * Filtering based off of levels and data
 * Location information of where the log statement is in the code
 * Allow for rotation of files when logging to a file.  This allows you to do 
