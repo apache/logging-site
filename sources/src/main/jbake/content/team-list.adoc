@@ -6,9 +6,9 @@ type=page
 Project Team
 ------------
 
-A successful project requires many people to play many roles. Some members write code or documentation, while others are valuable as testers, submitting patches and suggestions.</p>
+A successful project requires many people to play many roles. Some members write code or documentation, while others are valuable as testers, submitting patches and suggestions.
 
-The team is comprised of Members and Contributors. Members have direct access to the source of a project and actively evolve the code-base. Contributors improve the project through submission of patches and suggestions to the Members. The number of Contributors to the project is unbounded. Get involved today. All contributions to the project are greatly appreciated.</p>
+The team is comprised of Members and Contributors. Members have direct access to the source of a project and actively evolve the code-base. Contributors improve the project through submission of patches and suggestions to the Members. The number of Contributors to the project is unbounded. Get involved today. All contributions to the project are greatly appreciated.
 
 Active Team Members
 ~~~~~~~~~~~~~~~~~~~
@@ -33,6 +33,7 @@ Active Team Members
 | Matt Sicker | mattsicker at apache.org | PMC Member | Log4j2
 | Volkan Yazici | vy at apache.org | PMC Member | Log4j2 
 | Stephen Webb | swebb2066 at apache.org | Committer | Log4cxx
+| Piotr P. Karwasz | pkarwasz at apache.org | PMC Member | Log4j2
 |===========================
 
 [options="header,footer]
@@ -56,7 +57,7 @@ in the last few years. Inactive members are welcome to continue participating at
 | Christian Hammers | chammers at apache.org | Committer | log4php | Last Active 2010
 | Jacob Kjome | hoju at apache.org| PMC Member | log4j | Emeritus 2014
 | Paul Smith | psmith at apache.org | PMC Member | log4j, chainsaw | Emeritus 2014
-| Mikael Ståldal | mikes at apache.org | PMC</span> Member| log4j2 | Last Active 2018
+| Mikael Ståldal | mikes at apache.org | PMC Member| log4j2 | Last Active 2018
 | Knut Urdalen | kurdalen at apache.org | Committer | log4php | Last Active 2010
 | Nick Williams | nickwilliams at apache.org | PMC Member | log4j2 | Last Active 2014
 | Mark Womack | mwomack at apache.org | PMC Member | log4j | Last Active 2006
