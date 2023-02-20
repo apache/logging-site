@@ -25,13 +25,13 @@ Active Team Members
 | Carter Kozak | ckozak at apache.org | PMC Member | Log4j2
 | Davyd McColl | davydm at apache.org | Committer | Log4net
 | Christian Grobmeier | grobmeier at apache.org | PMC Member | Log4jphp
-| Ron Grabowski | rgrabowski at apache.org | PMC Chair | Log4net, Log4j
+| Ron Grabowski | rgrabowski at apache.org | PMC Member | Log4net, Log4j
 | Robert Middleton | rmiddleton at apache.org | Committer | Log4cxx
 | Remko Popma | rpopma at apache.org | PMC Member | Log4j2
 | Dominik Psenner | dpsenner at apache.org | PMC Member | Log4net
 | Thorsten Schöning | tschoening at apache.org | Committer | Log4cxx
 | Matt Sicker | mattsicker at apache.org | PMC Member | Log4j2
-| Volkan Yazici | vy at apache.org | PMC Member | Log4j2 
+| Volkan Yazıcı | vy at apache.org | PMC Chair | Log4j2
 | Stephen Webb | swebb2066 at apache.org | Committer | Log4cxx
 | Piotr P. Karwasz | pkarwasz at apache.org | PMC Member | Log4j2
 |===========================
