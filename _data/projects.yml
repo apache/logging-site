@@ -1,0 +1,40 @@
+- name: Apache Log4j™
+  description: Log4j 2 provides both a portable logging API and implementation for Java with significant improvements over its predecessor, Log4j 1.x.
+  url: log4j/2.x/index.html
+  status: active
+- name: Apache Log4j™ for Kotlin
+  description: Kotlin API for Log4j 2.
+  url: log4j/kotlin/index.html
+  status: active
+- name: Apache Log4j™ for Scala
+  description: Scala API for Log4j 2.
+  url: log4j/scala/index.html
+  status: active
+- name: Apache log4cxx
+  description: Apache log4cxx is a logging framework for C++ patterned after log4j.
+  url: log4cxx
+  status: active
+- name: Apache chainsaw
+  description: A GUI based log viewer. Chainsaw is a companion application to log4j written by members of the log4j development community.
+  url: chainsaw/2.x/index.html
+  status: active
+- name: Apache Log4j Audit
+  description: Audit logging framework built upon Apache Log4j 2.
+  url: log4j-audit/latest/index.html
+  status: active
+- name: Apache Log4Net
+  description: A port of the original Apache log4j framework to the Microsoft .NET runtime.
+  url: log4net
+  status: active
+- name: Apache Log4j 1.x
+  description: The original Log4j. Reached End-Of-Life August 2015.
+  url: log4j/1.2/index.html
+  status: dormant
+- name: Apache log4j 1 extras
+  description: Extras for log4j 1.x, like companions, receivers and more.
+  url: log4j/extras/index.html
+  status: dormant
+- name: Apache log4php
+  description: A versatile logging framework for PHP. Originally a port of Apache log4j to PHP, it has grown to include various PHP specific features.
+  url: log4php
+  status: dormant  

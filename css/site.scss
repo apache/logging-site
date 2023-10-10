@@ -1,3 +1,5 @@
+---
+---
 /*
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
@@ -33,3 +35,24 @@ limitations under the License.
 blockquote { margin-top: 20px; font-weight: normal; }
 blockquote p { margin-bottom: 12px; font-size: 14px; text-align: justify; }
 blockquote ul { margin-left: 50px; font-size: 14px; }
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+
+    .project {
+        width: 33%;
+        max-width: 33%;
+        padding: 1em;
+        flex-grow: 1;
+    }
+
+    @media screen and (max-width: 930px) {
+        .project {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
