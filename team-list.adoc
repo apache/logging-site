@@ -1,0 +1,80 @@
+---
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+layout: default
+---
+				
+Project Team
+------------
+
+A successful project requires many people to play many roles. Some members write code or documentation, while others are valuable as testers, submitting patches and suggestions.
+
+The team is comprised of Members and Contributors. Members have direct access to the source of a project and actively evolve the code-base. Contributors improve the project through submission of patches and suggestions to the Members. The number of Contributors to the project is unbounded. Get involved today. All contributions to the project are greatly appreciated.
+
+Active Team Members
+~~~~~~~~~~~~~~~~~~~
+
+[frame=all,grid=all]
+|===========================
+|Name|Email|Role|Projects
+
+| Scott Deboy | sdeboy at apache.org | PMC Member | Log4j, Log4j2, Chainsaw
+| Ralph Goers | rgoers at apache.org | PMC Member | Log4j2, Log4j-Audit
+| Gary Gregory | ggregory at apache.org | PMC Member | Log4j2
+| Raman Gupta | rgupta at apache.org | Committer | Log4j-Kotlin
+| Andrei Ivanov | shadow at apache.org | Committer | Log4j-Audit
+| Carter Kozak | ckozak at apache.org | PMC Member | Log4j2
+| Davyd McColl | davydm at apache.org | Committer | Log4net
+| Christian Grobmeier | grobmeier at apache.org | PMC Member | Log4jphp
+| Ron Grabowski | rgrabowski at apache.org | PMC Member | Log4net, Log4j
+| Robert Middleton | rmiddleton at apache.org | Committer | Log4cxx
+| Remko Popma | rpopma at apache.org | PMC Member | Log4j2
+| Dominik Psenner | dpsenner at apache.org | PMC Member | Log4net
+| Thorsten Schöning | tschoening at apache.org | Committer | Log4cxx
+| Matt Sicker | mattsicker at apache.org | PMC Member | Log4j2
+| Volkan Yazıcı | vy at apache.org | PMC Chair | Log4j2
+| Stephen Webb | swebb2066 at apache.org | Committer | Log4cxx
+| Piotr P. Karwasz | pkarwasz at apache.org | PMC Member | Log4j2
+|===========================
+
+[options="header,footer]
+Inactive Team Members
+~~~~~~~~~~~~~~~~~~~~~
+
+Inactive members have either requested Emeritus status or have not participated in the community
+in the last few years. Inactive members are welcome to continue participating at any time.
+
+[frame=all,grid=all]
+|===========================
+| Name | Email | Role | Projects | Status
+
+| Curt Arnold | carnold at apache.org | PMC Member | Log4j, Log4cxx | Emeritus 2017
+| Stefan Bodewig | bodewig at apache.org | PMC Member | Log4net | Emeritus 2018
+| Bruce Brouwer | bbrouwer at apache.org< | Committer | Log4j2 | Last Active 2015
+| Nicko Cadell | nicko at apache.org | PMC Member | Log4net | Emeritus 2014
+| Alvero Carraso | alvero at apache.org | Committer | Log4php | Unknown
+| Ceki Gülcü | ceki at apache.org | PMC Member | Log4j | Emeritus 2014
+| Ivan Habunek | ihabunek at apache.org | PMC Member | log4php | Last Active 2015
+| Christian Hammers | chammers at apache.org | Committer | log4php | Last Active 2010
+| Jacob Kjome | hoju at apache.org| PMC Member | log4j | Emeritus 2014
+| Paul Smith | psmith at apache.org | PMC Member | log4j, chainsaw | Emeritus 2014
+| Mikael Ståldal | mikes at apache.org | PMC Member| log4j2 | Last Active 2018
+| Knut Urdalen | kurdalen at apache.org | Committer | log4php | Last Active 2010
+| Nick Williams | nickwilliams at apache.org | PMC Member | log4j2 | Last Active 2014
+| Mark Womack | mwomack at apache.org | PMC Member | log4j | Last Active 2006
+|===========================
