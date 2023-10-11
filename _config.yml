@@ -28,6 +28,7 @@ plugins:
   - jekyll-asciidoc
   - jekyll-feed
 
+permalink: /blog/:year/:month/:day/:title:output_ext
 sass:
   sass_dir: _sass
   style: compressed
