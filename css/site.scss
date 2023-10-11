@@ -56,3 +56,18 @@ blockquote ul { margin-left: 50px; font-size: 14px; }
     }
 }
 
+.post-list {
+    list-style: none;
+
+    .post-title {
+        font-size: 2em;
+        margin: 0.5em 0 0.5em 0;
+    }
+    .post-date {
+        font-style: italic;
+    }
+    .post-tags {
+        margin-bottom: 3em;
+        color: gray;
+    }
+}
