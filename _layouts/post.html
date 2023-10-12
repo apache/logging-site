@@ -17,7 +17,7 @@
         {{ page.date | date_to_string }}
       </time>
       
-      {{content}}
+      <div itemprop="text">{{content}}</div>
     </div>
 
     {% include footer.html %}
