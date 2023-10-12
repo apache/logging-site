@@ -8,7 +8,7 @@ jekyll:
   whoami: jekyll
   target: asf-staging
 staging:
-  profile: jekyll
+  profile: ~
   whoami: asf-staging
 publish:
   whoami: asf-site
