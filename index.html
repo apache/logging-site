@@ -18,29 +18,25 @@
 
 layout: default
 ---
-<div class="container">
-<div class="content">
-  <div class="hero-unit">
-    <div class="pull-right"><img class="logo" src="img/feather.gif" /></div>
-    <h1>Apache Logging Services</h1>
-    <p>The Apache Logging Services Project creates and maintains open-source software related to the logging of
-      application behavior and released at no charge to the public.</p>
-  </div>
 
-  <div class="projects">
-    {% for project in site.data.projects %}
-      {% if project.status == "active" %}
-      <div class="project">
-        <h2>{{project.name}}</h2>
-        <p>{{project.description}}</p>
-        <p><a target="_blank" class="btn" href="{{project.url}}">Project site &raquo;</a></p>
-      </div>
-      {% endif %}
-    {% endfor %}
-      <div class="project">
-        <p><a class="btn" href="dormant.html">See dormant projects &raquo;</a></p>
-      </div>
-  </div>
+<div class="hero-unit">
+  <div class="pull-right"><img class="logo" src="img/feather.gif" /></div>
+  <h1>Apache Logging Services</h1>
+  <p>The Apache Logging Services Project creates and maintains open-source software related to the logging of
+    application behavior and released at no charge to the public.</p>
+</div>
 
-  
-
+<div class="projects">
+  {% for project in site.data.projects %}
+    {% if project.status == "active" %}
+    <div class="project">
+      <h2>{{project.name}}</h2>
+      <p>{{project.description}}</p>
+      <p><a target="_blank" class="btn" href="{{project.url}}">Project site &raquo;</a></p>
+    </div>
+    {% endif %}
+  {% endfor %}
+    <div class="project">
+      <p><a class="btn" href="dormant.html">See dormant projects &raquo;</a></p>
+    </div>
+</div>
