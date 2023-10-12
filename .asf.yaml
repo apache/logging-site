@@ -14,8 +14,8 @@ notifications:
 
 jekyll:
   whoami: jekyll
-  target: asf-staging-jekyll
+  target: asf-staging
 staging:
-  whoami: asf-staging-jekyll
+  whoami: asf-staging
 publish:
   whoami: asf-site
