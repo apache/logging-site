@@ -45,6 +45,7 @@ exclude:
   - run-jekyll.sh
   - run-docker-build.sh
   - .sass-cache/
+  - Dockerfile
 #   - .jekyll-cache/
 #   - gemfiles/
 #   - Gemfile
