@@ -283,4 +283,3 @@ Logging is a rather complicated topic that covers many different aspects.  While
 different applications will have different requirements for their log statements,
 the projects of the Apache Logging Services Commitee provide a generic and
 widely applicable implemenation of logging for all kinds of applications.
-
