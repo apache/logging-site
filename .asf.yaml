@@ -7,4 +7,4 @@ notifications:
 jekyll:
   whoami: jekyll
   outputdir: content
-  target: asf-staging
+  target: asf-stagingtest
