@@ -5,6 +5,7 @@ notifications:
   jira_options: link label comment 
 
 jekyll:
+  profile: ~
   whoami: jekyll
   outputdir: content
   target: asf-stagingtest
