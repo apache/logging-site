@@ -8,4 +8,4 @@ jekyll:
   profile: ~
   whoami: jekyll
   outputdir: content
-  target: asf-stagingtest
+  target: asf-staging
