@@ -22,3 +22,7 @@ staging:
   profile: cyclonedx
   whoami: cyclonedx
   subdir: cyclonedx
+
+publish:
+  whoami: cyclonedx
+  subdir: cyclonedx
