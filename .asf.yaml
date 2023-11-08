@@ -25,4 +25,4 @@ staging:
 
 publish:
   whoami: cyclonedx
-  subdir: cyclonedx
+  subdir: content/cyclonedx
