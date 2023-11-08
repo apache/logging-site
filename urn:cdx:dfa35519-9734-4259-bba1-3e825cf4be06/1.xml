@@ -323,10 +323,10 @@ An attacker who can control log messages or log message parameters can execute a
     </vulnerability>
 
     <vulnerability>
-      <id>CVE-2017-5645</id>
+      <id>CVE-2020-9488</id>
       <source>
         <name>NVD</name>
-        <url>https://nvd.nist.gov/vuln/detail/CVE-2017-5645</url>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2020-9488</url>
       </source>
       <references>
         <reference>
