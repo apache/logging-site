@@ -28,6 +28,9 @@ plugins:
   - jekyll-asciidoc
   - jekyll-feed
 
+asciidoctor:
+  base_dir: :docdir
+
 permalink: /blog/:year/:month/:day/:title:output_ext
 sass:
   sass_dir: _sass
