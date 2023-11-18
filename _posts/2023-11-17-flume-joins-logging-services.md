@@ -17,17 +17,17 @@
 # under the License.
 
 layout: post
-title: "Welcoming Flume to ASF Logging Services"
-description: "Flume joins the Logging Services project, bringing its powerful data aggregation capabilities to enhance our logging solutions."
+title: "Welcoming Apache Flume to Apache Logging Services"
+description: "Apache Flume joins the Apache Logging Services project, bringing its powerful data aggregation capabilities to enhance our logging solutions."
 tags:
   - Logging Services
   - Flume
 type: post
 ---
 
-# Welcoming the Flume Team to Logging Services
+# Welcoming the Apache Flume Team to Apache Logging Services
 
-We are excited to announce that **Apache Flume** is now a part of our Logging Services family. 
+We are excited to announce that [**Apache Flume**](https://flume.apache.org) is now a part of our Logging Services family. 
 Flume is renowned for its distributed, reliable, and available service, specializing 
 in efficiently collecting, aggregating, and moving large volumes of log data.
 
