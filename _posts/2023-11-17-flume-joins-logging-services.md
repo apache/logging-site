@@ -1,4 +1,21 @@
 ---
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 layout: post
 title: "Welcoming Flume to ASF Logging Services"
 description: "Flume joins the Logging Services project, bringing its powerful data aggregation capabilities to enhance our logging solutions."
@@ -18,7 +35,7 @@ The journey of Flume has been remarkable. Unfortunately, the Flume team had stru
 with growing and remained a small team. Still, they caught the attention
 of several Logging Services committers. Impressed by its 
 capabilities and potential, both the Flume community and our team saw a 
-unique opportunity for collaboration and bringing to small teams together.
+unique opportunity for collaboration and bringing two small teams together.
 
 ## A Unified Force in Logging
 
