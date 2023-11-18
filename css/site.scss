@@ -54,6 +54,18 @@ blockquote ul { margin-left: 50px; font-size: 14px; }
     flex-wrap: wrap;
     justify-content: left;
 
+    h3 {
+        width: 100%;
+        margin-top: 0;
+        border-bottom: 1px solid #666;;
+        margin-bottom: 20px;
+        color: #666;
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+    }
+    
+
     .project {
         width: 33%;
         max-width: 33%;
