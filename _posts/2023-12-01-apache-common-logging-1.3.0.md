@@ -41,7 +41,7 @@ while the second place is taken by SLF4J with [almost 40 thousand artifacts](htt
 ## Version 1.3.0
 
 After more than 9 years since its previous release (version 1.2 released in July 2014), Apache Commons Logging released
-a new 1.3.0 version today (cf. [announcement]()).
+a new 1.3.0 version today (cf. [announcement](https://lists.apache.org/thread/XXX)).
 Among the most prominent changes, the new version:
 
  * forwards logging to the Log4j API out-of-the-box (if present),
@@ -50,7 +50,9 @@ Among the most prominent changes, the new version:
 
 ## Upgrade instructions
 
-For Maven Apache Commons Logging the upgrade should be as simple as adding the new version to you dependency management:
+For most users the upgrade to Apache Commons Logging 1.3.0 should be flawless.
+This category includes users that user Log4j Core or Logback as logging backends.
+Maven users just need to upgrade `commons-logging` in their dependency management:
 
 ```xml
 <dependencyManagement>
@@ -75,3 +77,44 @@ many `LogFactory` implementations and complete Apache Commons Logging replacemen
 
 These artifacts can be **safely** removed from your dependency stack.
 For JPMS users this operation is **required**.
+To do so Maven users can use exclusions:
+
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jcl</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jcl</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+and to prevent regressions, add those dependencies to a [`bannedDependencies` Maven Enforcer rule](https://maven.apache.org/enforcer/enforcer-rules/bannedDependencies.html).
+
+## Upgrade instructions (Log4j 1.x users)
+
+For users that use Log4j 1.x as logging backend the upgrade is more complicated: version 1.3.0 disabled the Log4j 1.x backend by default.
+
+Log4j 1.x users are:
+
+ * encouraged to migrate to Log4j 2.x Core (cf. [migration guide](https://logging.apache.org/log4j/2.x/manual/migration.html)),
+ * if that is not possible (or if a transitional period is required) they need to add a `commons-logging.properties` file to their applications containing:
+
+```
+org.apache.commons.logging.Log = org.apache.commons.logging.impl.Log4JLogger
+```
+
+## JPMS users
+
+The `org.apache.commons.logging` JPMS module has an **optional** dependency on the Log4j API.
+In order for the JVM to automatically add the `org.apache.logging.log4j` module to your application's runtime, you need to add:
+
+```
+requires org.apache.logging.log4j;
+```
+
+to your application's module descriptor.
+
