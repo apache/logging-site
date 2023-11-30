@@ -20,20 +20,19 @@ layout: post
 title: "Upgrade to Apache Commons Logging 1.3.0"
 description: "Instructions to upgrade application to Apache Commons Logging 1.3.0."
 tags:
-  - Logging Services
   - Apache
-  - Community
+  - Commmons Logging
   - Open Source
 type: post
 ---
 
 # Apache Commons Logging
 
-[Apache Commons Logging](https://commons.apache.org/proper/commons-logging/) (JCL) is one of the oldest Java logging APIs
+[Apache Commons Logging](https://commons.apache.org/proper/commons-logging/) (JCL) is one of the oldest Java logging API
 available.
 Released for the first time in 2002, it immediately saw a widespread adoption in the Java community.
 
-While newer APIs, like SLF4J and our Log4j API, appeared over time, even in 2023 it is hard to find an application stack
+While newer APIs, like SLF4J and our own Log4j API, appeared over time, even in 2023 it is hard to find an application stack
 that does not depend on JCL.
 According to Sonatype, Apache Commons Logging is used in [over 1 million artifacts](https://central.sonatype.com/artifact/commons-logging/commons-logging),
 while the second place is taken by SLF4J with [almost 40 thousand artifacts](https://central.sonatype.com/artifact/org.slf4j/slf4j-api).
@@ -48,11 +47,11 @@ Among the most prominent changes, the new version:
  * also supports forwarding to SLF4J,
  * adds support for the Java Platform Module System (JPMS) with the module name `org.apache.commons.logging`.
 
-## Upgrade instructions
+## Upgrade instructions (Log4j Core/Logback)
 
-For most users the upgrade to Apache Commons Logging 1.3.0 should be flawless.
-This category includes users that user Log4j Core or Logback as logging backends.
-Maven users just need to upgrade `commons-logging` in their dependency management:
+The upgrade path for users of the Log4j Core and Logback logging backends is easy.
+The first step is upgrading `commons-logging`.
+In Maven this can be done using dependency management.
 
 ```xml
 <dependencyManagement>
@@ -66,6 +65,7 @@ Maven users just need to upgrade `commons-logging` in their dependency managemen
 </dependencyManagement>
 ```
 
+The second step consists in removing obsolete dependencies.
 Since version 1.2 only supported old generation logging backends out-of-the-box ([Log4j 1.x](https//logging.apache.org/log4j/1.2/),
 [Avalon](https//avalon.apache.org) and [Lumberjack](https://javalogging.sourceforge.net)), the Java community developed
 many `LogFactory` implementations and complete Apache Commons Logging replacements:
@@ -76,7 +76,8 @@ many `LogFactory` implementations and complete Apache Commons Logging replacemen
    (`LogFactory` implementation).
 
 These artifacts can be **safely** removed from your dependency stack.
-For JPMS users this operation is **required**.
+For JPMS users this operation is even **required**.
+
 To do so Maven users can use exclusions:
 
 ```xml
@@ -94,13 +95,13 @@ To do so Maven users can use exclusions:
 
 and to prevent regressions, add those dependencies to a [`bannedDependencies` Maven Enforcer rule](https://maven.apache.org/enforcer/enforcer-rules/bannedDependencies.html).
 
-## Upgrade instructions (Log4j 1.x users)
+## Upgrade instructions (Log4j 1.x/Reload4j users)
 
-For users that use Log4j 1.x as logging backend the upgrade is more complicated: version 1.3.0 disabled the Log4j 1.x backend by default.
+For users that use Log4j 1.x or Reload4j as logging backend the upgrade is more complicated: version 1.3.0 disabled the Log4j 1.x backend by default.
 
-Log4j 1.x users are:
+Log4j 1.x/Reload4j users are:
 
- * encouraged to migrate to Log4j 2.x Core (cf. [migration guide](https://logging.apache.org/log4j/2.x/manual/migration.html)),
+ * encouraged to migrate to Log4j 2.x Core (cf. [migration guide](https://logging.apache.org/log4j/2.x/manual/migration.html)) or Logback,
  * if that is not possible (or if a transitional period is required) they need to add a `commons-logging.properties` file to their applications containing:
 
 ```
