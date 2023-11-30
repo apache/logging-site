@@ -44,3 +44,16 @@ and connect to it with this command:
 ```
 docker run --rm -p 4000:4000 --mount type=bind,src=$PWD,dst=/root/build --mount type=volume,dst=/root/build/node_modules -it  --entrypoint "/bin/bash" apache/logging_site
 ```
+
+## Deploying
+
+Once you have committed to this branch, your changes will be built and pushed
+to the asf-staging branch. From there, it is published to https://logging.staged.apache.org
+
+If you are happy with your changes, merge the staging branch to the site branch:
+
+```
+git checkout asf-site
+git merge --ff-only asf-staging
+git push
+```
