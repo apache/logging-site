@@ -40,7 +40,7 @@ while the second place is taken by SLF4J with [almost 40 thousand artifacts](htt
 ## Version 1.3.0
 
 After more than 9 years since its previous release (version 1.2 released in July 2014), Apache Commons Logging released
-a new 1.3.0 version today (cf. [announcement](https://lists.apache.org/thread/XXX)).
+a new 1.3.0 version today (cf. [announcement](https://lists.apache.org/thread/wx6v7wwhbnk64nx708hszctzv8fdsvdl)).
 Among the most prominent changes, the new version:
 
  * forwards logging to the Log4j API out-of-the-box (if present),
