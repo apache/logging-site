@@ -28,7 +28,7 @@ type: post
 
 # Two Decades of Apache Log4j: A Journey of Resilience and Innovation
 
-Today, December 17 2023 marks a significant milestone for the Apache Logging Services project, 
+Today, December 17, 2023 marks a significant milestone for the Apache Logging Services project, 
 as we celebrate 20 years since the inception of Log4j 1. This journey, spanning two
 decades, has been one of constant evolution, growth, and community spirit.
 
