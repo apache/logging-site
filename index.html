@@ -25,6 +25,15 @@ layout: default
   <p>The Apache Logging Services project creates and maintains open-source software related to the logging of
     application behavior and released at no charge to the public.</p>
 </div>
+
+{% if site.posts.size > 0 %}
+<div class="latest-post">
+    {% assign last_post = site.posts | first %}
+    <div class="latest-post-date">{{ last_post.date | date_to_string }}</div>
+    <div class="latest-post-news"><a href="{{ last_post.url }}">{{ last_post.title }}</a></div>
+</div>
+{% endif %}
+
 <div class="projects">
   <h3>Logging Frameworks</h3>
 
