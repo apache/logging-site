@@ -40,7 +40,7 @@ Active Team Members
 | Andrei Ivanov | shadow at apache.org | Committer | Log4j-Audit
 | Carter Kozak | ckozak at apache.org | PMC Member | Log4j2
 | Davyd McColl | davydm at apache.org | Committer | Log4net
-| Christian Grobmeier | grobmeier at apache.org | PMC Member | Log4jphp
+| Christian Grobmeier | grobmeier at apache.org | PMC Member | Log4j, Log4j2, Log4php, Chainsaw
 | Ron Grabowski | rgrabowski at apache.org | PMC Member | Log4net, Log4j
 | Robert Middleton | rmiddleton at apache.org | Committer | Log4cxx
 | Remko Popma | rpopma at apache.org | PMC Member | Log4j2
