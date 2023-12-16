@@ -34,7 +34,7 @@ Active Team Members
 |Name|Email|Role|Projects
 
 | Scott Deboy | sdeboy at apache.org | PMC Member | Log4j, Log4j2, Chainsaw
-| Ralph Goers | rgoers at apache.org | PMC Member | Log4j2, Log4j-Audit
+| Ralph Goers | rgoers at apache.org | PMC Member | Log4j2, Log4j-Audit, Flume
 | Gary Gregory | ggregory at apache.org | PMC Member | Log4j2
 | Raman Gupta | rgupta at apache.org | Committer | Log4j-Kotlin
 | Andrei Ivanov | shadow at apache.org | Committer | Log4j-Audit
@@ -50,6 +50,11 @@ Active Team Members
 | Volkan Yazıcı | vy at apache.org | PMC Chair | Log4j2
 | Stephen Webb | swebb2066 at apache.org | Committer | Log4cxx
 | Piotr P. Karwasz | pkarwasz at apache.org | PMC Member | Log4j2
+| Tristan Stevens | tristan at apache.org | PMC Member | Flume
+| Mike Percy | mpercy at apache.org | PMC Member | Flume
+| Juhani Connolly | juhanic at apache.org | PMC Member | Flume
+| Balázs Donát Bessenyei | bessbd at apache.org | PMC Member | Flume
+
 |===========================
 
 [options="header,footer]
