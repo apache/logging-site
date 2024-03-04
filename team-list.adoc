@@ -18,7 +18,7 @@
 
 layout: default
 ---
-				
+
 Project Team
 ------------
 
@@ -54,6 +54,7 @@ Active Team Members
 | Mike Percy | mpercy at apache.org | PMC Member | Flume
 | Juhani Connolly | juhanic at apache.org | PMC Member | Flume
 | Balázs Donát Bessenyei | bessbd at apache.org | PMC Member | Flume
+| Jan Friedrich | freeandnil at apache.org | Committer | Log4net
 
 |===========================
 
