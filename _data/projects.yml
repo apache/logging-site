@@ -21,7 +21,7 @@
 - name: Apache Chainsaw
   description: A GUI-based log viewer intended as a companion to Log4j®.
   url: /chainsaw
-  status: active
+  status: dormant
   section: processing
 - name: Apache Log4j® Audit
   description: Audit logging framework built upon Apache Log4j®.
