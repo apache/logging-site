@@ -48,7 +48,7 @@ It is designed for Apache Log4j, but can be used for any Java project.
 |xref:log4j-changelog-0.1.3.xsd[]
 |xref:/log4j/tools/latest/#release-notes-0-7-0[Log4j Tools `0.7.0`]
 
-|2024-02-22
-|xref:log4j-changelog-1.0.0.xsd[]
+|2024-??-??
+|xref:log4j-changelog-0.2.0.xsd[]
 |N/A
 |===
