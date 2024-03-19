@@ -26,14 +26,14 @@ There are two important things to understand about XSD versioning scheme used he
 
 . *Schema versions and project versions evolve independently.*
 That is, Log4j `2.24.0` release does not necessarily mean a new `log4j-config-2.24.0.xsd`: the Log4j 2 runtime configuration API might have been kept intact.
-. *Users are recommended to use schemas with only major versions*; `log4j-config-2.xsd`, `log4j-changelog-0.xsd`, etc.
+. *Users are recommended to use schemas with only major versions*; `log4j-config-2.xsd`, `log4j-config-3.xsd`, `log4j-changelog-0.xsd`, etc.
 ====
 
-[#log4j2]
-== Log4j 2 schemas
+[#log4j]
+== Log4j schemas
 
-xref:/log4j/2.x[Log4j 2] is a Java logging framework.
-Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`.
+xref:/log4j[Log4j] is a Java logging framework.
+Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`{empty}footnote:[Both Log4j 2 and Log4j 3 use `log4j2.xml` for configuration.].
 
 [%header,cols="3*"]
 |===
@@ -47,8 +47,17 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`.
 
 |N/A
 |xref:log4j-config-2.xsd[]
-|Points to the most recent XSD.
-*Users are recommended to refer to this XSD in their XML files.*
+|Points to the most recent XSD of major version `2`.
+*Log4j 2 users are recommended to refer to this XSD in their XML files.*
+
+|2024-03-19
+|xref:log4j-config-3.0.0.xsd[]
+|N/A
+
+|N/A
+|xref:log4j-config-3.xsd[]
+|Points to the most recent XSD of major version `3`.
+*Log4j 3 users are recommended to refer to this XSD in their XML files.*
 |===
 
 .Example Log4j 2 schema usage
