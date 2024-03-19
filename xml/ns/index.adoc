@@ -20,6 +20,15 @@
 All XML Schemas for Apache Logging Services projects are published at this directory.
 The canonical name for this directory is `https://logging.apache.org/xml/ns`.
 
+[IMPORTANT]
+====
+There are two important things to understand about XSD versioning scheme used here to employ these schemas in your applications:
+
+. *Schema versions and project versions evolve independently.*
+That is, Log4j `2.24.0` release does not necessarily mean a new `log4j-config-2.24.0.xsd`: the Log4j 2 runtime configuration API might have been kept intact.
+. *Users are recommended to use schemas with only major versions*; `log4j-config-2.xsd`, `log4j-changelog-0.xsd`, etc.
+====
+
 [#log4j2]
 == Log4j 2 schemas
 
@@ -48,7 +57,9 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`.
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xmlns="https://logging.apache.org/xml/ns"
-               xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+               xsi:schemaLocation="
+                       https://logging.apache.org/xml/ns
+                       https://logging.apache.org/xml/ns/log4j-config-2.xsd">
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
@@ -106,7 +117,9 @@ It is designed for Apache Log4j, but can be used for any Java project.
 <?xml version="1.0" encoding="UTF-8"?>
 <entry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="https://logging.apache.org/xml/ns"
-       xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
+       xsi:schemaLocation="
+               https://logging.apache.org/xml/ns
+               https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
        type="updated">
   <issue id="2370" link="https://github.com/apache/logging-log4j2/pull/2370"/>
   <description format="asciidoc">Update `actions/checkout` to version `4.1.2`</description>
