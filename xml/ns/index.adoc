@@ -60,16 +60,16 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`.
                xsi:schemaLocation="
                        https://logging.apache.org/xml/ns
                        https://logging.apache.org/xml/ns/log4j-config-2.xsd">
-  <Appenders>
+  <appenders>
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
     </Console>
-  </Appenders>
-  <Loggers>
-    <Root level="warn">
+  </appenders>
+  <loggers>
+    <root level="WARN">
       <AppenderRef ref="Console"/>
-    </Root>
-  </Loggers>
+    </root>
+  </loggers>
 </Configuration>
 ----
 
