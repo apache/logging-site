@@ -20,10 +20,52 @@
 All XML Schemas for Apache Logging Services projects are published at this directory.
 The canonical name for this directory is `https://logging.apache.org/xml/ns`.
 
-[#log4j-changelog]
-== `log4j-changelog` schemas
+[#log4j2]
+== Log4j 2 schemas
 
-https://logging.apache.org/log4j/tools/latest/#log4j-changelog[log4j-changelog] is a tool to maintain changelogs.
+xref:/log4j/2.x[Log4j 2] is a Java logging framework.
+Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`.
+
+[%header,cols="3*"]
+|===
+|Publication date
+|File name
+|Description
+
+|2024-03-19
+|xref:log4j-config-2.23.1.xsd[]
+|Released with link:/log4j/2.x/release-notes.html#release-notes-2-23-1[Log4j `2.23.1`]
+
+|N/A
+|xref:log4j-config-2.xsd[]
+|Points to the most recent XSD.
+*Users are recommended to refer to this XSD in their XML files.*
+|===
+
+.Example Log4j 2 schema usage
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="https://logging.apache.org/xml/ns"
+               xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="warn">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
+----
+
+[#log4j-changelog]
+== Log4j Changelog schemas
+
+link:/log4j/tools/latest/#log4j-changelog[Log4j Changelog] is a tool to maintain changelogs.
 It is designed for Apache Log4j, but can be used for any Java project.
 
 [%header,cols="3*"]
@@ -34,19 +76,19 @@ It is designed for Apache Log4j, but can be used for any Java project.
 
 |2023-02-03
 |xref:log4j-changelog-0.1.0.xsd[]
-|Released with xref:/log4j/tools/latest/#release-notes-0-2-0[Log4j Tools `0.2.0`]
+|Released with link:/log4j/tools/latest/#release-notes-0-2-0[Log4j Tools `0.2.0`]
 
 |2023-03-17
 |xref:log4j-changelog-0.1.1.xsd[]
-|Released with xref:/log4j/tools/latest/#release-notes-0-3-0[Log4j Tools `0.3.0`]
+|Released with link:/log4j/tools/latest/#release-notes-0-3-0[Log4j Tools `0.3.0`]
 
 |2023-09-28
 |xref:log4j-changelog-0.1.2.xsd[]
-|Released with xref:/log4j/tools/latest/#release-notes-0-5-0[Log4j Tools `0.5.0`]
+|Released with link:/log4j/tools/latest/#release-notes-0-5-0[Log4j Tools `0.5.0`]
 
 |2023-12-13
 |xref:log4j-changelog-0.1.3.xsd[]
-|Released with xref:/log4j/tools/latest/#release-notes-0-7-0[Log4j Tools `0.7.0`]
+|Released with link:/log4j/tools/latest/#release-notes-0-7-0[Log4j Tools `0.7.0`]
 
 |2024-03-15
 |xref:log4j-changelog-0.2.0.xsd[]
@@ -55,5 +97,18 @@ It is designed for Apache Log4j, but can be used for any Java project.
 |N/A
 |xref:log4j-changelog-0.xsd[]
 |Points to the most recent XSD of major version `0`.
-Users are recommended to refer to this XSD in their XML files.
+*Users are recommended to refer to this XSD in their XML files.*
 |===
+
+.Example Log4j Changelog schema usage
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="https://logging.apache.org/xml/ns"
+       xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-changelog-0.xsd"
+       type="updated">
+  <issue id="2370" link="https://github.com/apache/logging-log4j2/pull/2370"/>
+  <description format="asciidoc">Update `actions/checkout` to version `4.1.2`</description>
+</entry>
+----
