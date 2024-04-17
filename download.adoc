@@ -1,0 +1,45 @@
+////
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+////
+
+= Download
+
+In accordance with the Apache Software Foundation's release https://infra.apache.org/release-distribution.html[distribution policy] and https://infra.apache.org/release-publishing.html[creation process], all Logging Services release distributions are _officially_ accessible from the following locations:
+
+Primary distribution channels::
+* ASF https://downloads.apache.org/logging[Distribution directory] (contains **the most recent releases**)
+* ASF https://archive.apache.org/dist/logging[Distribution directory **archive**] (contains all published releases)
+
+Maven-based distribution channels::
+* ASF https://repository.apache.org/content/repositories/releases[Release] and https://repository.apache.org/content/repositories/snapshots[snapshot] repositories (mirrored to https://central.sonatype.dev/[the Maven Central Repository])
+
+[#verify]
+== Verification
+
+All Logging Services release distributions are digitally signed by the release manager and provided with checksum files.
+You can verify a distribution by following the below shared instructions:
+
+[source,bash]
+----
+# Download and import the release manager public keys
+wget -O - https://downloads.apache.org/logging/KEYS | gpg --import
+
+# Verify signatures
+for sigFile in *.asc; do gpg --verify $sigFile; done
+
+# Verify checksums
+shasum --check *.sha512
+----
