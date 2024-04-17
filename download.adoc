@@ -43,3 +43,8 @@ for sigFile in *.asc; do gpg --verify $sigFile; done
 # Verify checksums
 shasum --check *.sha512
 ----
+
+[#sbom]
+== Software Bill of Materials (SBOM)
+
+include::_sbom.adoc[]

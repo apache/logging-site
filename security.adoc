@@ -17,6 +17,48 @@
 
 :cve-url-prefix: https://nvd.nist.gov/vuln/detail
 
+= Security
+
+The Logging Services Security Team takes security seriously.
+This allows our users to place their trust in Log4j for protecting their mission-critical data.
+In this page we will help you find guidance on security-related issues and access to known vulnerabilities.
+
+include::_log4j1-eol.adoc[]
+
+[#support]
+== Getting support
+
+If you need help on building or configuring Logging Services projects or other help on following the instructions to mitigate the known vulnerabilities listed here, please use our xref:support.adoc#discussions[user support channels].
+
+[TIP]
+====
+If you need to apply a source code patch, use the building instructions for the project version that you are using.
+These instructions can be found in `BUILDING.adoc`, `BUILDING.md`, etc. files distributed with the sources.
+====
+
+[#reporting]
+== Reporting vulnerabilities
+
+If you have encountered an unlisted security vulnerability or other unexpected behaviour that has a security impact, or if the descriptions here are incomplete, please report them **privately** to mailto:security@logging.apache.org[the Logging Services Security Team].
+
+[WARNING]
+====
+The threat model that Log4j uses considers configuration files as safe input controlled by the programmer; **potential vulnerabilities that require the ability to modify a configuration are not considered vulnerabilities** as the required access to do so implies the attacker can execute arbitrary code.
+====
+
+[#policy]
+== Vulnerability handling policy
+
+The Logging Services Security Team follows the https://www.apache.org/security/committers.html[ASF Project Security] guide for handling security vulnerabilities.
+
+Reported security vulnerabilities are subject to voting (by means of https://logging.apache.org/guidelines.html[_lazy approval_], preferably) in the private mailto:security@logging.apache.org[security mailing list] before creating a CVE and populating its associated content.
+This procedure involves only the creation of CVEs and blocks neither (vulnerability) fixes, nor releases.
+
+[#vdr]
+== Vulnerability Disclosure Report (VDR)
+
+include::_sbom.adoc[]
+
 [#vulnerabilities]
 == Known vulnerabilities
 
