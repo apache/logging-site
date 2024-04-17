@@ -25,7 +25,7 @@ The Apache Software Foundation does not employ individuals to develop and suppor
 The individuals who contribute to Apache projects do it either as part of specific tasks assigned to them by their employer, on their own initiative to benefit their employer, or on their own free time.
 ====
 
-[#discussions]
+[#discussions-user]
 == User support
 
 If you have questions like:
@@ -56,6 +56,7 @@ For more information, please see the https://privacy.apache.org/policies/privacy
 
 * Stack Overflow (http://stackoverflow.com/questions/tagged/log4cxx[Log4cxx], http://stackoverflow.com/questions/tagged/log4j[Log4j], http://stackoverflow.com/questions/tagged/log4j[Log4net])
 
+[#discussions-maintainer]
 == Maintainer discussions
 
 If you have questions or feedback like:
@@ -84,7 +85,7 @@ Please **don't send mails containing confidential information** to public mailin
 For more information, please see the https://privacy.apache.org/policies/privacy-policy-public.html[privacy policy]
 ====
 
-[#private]
+[#discussions-private]
 == Private discussions
 
 Users are strongly advised to use one of the above public channels.
@@ -124,6 +125,7 @@ These will be removed, and you will be asked to post questions to the mailing li
 Sponsorship can be used simply as a way to say thank you for the work that has been done or as a way to encourage specific issues to be worked on.
 In either case, while the Apache Logging Services project thanks you for your support, we cannot be responsible for any promises and/or contributions made by an individual committer, as individual commits must be reviewed and accepted by the project team.
 
+[#sponsorship-github]
 === Committers accepting GitHub Sponsorship
 
 * https://github.com/carterkozak[Carter Kozak]
