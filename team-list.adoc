@@ -26,28 +26,23 @@ See link:guidelines.html[Guidelines] for further details on roles.
 [%header,cols="1,1m,1,2"]
 |===
 | Name | Apache ID | Role | Projects
-| Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
-| Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
-| Gary Gregory | ggregory | PMC Member | Log4j
-| Raman Gupta | rgupta | Committer | Log4j Kotlin
-| Andrei Ivanov | shadow | Committer | Log4j Audit
 | Carter Kozak | ckozak | PMC Member | Log4j
-| Davyd McColl | davydm | PMC Member | Log4net
 | Christian Grobmeier | grobmeier | PMC Member | Chainsaw, Log4j, Log4php
-| Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
-| Robert Middleton | rmiddleton | Committer | Log4cxx
-| Remko Popma | rpopma | PMC Member | Log4j
+| Davyd McColl | davydm | PMC Member | Log4net
 | Dominik Psenner | dpsenner | PMC Member | Log4net
-| Thorsten Schöning | tschoening | Committer | Log4cxx
-| Matt Sicker | mattsicker | PMC Member | Log4j
-| Volkan Yazıcı | vy | PMC Chair | Log4j
-| Stephen Webb | swebb2066 | Committer | Log4cxx
-| Piotr P. Karwasz | pkarwasz | PMC Member | Log4j
-| Tristan Stevens | tristan | PMC Member | Flume
-| Mike Percy | mpercy | PMC Member | Flume
-| Juhani Connolly | juhanic | PMC Member | Flume
-| Balázs Donát Bessenyei | bessbd | PMC Member | Flume
+| Gary Gregory | ggregory | PMC Member | Log4j
 | Jan Friedrich | freeandnil | Committer | Log4net
+| Matt Sicker | mattsicker | PMC Member | Log4j
+| Piotr P. Karwasz | pkarwasz | PMC Member | Log4j
+| Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
+| Raman Gupta | rgupta | Committer | Log4j Kotlin
+| Remko Popma | rpopma | PMC Member | Log4j
+| Robert Middleton | rmiddleton | Committer | Log4cxx
+| Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
+| Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
+| Stephen Webb | swebb2066 | Committer | Log4cxx
+| Thorsten Schöning | tschoening | Committer | Log4cxx
+| Volkan Yazıcı | vy | PMC Chair | Log4j
 |===
 
 [#inactive]
@@ -59,18 +54,23 @@ Inactive members are welcome to continue participating at any time.
 [%header,cols="1,1m,1,1,1"]
 |===
 | Name | Apache ID | Role | Projects | Status
-| Curt Arnold | carnold | PMC Member | Log4cxx, Log4j | Emeritus 2017
-| Stefan Bodewig | bodewig | PMC Member | Log4net | Emeritus 2018
-| Bruce Brouwer | bbrouwer | Committer | Log4j | Last Active 2015
-| Nicko Cadell | nicko | PMC Member | Log4net | Emeritus 2014
 | Alvero Carraso | alvero | Committer | Log4php | Unknown
+| Andrei Ivanov | shadow | Committer | Log4j Audit | Last Active 2020
+| Balázs Donát Bessenyei | bessbd | PMC Member | Flume | Last Active 2022
+| Bruce Brouwer | bbrouwer | Committer | Log4j | Last Active 2015
 | Ceki Gülcü | ceki | PMC Member | Log4j | Emeritus 2014
-| Ivan Habunek | ihabunek | PMC Member | Log4php | Last Active 2015
 | Christian Hammers | chammers | Committer | Log4php | Last Active 2010
+| Curt Arnold | carnold | PMC Member | Log4cxx, Log4j | Emeritus 2017
+| Ivan Habunek | ihabunek | PMC Member | Log4php | Last Active 2015
 | Jacob Kjome | hoju | PMC Member | Log4j | Emeritus 2014
-| Paul Smith | psmith | PMC Member | Chainsaw, Log4j | Emeritus 2014
-| Mikael Ståldal | mikes | PMC Member| Log4j | Last Active 2018
+| Juhani Connolly | juhanic | PMC Member | Flume | Last Active 2014
 | Knut Urdalen | kurdalen | Committer | Log4php | Last Active 2010
-| Nick Williams | nickwilliams | PMC Member | Log4j | Last Active 2014
 | Mark Womack | mwomack | PMC Member | Log4j | Last Active 2006
+| Mikael Ståldal | mikes | PMC Member| Log4j | Last Active 2018
+| Mike Percy | mpercy | PMC Member | Flume | Last Active 2019
+| Nick Williams | nickwilliams | PMC Member | Log4j | Last Active 2014
+| Nicko Cadell | nicko | PMC Member | Log4net | Emeritus 2014
+| Paul Smith | psmith | PMC Member | Chainsaw, Log4j | Emeritus 2014
+| Stefan Bodewig | bodewig | PMC Member | Log4net | Emeritus 2018
+| Tristan Stevens | tristan | PMC Member | Flume
 |===
