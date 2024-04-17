@@ -26,6 +26,12 @@ Primary distribution channels::
 Maven-based distribution channels::
 * ASF https://repository.apache.org/content/repositories/releases[Release] and https://repository.apache.org/content/repositories/snapshots[snapshot] repositories (mirrored to https://central.sonatype.dev/[the Maven Central Repository])
 
+[IMPORTANT]
+====
+All Logging Services projects distribute convenience binaries that are easy to install for the programming language platform they target.
+You are strongly advised to **check the installation instructions in the website of the project** (link:/log4cxx[Log4cxx], link:/log4j[Log4j], link:/log4net[Log4net], etc.) you are trying to install.
+====
+
 [#verify]
 == Verification
 
