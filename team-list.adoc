@@ -54,7 +54,7 @@ Inactive members are welcome to continue participating at any time.
 [%header,cols="1,1m,1,1,1"]
 |===
 | Name | Apache ID | Role | Projects | Status
-| Alvero Carraso | alvero | Committer | Log4php | Unknown
+| Alvaro Carraso | alvaro | Committer | Log4php | Unknown
 | Andrei Ivanov | shadow | Committer | Log4j Audit | Last Active 2020
 | Balázs Donát Bessenyei | bessbd | PMC Member | Flume | Last Active 2022
 | Bruce Brouwer | bbrouwer | Committer | Log4j | Last Active 2015
