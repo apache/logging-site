@@ -37,16 +37,16 @@ See link:guidelines.html[Guidelines] for further details on roles.
 | Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
 | Raman Gupta | rgupta | Committer | Log4j Kotlin
 | Remko Popma | rpopma | PMC Member | Log4j
-| Robert Middleton | rmiddleton | Committer | Log4cxx
+| Robert Middleton | rmiddleton | PMC Member | Log4cxx
 | Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
 | Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
-| Stephen Webb | swebb2066 | Committer | Log4cxx
+| Stephen Webb | swebb2066 | PMC Member | Log4cxx
 | Thorsten Schöning | tschoening | Committer | Log4cxx
 | Volkan Yazıcı | vy | PMC Chair | Log4j
 |===
 
 [#inactive]
-== Inactive Team Members
+== Inactive Members
 
 Inactive members have either requested Emeritus status or have not participated in the community in the last few years.
 Inactive members are welcome to continue participating at any time.
