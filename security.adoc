@@ -43,8 +43,12 @@ If you have encountered an unlisted security vulnerability or other unexpected b
 
 [WARNING]
 ====
-The threat model that Log4j uses considers configuration files as safe input controlled by the programmer; **potential vulnerabilities that require the ability to modify a configuration are not considered vulnerabilities** as the required access to do so implies the attacker can execute arbitrary code.
+The threat model that Logging Services uses considers configuration files as safe input controlled by the programmer; **potential vulnerabilities that require the ability to modify a configuration are not considered vulnerabilities** as the required access to do so implies the attacker can execute arbitrary code.
 ====
+
+include::_threat-model-common.adoc[]
+
+include::_threat-model-log4j.adoc[]
 
 [#policy]
 == Vulnerability handling policy
