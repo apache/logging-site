@@ -66,8 +66,8 @@ In Maven this can be done using dependency management.
 ```
 
 The second step consists in removing obsolete dependencies.
-Since version 1.2 only supported old generation logging backends out-of-the-box ([Log4j 1.x](https//logging.apache.org/log4j/1.2/),
-[Avalon](https//avalon.apache.org) and [Lumberjack](https://javalogging.sourceforge.net)), the Java community developed
+Since version 1.2 only supported old generation logging backends out-of-the-box ([Log4j 1.x](https://logging.apache.org/log4j/1.x/),
+[Avalon](https://avalon.apache.org) and [Lumberjack](https://javalogging.sourceforge.net)), the Java community developed
 many `LogFactory` implementations and complete Apache Commons Logging replacements:
 
  * [`org.slf4j:jcl-over-slf4j`](https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j) (replacement),
