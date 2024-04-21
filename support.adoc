@@ -54,7 +54,7 @@ Please **don't send mails containing confidential information** to public mailin
 For more information, please see the https://privacy.apache.org/policies/privacy-policy-public.html[privacy policy]
 ====
 
-* Stack Overflow (http://stackoverflow.com/questions/tagged/log4cxx[Log4cxx], http://stackoverflow.com/questions/tagged/log4j[Log4j], http://stackoverflow.com/questions/tagged/log4j[Log4net])
+* Stack Overflow (http://stackoverflow.com/questions/tagged/log4cxx[Log4cxx], http://stackoverflow.com/questions/tagged/log4j[Log4j], http://stackoverflow.com/questions/tagged/log4net[Log4net])
 
 [#discussions-maintainer]
 == Maintainer discussions
