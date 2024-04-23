@@ -15,15 +15,20 @@
     limitations under the License.
 ////
 
-.Common threat model
-[%collapsible]
-====
-Code signing::
+[#threat-common]
+=== Common threat model
+
+Below we share the threat model shared by all Logging Services projects.
+
+[#threat-common-code-signing]
+==== Code signing
+
 All Logging Services software release distributions are signed using GPG using a key from the Logging Services PMC https://downloads.apache.org/logging/KEYS[KEYS file].
 Information on how to verify releases signatures are explained further in xref:download.adoc[the Download page].
 Thus, GPG signatures should be validated in your build process.
 
-Configuration sources::
+[#threat-common-config-sources]
+==== Configuration sources
 All configuration sources to an application must be trusted by the programmer.
 When loading a configuration file from disk (especially when a monitor interval is configured to reload the file periodically), the location of the configuration file must be kept safe from unauthorized modifications.
 Similarly, when loading a configuration file over the network such as through HTTP, this should be configured to use TLS or a secure connection in general with strong authentication guarantees.
@@ -32,7 +37,8 @@ When configurations are modified through JMX, the JMX server should be safely co
 When configurations are provided through JNDI, these should only use the `java` scheme for sharing configurations in a Java EE or Jakarta EE application service.
 JNDI-sourced configurations should not use other JNDI providers such as LDAP, DNS, or RMI, as all these providers are difficult to properly secure.
 
-Java Object Serialization Stream Protocol::
+[#threat-common-java-serialization]
+==== Java Object Serialization Stream Protocol
+
 https://docs.oracle.com/javase/8/docs/platform/serialization/spec/protocol.html[Java Object Serialization Stream Protocol] should not be used to deserialize data from untrusted sources.
 See https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide] for details.
-====
