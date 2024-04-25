@@ -31,7 +31,7 @@ The individuals who contribute to Apache projects do it either as part of specif
 If you have questions like:
 
 * _"How do I configure Log4j with the file appender?"_
-* _"My layout is not working as expected; what should I do?"_
+* _"My Log4Net layout is not working as expected; what should I do?"_
 * _"How can I migrate from Log4j 1 with this custom configuration?"_
 
 We urge you to first check the website of the associated project to see if your question has already been answered there.
