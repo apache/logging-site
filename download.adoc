@@ -17,20 +17,24 @@
 
 = Download
 
-In accordance with the Apache Software Foundation's release https://infra.apache.org/release-distribution.html[distribution policy] and https://infra.apache.org/release-publishing.html[creation process], all Logging Services release distributions are _officially_ accessible from the following locations:
-
-Primary distribution channels::
-* ASF https://downloads.apache.org/logging[Distribution directory] (contains **the most recent releases**)
-* ASF https://archive.apache.org/dist/logging[Distribution directory **archive**] (contains all published releases)
-
-Maven-based distribution channels::
-* ASF https://repository.apache.org/content/repositories/releases[Release] and https://repository.apache.org/content/repositories/snapshots[snapshot] repositories (mirrored to https://central.sonatype.dev/[the Maven Central Repository])
+You can use one of the following channels to download the Logging Services release distributions.
 
 [IMPORTANT]
 ====
 All Logging Services projects distribute convenience binaries that are easy to install for the programming language platform they target.
 You are strongly advised to **check the installation instructions in the website of the project** (link:/log4cxx[Log4cxx], link:/log4j[Log4j], link:/log4net[Log4net], etc.) you are trying to install.
 ====
+
+Official distribution channels::
+In accordance with the Apache Software Foundation's release https://infra.apache.org/release-distribution.html[distribution policy] and https://infra.apache.org/release-publishing.html[creation process], all Logging Services release distributions are _officially_ accessible from the following channels:
+* ASF https://downloads.apache.org/logging[Distribution directory] (contains **the most recent releases**)
+* ASF https://archive.apache.org/dist/logging[Distribution directory **archive**] (contains all published releases)
+
+Java distribution channels::
+* ASF https://repository.apache.org/content/repositories/releases[Release] and https://repository.apache.org/content/repositories/snapshots[snapshot] Nexus repositories (mirrored to https://central.sonatype.dev/[the Maven Central Repository])
+
+.NET distribution channels::
+* https://www.nuget.org/profiles/Apache.Logging[`Apache.Logging` organization in NuGet]
 
 [#verify]
 == Verification
