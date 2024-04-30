@@ -85,6 +85,8 @@ Please **don't send mails containing confidential information** to public mailin
 For more information, please see the https://privacy.apache.org/policies/privacy-policy-public.html[privacy policy]
 ====
 
+* https://the-asf.slack.com/archives/C4TQW0M5L[#logging] Slack channel (exclusive to committers)
+
 [#discussions-private]
 == Private discussions
 
@@ -94,6 +96,7 @@ If it deems necessary, use following channels for private discussions.
 * `security@logging.apache.org` mailing list (mailto:security@logging.apache.org[post]) is used for reporting unlisted **security vulnerabilities** or other unexpected behaviour that has a security impact.
 Make sure to check xref:security.adoc[the Security page] before sending an email.
 * `private@logging.apache.org` mailing list (mailto:private@logging.apache.org[post]) is used for discussing other confidential topics with the Logging Services PMC.
+* https://the-asf.slack.com/archives/C02Q8FPEW6T[#logging-pmc] Slack channel (exclusive to committers)
 
 [#issues]
 == Issues
