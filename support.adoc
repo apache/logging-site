@@ -138,6 +138,22 @@ In either case, while the Apache Logging Services project thanks you for your su
 * https://github.com/rgoers[Ralph Goers]
 * https://github.com/vy[Volkan Yazıcı]
 
+[#sponsors]
+=== Sponsors
+
+There are a handful of tools that developers in the community use; some are open-source and some are commercial.
+We would like to take this opportunity to thank our sponsors providing the project maintainers access to these tools:
+
+* https://www.jetbrains.com[JetBrains] with its https://www.jetbrains.com/idea/[Intellij IDEA]
++
+image::img/sponsors/intellij.png[alt="IntelliJ IDEA",width=200]
+
+* https://www.yourkit.com[YourKit] with its full-featured https://www.yourkit.com/java/profiler[Java Profiler]
++
+image::img/sponsors/yourkit.png[alt="YourKit",width=200]
+
+There are several https://www.apache.org/foundation/thanks.html[sponsors supporting ASF].
+
 [#commercial]
 == Third-party commercial support
 
