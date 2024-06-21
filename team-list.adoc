@@ -33,7 +33,7 @@ See link:guidelines.html[Guidelines] for further details on roles.
 | Gary Gregory | ggregory | PMC Member | Log4j
 | Jan Friedrich | freeandnil | Committer | Log4net
 | Matt Sicker | mattsicker | PMC Member | Log4j
-| Piotr P. Karwasz | pkarwasz | PMC Member | Log4j
+| Piotr P. Karwasz | pkarwasz | PMC Chair | Log4j
 | Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
 | Raman Gupta | rgupta | Committer | Log4j Kotlin
 | Remko Popma | rpopma | PMC Member | Log4j
@@ -42,7 +42,7 @@ See link:guidelines.html[Guidelines] for further details on roles.
 | Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
 | Stephen Webb | swebb2066 | PMC Member | Log4cxx
 | Thorsten Schöning | tschoening | Committer | Log4cxx
-| Volkan Yazıcı | vy | PMC Chair | Log4j
+| Volkan Yazıcı | vy | PMC Member | Log4j
 |===
 
 [#inactive]
