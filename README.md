@@ -1,6 +1,8 @@
 # The Apache Software Foundation - Logging Website
 
 This is the source code for the website at [logging.apache.org](https://logging.apache.org).
+The staging website is at [logging.staged.apache.org](https://logging.staged.apache.org).
+The website is built using [Jekyll](https://jekyllrb.com/), a static site generator.
 
 ## Develop this website
 
