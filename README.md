@@ -4,6 +4,8 @@ This is the source code for the website at [logging.apache.org](https://logging.
 The staging website is at [logging.staged.apache.org](https://logging.staged.apache.org).
 The website is built using [Jekyll](https://jekyllrb.com/), a static site generator.
 
+Builds can be debugged when looking at the [Buildbot output](https://ci2.apache.org/#/builders/7).
+
 ## Develop this website
 
 To develop content for this website, you need to make sure you have
