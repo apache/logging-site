@@ -30,8 +30,7 @@ type: post
 
 For a long time, Apache Log4j has thrived through the dedication and contributions 
 of our community, relying mostly on unpaid volunteers. Today, we're excited to announce 
-a pivotal moment in our journey – the Sovereign Tech Fund (STF) has chosen to 
-support us for the further development of specific Log4j projects. 
+a pivotal moment in our journey – the Sovereign Tech Fund (STF) has chosen to support us in the further development of specific Log4j projects. 
 
 The STF, known for its commitment to critical projects 
 ([Sovereign Tech Fund](https://www.sprind.org/de/projekte/sovereign-tech-fund/)), 
@@ -67,9 +66,9 @@ contribute to the open-source ecosystem.
 ## Acknowledgments and Future Endeavors
 
 On a personal note, we would like to extend our gratitude to the ([InÖG](https://www.inoeg.de/)) 
-for their pivotal role in facilitating these developments. As they made us aware of the STF 
+for their pivotal role in facilitating these developments. They made us aware of the STF 
 during our participation in their remarkable project "[Buntes Bug Bounty](https://www.dialog-cybersicherheit.de/b3/)" 
-program, a commendable open source project to bolster software security 
+program, a commendable open-source project to bolster software security 
 ([Dialog-Cybersicherheit](https://www.dialog-cybersicherheit.de/workstreams/)) in Germany.
 
 As we embark on this new chapter, we invite the global tech community to join us 
