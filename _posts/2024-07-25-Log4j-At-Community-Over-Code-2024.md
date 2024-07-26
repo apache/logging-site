@@ -35,4 +35,4 @@ If you are interested in what we learned about security and how we want to
 improve Log4j further, please watch the full interview done by Rich Bowen for
 the ASF.
 
-{% youtube Hpe7p24DQo0 /img/placeholder.jpg %}
+{% youtube Hpe7p24DQo0 /img/video-placeholders/Hpe7p24DQo0.jpg %}
