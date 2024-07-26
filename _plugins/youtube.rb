@@ -9,9 +9,22 @@ module Jekyll
     def render(context)
       video_id, image_url = @text.split(' ')
       <<~HTML
-        <div class="yt-container-#{video_id}" style="cursor: pointer;">
-          <img src="#{image_url}" alt="Video thumbnail" style="width: 100%; height: auto;">
+        <div class="youtube-placeholder yt-container-#{video_id}" style="cursor: pointer;">
+          <img src="#{image_url}" alt="Video thumbnail">
         </div>
+        <div class="youtube-placeholder-description">
+          Clicking on this image will load the video and send data from and to YouTube/Google.
+        </div>
+        <style>
+          .youtube-placeholder {
+            width: 560px; 
+            height: auto;
+          }
+          .youtube-placeholder-description {
+            color: gray;
+            font-style: italic;
+          }
+        </style>
         <script>
           document.addEventListener('DOMContentLoaded', function() {
             var container = document.querySelector('.yt-container-#{video_id}');
