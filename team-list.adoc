@@ -31,7 +31,7 @@ See link:guidelines.html[Guidelines] for further details on roles.
 | Davyd McColl | davydm | PMC Member | Log4net
 | Dominik Psenner | dpsenner | PMC Member | Log4net
 | Gary Gregory | ggregory | PMC Member | Log4j
-| Jan Friedrich | freeandnil | Committer | Log4net
+| Jan Friedrich | freeandnil | PMC Member | Log4net
 | Matt Sicker | mattsicker | PMC Member | Log4j
 | Piotr P. Karwasz | pkarwasz | PMC Chair | Log4j
 | Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
