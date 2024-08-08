@@ -41,8 +41,9 @@ The Apache Logging Services community is a lively and passionate group dedicated
 ## Open Arms for Newcomers
 
 We're always excited to welcome newcomers, whether you're an experienced 
-developer or just starting out. Apache Logging Services is a place to contribute, learn, and grow. Our community is here to help and collaborate with anyone who shares our passion.
+developer or just starting. Apache Logging Services is a place to contribute, 
+learn, and grow. Our community is here to help and collaborate with anyone who shares our passion.
 
 Get in touch through GitHub Issues/Discussions or our mailing lists.
 
-Join us and let's build something great together!
+Join us, and let's build something great together!
