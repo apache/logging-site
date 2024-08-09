@@ -101,7 +101,7 @@ Make sure to check xref:security.adoc[the Security page] before sending an email
 [#issues]
 == Issues
 
-Logging Services projects use GitHub Issues (https://github.com/apache/logging-log4cxx/issues[Log4cxx], https://github.com/apache/logging-log4j2/issues[Log4j], https://github.com/apache/logging-log4j2/issues[Log4net]) as their issue tracking system.
+Logging Services projects use GitHub Issues (https://github.com/apache/logging-log4cxx/issues[Log4cxx], https://github.com/apache/logging-log4j2/issues[Log4j], https://github.com/apache/logging-log4net/issues[Log4net]) as their issue tracking system.
 The old issue tracking system, JIRA (https://issues.apache.org/jira/projects/LOGCXX[Log4cxx], https://issues.apache.org/jira/projects/LOG4J2[Log4j]), is still accessible, though only recommended for issues that were already created there.
 
 Issues get resolved in one of the following ways:
@@ -137,6 +137,7 @@ In either case, while the Apache Logging Services project thanks you for your su
 * https://github.com/ppkarwasz[Piotr P. Karwasz]
 * https://github.com/rgoers[Ralph Goers]
 * https://github.com/vy[Volkan Yazıcı]
+* https://github.com/FreeAndNil[Jan Friedrich]
 
 [#sponsors]
 === Sponsors
