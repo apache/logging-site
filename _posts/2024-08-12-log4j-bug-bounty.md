@@ -42,4 +42,4 @@ You can learn more about their mission by reading their
 We want to thank the STF and YesWeHack for their support.
 
 We encourage all security researchers and developers to join us in this effort. 
-Your contributions can help make Log4j more secure and reward your efforts.
+Your contributions can help make Log4j more secure and reliable and reward your efforts.
