@@ -27,15 +27,19 @@ type: post
 
 # Apache Log4j participates in the bug bounty program
 
-We have been very proud to be [supported by the STF](/blog/2023/12/14/announcing-support-from-the-stf.html) last year.
-We were able to fix many bugs, rewrite documentation, and improve the overall quality of the codebase and security.
+We were proud to be [supported by the STF](/blog/2023/12/14/announcing-support-from-the-stf.html) last year.
+This support helped us to fix many bugs, rewrite documentation, and improve the overall quality of the codebase and security.
 
-We won't stop here. With the help of the [YesWeHack](https://yeswehack.com/programs/log4j-bug-bounty-program) bug bounty program, we can now offer you a chance to hunt bugs for Log4j and get paid for it.
+Building on this support, we are excited to announce our participation in the [YesWeHack](https://yeswehack.com/programs/log4j-bug-bounty-program) bug bounty program.
+This initiative allows you to hunt bugs in Log4j and get paid for your contributions.
 
-We would not be able to participate in such a program. 
+Our participation in this program wouldn't have been possible without the 
+generous support of our friends at the STF, who provided the necessary funds to 
+reward your efforts. The STF not only supports us but also assists many other projects. 
+You can learn more about their mission by reading their
+[official announcement on their website](https://www.sovereigntechfund.de/news/calling-all-security-researchers).
 
-Luckily, our friends from the STF have helped us get the funds necessary to pay for the bugs you find.
-They are offering their help not only to us but to many other projects as well.
-If you want to learn more about what they do, please read their [official announcement on their website](https://www.sovereigntechfund.de/news/calling-all-security-researchers).
+We want to thank the STF and YesWeHack for their support.
 
-We want to thank the STF and YesWeHack for their support and hope you will help us make Log4j even more secure.
+We encourage all security researchers and developers to join us in this effort. 
+Your contributions can help make Log4j more secure and reward your efforts.
