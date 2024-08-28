@@ -51,6 +51,8 @@ include::_threat-model-common.adoc[]
 
 include::_threat-model-log4j.adoc[]
 
+include::_threat-model-log4net.adoc[]
+
 [#policy]
 == Vulnerability handling policy
 
