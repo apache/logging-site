@@ -83,7 +83,7 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`{empt
 [#log4j-changelog]
 == Log4j Changelog schemas
 
-link:/log4j/tools/latest/#log4j-changelog[Log4j Changelog] is a tool to maintain changelogs.
+link:/log4j/tools/log4j-changelog.html[Log4j Changelog] is a tool to maintain changelogs.
 It is designed for Apache Log4j, but can be used for any Java project.
 
 [%header,cols="3*"]
@@ -94,23 +94,23 @@ It is designed for Apache Log4j, but can be used for any Java project.
 
 |2023-02-03
 |xref:log4j-changelog-0.1.0.xsd[]
-|Released with link:/log4j/tools/latest/#release-notes-0-2-0[Log4j Tools `0.2.0`]
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-2-0[Log4j Tools `0.2.0`]
 
 |2023-03-17
 |xref:log4j-changelog-0.1.1.xsd[]
-|Released with link:/log4j/tools/latest/#release-notes-0-3-0[Log4j Tools `0.3.0`]
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-3-0[Log4j Tools `0.3.0`]
 
 |2023-09-28
 |xref:log4j-changelog-0.1.2.xsd[]
-|Released with link:/log4j/tools/latest/#release-notes-0-5-0[Log4j Tools `0.5.0`]
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-5-0[Log4j Tools `0.5.0`]
 
 |2023-12-13
 |xref:log4j-changelog-0.1.3.xsd[]
-|Released with link:/log4j/tools/latest/#release-notes-0-7-0[Log4j Tools `0.7.0`]
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-7-0[Log4j Tools `0.7.0`]
 
-|2024-03-15
+|2024-03-21
 |xref:log4j-changelog-0.2.0.xsd[]
-|Planned to be released with Log4j Tools `0.8.0`
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-8-0[Log4j Tools `0.8.0`]
 
 |N/A
 |xref:log4j-changelog-0.xsd[]
@@ -132,3 +132,25 @@ It is designed for Apache Log4j, but can be used for any Java project.
   <description format="asciidoc">Update `actions/checkout` to version `4.1.2`</description>
 </entry>
 ----
+
+[#log4j-plugins]
+== Log4j Docgen schemas
+
+link:/log4j/tools/log4j-docgen.html[Log4j Docgen] is a tool to maintain Log4j Core plugin documentation.
+It is designed for Apache Log4j.
+
+[%header,cols="3*"]
+|===
+|Publication date
+|File name
+|Description
+
+|2024-03-21
+|xref:log4j-plugins-0.1.0.xsd[]
+|Released with link:/log4j/tools/release-notes.html#release-notes-0-8-0[Log4j Tools `0.8.0`]
+
+|N/A
+|xref:log4j-plugins-0.xsd[]
+|Points to the most recent XSD of major version `0`.
+*Users are recommended to refer to this XSD in their XML files.*
+|===
