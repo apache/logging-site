@@ -34,7 +34,7 @@ Java distribution channels::
 * ASF https://repository.apache.org/content/repositories/releases[Release] and https://repository.apache.org/content/repositories/snapshots[snapshot] Nexus repositories (mirrored to https://central.sonatype.dev/[the Maven Central Repository])
 
 .NET distribution channels::
-* https://www.nuget.org/profiles/Apache.Logging[`Apache.Logging` organization in NuGet]
+* https://www.nuget.org/profiles/asf[`asf` organization in NuGet]
 
 [#verify]
 == Verification
