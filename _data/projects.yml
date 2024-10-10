@@ -31,7 +31,7 @@
 - name: Flume
   description: Distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data.
   url: "https://flume.apache.org"
-  status: active
+  status: dormant
   section: processing
 - name: Log4Net
   description: A port of the Log4j® to the Microsoft .NET runtime.
