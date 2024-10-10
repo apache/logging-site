@@ -11,3 +11,5 @@ staging:
 publish:
   profile: ~
   whoami: asf-site
+
+# Dummy value to trigger CI
