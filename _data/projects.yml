@@ -30,7 +30,7 @@
   section: processing
 - name: Flume
   description: Distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data.
-  url: "https://flume.apache.org"
+  url: "https://logging.apache.org/flume"
   status: dormant
   section: processing
 - name: Log4Net
