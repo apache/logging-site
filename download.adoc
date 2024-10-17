@@ -40,7 +40,7 @@ Java distribution channels::
 == Verification
 
 All Logging Services release distributions are digitally signed by the release manager and provided with checksum files.
-You can verify a distribution by following the below shared instructions:
+You can verify a distribution by following the below shared Linux/macOS instructions:
 
 [source,bash]
 ----
@@ -48,11 +48,20 @@ You can verify a distribution by following the below shared instructions:
 wget -O - https://downloads.apache.org/logging/KEYS | gpg --import
 
 # Verify signatures
-for sigFile in *.asc; do gpg --verify $sigFile; done
+for sigFile in *.asc; do gpg --verify $sigFile ${sigFile%.asc}; done
 
 # Verify checksums
 shasum --check *.sha512
 ----
+
+[NOTE]
+====
+Windows users need to
+
+* Manually download the file at the `wget` step
+* Manually unroll the `for` loop
+* Use `certUtil -hashfile <FILE> SHA512` instead of `shasum`
+====
 
 [#sbom]
 == Software Bill of Materials (SBOM)
