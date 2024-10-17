@@ -64,6 +64,7 @@ If you have questions or feedback like:
 * A class should be public instead of package-private
 * A plugin is missing configuration options
 * You've found a bug
+* *You have questions that are not project-specific*
 
 then please contact us using the following channels:
 
@@ -103,6 +104,7 @@ Make sure to check xref:security.adoc[the Security page] before sending an email
 
 Logging Services projects use GitHub Issues (https://github.com/apache/logging-log4cxx/issues[Log4cxx], https://github.com/apache/logging-log4j2/issues[Log4j], https://github.com/apache/logging-log4net/issues[Log4net]) as their issue tracking system.
 The old issue tracking system, JIRA (https://issues.apache.org/jira/projects/LOGCXX[Log4cxx], https://issues.apache.org/jira/projects/LOG4J2[Log4j]), is still accessible, though only recommended for issues that were already created there.
+For issues that are not project-specific, <<#discussions-maintainer,get in touch with maintainers instead>>.
 
 Issues get resolved in one of the following ways:
 
