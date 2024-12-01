@@ -58,3 +58,7 @@ exclude:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Force inclusion
+include:
+  - .well-known/
