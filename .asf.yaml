@@ -5,11 +5,10 @@ notifications:
   jira_options: link label comment
 
 staging:
-  profile: ~
   whoami: asf-staging
+  profile: ~
 
 publish:
-  profile: ~
   whoami: asf-site
 
 # Dummy value to trigger CI
