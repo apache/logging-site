@@ -22,21 +22,21 @@
     limitations under the License.
 -->
   <Project rdf:about="https://logging.apache.org/log4j">
-    <created>2023-03-06</created>
+    <created>1999-01-01</created>
     <license rdf:resource="https://spdx.org/licenses/Apache-2.0" />
     <name>Apache Log4j</name>
-    <homepage rdf:resource="https://logging.apache.org/log4j" />
+    <homepage rdf:resource="https://logging.apache.org/log4j/2.x/index.html" />
     <asfext:pmc rdf:resource="https://logging.apache.org" />
-    <shortdesc>Apache log4j provides logging services for Java.</shortdesc>
+    <shortdesc>Apache Log4j is a versatile, feature-rich, efficient logging API and backend for Java.</shortdesc>
     <bug-database rdf:resource="https://github.com/apache/logging-log4j2/issues" />
-    <mailing-list rdf:resource="http://logging.apache.org/log4j/2.x/mail-lists.html" />
-    <download-page rdf:resource="http://logging.apache.org/log4j/2.x/download.html" />
+    <mailing-list rdf:resource="https://logging.apache.org/support.html" />
+    <download-page rdf:resource="https://logging.apache.org/log4j/2.x/download.html" />
     <programming-language>Java</programming-language>
     <category rdf:resource="https://projects.apache.org/category/library" />
     <repository>
       <GitRepository>
-        <location rdf:resource="http://git-wip-us.apache.org/repos/asf/logging-log4j2.git"/>
-        <browse rdf:resource="https://git-wip-us.apache.org/repos/asf?p=logging-log4j2.git"/>
+        <location rdf:resource="https://github.com/apache/logging-log4j2.git"/>
+        <browse rdf:resource="https://github.com/apache/logging-log4j2/"/>
       </GitRepository>
     </repository>
   </Project>
