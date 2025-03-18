@@ -1,44 +1,6 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@rgoers
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-asciidoctor
-/
-asciidoctor
-133
-3.3k
-547
-Code
-Issues
-716
-Pull requests
-46
-Actions
-Projects
-Wiki
-Security
-Insights
-asciidoctor/data/stylesheets/asciidoctor-default.css
-@mojavelinux
-mojavelinux use border-radius 50% to make circle around conum [skip ci]
-Latest commit 12fb0b6 on Aug 30, 2019
-History
-6 contributors
-@mojavelinux@leif81@sindzicat@bk2204@Mogztter@ds26gte
-426 lines (426 sloc)  29.3 KB
-
-    /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
-    /* Uncomment @import statement to use as custom stylesheet */
-    /*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
 audio,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -462,15 +424,3 @@ p{margin-bottom:1.25rem}
     #footer{background:none}
     #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
