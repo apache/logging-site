@@ -33,8 +33,9 @@ See link:guidelines.html[Guidelines] for further details on roles.
 | Gary Gregory | ggregory | PMC Member | Log4j
 | Jan Friedrich | freeandnil | PMC Member | Log4net
 | Jay Katariya | jaykatariya | Committer | Log4j
+| Jeff Thomas | jwthomas | Committer | Log4j
 | Matt Sicker | mattsicker | PMC Member | Log4j
-| Piotr P. Karwasz | pkarwasz | PMC Chair | Log4j
+| Piotr Karwasz | pkarwasz | PMC Chair | Log4j
 | Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
 | Raman Gupta | rgupta | Committer | Log4j Kotlin
 | Remko Popma | rpopma | PMC Member | Log4j
