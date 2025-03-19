@@ -13,4 +13,8 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
 
-docker run --rm -p 4000:4000 --mount type=bind,src=$PWD,dst=/root/build --mount type=volume,dst=/root/build/node_modules -it apache/logging_site serve --watch
+docker run --rm -it\
+  -p 4000:4000\
+   --mount type=bind,src=$PWD,dst=/root/build\
+   --mount type=volume,dst=/root/build/node_modules\
+   apache/logging_site serve --watch
