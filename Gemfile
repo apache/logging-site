@@ -22,7 +22,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.2.2"
+gem "jekyll", "~> 4.4.1"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.5.2"
@@ -42,3 +42,8 @@ group :jekyll_plugins do
   gem "jekyll-asciidoc", "~> 2.1.1"
   gem "jekyll-sass-converter", "~> 2.2.0"
 end
+
+# After upgrade to Jekyll 4.4
+gem "rouge", "~> 3.30"
+gem "terminal-table", "~> 2.0"
+gem "unicode-display_width", "~> 1.8"
