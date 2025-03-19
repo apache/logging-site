@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM ruby:2.7.1-alpine3.11 as dependencies
+FROM ruby:alpine AS dependencies
 
 RUN apk --no-cache add \
   zlib-dev \
@@ -30,9 +30,7 @@ RUN apk --no-cache add \
   zlib-dev \
   vips-dev \
   sqlite-dev \
-  cmake
-
-RUN apk --no-cache add \
+  cmake \
   linux-headers \
   openjdk8-jre \
   less \
@@ -47,17 +45,14 @@ RUN apk --no-cache add \
   shadow \
   bash \
   su-exec \
-  nodejs-npm \
+  npm \
   libressl \
   yarn
 
 WORKDIR /root/build
 
-RUN gem install bundler:1.17.3
-ENV BUNDLE_CLEAN=false
-
+RUN gem install bundler
 COPY Gemfile .
-
 RUN bundle config clean
 RUN bundle install
 
