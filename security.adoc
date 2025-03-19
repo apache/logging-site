@@ -18,6 +18,7 @@
 :cve-url-prefix: https://nvd.nist.gov/vuln/detail
 
 = Security
+:showtitle:
 
 The Logging Services Security Team takes security seriously.
 This allows our users to place their trust in Log4j for protecting their mission-critical data.
@@ -28,7 +29,7 @@ include::_log4j1-eol.adoc[]
 [#support]
 == Getting support
 
-If you need help on building or configuring Logging Services projects or other help on following the instructions to mitigate the known vulnerabilities listed here, please use our xref:support.adoc#discussions[user support channels].
+If you need help on building or configuring Logging Services projects or other help on following the instructions to mitigate the known vulnerabilities listed here, please use our xref:support.adoc#discussions-user[user support channels].
 
 [TIP]
 ====
