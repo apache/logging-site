@@ -1,21 +1,81 @@
 ---
 ---
+
 /*
-Licensed to the Apache Software Foundation (ASF) under one or more
-contributor license agreements.  See the NOTICE file distributed with
-this work for additional information regarding copyright ownership.
-The ASF licenses this file to You under the Apache License, Version 2.0
-(the "License"); you may not use this file except in compliance with
-the License.  You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-    http://www.apache.org/licenses/LICENSE-2.0
+/*
+ * Variables based on: https://gitlab.com/antora/antora-ui-default/-/blob/master/src/css/vars.css?ref_type=heads
+ * Licensed under MPL-2.0: https://opensource.org/license/mpl-2-0
+ */
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
+$color-jet-50: #333;
+$color-jet-70: #222;
+$color-jet-80: #191919;
+$color-smoke-90: #e1e1e1;
+
+$rem-base: 18;
+
+$body-background: white;
+$body-font-color: $color-jet-70;
+$body-font-family: Roboto, sans-serif;
+/* Bootstrap messes up the default browser font size, so we use 16px instead of the original em. */
+$body-font-size: 1.0625 * 16px;
+$body-font-size--desktop: 1.125 * 16px;
+$body-line-height: 1.15;
+
+$doc-font-color: $color-jet-50;
+$doc-font-size: inherit;
+$doc-font-size--desktop: 17 / $rem-base * 1rem;
+$doc-line-height: 1.6;
+$doc-margin: 0 auto;
+$doc-margin--desktop: 0 2rem;
+$doc-max-width: 720 / $rem-base * 1rem;
+$doc-max-width--desktop: 828 / $rem-base * 1rem;
+
+$heading-font-color: $color-jet-80;
+$heading-font-weight: normal;
+$alt-heading-font-weight: bold;
+
+$section-divider-color: $color-smoke-90;
+
+/*
+ * Include Roboto typefaces
+ */
+@import 'typeface-roboto.css', 'typeface-roboto-mono.css';
+
+/*
+ * Same defaults as Antora
+ */
+html {
+    font-size: $body-font-size;
+}
+
+body {
+    background: $body-background;
+    color: $body-font-color;
+    font-family: $body-font-family;
+    line-height: $body-line-height;
+    margin: 0;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    word-wrap: anywhere
+}
 
 .navbar .container { width: 940px; }
 .hero-unit h1 { font-size: 40px; margin-bottom: 15px; }
@@ -39,13 +99,81 @@ limitations under the License.
     }
 }
 
+.content {
+    color: $doc-font-color;
+    font-size: $doc-font-size;
+    hyphens: auto;
+    line-height: $doc-line-height;
+    margin: $doc-margin;
+    max-width: $doc-max-width;
+    padding: 0 1rem 4rem;
 
-.content h1,
-.content h2,
-.content h3,
-.content h4 { margin-bottom: 10px; }
+    /**
+     * Overrides:
+     * - very specific `asciidoctor-default` for first paragraph with defaults
+     * - the `bootstrap` size for `p`
+     */
+    #preamble > .sectionbody > [class="paragraph"]:first-of-type p, p {
+        font-size: $doc-font-size;
+        line-height: $doc-line-height;
+    }
 
-.content h3 { margin-top: 20px; }
+    @mixin heading-style($font-size, $font-weight: $heading-font-weight) {
+        color: $heading-font-color;
+        font-size: $font-size;
+        font-weight: $font-weight;
+        hyphens: none;
+        line-height: 1.3;
+        margin: 1rem 0 0;
+    }
+
+    /**
+     * Our customization of the default Antora look
+     * See `logging-parent`.
+     */
+    h1 {
+        @include heading-style(1.9rem);
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h2 {
+        @include heading-style(1.7rem);
+        /* Default Antora style */
+        border-bottom: 1px solid $section-divider-color;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0.4rem 1rem 0.1rem;
+    }
+
+    h3 {
+        @include heading-style(1.5rem, $alt-heading-font-weight);
+    }
+
+    h4 {
+        @include heading-style(1.3rem, $alt-heading-font-weight);
+    }
+
+    h5 {
+        @include heading-style(1.1rem, $alt-heading-font-weight);
+        text-decoration: underline;
+    }
+
+    h6 {
+        @include heading-style(0.9rem, $alt-heading-font-weight);
+        text-decoration: underline;
+    }
+
+    .paragraph {
+        margin: 1rem 0 0;
+    }
+
+    .admonitionblock {
+        p, td.content {
+            font-size: 16 / $rem-base * 1rem;
+        }
+    }
+}
 
 blockquote { margin-top: 20px; font-weight: normal; }
 blockquote p { margin-bottom: 12px; font-size: 14px; text-align: justify; }
@@ -66,7 +194,6 @@ blockquote ul { margin-left: 50px; font-size: 14px; }
             margin-top: 30px;
         }
     }
-    
 
     .project {
         width: 33%;
@@ -90,16 +217,16 @@ blockquote ul { margin-left: 50px; font-size: 14px; }
         font-size: 2em;
         margin: 0.5em 0 0.5em 0;
     }
+
     .post-date {
         font-style: italic;
     }
+
     .post-tags {
         margin-bottom: 3em;
         color: gray;
     }
 }
-
-
 
 .latest-post {
     display: flex;
@@ -109,18 +236,33 @@ blockquote ul { margin-left: 50px; font-size: 14px; }
     background-color: #c0c0c0;
     color: black;
     padding: 0.5em;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
 
     .latest-post-news {
-      font-size: 1.0em;
-      a {
-        color: black;
-        
-      }
+        font-size: 1.0em;
+
+        a {
+            color: black;
+        }
     }
+
     .latest-post-date {
-      font-size: 0.5em;
-      margin-right: 1.5em;
-      padding: 0.5em;
+        font-size: 0.5em;
+        margin-right: 1.5em;
+        padding: 0.5em;
     }
-  }
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: $body-font-size--desktop;
+    }
+
+    .content {
+        flex: auto;
+        font-size: $doc-font-size--desktop;
+        margin: $doc-margin--desktop;
+        max-width: $doc-max-width--desktop;
+        min-width: 0;
+    }
+}
