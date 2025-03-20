@@ -22,7 +22,7 @@
 
 The Logging Services Security Team takes security seriously.
 This allows our users to place their trust in Log4j for protecting their mission-critical data.
-In this page we will help you find guidance on security-related issues and access to known vulnerabilities.
+On this page, we will help you find guidance on security-related issues and access to known vulnerabilities.
 
 include::_log4j1-eol.adoc[]
 
@@ -48,11 +48,7 @@ We urge you to **carefully read the threat model** detailed in following section
 It guides users on certain safety instructions while using Logging Services software and elaborates on what counts as an unexpected behaviour that has a security impact.
 ====
 
-include::_threat-model-common.adoc[]
-
-include::_threat-model-log4j.adoc[]
-
-include::_threat-model-log4net.adoc[]
+include::_threat-model-common.adoc[leveloffset=+1]
 
 [#policy]
 == Vulnerability handling policy
