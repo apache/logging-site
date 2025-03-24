@@ -2040,6 +2040,7 @@ log4j-2,log4j-jakarta-web,2021-12-06,rgoers@apache.org
 log4j-2,log4j-jakarta-web,2021-11-15,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
+log4j-2,log4j-core-test,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
 log4j-2,log4j-core-test,2025-02-19,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2025-02-16,140749446+Suvrat1629@users.noreply.github.com
 log4j-2,log4j-core-test,2025-01-08,32147410+jaykataria1111@users.noreply.github.com
@@ -4003,6 +4004,13 @@ log4j-2,log4j-appserver,2017-10-08,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-11,rgoers@nextiva.com
+log4j-2,log4j,2025-03-20,private@logging.apache.org
+log4j-2,log4j,2025-03-20,private@logging.apache.org
+log4j-2,log4j,2025-03-17,private@logging.apache.org
+log4j-2,log4j,2025-03-17,49699333+dependabot[bot]@users.noreply.github.com
+log4j-2,log4j,2025-03-17,private@logging.apache.org
+log4j-2,log4j,2025-03-17,private@logging.apache.org
+log4j-2,log4j,2025-03-17,private@logging.apache.org
 log4j-2,log4j,2025-03-11,private@logging.apache.org
 log4j-2,log4j,2025-03-11,private@logging.apache.org
 log4j-2,log4j,2025-03-03,private@logging.apache.org
@@ -6282,6 +6290,7 @@ log4j-2,log4j-api,2013-09-03,ggregory@apache.org
 log4j-2,log4j-api,2013-08-26,rpopma@unknown
 log4j-2,log4j-api,2013-08-26,rpopma@unknown
 log4j-2,log4j-api,2013-08-26,ggregory@apache.org
+log4j-2,log4j-spring-cloud-config-client,2025-03-20,private@logging.apache.org
 log4j-2,log4j-spring-cloud-config-client,2024-12-03,mattsicker@apache.org
 log4j-2,log4j-spring-cloud-config-client,2024-12-03,private@logging.apache.org
 log4j-2,log4j-spring-cloud-config-client,2024-11-27,private@logging.apache.org
@@ -6340,6 +6349,17 @@ log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-04-19,piotr.github@karwasz.org
 log4j-2,log4j-jakarta-smtp,2022-03-29,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
+log4j-2,log4j-bom,2025-03-21,cg@grobmeier.de
+log4j-2,log4j-bom,2025-03-21,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-03-20,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-20,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-20,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-17,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-17,49699333+dependabot[bot]@users.noreply.github.com
+log4j-2,log4j-bom,2025-03-17,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-17,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-17,private@logging.apache.org
 log4j-2,log4j-bom,2025-03-14,private@logging.apache.org
 log4j-2,log4j-bom,2025-03-11,private@logging.apache.org
 log4j-2,log4j-bom,2025-03-11,private@logging.apache.org
@@ -21529,6 +21549,7 @@ log4j-2,log4j-jpl,2020-04-20,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-20,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-12,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-05,rgoers@apache.org
+log4j-2,log4j-spring-boot,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
 log4j-2,log4j-spring-boot,2024-11-19,49242855+strangelookingnerd@users.noreply.github.com
 log4j-2,log4j-spring-boot,2024-03-26,volkan@yazi.ci
 log4j-2,log4j-spring-boot,2024-02-29,volkan@yazi.ci
@@ -22296,6 +22317,7 @@ log4j-2,log4j-docker,2019-06-23,ralph.goers@dslextreme.com
 log4j-2,log4j-docker,2019-04-04,rgoers@apache.org
 log4j-2,log4j-docker,2019-03-31,rgoers@apache.org
 log4j-2,log4j-docker,2019-03-21,rgoers@apache.org
+log4j-2,log4j-core,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
 log4j-2,log4j-core,2025-03-01,jeff.w.thomas@outlook.com
 log4j-2,log4j-core,2025-02-27,jeff.w.thomas@outlook.com
 log4j-2,log4j-core,2025-02-19,piotr.github@karwasz.org
@@ -33363,6 +33385,13 @@ log4j-server,log4j-server,2017-07-26,mikael@staldal.nu
 log4j-server,log4j-server,2017-06-28,mikael@staldal.nu
 log4j-server,log4j-server,2017-04-21,mikael.staldal@magine.com
 log4j-server,log4j-server,2017-04-11,mikael.staldal@magine.com
+log4cxx,*,2025-03-23,stephen.webb@ieee.org
+log4cxx,*,2025-03-18,stephen.webb@ieee.org
+log4cxx,*,2025-03-18,stephen.webb@ieee.org
+log4cxx,*,2025-03-18,stephen.webb@ieee.org
+log4cxx,*,2025-03-18,stephen.webb@ieee.org
+log4cxx,*,2025-03-18,stephen.webb@ieee.org
+log4cxx,*,2025-03-17,rm5248@users.noreply.github.com
 log4cxx,*,2025-03-01,stephen.webb@ieee.org
 log4cxx,*,2025-02-24,stephen.webb@ieee.org
 log4cxx,*,2025-02-24,stephen.webb@ieee.org
