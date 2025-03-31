@@ -3549,6 +3549,7 @@ log4j-2,log4j-1.2-api,2013-09-14,rgoers@apache.org
 log4j-2,log4j-1.2-api,2013-09-13,ggregory@apache.org
 log4j-2,log4j-1.2-api,2013-08-26,rgoers@apache.org
 log4j-2,log4j-1.2-api,2013-08-26,ggregory@apache.org
+log4j-2,log4j-api-test,2025-03-24,bjlaub@gmail.com
 log4j-2,log4j-api-test,2024-12-13,piotr.github@karwasz.org
 log4j-2,log4j-api-test,2024-12-09,piotr.github@karwasz.org
 log4j-2,log4j-api-test,2024-12-03,mattsicker@apache.org
@@ -4004,6 +4005,7 @@ log4j-2,log4j-appserver,2017-10-08,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-11,rgoers@nextiva.com
+log4j-2,log4j,2025-03-26,private@logging.apache.org
 log4j-2,log4j,2025-03-20,private@logging.apache.org
 log4j-2,log4j,2025-03-20,private@logging.apache.org
 log4j-2,log4j,2025-03-17,private@logging.apache.org
@@ -4564,6 +4566,7 @@ log4j-2,log4j-jcl,2013-12-05,ggregory@apache.org
 log4j-2,log4j-jcl,2013-09-14,rgoers@apache.org
 log4j-2,log4j-jcl,2013-09-14,rgoers@apache.org
 log4j-2,log4j-jcl,2013-08-26,ggregory@apache.org
+log4j-2,log4j-api,2025-03-24,bjlaub@gmail.com
 log4j-2,log4j-api,2024-12-30,piotr.github@karwasz.org
 log4j-2,log4j-api,2024-12-13,piotr.github@karwasz.org
 log4j-2,log4j-api,2024-12-09,piotr.github@karwasz.org
@@ -6349,6 +6352,8 @@ log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-04-19,piotr.github@karwasz.org
 log4j-2,log4j-jakarta-smtp,2022-03-29,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-03-26,private@logging.apache.org
+log4j-2,log4j-bom,2025-03-24,bjlaub@gmail.com
 log4j-2,log4j-bom,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
 log4j-2,log4j-bom,2025-03-21,cg@grobmeier.de
 log4j-2,log4j-bom,2025-03-21,piotr.github@karwasz.org
@@ -31045,6 +31050,9 @@ log4j-kotlin,log4j-api-kotlin-parent,2017-11-23,rocketraman@gmail.com
 log4j-kotlin,log4j-api-kotlin-parent,2016-12-08,rocketraman@gmail.com
 log4j-kotlin,log4j-api-kotlin-parent,2016-11-14,rocketraman@gmail.com
 log4j-kotlin,log4j-api-kotlin-parent,2016-11-14,rocketraman@gmail.com
+log4net,*,2025-03-28,pkarwasz-github@apache.org
+log4net,*,2025-03-28,43271715+FreeAndNil@users.noreply.github.com
+log4net,*,2025-03-28,pkarwasz-github@apache.org
 log4net,*,2025-03-05,freeandnil@apache.org
 log4net,*,2025-02-21,freeandnil@apache.org
 log4net,*,2025-02-21,freeandnil@apache.org
@@ -33385,6 +33393,7 @@ log4j-server,log4j-server,2017-07-26,mikael@staldal.nu
 log4j-server,log4j-server,2017-06-28,mikael@staldal.nu
 log4j-server,log4j-server,2017-04-21,mikael.staldal@magine.com
 log4j-server,log4j-server,2017-04-11,mikael.staldal@magine.com
+log4cxx,*,2025-03-28,stephen.webb@ieee.org
 log4cxx,*,2025-03-23,stephen.webb@ieee.org
 log4cxx,*,2025-03-18,stephen.webb@ieee.org
 log4cxx,*,2025-03-18,stephen.webb@ieee.org
