@@ -36099,6 +36099,7 @@ log4j-transform,log4j-transform-maven-plugin,2023-04-27,robots@logging.apache.or
 log4j-transform,log4j-transform-maven-plugin,2023-02-25,piotr.github@karwasz.org
 log4j-transform,log4j-transform-maven-plugin,2023-02-24,piotr.github@karwasz.org
 log4j-transform,log4j-transform-maven-plugin,2023-01-08,piotr.github@karwasz.org
+log4j-transform,log4j-transform-parent,2025-03-31,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-03-14,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-02-25,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-02-21,private@logging.apache.org
@@ -36217,6 +36218,7 @@ log4j-transform,log4j-converter-plugin-descriptor,2025-03-05,49699333+dependabot
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-28,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-07,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-07,piotr.github@karwasz.org
+log4j-transform,log4j-transform-bom,2025-03-31,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-03-14,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-03-05,49699333+dependabot[bot]@users.noreply.github.com
 log4j-transform,log4j-transform-bom,2025-03-05,49699333+dependabot[bot]@users.noreply.github.com
