@@ -2855,6 +2855,7 @@ log4j-2,log4j-jpa,2018-01-28,rpopma@apache.org
 log4j-2,log4j-jpa,2018-01-26,rpopma@apache.org
 log4j-2,log4j-jpa,2018-01-14,rpopma@apache.org
 log4j-2,log4j-jpa,2018-01-27,garydgregory@gmail.com
+log4j-2,log4j-1.2-api,2025-04-11,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-1.2-api,2024-11-19,49242855+strangelookingnerd@users.noreply.github.com
 log4j-2,log4j-1.2-api,2024-11-17,piotr.github@karwasz.org
 log4j-2,log4j-1.2-api,2024-11-12,jacoba@neighbourhood.ie
@@ -4006,6 +4007,10 @@ log4j-2,log4j-appserver,2017-10-08,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-17,rgoers@nextiva.com
 log4j-2,log4j-appserver,2017-09-11,rgoers@nextiva.com
+log4j-2,log4j,2025-04-11,49699333+dependabot[bot]@users.noreply.github.com
+log4j-2,log4j,2025-04-10,jendrik.johannes@gmail.com
+log4j-2,log4j,2025-04-09,private@logging.apache.org
+log4j-2,log4j,2025-04-07,private@logging.apache.org
 log4j-2,log4j,2025-03-26,private@logging.apache.org
 log4j-2,log4j,2025-03-20,private@logging.apache.org
 log4j-2,log4j,2025-03-20,private@logging.apache.org
@@ -6353,6 +6358,19 @@ log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-06-28,rgoers@apache.org
 log4j-2,log4j-jakarta-smtp,2022-04-19,piotr.github@karwasz.org
 log4j-2,log4j-jakarta-smtp,2022-03-29,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-04-13,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-11,49699333+dependabot[bot]@users.noreply.github.com
+log4j-2,log4j-bom,2025-04-10,jendrik.johannes@gmail.com
+log4j-2,log4j-bom,2025-04-09,private@logging.apache.org
+log4j-2,log4j-bom,2025-04-09,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-04-07,private@logging.apache.org
 log4j-2,log4j-bom,2025-04-01,pkarwasz-github@apache.org
 log4j-2,log4j-bom,2025-04-01,syidong@aliyun.com
 log4j-2,log4j-bom,2025-03-26,private@logging.apache.org
@@ -21667,6 +21685,7 @@ log4j-2,log4j-spring-boot,2020-08-02,boards@gmail.com
 log4j-2,log4j-spring-boot,2020-08-15,rgoers@apache.org
 log4j-2,log4j-spring-boot,2020-08-15,rgoers@apache.org
 log4j-2,log4j-spring-boot,2020-08-12,rgoers@apache.org
+log4j-2,log4j-to-jul,2025-04-11,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-to-jul,2024-11-19,49242855+strangelookingnerd@users.noreply.github.com
 log4j-2,log4j-to-jul,2024-11-15,piotr.github@karwasz.org
 log4j-2,log4j-to-jul,2024-09-17,volkan@yazi.ci
@@ -22325,6 +22344,7 @@ log4j-2,log4j-docker,2019-06-23,ralph.goers@dslextreme.com
 log4j-2,log4j-docker,2019-04-04,rgoers@apache.org
 log4j-2,log4j-docker,2019-03-31,rgoers@apache.org
 log4j-2,log4j-docker,2019-03-21,rgoers@apache.org
+log4j-2,log4j-core,2025-04-11,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-core,2025-03-22,47741121+Pluto-syd@users.noreply.github.com
 log4j-2,log4j-core,2025-03-01,jeff.w.thomas@outlook.com
 log4j-2,log4j-core,2025-02-27,jeff.w.thomas@outlook.com
@@ -36104,6 +36124,7 @@ log4j-transform,log4j-transform-maven-plugin,2023-04-27,robots@logging.apache.or
 log4j-transform,log4j-transform-maven-plugin,2023-02-25,piotr.github@karwasz.org
 log4j-transform,log4j-transform-maven-plugin,2023-02-24,piotr.github@karwasz.org
 log4j-transform,log4j-transform-maven-plugin,2023-01-08,piotr.github@karwasz.org
+log4j-transform,log4j-transform-parent,2025-04-11,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-04-02,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-03-31,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-03-14,private@logging.apache.org
@@ -36224,6 +36245,7 @@ log4j-transform,log4j-converter-plugin-descriptor,2025-03-05,49699333+dependabot
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-28,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-07,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-07,piotr.github@karwasz.org
+log4j-transform,log4j-transform-bom,2025-04-11,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-04-02,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-03-31,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-03-14,private@logging.apache.org
