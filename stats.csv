@@ -4871,6 +4871,8 @@ log4j-2,log4j-spring-boot,2020-08-02,boards@gmail.com
 log4j-2,log4j-spring-boot,2020-08-15,rgoers@apache.org
 log4j-2,log4j-spring-boot,2020-08-15,rgoers@apache.org
 log4j-2,log4j-spring-boot,2020-08-12,rgoers@apache.org
+log4j-2,log4j-bom,2025-05-04,vilius@sumskas.eu
+log4j-2,log4j-bom,2025-05-01,35344069+neboskreb@users.noreply.github.com
 log4j-2,log4j-bom,2025-04-18,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-bom,2025-04-17,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-bom,2025-04-17,49699333+dependabot[bot]@users.noreply.github.com
@@ -23421,6 +23423,7 @@ log4j-2,log4j-web,2014-05-10,rgoers@apache.org
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
+log4j-2,log4j-api,2025-05-01,35344069+neboskreb@users.noreply.github.com
 log4j-2,log4j-api,2025-03-24,bjlaub@gmail.com
 log4j-2,log4j-api,2024-12-30,piotr.github@karwasz.org
 log4j-2,log4j-api,2024-12-13,piotr.github@karwasz.org
@@ -31285,6 +31288,7 @@ log4j-2,log4j-core,2013-08-31,nickwilliams@unknown
 log4j-2,log4j-core,2013-08-31,nickwilliams@unknown
 log4j-2,log4j-core,2013-08-27,rpopma@unknown
 log4j-2,log4j-core,2013-08-26,ggregory@apache.org
+log4j-2,log4j-layout-template-json,2025-05-04,vilius@sumskas.eu
 log4j-2,log4j-layout-template-json,2025-04-15,pkarwasz-github@apache.org
 log4j-2,log4j-layout-template-json,2025-01-27,volkan@yazi.ci
 log4j-2,log4j-layout-template-json,2024-11-18,volkan@yazi.ci
