@@ -19,6 +19,12 @@ log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-04-27,piotr.g
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-04-27,robots@logging.apache.org
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-02-04,49699333+dependabot[bot]@users.noreply.github.com
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-01-11,edwgiz@gmail.com
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
+log4j-transform,log4j-transform-bom,2025-06-16,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-06-09,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-06-06,private@logging.apache.org
 log4j-transform,log4j-transform-bom,2025-05-30,private@logging.apache.org
@@ -371,6 +377,7 @@ log4j-transform,log4j-weaver,2023-04-27,robots@logging.apache.org
 log4j-transform,log4j-weaver,2023-02-25,piotr.github@karwasz.org
 log4j-transform,log4j-weaver,2023-01-08,piotr.github@karwasz.org
 log4j-transform,log4j-transform-cli,2024-12-15,piotr.github@karwasz.org
+log4j-transform,log4j-converter-config,2025-06-16,private@logging.apache.org
 log4j-transform,log4j-converter-config,2025-04-25,private@logging.apache.org
 log4j-transform,log4j-converter-config,2025-03-03,private@logging.apache.org
 log4j-transform,log4j-converter-config,2024-12-16,piotr.github@karwasz.org
@@ -378,6 +385,7 @@ log4j-transform,log4j-converter-config,2024-12-15,piotr.github@karwasz.org
 log4j-transform,log4j-converter-config,2024-12-05,49699333+dependabot[bot]@users.noreply.github.com
 log4j-transform,log4j-converter-config,2024-11-27,piotr.github@karwasz.org
 log4j-transform,log4j-converter-config,2024-11-27,piotr.github@karwasz.org
+log4j-transform,log4j-transform-parent,2025-06-16,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-06-09,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-06-06,private@logging.apache.org
 log4j-transform,log4j-transform-parent,2025-05-30,private@logging.apache.org
@@ -499,6 +507,7 @@ log4j-transform,log4j-transform-parent,2023-01-11,piotr.github@karwasz.org
 log4j-transform,log4j-transform-parent,2023-01-11,edwgiz@gmail.com
 log4j-transform,log4j-transform-parent,2023-01-08,piotr.github@karwasz.org
 log4j-transform,log4j-transform-parent,2023-01-06,piotr.github@karwasz.org
+log4j-transform,log4j-converter-plugin-descriptor,2025-06-16,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2025-04-25,private@logging.apache.org
 log4j-transform,log4j-converter-plugin-descriptor,2025-03-05,49699333+dependabot[bot]@users.noreply.github.com
 log4j-transform,log4j-converter-plugin-descriptor,2024-11-28,private@logging.apache.org
@@ -547,6 +556,11 @@ log4j-transform,log4j-maven-it-location,2023-04-27,robots@logging.apache.org
 log4j-transform,log4j-maven-it-location,2023-04-27,robots@logging.apache.org
 log4j-transform,log4j-maven-it-location,2023-02-24,piotr.github@karwasz.org
 log4j-transform,log4j-maven-it-location,2023-01-08,piotr.github@karwasz.org
+log4j-jmx-gui,log4j-jmx-gui,2025-06-17,private@logging.apache.org
+log4j-jmx-gui,log4j-jmx-gui,2025-06-16,private@logging.apache.org
+log4j-jmx-gui,log4j-jmx-gui,2025-06-16,private@logging.apache.org
+log4j-jmx-gui,log4j-jmx-gui,2025-06-16,private@logging.apache.org
+log4j-jmx-gui,log4j-jmx-gui,2025-06-16,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-04-21,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-04-21,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-04-14,private@logging.apache.org
@@ -1197,6 +1211,8 @@ log4j-2,log4j-web,2014-05-10,rgoers@apache.org
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
 log4j-2,log4j-web,2014-05-04,mattsicker@unknown
+log4j-2,log4j-core-test,2025-06-20,118912510+jhl221123@users.noreply.github.com
+log4j-2,log4j-core-test,2025-06-20,118912510+jhl221123@users.noreply.github.com
 log4j-2,log4j-core-test,2025-06-04,rschmitt@apache.org
 log4j-2,log4j-core-test,2025-06-02,rschmitt@apache.org
 log4j-2,log4j-core-test,2025-06-02,volkan@yazi.ci
@@ -1481,6 +1497,12 @@ log4j-2,log4j-core-test,2022-09-26,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-06-21,volkan@yazi.ci
+log4j-2,log4j-bom,2025-06-21,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-06-20,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-06-20,pkarwasz-github@apache.org
+log4j-2,log4j-bom,2025-06-20,118912510+jhl221123@users.noreply.github.com
+log4j-2,log4j-bom,2025-06-20,118912510+jhl221123@users.noreply.github.com
 log4j-2,log4j-bom,2025-06-13,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-bom,2025-06-13,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j-bom,2025-06-13,49699333+dependabot[bot]@users.noreply.github.com
@@ -18822,6 +18844,9 @@ log4j-2,log4j-jakarta-web,2021-12-06,rgoers@apache.org
 log4j-2,log4j-jakarta-web,2021-11-15,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
+log4j-2,log4j-core,2025-06-20,pkarwasz-github@apache.org
+log4j-2,log4j-core,2025-06-20,118912510+jhl221123@users.noreply.github.com
+log4j-2,log4j-core,2025-06-20,118912510+jhl221123@users.noreply.github.com
 log4j-2,log4j-core,2025-06-03,pkarwasz-github@apache.org
 log4j-2,log4j-core,2025-06-02,rschmitt@apache.org
 log4j-2,log4j-core,2025-06-02,volkan@yazi.ci
@@ -24779,6 +24804,7 @@ log4j-2,log4j-api-test,2022-09-18,piotr.github@karwasz.org
 log4j-2,log4j-api-test,2022-09-24,piotr.github@karwasz.org
 log4j-2,log4j-api-test,2022-09-24,piotr.github@karwasz.org
 log4j-2,log4j-api-test,2022-09-23,piotr.github@karwasz.org
+log4j-2,log4j-api,2025-06-20,pkarwasz-github@apache.org
 log4j-2,log4j-api,2025-06-02,rschmitt@apache.org
 log4j-2,log4j-api,2025-05-25,janluehe@yahoo.com
 log4j-2,log4j-api,2025-05-16,pkarwasz-github@apache.org
@@ -26805,6 +26831,7 @@ log4j-2,log4j-spring-cloud-config-client,2024-09-19,private@logging.apache.org
 log4j-2,log4j-spring-cloud-config-client,2024-01-04,piotr.github@karwasz.org
 log4j-2,log4j-spring-cloud-config-client,2023-12-19,private@logging.apache.org
 log4j-2,log4j-spring-cloud-config-client,2023-11-27,volkan@yazi.ci
+log4j-2,log4j,2025-06-21,volkan@yazi.ci
 log4j-2,log4j,2025-06-11,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j,2025-06-11,49699333+dependabot[bot]@users.noreply.github.com
 log4j-2,log4j,2025-06-11,49699333+dependabot[bot]@users.noreply.github.com
@@ -28777,6 +28804,12 @@ log4j-tools,log4j-docgen-maven-plugin,2024-02-16,volkan@yazi.ci
 log4j-tools,log4j-docgen-maven-plugin,2024-02-15,volkan@yazi.ci
 log4j-tools,log4j-docgen-maven-plugin,2024-02-15,volkan@yazi.ci
 log4j-tools,log4j-docgen-maven-plugin,2024-02-15,volkan@yazi.ci
+log4net,*,2025-06-19,freeandnil@apache.org
+log4net,*,2025-06-19,freeandnil@apache.org
+log4net,*,2025-06-19,freeandnil@apache.org
+log4net,*,2025-06-16,yogitatemp003@gmail.com
+log4net,*,2025-06-16,freeandnil@apache.org
+log4net,*,2025-06-16,flori@bin.org.in
 log4net,*,2025-06-15,freeandnil@apache.org
 log4net,*,2025-06-06,grzegorz@dziadkiewicz.com
 log4net,*,2025-05-22,43271715+FreeAndNil@users.noreply.github.com
