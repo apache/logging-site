@@ -1502,6 +1502,7 @@ log4j-2,log4j-core-test,2022-09-26,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
 log4j-2,log4j-core-test,2022-09-25,piotr.github@karwasz.org
+log4j-2,log4j-bom,2025-06-30,jcompagner@gmail.com
 log4j-2,log4j-bom,2025-06-28,pkarwasz-github@apache.org
 log4j-2,log4j-bom,2025-06-28,pkarwasz-github@apache.org
 log4j-2,log4j-bom,2025-06-28,pkarwasz-github@apache.org
@@ -18776,6 +18777,7 @@ log4j-2,log4j-couchdb,2017-11-19,ralph.goers@dslextreme.com
 log4j-2,log4j-couchdb,2017-11-19,ralph.goers@dslextreme.com
 log4j-2,log4j-couchdb,2017-10-19,mikael@staldal.nu
 log4j-2,log4j-couchdb,2017-10-17,mikael@staldal.nu
+log4j-2,log4j-jakarta-web,2025-06-30,jcompagner@gmail.com
 log4j-2,log4j-jakarta-web,2024-12-03,mattsicker@apache.org
 log4j-2,log4j-jakarta-web,2024-11-28,32147410+jaykataria1111@users.noreply.github.com
 log4j-2,log4j-jakarta-web,2024-11-19,49242855+strangelookingnerd@users.noreply.github.com
