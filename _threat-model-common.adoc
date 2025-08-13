@@ -34,13 +34,13 @@ Apache Logging Services distinguishes two kinds of users:
 Trusted Users::
 +
 Application developers and administrators are considered **trusted** users.
-They have unrestricted access to all the features of the logging framework.
+They have unrestricted access to all the features of the logging framework and the environment it is deployed to.
 
 Untrusted Users::
 +
 All the other users are considered untrusted.
 
-[#threat-common-assets]
+[#threat-common-sources]
 == Data sources
 
 Logging systems read data from multiple sources that are controlled by both trusted and untrusted users:
@@ -52,8 +52,7 @@ To keep them secure:
 ** It is up to the deployer to ensure that untrusted parties do not have write access to these resources.
 ** It is up to the deployer to ensure that these resources are transmitted through a confidential channel.
 ** Non-confidential channels such as HTTP or JMX are disabled by **default** to prevent their unintentional usage.
-** If configuration files use interpolation features such as
-https://logging.apache.org/log4j/2.x/manual/lookups.html[lookups], it is up to the deployer to ensure that only lookups from trusted sources are used.
+** If configuration files use interpolation features (e.g., https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups]), it is up to the deployer to ensure that only trusted sources are read.
 It is up to the programmer to document thread context keys that can be considered as trusted.
 
 * The logging frameworks **trust** that the objects passed to the log statements can be safely converted to strings:
