@@ -46,13 +46,14 @@ Logging systems read data from multiple sources that are controlled by both trus
 
 Trusted Sources::
 +
-* Log4cxx, Log4j and Log4net **trust** environment variables, configuration properties, and configuration files.
-To keep them secure:
-** It is up to the deployer to ensure that untrusted parties do not have write access to these resources.
-** It is up to the deployer to ensure that these resources are transmitted through a confidential channel.
-** Non-confidential channels such as HTTP or JMX are disabled by **default** to prevent their unintentional usage.
-** If configuration files use interpolation features (e.g., https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups]), it is up to the deployer to ensure that only trusted sources are read.
-It is up to the programmer to document thread context keys that can be considered as trusted.
+* Log4cxx, Log4j, and Log4net **trust** environment variables, configuration properties, and configuration files.
+To maintain security, the following responsibilities fall on the deployer:
+** Ensure that untrusted parties do not have write access to these resources.
+** Ensure these resources are transmitted only over **confidential** channels (e.g., HTTPS, secure file systems).
+** Be aware that **non-confidential** channels such as HTTP or JMX are **disabled by default** to prevent accidental exposure.
+** If configuration files use interpolation features (e.g., (https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups])), ensure that only trusted data sources are used.
+** Pay special attention to values stored in the context map (see https://logging.apache.org/log4j/2.x/manual/thread-context.html[Thread Context in Log4j]).
+Although the context map is only accessible by developers, it has been known to include user-provided data, such as HTTP headers, which can introduce risks.
 
 * The logging frameworks **trust** that the objects passed to the log statements can be safely converted to strings:
 ** These frameworks should not be used to log deserialized data from untrusted sources.
