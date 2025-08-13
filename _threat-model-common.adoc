@@ -22,9 +22,8 @@ All the logging frameworks maintained by Apache Logging Services (https://loggin
 https://logging.apache.org/log4j/index.html[Log4j]
 and
 https://logging.apache.org/log4net/index.html[Log4net]) face similar challenges from malicious actors.
-The following sections contain the most common threats that a logging framework faces and the assumptions on the origin of various trusted data.
-Vulnerability reports that don't follow those assumptions will not be accepted and are **not** eligible for our
-https://yeswehack.com/programs/log4j-bug-bounty-program[Bug Bounty Program].
+The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources.
+Vulnerability reports that do not adhere to these assumptions will not be accepted and are **not** eligible for the https://yeswehack.com/programs/log4j-bug-bounty-program[YesWeHack Bug Bounty Program].
 
 [#threat-common-users]
 == User types
