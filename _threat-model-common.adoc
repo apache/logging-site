@@ -60,7 +60,7 @@ Although the context map is only accessible by developers, it has been known to 
 See https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide] for details.
 
 * If parameterized logging is used, the format string is **trusted**:
-** Programmers **should** use compile time constants as format strings to prevent attackers from mangling messages.
+** Programmers **should** use compile-time constants as format strings to prevent attackers from tampering messages.
 See https://logging.apache.org/log4j/2.x/manual/api.html#best-practice-concat[Don't use string concatenation] for an example.
 
 Untrusted Sources::
