@@ -16,31 +16,128 @@
 ////
 
 [#threat-common]
-=== Common threat model
+= Common threat model
 
-Below we share the threat model shared by all Logging Services projects.
+All the logging frameworks maintained by Apache Logging Services (https://logging.apache.org/log4cxx/index.html[Log4cxx],
+https://logging.apache.org/log4j/index.html[Log4j]
+and
+https://logging.apache.org/log4net/index.html[Log4net]) face similar challenges from malicious actors.
+The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources.
+Vulnerability reports that do not adhere to these assumptions will not be accepted and are **not** eligible for the https://yeswehack.com/programs/log4j-bug-bounty-program[YesWeHack Bug Bounty Program].
 
-[#threat-common-code-signing]
-==== Code signing
+[#threat-common-users]
+== User types
 
-All Logging Services software release distributions are signed using GPG using a key from the Logging Services PMC https://downloads.apache.org/logging/KEYS[KEYS file].
-Information on how to verify releases signatures are explained further in xref:download.adoc[the Download page].
-Thus, GPG signatures should be validated in your build process.
+Apache Logging Services distinguishes two kinds of users:
 
-[#threat-common-config-sources]
-==== Configuration sources
-All configuration sources to an application must be trusted by the programmer.
-When loading a configuration file from disk (especially when a monitor interval is configured to reload the file periodically), the location of the configuration file must be kept safe from unauthorized modifications.
-Similarly, when loading a configuration file over the network such as through HTTP, this should be configured to use TLS or a secure connection in general with strong authentication guarantees.
-This remote location must be kept safe from unauthorized modifications.
+Trusted Users::
++
+Application developers and administrators are considered **trusted** users.
+They have unrestricted access to all the features of the logging framework and the environment it is deployed to.
 
-For Java-based projects supporting JNDI or JMX,
-when configurations are modified through JMX, the JMX server should be safely configured to require authentication and a secure connection if being accessed over the network.
-When configurations are provided through JNDI, these should only use the `java` scheme for sharing configurations in a Java EE or Jakarta EE application service.
-JNDI-sourced configurations should not use other JNDI providers such as LDAP, DNS, or RMI, as all these providers are difficult to properly secure.
+Untrusted Users::
++
+All the other users are considered untrusted.
 
-[#threat-common-java-serialization]
-==== Java Object Serialization Stream Protocol
+[#threat-common-sources]
+== Data sources
 
-https://docs.oracle.com/javase/8/docs/platform/serialization/spec/protocol.html[Java Object Serialization Stream Protocol] should not be used to deserialize data from untrusted sources.
+Logging systems read data from multiple sources that are controlled by both trusted and untrusted users:
+
+Trusted Sources::
++
+* Log4cxx, Log4j, and Log4net **trust** environment variables, configuration properties, and configuration files.
+To maintain security, the following responsibilities fall on the deployer:
+** Ensure that untrusted parties do not have write access to these resources.
+** Ensure these resources are transmitted only over **confidential** channels (e.g., HTTPS, secure file systems).
+** Be aware that **non-confidential** channels such as HTTP or JMX are **disabled by default** to prevent accidental exposure.
+** If configuration files use interpolation features (e.g., (https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups])), ensure that only trusted data sources are used.
+** Pay special attention to values stored in the context map (see https://logging.apache.org/log4j/2.x/manual/thread-context.html[Thread Context in Log4j]).
+Although the context map is only accessible by developers, it has been known to include user-provided data, such as HTTP headers, which can introduce risks.
+
+* The logging frameworks **trust** that the objects passed to the log statements can be safely converted to strings:
+** These frameworks should not be used to log deserialized data from untrusted sources.
 See https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide] for details.
+
+* If parameterized logging is used, the format string is **trusted**:
+** Programmers **should** use compile-time constants as format strings to prevent attackers from tampering messages.
+See https://logging.apache.org/log4j/2.x/manual/api.html#best-practice-concat[Don't use string concatenation] for an example.
+
+Untrusted Sources::
+* Log4cxx, Log4j and Log4net **do not** trust log messages.
+No particular input validation for log messages is necessary.
+* They **do not** trust the string representation of log parameters.
+* The logging frameworks do not trust neither the keys nor the values in the thread context.
+
+[#threat-common-threat]
+== Threats
+
+These are the most commonly encountered threats for users of Log4cxx, Log4j and Log4net:
+
+Log Injection (https://cwe.mitre.org/data/definitions/117.html[CWE-117])::
++
+Log injection is a common attack vector to hide malicious activity in an application.
+Regarding this threat:
+
+* **Unstructured layouts** such as https://logging.apache.org/log4j/2.x/manual/pattern-layout.html[Pattern Layout in Log4j] do **not** protect users from log injection.
+These layouts are meant for **human** and not computer consumption.
+* Log4cxx, Log4j and Log4net **must** prevent log injection in **structured** layouts, such as XML, JSON and RFC 5424.
+
+Supply chain attacks (https://cwe.mitre.org/data/definitions/1357.html[CWE-1357])::
+
+* Apache Logging Services projects **do** check the quality of our dependencies.
+* Deprecated components such as the
+https://logging.apache.org/log4j/2.x/manual/appenders/database.html#CassandraAppender[Cassandra],
+https://logging.apache.org/log4j/2.x/manual/appenders/message-queue.html#KafkaAppender[Kafka]
+and
+https://logging.apache.org/log4j/2.x/manual/appenders/database.html#CouchDbProvider[CouchDB]
+appenders are provided for backward compatibility purposes only.
+While we actively check for vulnerabilities in those components, they are _de facto_ unmaintained, and we discourage their usage in production.
+* All Apache Logging Services are signed with one of the keys in the Logging Services PMC
+https://downloads.apache.org/logging/KEYS[KEYS file].
+We do **not** support artifacts that do not have a valid signature, and we encourage users to always check the integrity of the downloaded components.
+Additional information on how to verify releases signatures is available on the xref:download.adoc[Download page]
+
+Information disclosure (https://cwe.mitre.org/data/definitions/200.html[CWE-200])::
++
+Since logging frameworks implement information disclosure by design:
+
+* It is up to the deployer to prevent unauthorized access to log files and to ensure that the appropriate log levels are configured.
+* It is up to the programmer to document which log levels and markers _might_ contain sensitive data.
+Attention should be brought to the fact that libraries on which an application depends might have a different log level and marker convention.
+* **Log masking** techniques are out-of-scope for Log4cxx, Log4j, and Log4net.
+It is up to the developer to ensure that sensitive data is properly masked **before** it is passed to the logging implementation.
+For this purpose, **third-party** frameworks like
+https://github.com/palantir/safe-logging[Safe-Logging]
+should be used.
+
+Log reliability (e.g. https://cwe.mitre.org/data/definitions/778.html[CVE-778])::
++
+Log4j is designed with **reliability** in mind:
+
+* By **default**, Log4j **should** deliver log events to the appropriate resource even during a reconfiguration event or will log an error.
+* While log events will be delivered to a resource, not all resources provide a confirmation mechanism.
+To ensure reliability along the entire logging pipeline, it is up to the deployer to use reliable transmission components:
+files, loopback network sockets or
+https://logging.apache.org/log4j/2.x/manual/appenders/message-queue.html[message-queue-based systems]
+for example.
+* Log4j provides configuration options that discard log events if the load on the application is high.
+Using these options invalidates the reliability guarantees.
+
+Denial of service (https://cwe.mitre.org/data/definitions/779.html[CVE-779])::
++
+Since our logging frameworks are designed with reliability in mind:
+
+* Our frameworks go to great lengths to minimize performance overhead, minimize latency and maximizing throughput.
+Since a universal solution does not exist, many configuration options exist to adapt the performance characteristics to a specific application.
+See
+https://logging.apache.org/log4j/2.x/manual/performance.html[Performance]
+for more information.
+* It is up to the deployer to ensure that the appenders can keep up with the logs written by using the appropriate appenders and configuring the appropriate level of logs.
+* It is up to the developer to ensure that log statements, which are not enabled, generate minimal overhead.
+See the
+https://logging.apache.org/log4j/2.x/manual/api.html#best-practice-concat[Log4j API Best Practices], for example.
+
+Improper neutralization of Special Elements (https://cwe.mitre.org/data/definitions/138.html[CWE-138])::
++
+* Log4cxx, Log4j, and Log4net **do** allow users to pass untrusted strings to log statements and thread context, except in the format string of parameterized logging, as mentioned above.
