@@ -18,20 +18,24 @@
 
 <!-- This file is a Vulnerability Disclosure Report (VDR) covering all Apache Logging Services[1] projects.
      This file adheres to the CycloneDX SBOM specification[2].
-     All Apache Logging Services projects (e.g., Log4j) generate SBOMs containing `vulnerability-assertion` entries with BOM-Links[3] to this file.
 
-     If you need help on addressing these vulnerabilities, suggestions/corrections on the content, and/or reporting new vulnerabilities, please refer to the Log4j support page[4].
+     The latest version of this file can be found at https://logging.apache.org/cyclonedx/vdr.xml
+
+     All Apache Logging Services projects (e.g., Log4j) generate SBOMs containing `vulnerability-assertion` entries with links to this file.
+
+     If you need help on addressing these vulnerabilities, suggestions/corrections on the content, and/or reporting new vulnerabilities, please refer to the Log4j support page[3].
+
+     This file is maintained in version control[4].
 
      [1] https://logging.apache.org
      [2] https://cyclonedx.org
-     [3] https://cyclonedx.org/capabilities/bomlink
-     [4] https://logging.apache.org/log4j/2.x/support.html -->
-
-<!-- `serialNumber` is hardcoded into `logging-parent` and must match the one there! -->
+     [3] https://logging.apache.org/log4j/2.x/support.html
+     [4] https://github.com/apache/logging-site/tree/cyclonedx
+     -->
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.5"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.5 https://cyclonedx.org/schema/bom-1.5.xsd"
-     version="1"
+     version="2"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <!-- We add *dummy* components to refer to in `affects` blocks.
