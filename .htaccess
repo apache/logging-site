@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteBase "/cyclonedx/"
-
-RewriteCond %{QUERY_STRING} "bomIdentifier=(urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
-RewriteRule "^$" "/cyclonedx/%1"
