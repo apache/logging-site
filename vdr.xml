@@ -165,7 +165,7 @@ from sources external to the application such as HTTP headers or user input.
 Note that this mitigation is insufficient in releases older than `2.12.2` (for Java 7), and `2.16.0` (for Java 8 and later) as the issues fixed in those releases will still be present.]]></recommendation>
       <created>2021-12-18T00:00:00Z</created>
       <published>2021-12-18T00:00:00Z</published>
-      <updated>2025-08-17T11:18:06Z</updated>
+      <updated>2022-10-06T00:00:00Z</updated>
       <credits>
         <individuals>
           <individual>
