@@ -37093,6 +37093,7 @@ log4j-scala,log4j-api-scala_2.10,2016-12-30,matt.sicker@spr.com
 log4j-scala,log4j-api-scala_2.10,2016-12-30,matt.sicker@spr.com
 log4j-scala,log4j-api-scala_2.10,2016-11-11,mikael.staldal@magine.com
 log4j-scala,log4j-api-scala_2.10,2016-11-08,mikael.staldal@magine.com
+log4j-jmx-gui,log4j-jmx-gui,2025-08-12,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-07-20,volkan@yazi.ci
 log4j-jmx-gui,log4j-jmx-gui,2025-07-11,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-06-17,private@logging.apache.org
