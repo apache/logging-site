@@ -29,6 +29,38 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2025-54813]
+== {cve-url-prefix}/CVE-2025-54812[CVE-2025-54813]
+
+[cols="1h,5"]
+|===
+|Summary |Improper escaping with JSONLayout
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Apache Log4cxx
+|Versions affected |`[0.11.0, 1.5.0)`
+|Versions fixed |`1.5.0`
+|===
+
+[#CVE-2025-54813-description]
+=== Description
+
+When using `JSONLayout`, not all payload bytes are properly escaped.
+If an attacker-supplied message contains certain non-printable characters, these will be passed along in the message and written out as part of the JSON message.
+This may prevent applications that consume these logs from correctly interpreting the information within them.
+
+[#CVE-2025-54813-remediation]
+=== Remediation
+Users are recommended to upgrade to version `1.5.0`, which fixes the issue.
+
+[#CVE-2025-54813-credits]
+=== Credits
+This issue was discovered and remediated with support from the Sovereign Tech Agency, through the https://yeswehack.com/programs/log4j-bug-bounty-program[Apache Log4j Bug Bounty Program on YesWeHack].
+
+[#CVE-2025-54813-references]
+=== References
+* {cve-url-prefix}/CVE-2025-54813[CVE-2025-54813]
+* https://github.com/apache/logging-log4cxx/pull/512[Pull request that fixes the issue]
+
 [#CVE-2025-54812]
 == {cve-url-prefix}/CVE-2025-54812[CVE-2025-54812]
 
@@ -125,8 +157,8 @@ Upgrade to `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 
 
 Alternatively, this infinite recursion issue can be mitigated in configuration:
 
-* In PatternLayout in the logging configuration, replace Context Lookups like `${ctx:loginId}` or `$${ctx:loginId}` with Thread Context Map patterns (`%X`, `%mdc`, or `%MDC`).
-* Otherwise, in the configuration, remove references to Context Lookups like `${ctx:loginId}` or `$${ctx:loginId}` where they originate
+* In PatternLayout in the logging configuration, replace Context Lookups like `${ctx:loginId}` or `++$$++{ctx:loginId}` with Thread Context Map patterns (`%X`, `%mdc`, or `%MDC`).
+* Otherwise, in the configuration, remove references to Context Lookups like `${ctx:loginId}` or `++$$++{ctx:loginId}` where they originate
 from sources external to the application such as HTTP headers or user input.
 Note that this mitigation is insufficient in releases older than `2.12.2` (for Java 7), and `2.16.0` (for Java 8 and later) as the issues fixed in those releases will still be present.
 

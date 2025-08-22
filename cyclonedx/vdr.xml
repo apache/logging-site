@@ -68,6 +68,57 @@
   <vulnerabilities>
 
     <vulnerability>
+      <id>CVE-2025-54813</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2025-54813</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>NVD</name>
+            <url>
+              https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator?vector=AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N
+            </url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>117</cwe>
+      </cwes>
+      <description><![CDATA[When using `JSONLayout`, not all payload bytes are properly escaped.
+If an attacker-supplied message contains certain non-printable characters, these will be passed along in the message and written out as part of the JSON message.
+This may prevent applications that consume these logs from correctly interpreting the information within them.]]></description>
+      <recommendation>
+        <![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
+      <created>2025-08-22T07:31:10Z</created>
+      <published>2025-08-22T07:31:10Z</published>
+      <updated>2025-08-22T07:31:10Z</updated>
+      <credits>
+        <organizations>
+          <organization>
+            <name>Sovereign Tech Agency</name>
+            <url>https://www.sovereign.tech/</url>
+          </organization>
+        </organizations>
+      </credits>
+      <affects>
+        <target>
+          <ref>logcxx</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:semver>=0.11.0|<1.5.0]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+
+    <vulnerability>
       <id>CVE-2025-54812</id>
       <source>
         <name>NVD</name>
