@@ -17,7 +17,3 @@
 
 # `.asf.yaml` is a branch-specific YAML configuration file for Git repositories to control features such as notifications, GitHub settings, etc.
 # See its documentation for details: https://cwiki.apache.org/confluence/display/INFRA/Git+-+.asf.yaml+features
-
-publish:
-  whoami: cyclonedx
-  subdir: content/cyclonedx
