@@ -46,16 +46,8 @@
   <metadata>
     <timestamp>2025-08-17T11:18:06Z</timestamp>
     <manufacturer>
-      <name>The Apache Software Foundation</name>
+      <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
-      <contact>
-        <name>Apache Logging Services PMC</name>
-        <email>dev@logging.apache.org</email>
-      </contact>
-      <contact>
-        <name>Apache Logging Security Team</name>
-        <email>security@logging.apache.org</email>
-      </contact>
     </manufacturer>
   </metadata>
 
