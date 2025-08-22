@@ -429,12 +429,177 @@ We choose to pool all information on this one page, allowing easy searching for 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>We adhere to <a href="https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html">the Maven version range syntax</a> while sharing versions of affected components.
-We only extend this mathematical notation with set union operator (i.e., <code>∪</code>) to denote union of multiple ranges.</p>
+<p>Version ranges follow the <a href="https://github.com/package-url/vers-spec/blob/main/VERSION-RANGE-SPEC.rst">VERS specification</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Log4cxx: <code>semver</code> scheme</p>
+</li>
+<li>
+<p>Log4j: <code>maven</code> scheme</p>
+</li>
+<li>
+<p>Log4net: <code>nuget</code> scheme</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For brevity, mathematical interval notation is used, with the union operator (<code>∪</code>) to represent multiple ranges.</p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="CVE-2025-54813"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54812">CVE-2025-54813</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improper escaping with JSONLayout</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4cxx</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0.11.0, 1.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2025-54813-description">Description</h4>
+<div class="paragraph">
+<p>When using <code>JSONLayout</code>, not all payload bytes are properly escaped.
+If an attacker-supplied message contains certain non-printable characters, these will be passed along in the message and written out as part of the JSON message.
+This may prevent applications that consume these logs from correctly interpreting the information within them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54813-remediation">Remediation</h4>
+<div class="paragraph">
+<p>Users are recommended to upgrade to version <code>1.5.0</code>, which fixes the issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54813-credits">Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54813-references">References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54813">CVE-2025-54813</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4cxx/pull/512">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2025-54812"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54812">CVE-2025-54812</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improper HTML escaping in HTMLLayout</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1 LOW (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4cxx</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0, 1.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2025-54812-description">Description</h4>
+<div class="paragraph">
+<p>When using <code>HTMLLayout</code>, logger names are not properly escaped when writing out to the HTML file.
+If untrusted data is used to retrieve the name of a logger, an attacker could theoretically inject HTML or Javascript in order to hide information from logs or steal data from the user.
+In order to activate this, the following sequence must occur:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Log4cxx is configured to use <code>HTMLLayout</code>.</p>
+</li>
+<li>
+<p>Logger name comes from an untrusted string.</p>
+</li>
+<li>
+<p>Logger with compromised name logs a message.</p>
+</li>
+<li>
+<p>User opens the generated HTML log file in their browser, leading to potential XSS.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because logger names are generally constant strings, we assess the impact to users as LOW.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54812-remediation">Remediation</h4>
+<div class="paragraph">
+<p>Users are recommended to upgrade to version <code>1.5.0</code>, which fixes the issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54812-credits">Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-54812-references">References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54812">CVE-2025-54812</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4cxx/pull/509">Pull request #509</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4cxx/pull/514">Pull request #514</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="CVE-2021-44832"><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44832">CVE-2021-44832</a></h3>
