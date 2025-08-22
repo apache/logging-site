@@ -65,4 +65,4 @@ include::_sbom.adoc[]
 [#vulnerabilities]
 == Known vulnerabilities
 
-include::_vulnerabilities.adoc[]
+include::_vulnerabilities.adoc[leveloffset=+1]
