@@ -15,7 +15,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <!-- This file is a Vulnerability Disclosure Report (VDR) covering all Apache Logging Services[1] projects.
      This file adheres to the CycloneDX SBOM specification[2].
 
@@ -23,9 +22,15 @@
 
      All Apache Logging Services projects (e.g., Log4j) generate SBOMs containing `vulnerability-assertion` entries with links to this file.
 
-     If you need help on addressing these vulnerabilities, suggestions/corrections on the content, and/or reporting new vulnerabilities, please refer to the Log4j support page[3].
+     If you need help in addressing these vulnerabilities, suggestions/corrections on the content, and/or reporting new vulnerabilities, please refer to the Log4j support page[3].
 
      This file is maintained in version control[4].
+
+     To update the VDR:
+     1. Increment the `version` attribute in the `<bom>` element.
+     2. Update the `<timestamp>` element in the `<metadata>` section
+        to the current UTC date and time.
+     3. For each modified `<vulnerability>`, update its `<updated>` element.
 
      [1] https://logging.apache.org
      [2] https://cyclonedx.org
@@ -33,10 +38,18 @@
      [4] https://github.com/apache/logging-site/tree/cyclonedx
      -->
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://cyclonedx.org/schema/bom/1.5"
-     xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.5 https://cyclonedx.org/schema/bom-1.5.xsd"
-     version="2"
+     xmlns="http://cyclonedx.org/schema/bom/1.6"
+     xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
+     version="3"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
+
+  <metadata>
+    <timestamp>2025-08-17T11:18:06Z</timestamp>
+    <manufacturer>
+      <name>Apache Logging Services</name>
+      <url>https://logging.apache.org</url>
+    </manufacturer>
+  </metadata>
 
   <!-- We add *dummy* components to refer to in `affects` blocks.
        This is necessary, since not all Log4j components have SBOMs associated with them. -->
@@ -76,24 +89,24 @@
       </cwes>
       <description><![CDATA[An attacker with write access to the logging configuration can construct a malicious configuration using a JDBC Appender with a data source referencing a JNDI URI which can execute remote code.
 This issue is fixed by limiting JNDI data source names to the `java` protocol.]]></description>
-      <recommendation><![CDATA[Upgrade to `2.3.2` (for Java 6), `2.12.4` (for Java 7), or `2.17.1` (for Java 8 and later).
+      <recommendation><![CDATA[Upgrade to `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 and later).
 
 In prior releases confirm that if the JDBC Appender is being used it is not configured to use any protocol other than `java`.]]></recommendation>
       <created>2021-12-28T00:00:00Z</created>
       <published>2021-12-28T00:00:00Z</published>
-      <updated>2022-08-08T00:00:00Z</updated>
+      <updated>2025-08-17T11:18:06Z</updated>
       <affects>
         <target>
           <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
           <versions>
             <version>
-              <range><![CDATA[vers:maven/>=2.0-beta7|<2.3.2]]></range>
+              <range><![CDATA[vers:maven/>=2.0-beta7|<2.3.1]]></range>
             </version>
             <version>
-              <range><![CDATA[vers:maven/>=2.4|<2.12.4]]></range>
+              <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
             </version>
             <version>
-              <range><![CDATA[vers:maven/>=2.13.0|<2.17.1]]></range>
+              <range><![CDATA[vers:maven/>=2.13.0|<2.17.0]]></range>
             </version>
           </versions>
         </target>
@@ -210,10 +223,10 @@ Remote code execution has been demonstrated on macOS, Fedora, Arch Linux, and Al
 
 Note that this vulnerability is not limited to just the JNDI lookup.
 Any other Lookup could also be included in a Thread Context Map variable and possibly have private details exposed to anyone with access to the logs.]]></description>
-      <recommendation><![CDATA[Upgrade to Log4j `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 and later).]]></recommendation>
+      <recommendation><![CDATA[Upgrade to Log4j `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.16.0` (for Java 8 and later).]]></recommendation>
       <created>2021-12-14T00:00:00Z</created>
       <published>2021-12-14T00:00:00Z</published>
-      <updated>2023-10-26T00:00:00Z</updated>
+      <updated>2025-08-17T11:18:06Z</updated>
       <credits>
         <individuals>
           <individual>
@@ -250,7 +263,7 @@ Any other Lookup could also be included in a Thread Context Map variable and pos
               <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
             </version>
             <version>
-              <range><![CDATA[vers:maven/>=2.13.0|<2.17.0]]></range>
+              <range><![CDATA[vers:maven/>=2.13.0|<2.16.0]]></range>
             </version>
           </versions>
         </target>
@@ -299,10 +312,10 @@ Any other Lookup could also be included in a Thread Context Map variable and pos
       </cwes>
       <description><![CDATA[In Log4j, the JNDI features used in configurations, log messages, and parameters do not protect against attacker-controlled LDAP and other JNDI related endpoints.
 An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers.]]></description>
-      <recommendation><![CDATA[Upgrade to Log4j `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 and later).]]></recommendation>
+      <recommendation><![CDATA[Upgrade to Log4j `2.3.1` (for Java 6), `2.12.2` (for Java 7), or `2.15.0` (for Java 8 and later).]]></recommendation>
       <created>2021-12-10T00:00:00Z</created>
       <published>2021-12-10T00:00:00Z</published>
-      <updated>2023-04-03T00:00:00Z</updated>
+      <updated>2025-08-17T11:18:06Z</updated>
       <credits>
         <individuals>
           <individual>
@@ -318,10 +331,10 @@ An attacker who can control log messages or log message parameters can execute a
               <range><![CDATA[vers:maven/>=2.0-beta9|<2.3.1]]></range>
             </version>
             <version>
-              <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
+              <range><![CDATA[vers:maven/>=2.4|<2.12.2]]></range>
             </version>
             <version>
-              <range><![CDATA[vers:maven/>=2.13.0|<2.17.0]]></range>
+              <range><![CDATA[vers:maven/>=2.13.0|<2.15.0]]></range>
             </version>
           </versions>
         </target>
@@ -366,12 +379,12 @@ The reported issue was caused by an error in `SslConfiguration`.
 Any element using `SslConfiguration` in the Log4j `Configuration` is also affected by this issue.
 This includes `HttpAppender`, `SocketAppender`, and `SyslogAppender`.
 Usages of `SslConfiguration` that are configured via system properties are not affected.]]></description>
-      <recommendation><![CDATA[Upgrade to `2.12.3` (Java 7) or `2.13.2` (Java 8 and later).
+      <recommendation><![CDATA[Upgrade to `2.3.2` (Java 6), `2.12.3` (Java 7) or `2.13.2` (Java 8 and later).
 
 Alternatively, users can set the `mail.smtp.ssl.checkserveridentity` system property to `true` to enable SMTPS hostname verification for all SMTPS mail sessions.]]></recommendation>
       <created>2017-04-27T00:00:00Z</created>
       <published>2017-04-27T00:00:00Z</published>
-      <updated>2022-05-12T00:00:00Z</updated>
+      <updated>2025-08-17T11:18:06Z</updated>
       <credits>
         <individuals>
           <individual>
@@ -384,10 +397,13 @@ Alternatively, users can set the `mail.smtp.ssl.checkserveridentity` system prop
           <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
           <versions>
             <version>
-              <range><![CDATA[vers:maven/>=2.0-beta1|<2.12.3]]></range>
+              <range><![CDATA[vers:maven/>=2.0-beta1|<2.3.2]]></range>
             </version>
             <version>
-              <version><![CDATA[vers:maven/2.13.1]]></version>
+              <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
+            </version>
+            <version>
+              <version><![CDATA[vers:maven/>=2.13.0|<2.13.2]]></version>
             </version>
           </versions>
         </target>
