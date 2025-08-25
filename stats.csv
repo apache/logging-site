@@ -1,4 +1,11 @@
 project,module,instant,author
+log4cxx,*,2025-08-24,stephen.webb@ieee.org
+log4cxx,*,2025-08-22,stephen.webb@ieee.org
+log4cxx,*,2025-08-21,stephen.webb@ieee.org
+log4cxx,*,2025-08-20,stephen.webb@ieee.org
+log4cxx,*,2025-08-20,stephen.webb@ieee.org
+log4cxx,*,2025-08-19,stephen.webb@ieee.org
+log4cxx,*,2025-08-18,stephen.webb@ieee.org
 log4cxx,*,2025-08-05,stephen.webb@ieee.org
 log4cxx,*,2025-08-04,stephen.webb@ieee.org
 log4cxx,*,2025-08-03,stephen.webb@ieee.org
@@ -3244,6 +3251,18 @@ log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-04-27,piotr.g
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-04-27,robots@logging.apache.org
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-02-04,49699333+dependabot[bot]@users.noreply.github.com
 log4j-transform,log4j-transform-maven-shade-plugin-extensions,2023-01-11,edwgiz@gmail.com
+log4net,*,2025-08-24,freeandnil@apache.org
+log4net,*,2025-08-22,43271715+FreeAndNil@users.noreply.github.com
+log4net,*,2025-08-22,freeandnil@apache.org
+log4net,*,2025-08-22,freeandnil@apache.org
+log4net,*,2025-08-22,freeandnil@apache.org
+log4net,*,2025-08-21,freeandnil@apache.org
+log4net,*,2025-08-20,freeandnil@apache.org
+log4net,*,2025-08-20,garydgregory@users.noreply.github.com
+log4net,*,2025-08-19,freeandnil@apache.org
+log4net,*,2025-08-19,freeandnil@apache.org
+log4net,*,2025-08-19,freeandnil@apache.org
+log4net,*,2025-08-19,freeandnil@apache.org
 log4net,*,2025-08-05,freeandnil@apache.org
 log4net,*,2025-07-03,freeandnil@apache.org
 log4net,*,2025-07-03,freeandnil@apache.org
@@ -12202,6 +12221,8 @@ log4j-2,log4j-jakarta-web,2021-12-06,rgoers@apache.org
 log4j-2,log4j-jakarta-web,2021-11-15,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
 log4j-2,log4j-jakarta-web,2021-08-30,mseele@gmail.com
+log4j-2,log4j-bom,2025-08-22,ramanathanbscmca@gmail.com
+log4j-2,log4j-bom,2025-08-19,ramanathanbscmca@gmail.com
 log4j-2,log4j-bom,2025-08-04,rschmitt@apache.org
 log4j-2,log4j-bom,2025-07-24,rschmitt@apache.org
 log4j-2,log4j-bom,2025-07-23,garydgregory@users.noreply.github.com
@@ -28936,6 +28957,7 @@ log4j-2,log4j-jpl,2020-04-20,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-20,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-12,rgoers@apache.org
 log4j-2,log4j-jpl,2020-04-05,rgoers@apache.org
+log4j-2,log4j-core,2025-08-19,ramanathanbscmca@gmail.com
 log4j-2,log4j-core,2025-08-04,rschmitt@apache.org
 log4j-2,log4j-core,2025-07-24,rschmitt@apache.org
 log4j-2,log4j-core,2025-07-20,roy.ash456@gmail.com
@@ -34927,6 +34949,8 @@ log4j-2,log4j-layout-template-json,2020-11-06,volkan.yazici@gmail.com
 log4j-2,log4j-layout-template-json,2020-11-03,rgoers@apache.org
 log4j-2,log4j-layout-template-json,2020-08-25,volkan.yazici@gmail.com
 log4j-2,log4j-layout-template-json,2020-08-25,volkan.yazici@gmail.com
+log4j-2,log4j-core-test,2025-08-22,ramanathanbscmca@gmail.com
+log4j-2,log4j-core-test,2025-08-19,ramanathanbscmca@gmail.com
 log4j-2,log4j-core-test,2025-07-24,rschmitt@apache.org
 log4j-2,log4j-core-test,2025-07-20,roy.ash456@gmail.com
 log4j-2,log4j-core-test,2025-07-04,pkarwasz-github@apache.org
@@ -37093,6 +37117,7 @@ log4j-scala,log4j-api-scala_2.10,2016-12-30,matt.sicker@spr.com
 log4j-scala,log4j-api-scala_2.10,2016-12-30,matt.sicker@spr.com
 log4j-scala,log4j-api-scala_2.10,2016-11-11,mikael.staldal@magine.com
 log4j-scala,log4j-api-scala_2.10,2016-11-08,mikael.staldal@magine.com
+log4j-jmx-gui,log4j-jmx-gui,2025-08-22,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-08-12,private@logging.apache.org
 log4j-jmx-gui,log4j-jmx-gui,2025-07-20,volkan@yazi.ci
 log4j-jmx-gui,log4j-jmx-gui,2025-07-11,private@logging.apache.org
