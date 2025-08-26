@@ -1,0 +1,173 @@
+////
+//  Licensed to the Apache Software Foundation (ASF) under one or more
+//  contributor license agreements.  See the NOTICE file distributed with
+//  this work for additional information regarding copyright ownership.
+//  The ASF licenses this file to You under the Apache License, Version 2.0
+//  (the "License"); you may not use this file except in compliance with
+//  the License.  You may obtain a copy of the License at
+//
+//       https://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+////
+
+= Support
+
+Logging Services employ many public and private support channels for users, contributors, and maintainers.
+
+[IMPORTANT]
+====
+The Apache Software Foundation does not employ individuals to develop and support any of its projects.
+The individuals who contribute to Apache projects do it either as part of specific tasks assigned to them by their employer, on their own initiative to benefit their employer, or on their own free time.
+====
+
+[#discussions-user]
+== User support
+
+If you have questions like:
+
+* _"How do I configure Log4j with the file appender?"_
+* _"My Log4Net layout is not working as expected; what should I do?"_
+* _"How can I migrate from Log4j 1 with this custom configuration?"_
+
+We urge you to first check the website of the associated project to see if your question has already been answered there.
+If not, you can use one the following communication channels:
+
+* GitHub Discussions (https://github.com/apache/logging-log4cxx/discussions[Log4cxx], https://github.com/apache/logging-log4j2/discussions[Log4j], https://github.com/apache/logging-log4net/discussions[Log4net])
+* `log4j-user@logging.apache.org` mailing list (mailto:log4j-user-subscribe@logging.apache.org[subscribe] | mailto:log4j-user-unsubscribe@logging.apache.org[unsubscribe] | mailto:log4j-user@logging.apache.org[post] | https://lists.apache.org/list.html?log4j-user&#64;logging.apache.org[archive])
++
+[WARNING]
+====
+**You are expected to be subscribed** to a mailing list to receive replies to your posted questions!
+If you are not subscribed, when you post an email, it will be subject to moderation (hence, will be distributed with a delay) and the only way you would be able to follow the conversation is to use the mailing list archive.
+====
++
+[WARNING]
+====
+Messages sent to a public mailing list will be seen by many people and also re-published by 3rd party websites.
+It is usually not possible to remove them.
+Please **don't send mails containing confidential information** to public mailing lists.
+For more information, please see the https://privacy.apache.org/policies/privacy-policy-public.html[privacy policy]
+====
+
+* Stack Overflow (http://stackoverflow.com/questions/tagged/log4cxx[Log4cxx], http://stackoverflow.com/questions/tagged/log4j[Log4j], http://stackoverflow.com/questions/tagged/log4net[Log4net])
+
+[#discussions-maintainer]
+== Maintainer discussions
+
+If you have questions or feedback like:
+
+* A class should be public instead of package-private
+* A plugin is missing configuration options
+* You've found a bug
+* *You have questions that are not project-specific*
+
+then please contact us using the following channels:
+
+* GitHub Discussions (https://github.com/apache/logging-log4cxx/discussions[Log4cxx], https://github.com/apache/logging-log4j2/discussions[Log4j], https://github.com/apache/logging-log4net/discussions[Log4net])
+
+* `dev@logging.apache.org` mailing list (mailto:dev-subscribe@logging.apache.org[subscribe] | mailto:dev-unsubscribe@logging.apache.org[unsubscribe] | mailto:dev@logging.apache.org[post] | https://lists.apache.org/list.html?dev&#64;logging.apache.org[archive])
++
+[WARNING]
+====
+**You are expected to be subscribed** to a mailing list to receive replies to your posted questions!
+If you are not subscribed, when you post an email, it will be subject to moderation (hence, will be distributed with a delay) and the only way you would be able to follow the conversation is to use the mailing list archive.
+====
++
+[WARNING]
+====
+Messages sent to a public mailing list will be seen by many people and also re-published by 3rd party websites.
+It is usually not possible to remove them.
+Please **don't send mails containing confidential information** to public mailing lists.
+For more information, please see the https://privacy.apache.org/policies/privacy-policy-public.html[privacy policy]
+====
+
+* https://the-asf.slack.com/archives/C4TQW0M5L[#logging] Slack channel (exclusive to committers)
+
+[#discussions-private]
+== Private discussions
+
+Users are strongly advised to use one of the above public channels.
+If it deems necessary, use following channels for private discussions.
+
+* `security@logging.apache.org` mailing list (mailto:security@logging.apache.org[post]) is used for reporting unlisted **security vulnerabilities** or other unexpected behaviour that has a security impact.
+Make sure to check xref:security.adoc[the Security page] before sending an email.
+* `private@logging.apache.org` mailing list (mailto:private@logging.apache.org[post]) is used for discussing other confidential topics with the Logging Services PMC.
+* https://the-asf.slack.com/archives/C02Q8FPEW6T[#logging-pmc] Slack channel (exclusive to committers)
+
+[#issues]
+== Issues
+
+Logging Services projects use GitHub Issues (https://github.com/apache/logging-log4cxx/issues[Log4cxx], https://github.com/apache/logging-log4j2/issues[Log4j], https://github.com/apache/logging-log4net/issues[Log4net]) as their issue tracking system.
+The old issue tracking system, JIRA (https://issues.apache.org/jira/projects/LOGCXX[Log4cxx], https://issues.apache.org/jira/projects/LOG4J2[Log4j]), is still accessible, though only recommended for issues that were already created there.
+For issues that are not project-specific, <<#discussions-maintainer,get in touch with maintainers instead>>.
+
+Issues get resolved in one of the following ways:
+
+. The reporter or another interested party provides a pull request tagging the issue in its title
+. A committer is interested in the issue and decides to work on it
+. The reporter or another interested party sponsors one or more of xref:#sponsorship[the committers listed below] to encourage them to work on the issue
+
+Created issues are subject to the following policy:
+
+Quality::
+Issues posted of insufficient quality will be removed
+
+No protracted discussions::
+Issues likely to result in protracted discussion must be posted to the mailing lists
+
+No Questions::
+Do not post questions as issues!
+These will be removed, and you will be asked to post questions to the mailing lists instead.
+
+[#sponsorship]
+== Sponsorship
+
+Sponsorship can be used simply as a way to say thank you for the work that has been done or as a way to encourage specific issues to be worked on.
+In either case, while the Apache Logging Services project thanks you for your support, we cannot be responsible for any promises and/or contributions made by an individual committer, as individual commits must be reviewed and accepted by the project team.
+
+[#sponsorship-github]
+=== Committers accepting GitHub Sponsorship
+
+* https://github.com/sponsors/carterkozak[Carter Kozak]
+* https://github.com/sponsors/fluffynuts[Davyd McColl]
+* https://github.com/sponsors/garydgregory[Gary Gregory]
+* https://github.com/sponsors/FreeAndNil[Jan Friedrich]
+* https://github.com/sponsors/jvz[Matt Sicker]
+* https://github.com/sponsors/ppkarwasz[Piotr P. Karwasz]
+* https://github.com/sponsors/rgoers[Ralph Goers]
+* https://github.com/sponsors/vy[Volkan Yazıcı]
+
+[#sponsors]
+=== Sponsors
+
+There are a handful of tools that developers in the community use; some are open-source and some are commercial.
+We would like to take this opportunity to thank our sponsors providing the project maintainers access to these tools:
+
+* https://www.jetbrains.com[JetBrains] with its https://www.jetbrains.com/idea/[Intellij IDEA]
+* https://www.yourkit.com[YourKit] with its https://www.yourkit.com/java/profiler[Java Profiler]
+
+There are several https://www.apache.org/foundation/thanks.html[sponsors supporting ASF].
+
+[#commercial]
+== Third-party commercial support
+
+While neither the Apache Software Foundation nor the Apache Logging Services project provide any commercial support for the Logging Services products, individual committers may collaborate with services that provide such support.
+
+The following aims to be a list of all commercial support services involving one or more xref:team-list.adoc[Logging Services PMC members].
+
+https://volkan.yazi.ci[Abstract Dynamics]::
+Consultancy services offered by PMC member https://www.linkedin.com/in/yazicivo[Volkan Yazıcı]
+
+https://www.linkedin.com/in/ppkarwasz[Copernik]::
+Consultancy services offered by PMC member https://www.linkedin.com/in/ppkarwasz[Piotr Karwasz]
+
+https://grobmeier.solutions[Grobmeier Solutions]::
+Consultancy services offered by PMC member https://www.linkedin.com/in/grobmeier/[Christian Grobmeier]
+
+https://tidelift.com[Tidelift]::
+Some Log4j maintainers receive funding from Tidelift for their maintenance efforts.

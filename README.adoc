@@ -1,0 +1,41 @@
+////
+//  Licensed to the Apache Software Foundation (ASF) under one or more
+//  contributor license agreements.  See the NOTICE file distributed with
+//  this work for additional information regarding copyright ownership.
+//  The ASF licenses this file to You under the Apache License, Version 2.0
+//  (the "License"); you may not use this file except in compliance with
+//  the License.  You may obtain a copy of the License at
+//
+//       https://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+////
+
+This is the source code for the Apache Logging Services website hosted at following locations:
+
+* https://logging.apache.org[] (production)
+* https://logging.staged.apache.org[] (staging)
+
+The project uses https://logging.apache.org/logging-parent[logging-parent] as the parent Maven project to build the website.
+
+[#requirements]
+== Requirements
+
+* JDK 17+
+* A modern Linux, OSX, or Windows host
+
+[#build]
+== Building
+
+You can build the website as follows:
+
+[source,bash]
+----
+./mvnw site
+----
+
+You can view the generated website with a browser by pointing it to the `target/site` directory.
