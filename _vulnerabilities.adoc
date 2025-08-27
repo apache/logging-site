@@ -30,7 +30,7 @@ For brevity, mathematical interval notation is used, with the union operator (`â
 ====
 
 [#CVE-2025-54813]
-== {cve-url-prefix}/CVE-2025-54812[CVE-2025-54813]
+== {cve-url-prefix}/CVE-2025-54813[CVE-2025-54813]
 
 [cols="1h,5"]
 |===
