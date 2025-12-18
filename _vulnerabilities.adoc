@@ -29,6 +29,57 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2025-68161]
+== {cve-url-prefix}/CVE-2025-68161[CVE-2025-68161]
+
+[cols="1h,5"]
+|===
+|Summary |Missing TLS hostname verification in Socket appender
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Apache Log4j Core
+|Versions affected |`[2.0-beta9, 2.25.3)`
+|Versions fixed |`2.25.3`
+|===
+
+[#CVE-2025-68161-description]
+=== Description
+
+The Socket Appender in Apache Log4j Core versions `2.0-beta9` through `2.25.2` does not perform TLS hostname verification of the peer certificate, even when the
+https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
+configuration attribute or the
+https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
+system property is set to `true`.
+
+This issue may allow a man-in-the-middle attacker to intercept or redirect log traffic under the following conditions:
+
+* The attacker is able to intercept or redirect network traffic between the client and the log receiver.
+* The attacker can present a server certificate issued by a certification authority trusted by the Socket Appender’s configured trust store (or by the default Java trust store if no custom trust store is configured).
+
+[#CVE-2025-68161-remediation]
+=== Remediation
+Users are advised to upgrade to Apache Log4j Core version `2.25.3`, which fully addresses this issue.
+
+For earlier versions, the risk can be reduced by carefully restricting the trust store used by the Socket Appender.
+
+[NOTE]
+====
+When configuring a trust store for Log4j Core, we recommend following established best practices.
+For example,
+https://csrc.nist.gov/pubs/sp/800/52/r2/final[NIST SP 800-52 Rev. 2]
+(§4.5.2) recommends using a trust store that contains only the CA certificates required for the intended communication scope, such as a private or enterprise CA.
+====
+
+[#CVE-2025-68161-credits]
+=== Credits
+This issue was discovered by Samuli Leinonen.
+
+It was reported through the https://yeswehack.com/programs/log4j-bug-bounty-program[Apache Log4j Bug Bounty Program on YesWeHack] funded by the Sovereign Tech Agency.
+
+[#CVE-2025-68161-references]
+=== References
+* {cve-url-prefix}/CVE-2025-68161[CVE-2025-68161]
+* https://github.com/apache/logging-log4j2/pull/4002[Pull request that fixes the issue]
+
 [#CVE-2025-54813]
 == {cve-url-prefix}/CVE-2025-54813[CVE-2025-54813]
 
