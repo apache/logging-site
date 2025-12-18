@@ -40,11 +40,11 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="4"
+     version="5"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
-    <timestamp>2025-08-22T07:31:10Z</timestamp>
+    <timestamp>2025-12-18T16:09:38Z</timestamp>
     <manufacturer>
       <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
@@ -66,6 +66,56 @@
   </components>
 
   <vulnerabilities>
+
+    <vulnerability>
+        <id>CVE-2025-68161</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2025-68161</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.3</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>297</cwe>
+        </cwes>
+        <description><![CDATA[The Socket Appender in Apache Log4j Core versions `2.0-beta9` through `2.25.2` does not perform TLS hostname verification of the peer certificate, even when the
+https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
+configuration attribute or the
+https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
+system property is set to `true`.
+
+This issue may allow a man-in-the-middle attacker to intercept or redirect log traffic under the following conditions:
+
+* The attacker is able to intercept or redirect network traffic between the client and the log receiver.
+* The attacker can present a server certificate issued by a certification authority trusted by the Socket Appender’s configured trust store (or by the default Java trust store if no custom trust store is configured).]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.3`, which fully addresses this issue.
+
+For earlier versions, the risk can be reduced by carefully restricting the trust store used by the Socket Appender.]]></recommendation>
+        <created>2025-12-18T16:09:38Z</created>
+        <published>2025-12-18T16:09:38Z</published>
+        <updated>2025-12-18T16:09:38Z</updated>
+        <affects>
+            <target>
+                <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.0-beta9|<2.25.3]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
 
     <vulnerability>
       <id>CVE-2025-54813</id>

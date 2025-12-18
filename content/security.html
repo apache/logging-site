@@ -452,6 +452,108 @@ We choose to pool all information on this one page, allowing easy searching for 
 </table>
 </div>
 <div class="sect2">
+<h3 id="CVE-2025-68161"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68161">CVE-2025-68161</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Missing TLS hostname verification in Socket appender</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4j Core</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.0-beta9, 2.25.3)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.3</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2025-68161-description">Description</h4>
+<div class="paragraph">
+<p>The Socket Appender in Apache Log4j Core versions <code>2.0-beta9</code> through <code>2.25.2</code> does not perform TLS hostname verification of the peer certificate, even when the
+<a href="https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName"><code>verifyHostName</code></a>
+configuration attribute or the
+<a href="https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName"><code>log4j2.sslVerifyHostName</code></a>
+system property is set to <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>This issue may allow a man-in-the-middle attacker to intercept or redirect log traffic under the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The attacker is able to intercept or redirect network traffic between the client and the log receiver.</p>
+</li>
+<li>
+<p>The attacker can present a server certificate issued by a certification authority trusted by the Socket Appender’s configured trust store (or by the default Java trust store if no custom trust store is configured).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-68161-remediation">Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j Core version <code>2.25.3</code>, which fully addresses this issue.</p>
+</div>
+<div class="paragraph">
+<p>For earlier versions, the risk can be reduced by carefully restricting the trust store used by the Socket Appender.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When configuring a trust store for Log4j Core, we recommend following established best practices.
+For example,
+<a href="https://csrc.nist.gov/pubs/sp/800/52/r2/final">NIST SP 800-52 Rev. 2</a>
+(§4.5.2) recommends using a trust store that contains only the CA certificates required for the intended communication scope, such as a private or enterprise CA.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-68161-credits">Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by Samuli Leinonen.</p>
+</div>
+<div class="paragraph">
+<p>It was reported through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a> funded by the Sovereign Tech Agency.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2025-68161-references">References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68161">CVE-2025-68161</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4002">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="CVE-2025-54813"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54813">CVE-2025-54813</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
