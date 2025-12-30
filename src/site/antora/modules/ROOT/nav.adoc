@@ -28,3 +28,8 @@
 * xref:security.adoc[]
 * xref:xml/ns/index.adoc[XML Schema]
 * xref:blog/index.adoc[]
+
+* https://apache.org[The ASF]
+** https://apache.org/licenses/[License]
+** https://apache.org/foundation/sponsorship[Donate]
+** https://apache.org/foundation/sponsors[Thanks]
