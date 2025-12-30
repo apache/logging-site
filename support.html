@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Support :: Apache Logging Services</title>
+    <link rel="canonical" href="https://logging.apache.org/support.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.11">
+<link rel="stylesheet" href="./_/css/site.css">
+<link rel="icon" href="./_/../_images/favicon.ico" type="image/x-icon">
+<!-- `@asciidoctor/tabs` extension styles -->
+<link rel="stylesheet" href="./_/css/vendor/tabs.css">
+<style>
+  /* Swap colors of `IMPORTANT` and `WARNING` blocks */ 
+  .doc .admonitionblock.important .icon { background-color: #f70; }
+  .doc .admonitionblock.warning .icon { background-color: #e40046; }
+  /* Default `h4`, `h5`, and `h6` are smaller than the normal text, fix header font sizing: */
+  .doc h1 { font-size: 1.9rem; }
+  .doc h2 { font-size: 1.7rem; }
+  .doc h3 { font-size: 1.5rem; font-weight: 400; }
+  .doc h4 { font-size: 1.3rem; font-weight: 500; }
+  .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
+  .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+  /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
+  .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
+  .doc pre { font-size: 0.7rem; }
+  .doc .colist { font-size: 0.75rem; }
+  /* Make links more visible: */
+  .doc a { text-decoration: underline; }
+  .doc a code { text-decoration: underline; color: #1565c0; }
+  /* Make nav bar wider */
+  .nav-container { width:19rem; }
+  /* Tab header fonts aren't rendered good, adjusting the font weight: */
+  .tablist > ul li { font-weight: 500; }
+  /* `page-toclevels` greater than 4 are not supported by Antora UI, patching it: */
+  .toc .toc-menu li[data-level="4"] a {
+    padding-left: 2.75rem;
+  }
+  /* Replace the default highlight.js color for strings from red (unnecessarily signaling something negative) to green: */
+  .hljs-string {
+    color: #0f8532;
+  }
+</style>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+    <a class="navbar-item" href="https://logging.apache.org">Logging Services</a>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://apache.org">a project of&nbsp;<strong>Apache Software Foundation</strong></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Home</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">About</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="guidelines.html">Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="charter.html">Charter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="team-list.html">Team</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="processes.html">Processes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="what-is-logging.html">What is logging?</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="download.html">Download</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="xml/ns/index.html">XML Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="blog/index.html">Blog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="https://apache.org">The ASF</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/licenses/">License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsorship">Donate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsors">Thanks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="support.html">Support</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/ROOT/pages/support.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Support</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Logging Services employ many public and private support channels for users, contributors, and maintainers.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Apache Software Foundation does not employ individuals to develop and support any of its projects.
+The individuals who contribute to Apache projects do it either as part of specific tasks assigned to them by their employer, on their own initiative to benefit their employer, or on their own free time.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="discussions-user"><a class="anchor" href="#discussions-user"></a>User support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have questions like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>"How do I configure Log4j with the file appender?"</em></p>
+</li>
+<li>
+<p><em>"My Log4Net layout is not working as expected; what should I do?"</em></p>
+</li>
+<li>
+<p><em>"How can I migrate from Log4j 1 with this custom configuration?"</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We urge you to first check the website of the associated project to see if your question has already been answered there.
+If not, you can use one the following communication channels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GitHub Discussions (<a href="https://github.com/apache/logging-log4cxx/discussions">Log4cxx</a>, <a href="https://github.com/apache/logging-log4j2/discussions">Log4j</a>, <a href="https://github.com/apache/logging-log4net/discussions">Log4net</a>)</p>
+</li>
+<li>
+<p><code>log4j-user@logging.apache.org</code> mailing list (<a href="mailto:log4j-user-subscribe@logging.apache.org">subscribe</a> | <a href="mailto:log4j-user-unsubscribe@logging.apache.org">unsubscribe</a> | <a href="mailto:log4j-user@logging.apache.org">post</a> | <a href="https://lists.apache.org/list.html?log4j-user&#64;logging.apache.org">archive</a>)</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>You are expected to be subscribed</strong> to a mailing list to receive replies to your posted questions!
+If you are not subscribed, when you post an email, it will be subject to moderation (hence, will be distributed with a delay) and the only way you would be able to follow the conversation is to use the mailing list archive.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Messages sent to a public mailing list will be seen by many people and also re-published by 3rd party websites.
+It is usually not possible to remove them.
+Please <strong>don&#8217;t send mails containing confidential information</strong> to public mailing lists.
+For more information, please see the <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Stack Overflow (<a href="http://stackoverflow.com/questions/tagged/log4cxx">Log4cxx</a>, <a href="http://stackoverflow.com/questions/tagged/log4j">Log4j</a>, <a href="http://stackoverflow.com/questions/tagged/log4net">Log4net</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="discussions-maintainer"><a class="anchor" href="#discussions-maintainer"></a>Maintainer discussions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have questions or feedback like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A class should be public instead of package-private</p>
+</li>
+<li>
+<p>A plugin is missing configuration options</p>
+</li>
+<li>
+<p>You&#8217;ve found a bug</p>
+</li>
+<li>
+<p><strong>You have questions that are not project-specific</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>then please contact us using the following channels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GitHub Discussions (<a href="https://github.com/apache/logging-log4cxx/discussions">Log4cxx</a>, <a href="https://github.com/apache/logging-log4j2/discussions">Log4j</a>, <a href="https://github.com/apache/logging-log4net/discussions">Log4net</a>)</p>
+</li>
+<li>
+<p><code>dev@logging.apache.org</code> mailing list (<a href="mailto:dev-subscribe@logging.apache.org">subscribe</a> | <a href="mailto:dev-unsubscribe@logging.apache.org">unsubscribe</a> | <a href="mailto:dev@logging.apache.org">post</a> | <a href="https://lists.apache.org/list.html?dev&#64;logging.apache.org">archive</a>)</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>You are expected to be subscribed</strong> to a mailing list to receive replies to your posted questions!
+If you are not subscribed, when you post an email, it will be subject to moderation (hence, will be distributed with a delay) and the only way you would be able to follow the conversation is to use the mailing list archive.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Messages sent to a public mailing list will be seen by many people and also re-published by 3rd party websites.
+It is usually not possible to remove them.
+Please <strong>don&#8217;t send mails containing confidential information</strong> to public mailing lists.
+For more information, please see the <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><a href="https://the-asf.slack.com/archives/C4TQW0M5L">#logging</a> Slack channel (exclusive to committers)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="discussions-private"><a class="anchor" href="#discussions-private"></a>Private discussions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Users are strongly advised to use one of the above public channels.
+If it deems necessary, use following channels for private discussions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>security@logging.apache.org</code> mailing list (<a href="mailto:security@logging.apache.org">post</a>) is used for reporting unlisted <strong>security vulnerabilities</strong> or other unexpected behaviour that has a security impact.
+Make sure to check <a href="security.html" class="xref page">the Security page</a> before sending an email.</p>
+</li>
+<li>
+<p><code>private@logging.apache.org</code> mailing list (<a href="mailto:private@logging.apache.org">post</a>) is used for discussing other confidential topics with the Logging Services PMC.</p>
+</li>
+<li>
+<p><a href="https://the-asf.slack.com/archives/C02Q8FPEW6T">#logging-pmc</a> Slack channel (exclusive to committers)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="issues"><a class="anchor" href="#issues"></a>Issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Logging Services projects use GitHub Issues (<a href="https://github.com/apache/logging-log4cxx/issues">Log4cxx</a>, <a href="https://github.com/apache/logging-log4j2/issues">Log4j</a>, <a href="https://github.com/apache/logging-log4net/issues">Log4net</a>) as their issue tracking system.
+The old issue tracking system, JIRA (<a href="https://issues.apache.org/jira/projects/LOGCXX">Log4cxx</a>, <a href="https://issues.apache.org/jira/projects/LOG4J2">Log4j</a>), is still accessible, though only recommended for issues that were already created there.
+For issues that are not project-specific, <a href="#discussions-maintainer">get in touch with maintainers instead</a>.</p>
+</div>
+<div class="paragraph">
+<p>Issues get resolved in one of the following ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The reporter or another interested party provides a pull request tagging the issue in its title</p>
+</li>
+<li>
+<p>A committer is interested in the issue and decides to work on it</p>
+</li>
+<li>
+<p>The reporter or another interested party sponsors one or more of <a href="#sponsorship">the committers listed below</a> to encourage them to work on the issue</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Created issues are subject to the following policy:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Quality</dt>
+<dd>
+<p>Issues posted of insufficient quality will be removed</p>
+</dd>
+<dt class="hdlist1">No protracted discussions</dt>
+<dd>
+<p>Issues likely to result in protracted discussion must be posted to the mailing lists</p>
+</dd>
+<dt class="hdlist1">No Questions</dt>
+<dd>
+<p>Do not post questions as issues!
+These will be removed, and you will be asked to post questions to the mailing lists instead.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sponsorship"><a class="anchor" href="#sponsorship"></a>Sponsorship</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sponsorship can be used simply as a way to say thank you for the work that has been done or as a way to encourage specific issues to be worked on.
+In either case, while the Apache Logging Services project thanks you for your support, we cannot be responsible for any promises and/or contributions made by an individual committer, as individual commits must be reviewed and accepted by the project team.</p>
+</div>
+<div class="sect2">
+<h3 id="sponsorship-github"><a class="anchor" href="#sponsorship-github"></a>Committers accepting GitHub Sponsorship</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/sponsors/carterkozak">Carter Kozak</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/fluffynuts">Davyd McColl</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/garydgregory">Gary Gregory</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/FreeAndNil">Jan Friedrich</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/jvz">Matt Sicker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/ppkarwasz">Piotr P. Karwasz</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/rgoers">Ralph Goers</a></p>
+</li>
+<li>
+<p><a href="https://github.com/sponsors/vy">Volkan Yazıcı</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sponsors"><a class="anchor" href="#sponsors"></a>Sponsors</h3>
+<div class="paragraph">
+<p>There are a handful of tools that developers in the community use; some are open-source and some are commercial.
+We would like to take this opportunity to thank our sponsors providing the project maintainers access to these tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.jetbrains.com">JetBrains</a> with its <a href="https://www.jetbrains.com/idea/">Intellij IDEA</a></p>
+</li>
+<li>
+<p><a href="https://www.yourkit.com">YourKit</a> with its <a href="https://www.yourkit.com/java/profiler">Java Profiler</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are several <a href="https://www.apache.org/foundation/thanks.html">sponsors supporting ASF</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="commercial"><a class="anchor" href="#commercial"></a>Third-party commercial support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While neither the Apache Software Foundation nor the Apache Logging Services project provide any commercial support for the Logging Services products, individual committers may collaborate with services that provide such support.</p>
+</div>
+<div class="paragraph">
+<p>The following aims to be a list of all commercial support services involving one or more <a href="team-list.html" class="xref page">Logging Services PMC members</a>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://volkan.yazi.ci">Abstract Dynamics</a></dt>
+<dd>
+<p>Consultancy services offered by PMC member <a href="https://www.linkedin.com/in/yazicivo">Volkan Yazıcı</a></p>
+</dd>
+<dt class="hdlist1"><a href="https://www.linkedin.com/in/ppkarwasz">Copernik</a></dt>
+<dd>
+<p>Consultancy services offered by PMC member <a href="https://www.linkedin.com/in/ppkarwasz">Piotr Karwasz</a></p>
+</dd>
+<dt class="hdlist1"><a href="https://grobmeier.solutions">Grobmeier Solutions</a></dt>
+<dd>
+<p>Consultancy services offered by PMC member <a href="https://www.linkedin.com/in/grobmeier/">Christian Grobmeier</a></p>
+</dd>
+<dt class="hdlist1"><a href="https://tidelift.com">Tidelift</a></dt>
+<dd>
+<p>Some Log4j maintainers receive funding from Tidelift for their maintenance efforts.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright © 1999-2025 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
+    Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
+  </p>
+  <p>
+    Apache, Log4j, and the Apache feather logo are trademarks or registered trademarks of The Apache Software Foundation.
+    Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+    Other names may be trademarks of their respective owners.
+  </p>
+</footer>
+<script id="site-script" src="./_/js/site.js" data-ui-root-path="./_"></script>
+<script async src="./_/js/vendor/highlight.js"></script>
+<!-- `@asciidoctor/tabs` extension scripts -->
+<script async src="./_/js/vendor/tabs.js"></script>
+  </body>
+</html>
