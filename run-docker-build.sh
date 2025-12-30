@@ -1,1 +1,0 @@
-docker build -t apache/logging_site .

@@ -1,0 +1,78 @@
+////
+//  Licensed to the Apache Software Foundation (ASF) under one or more
+//  contributor license agreements.  See the NOTICE file distributed with
+//  this work for additional information regarding copyright ownership.
+//  The ASF licenses this file to You under the Apache License, Version 2.0
+//  (the "License"); you may not use this file except in compliance with
+//  the License.  You may obtain a copy of the License at
+//
+//       https://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+////
+
+= Team
+
+Logging Services team is composed of following members.
+See xref:guidelines.adoc[] for further details on roles.
+
+[#active]
+== Active Members
+
+[%header,cols="1,1m,1,2"]
+|===
+| Name | Apache ID | Role | Projects
+| Carter Kozak | ckozak | PMC Member | Log4j
+| Christian Grobmeier | grobmeier | PMC Member | Chainsaw, Log4j, Log4php
+| Davyd McColl | davydm | PMC Member | Log4net
+| Dominik Psenner | dpsenner | PMC Member | Log4net
+| Gary Gregory | ggregory | PMC Member | Log4j
+| Jan Friedrich | freeandnil | PMC Member | Log4net
+| Jay Katariya | jaykatariya | Committer | Log4j
+| Jeff Thomas | jwthomas | Committer | Log4j
+| Matt Sicker | mattsicker | PMC Member | Log4j
+| Piotr Karwasz | pkarwasz | PMC Chair | Log4j
+| Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
+| Raman Gupta | rgupta | Committer | Log4j Kotlin
+| Remko Popma | rpopma | PMC Member | Log4j
+| Robert Middleton | rmiddleton | PMC Member | Log4cxx
+| Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
+| Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
+| Stephen Webb | swebb2066 | PMC Member | Log4cxx
+| Thorsten Schöning | tschoening | Committer | Log4cxx
+| Volkan Yazıcı | vy | PMC Member | Log4j
+|===
+
+[#inactive]
+== Inactive Members
+
+Inactive members have either requested Emeritus status or have not participated in the community in the last few years.
+Inactive members are welcome to continue participating at any time.
+
+[%header,cols="1,1m,1,1,1"]
+|===
+| Name | Apache ID | Role | Projects | Status
+| Alvaro Carraso | alvaro | Committer | Log4php | Unknown
+| Andrei Ivanov | shadow | Committer | Log4j Audit | Last Active 2020
+| Balázs Donát Bessenyei | bessbd | PMC Member | Flume | Last Active 2022
+| Bruce Brouwer | bbrouwer | Committer | Log4j | Last Active 2015
+| Ceki Gülcü | ceki | PMC Member | Log4j | Emeritus 2014
+| Christian Hammers | chammers | Committer | Log4php | Last Active 2010
+| Curt Arnold | carnold | PMC Member | Log4cxx, Log4j | Emeritus 2017
+| Ivan Habunek | ihabunek | PMC Member | Log4php | Last Active 2015
+| Jacob Kjome | hoju | PMC Member | Log4j | Emeritus 2014
+| Juhani Connolly | juhanic | PMC Member | Flume | Last Active 2014
+| Knut Urdalen | kurdalen | Committer | Log4php | Last Active 2010
+| Mark Womack | mwomack | PMC Member | Log4j | Last Active 2006
+| Mikael Ståldal | mikes | PMC Member| Log4j | Last Active 2018
+| Mike Percy | mpercy | PMC Member | Flume | Last Active 2019
+| Nick Williams | nickwilliams | PMC Member | Log4j | Last Active 2014
+| Nicko Cadell | nicko | PMC Member | Log4net | Emeritus 2014
+| Paul Smith | psmith | PMC Member | Chainsaw, Log4j | Emeritus 2014
+| Stefan Bodewig | bodewig | PMC Member | Log4net | Emeritus 2018
+| Tristan Stevens | tristan | PMC Member | Flume | Last Active 2023
+|===
