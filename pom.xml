@@ -36,4 +36,33 @@
         <log4j.changelog.skip>true</log4j.changelog.skip>
     </properties>
 
+    <build>
+        <plugins>
+
+            <!-- Copy `src/site/static` contents to `target/site` -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-site-static</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/site</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/site/static</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>

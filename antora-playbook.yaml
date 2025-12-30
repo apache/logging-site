@@ -42,7 +42,6 @@ ui:
   bundle:
     url: "https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable"
     snapshot: true
-  output_dir: ./
 
   # Template files: https://github.com/asciidoctor/asciidoctor-docs-ui/blob/main/src
   # Template variables: https://docs.antora.org/antora-ui-default/templates
@@ -142,45 +141,3 @@ ui:
     - path: partials/edit-this-page.hbs
       contents: |
         <div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/{{page.module}}/pages/{{page.relativeSrcPath}}">Edit this Page</a></div>
-
-    - path: cyclonedx/vdr.xml
-      contents: ./src/site/cyclonedx/vdr.xml
-
-    - path: doaps/doap_Log4j.rdf
-      contents: ./src/site/doaps/doap_Log4j.rdf
-
-    - path: xml/ns/log4j-changelog-0.1.0.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.1.0.xsd
-
-    - path: xml/ns/log4j-changelog-0.1.1.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.1.1.xsd
-
-    - path: xml/ns/log4j-changelog-0.1.2.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.1.2.xsd
-
-    - path: xml/ns/log4j-changelog-0.1.3.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.1.3.xsd
-
-    - path: xml/ns/log4j-changelog-0.2.0.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.2.0.xsd
-
-    - path: xml/ns/log4j-changelog-0.xsd
-      contents: ./src/site/xml/ns/log4j-changelog-0.xsd
-
-    - path: xml/ns/log4j-config-2.23.1.xsd
-      contents: ./src/site/xml/ns/log4j-config-2.23.1.xsd
-
-    - path: xml/ns/log4j-config-2.xsd
-      contents: ./src/site/xml/ns/log4j-config-2.xsd
-
-    - path: xml/ns/log4j-config-3.0.0.xsd
-      contents: ./src/site/xml/ns/log4j-config-3.0.0.xsd
-
-    - path: xml/ns/log4j-config-3.xsd
-      contents: ./src/site/xml/ns/log4j-config-3.xsd
-
-    - path: xml/ns/log4j-plugins-0.1.0.xsd
-      contents: ./src/site/xml/ns/log4j-plugins-0.1.0.xsd
-
-    - path: xml/ns/log4j-plugins-0.xsd
-      contents: ./src/site/xml/ns/log4j-plugins-0.xsd
