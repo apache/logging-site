@@ -42,20 +42,20 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`{empt
 |Description
 
 |2024-03-19
-|xref:attachment$xml/ns/log4j-config-2.23.1.xsd[log4j-config-2.23.1.xsd]
+|link:log4j-config-2.23.1.xsd[log4j-config-2.23.1.xsd]
 |Released with link:/log4j/2.x/release-notes.html#release-notes-2-23-1[Log4j `2.23.1`]
 
 |N/A
-|xref:attachment$xml/ns/log4j-config-2.xsd[log4j-config-2.xsd]
+|link:log4j-config-2.xsd[log4j-config-2.xsd]
 |Points to the most recent XSD of major version `2`.
 *Log4j 2 users are recommended to refer to this XSD in their XML files.*
 
 |2024-03-19
-|xref:attachment$xml/ns/log4j-config-3.0.0.xsd[log4j-config-3.0.0.xsd]
+|link:log4j-config-3.0.0.xsd[log4j-config-3.0.0.xsd]
 |N/A
 
 |N/A
-|xref:attachment$xml/ns/log4j-config-3.xsd[log4j-config-3.xsd]
+|link:log4j-config-3.xsd[log4j-config-3.xsd]
 |Points to the most recent XSD of major version `3`.
 *Log4j 3 users are recommended to refer to this XSD in their XML files.*
 |===
@@ -93,27 +93,27 @@ It is designed for Apache Log4j, but can be used for any Java project.
 |Description
 
 |2023-02-03
-|xref:attachment$xml/ns/log4j-changelog-0.1.0.xsd[log4j-changelog-0.1.0.xsd]
+|link:log4j-changelog-0.1.0.xsd[log4j-changelog-0.1.0.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-2-0[Log4j Tools `0.2.0`]
 
 |2023-03-17
-|xref:attachment$xml/ns/log4j-changelog-0.1.1.xsd[log4j-changelog-0.1.1.xsd]
+|link:log4j-changelog-0.1.1.xsd[log4j-changelog-0.1.1.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-3-0[Log4j Tools `0.3.0`]
 
 |2023-09-28
-|xref:attachment$xml/ns/log4j-changelog-0.1.2.xsd[log4j-changelog-0.1.2.xsd]
+|link:log4j-changelog-0.1.2.xsd[log4j-changelog-0.1.2.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-5-0[Log4j Tools `0.5.0`]
 
 |2023-12-13
-|xref:attachment$xml/ns/log4j-changelog-0.1.3.xsd[log4j-changelog-0.1.3.xsd]
+|link:log4j-changelog-0.1.3.xsd[log4j-changelog-0.1.3.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-7-0[Log4j Tools `0.7.0`]
 
 |2024-03-21
-|xref:attachment$xml/ns/log4j-changelog-0.2.0.xsd[log4j-changelog-0.2.0.xsd]
+|link:log4j-changelog-0.2.0.xsd[log4j-changelog-0.2.0.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-8-0[Log4j Tools `0.8.0`]
 
 |N/A
-|xref:attachment$xml/ns/log4j-changelog-0.xsd[log4j-changelog-0.xsd]
+|link:log4j-changelog-0.xsd[log4j-changelog-0.xsd]
 |Points to the most recent XSD of major version `0`.
 *Users are recommended to refer to this XSD in their XML files.*
 |===
@@ -146,11 +146,11 @@ It is designed for Apache Log4j.
 |Description
 
 |2024-03-21
-|xref:attachment$xml/ns/log4j-plugins-0.1.0.xsd[log4j-plugins-0.1.0.xsd]
+|link:log4j-plugins-0.1.0.xsd[log4j-plugins-0.1.0.xsd]
 |Released with link:/log4j/tools/release-notes.html#release-notes-0-8-0[Log4j Tools `0.8.0`]
 
 |N/A
-|xref:attachment$xml/ns/log4j-plugins-0.xsd[log4j-plugins-0.xsd]
+|link:log4j-plugins-0.xsd[log4j-plugins-0.xsd]
 |Points to the most recent XSD of major version `0`.
 *Users are recommended to refer to this XSD in their XML files.*
 |===

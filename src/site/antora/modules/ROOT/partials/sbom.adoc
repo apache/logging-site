@@ -19,4 +19,4 @@ Many Logging Services projects distribute https://cyclonedx.org/capabilities/vdr
 This is streamlined by link:/logging-parent[Logging Parent] for Maven-based projects.
 
 Produced SBOMs contain BOM-links referring to a https://cyclonedx.org/capabilities/vdr[CycloneDX Vulnerability Disclosure Report (VDR)] that Apache Logging Services uses for all projects it maintains.
-This VDR is accessible through the following URL: https://logging.apache.org/cyclonedx/vdr.xml[]
+This VDR is accessible through the following URL: link:{site-url}/cyclonedx/vdr.xml[]
