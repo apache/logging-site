@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How I learned to Stop Worrying and Love the VEX :: Apache Logging Services</title>
+    <link rel="canonical" href="https://logging.apache.org/blog/20250728-introduction-to-vex-files.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.11">
+<link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/../_images/favicon.ico" type="image/x-icon">
+<!-- `@asciidoctor/tabs` extension styles -->
+<link rel="stylesheet" href="../_/css/vendor/tabs.css">
+<style>
+  /* Swap colors of `IMPORTANT` and `WARNING` blocks */ 
+  .doc .admonitionblock.important .icon { background-color: #f70; }
+  .doc .admonitionblock.warning .icon { background-color: #e40046; }
+  /* Default `h4`, `h5`, and `h6` are smaller than the normal text, fix header font sizing: */
+  .doc h1 { font-size: 1.9rem; }
+  .doc h2 { font-size: 1.7rem; }
+  .doc h3 { font-size: 1.5rem; font-weight: 400; }
+  .doc h4 { font-size: 1.3rem; font-weight: 500; }
+  .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
+  .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+  /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
+  .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
+  .doc pre { font-size: 0.7rem; }
+  .doc .colist { font-size: 0.75rem; }
+  /* Make links more visible: */
+  .doc a { text-decoration: underline; }
+  .doc a code { text-decoration: underline; color: #1565c0; }
+  /* Make nav bar wider */
+  .nav-container { width:19rem; }
+  /* Tab header fonts aren't rendered good, adjusting the font weight: */
+  .tablist > ul li { font-weight: 500; }
+  /* `page-toclevels` greater than 4 are not supported by Antora UI, patching it: */
+  .toc .toc-menu li[data-level="4"] a {
+    padding-left: 2.75rem;
+  }
+  /* Replace the default highlight.js color for strings from red (unnecessarily signaling something negative) to green: */
+  .hljs-string {
+    color: #0f8532;
+  }
+</style>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+    <a class="navbar-item" href="https://logging.apache.org">Logging Services</a>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://apache.org">a project of&nbsp;<strong>Apache Software Foundation</strong></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Home</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">About</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../guidelines.html">Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../charter.html">Charter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../team-list.html">Team</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../processes.html">Processes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../what-is-logging.html">What is logging?</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../download.html">Download</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support.html">Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../xml/ns/index.html">XML Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Blog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="https://apache.org">The ASF</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/licenses/">License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsorship">Donate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsors">Thanks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="20250728-introduction-to-vex-files.html">How I learned to Stop Worrying and Love the VEX</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/ROOT/pages/blog/20250728-introduction-to-vex-files.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">How I learned to Stop Worrying and Love the VEX</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../_images/blog/love-the-vex.png" alt="love the vex">
+</div>
+</div>
+<div class="paragraph">
+<p>A <strong>Vulnerability Exploitability eXchange (VEX)</strong> is a machine-readable file used to indicate whether vulnerabilities in an application&#8217;s third-party dependencies are actually exploitable.</p>
+</div>
+<div class="paragraph">
+<p>We first encountered the term "VEX" in 2023 when we began publishing SBOMs and Vulnerability Disclosure Reports (VDRs) for Log4j, as part of <a href="20231214-announcing-support-from-the-stf.html" class="xref page">a larger STF initiative</a>. That work gave us the chance to learn directly from experts like <a href="https://owasp.org/www-board-candidates/2023/steve_springett">Steve Springett</a> (whom we sincerely thank for his time and patience). One key takeaway from that experience: there are <strong>two ways</strong> in the CycloneDX machine-readable format for conveying vulnerability information in software components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <strong>Vulnerability Disclosure Report (VDR)</strong> lists vulnerabilities <strong>present</strong> in a software component. There’s debate about whether it should also include third-party dependency vulnerabilities, but in the case of Log4j (a Java library that bundles no third-party dependencies), the answer is clear: it does not matter.</p>
+</li>
+<li>
+<p>A <strong>Vulnerability Exploitability eXchange (VEX)</strong> goes further, analysing whether the vulnerabilities present are <strong>actually exploitable</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_we_skipped_the_vex_for_log4j"><a class="anchor" href="#_why_we_skipped_the_vex_for_log4j"></a>Why We Skipped the VEX for Log4j</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maintaining VEX files can be expensive—some companies spend hundreds of thousands, even millions of dollars each year to process and manage them. The cost typically scales with the number of CVEs that need to be evaluated annually.</p>
+</div>
+<div class="paragraph">
+<p>For commercial entities that keep parts of their SBOM private, the bar is higher: <strong>they must include every CVE in their VEX</strong> to meet regulatory or contractual obligations, since clients are not able to determine whether a dependency is present or not in the product.</p>
+</div>
+<div class="paragraph">
+<p>Open Source projects, on the other hand, often operate under different constraints. Since we publish a full SBOM that transparently lists all dependencies, we could reasonably limit our scope to just those declared dependencies—about 100 across all Log4j modules.</p>
+</div>
+<div class="paragraph">
+<p>Still, even 100 dependencies represent a significant burden when all analysis must be done by volunteers in their spare time. Given that reality, we made a pragmatic decision: rather than invest that effort into producing and maintaining a VEX, we chose to only publish a VDR, which only lists the vulnerabilities in our own codebase.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_when_the_absence_of_a_vex_became_a_problem"><a class="anchor" href="#_when_the_absence_of_a_vex_became_a_problem"></a>When the Absence of a VEX Became a Problem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At first, we were comfortable with our decision. But that changed when we helped Kafka migrate from Log4j 1 to Log4j 2\. I suggested using more human-friendly YAML-formatted configuration files, only to be met with <a href="https://lists.apache.org/thread/khm0jn9f0vgp30pfyoy6jc0qy46sbklp">valid concerns</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding <code>log4j-core</code> and its optional <code>jackson-dataformat-yaml</code> dependency could introduce security risks.</p>
+</li>
+<li>
+<p>Parsers are common sources of CVEs.</p>
+</li>
+<li>
+<p>While Log4j doesn&#8217;t bundle dependencies (we only provide metadata and recommendations), Kafka&#8217;s situation is different—each vulnerability in its transitive dependencies could force a new release.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>That experience revealed a key blind spot: even if <strong>we</strong> know certain dependencies aren’t exploitable, our users don’t. They spend unnecessary time analyzing risks that don’t exist. For example, in Log4j Core, the parsing capabilities of Jackson are only used to read <strong>trusted</strong> configuration files—so typical parser vulnerabilities aren’t exploitable. But this nuance wasn’t documented <strong>anywhere</strong> that automated scanners could read.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vex_ante_litteram"><a class="anchor" href="#_vex_ante_litteram"></a>VEX <strong>ante litteram</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Log4j Core is a very controlled consumer of <code>jackson-dataformat-yaml</code>. But what about other consumers? Would they be vulnerable to transitive dependencies like SnakeYAML? You’d think so—but when I thoroughly analyzed several SnakeYAML CVEs, none turned out to be exploitable through Jackson.</p>
+</div>
+<div class="paragraph">
+<p>Still, that kind of analysis is extremely time-consuming:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the exact method that caused the CVE (rarely detailed in CVE descriptions).</p>
+</li>
+<li>
+<p>Analyze how, if at all, that method can be reached through your dependency tree.</p>
+</li>
+<li>
+<p>Confirm there’s no sanitization or validation on any reachable path.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Surprisingly, some of this work has already been done for years by maintainers\! For example, downstream projects often raise issues like:</p>
+</div>
+<div class="paragraph">
+<p>"Please upgrade <code>foo</code> to version 1.2.3 due to CVE-2025-1234."</p>
+</div>
+<div class="paragraph">
+<p>What this request actually means is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Please confirm your library is <strong>compatible</strong> with the patched version.</strong></p>
+</li>
+<li>
+<p><strong>Please tell us whether the vulnerability is <strong>exploitable</strong>.</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These human-readable questions are, in effect, <strong>VEX requests</strong>. Some examples can be found in the <a href="https://github.com/FasterXML/jackson-dataformats-text/issues?q=is%3Aissue%20state%3Aclosed%20snakeyaml%20cve"><code>jackson-dataformats-text</code> repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>These kinds of request leave Open Source maintainers two choices:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Publish machine-readable VEXes so tools can automatically dismiss non-exploitable issues and many user questions can be avoided.</p>
+</li>
+<li>
+<p>Or answer these questions only manually—repeatedly, and often redundantly.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_toward_faster_smarter_vexes"><a class="anchor" href="#_toward_faster_smarter_vexes"></a>Toward Faster, Smarter VEXes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The turning point came at FOSDEM 2025, where I met <strong>Munawar Hafiz (OpenRefactory)</strong>. As we discussed the VEX burden, we realized much of the manual analysis could be automated.</p>
+</div>
+<div class="paragraph">
+<p>In the months that followed, Munawar’s team built a prototype that automates two key parts of VEX creation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifying the vulnerable method(s) in a dependency.</p>
+</li>
+<li>
+<p>Tracing all possible paths from the application to the vulnerability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This drastically reduces the time needed to analyze each new CVE. The human factor remains essential (at least until tools like CycloneDX Threat Models become fully automated), but the workload is now much more manageable.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vexes_come_to_open_source"><a class="anchor" href="#_vexes_come_to_open_source"></a>VEXes Come to Open Source</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of <strong>July 2025</strong>, we&#8217;re excited to share that a new <strong>VEX Initiative</strong> has been launched by the <strong>Alpha-Omega Fund</strong>. It will release OpenRefactory&#8217;s tooling under the <code>Apache-2.0</code> license and integrate it into Apache Solr workflows.</p>
+</div>
+<div class="paragraph">
+<p>The goal: generate more accurate and timely VEX files. For example, the first CVE addressed—https://www.cve.org/CVERecord?id=CVE-2025-48924[<strong>CVE-2025-48924</strong>] (an infinite recursion in a Commons Lang method)—was reported just days after the initiative started. The analysis showed Solr was <strong>not</strong> vulnerable, meaning users don’t need to rush to upgrade to the next release.</p>
+</div>
+<div class="paragraph">
+<p>This is only the beginning. We aim to push this effort up the dependency chain—supporting not just Solr, but also projects like Log4j and Apache Commons. This collaborative model allows us to <strong>distribute the effort</strong>: both the computational workload of automated analysis and the human effort required to review, validate, and interpret the results.</p>
+</div>
+<div class="paragraph">
+<p>By working together across projects, we can reduce duplication, increase accuracy, and accelerate the delivery of trustworthy VEX files—benefiting the entire open source ecosystem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_it_means_for_you"><a class="anchor" href="#_what_it_means_for_you"></a>What It Means for You</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Under the EU’s <strong>Cyber Resilience Act (CRA)</strong>, commercial vendors must ensure that:</p>
+</div>
+<div class="paragraph">
+<p>“Products with digital elements shall be made available on the market without known exploitable vulnerabilities.”</p>
+</div>
+<div class="paragraph">
+<p>Improved VEX tooling and publishing open up two practical paths for meeting the requirements of the CRA:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Patch your Solr installations</strong> to use dependency versions that are free of known CVEs.</p>
+</li>
+<li>
+<p><strong>Leverage the Apache Solr VEX file</strong> to demonstrate to regulators that known vulnerabilities are <strong>not exploitable</strong> in your context.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you choose the second approach—and you have internal insights into the exploitability of vulnerabilities in your open source–based products—<strong>don’t keep that knowledge to yourself</strong>. Contributing your findings upstream helps the broader ecosystem. By sharing what you’ve already analyzed, you enable other organizations to invest their resources into analyzing vulnerabilities in other OSS projects—possibly the same ones you rely on.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s a win-win: stronger shared security, reduced duplication of effort, and a more resilient open source supply chain.</p>
+</div>
+<div class="paragraph">
+<p><strong>Written by Piotr P. Karwasz. Edited by Charlie Bedard.</strong></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The image at the top is generated by <a href="https://openai.com/pl-PL/sora/">Sora</a>. We used the following prompt: “Create an image for a blog post with the following title "How I Learned to Stop Worrying and Love the VEX" . Here VEX refers to the Vulnerability Exploitability eXchange document which is used to describe whether a vulnerability affects a downstream dependent application or not. Please use references from the Dr Strangelove movie while preparing the image.”
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright © 1999-2025 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
+    Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
+  </p>
+  <p>
+    Apache, Log4j, and the Apache feather logo are trademarks or registered trademarks of The Apache Software Foundation.
+    Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+    Other names may be trademarks of their respective owners.
+  </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<!-- `@asciidoctor/tabs` extension scripts -->
+<script async src="../_/js/vendor/tabs.js"></script>
+  </body>
+</html>

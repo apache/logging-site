@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Receiving Support from the Sovereign Tech Fund :: Apache Logging Services</title>
+    <link rel="canonical" href="https://logging.apache.org/blog/20231214-announcing-support-from-the-stf.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.11">
+<link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/../_images/favicon.ico" type="image/x-icon">
+<!-- `@asciidoctor/tabs` extension styles -->
+<link rel="stylesheet" href="../_/css/vendor/tabs.css">
+<style>
+  /* Swap colors of `IMPORTANT` and `WARNING` blocks */ 
+  .doc .admonitionblock.important .icon { background-color: #f70; }
+  .doc .admonitionblock.warning .icon { background-color: #e40046; }
+  /* Default `h4`, `h5`, and `h6` are smaller than the normal text, fix header font sizing: */
+  .doc h1 { font-size: 1.9rem; }
+  .doc h2 { font-size: 1.7rem; }
+  .doc h3 { font-size: 1.5rem; font-weight: 400; }
+  .doc h4 { font-size: 1.3rem; font-weight: 500; }
+  .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
+  .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+  /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
+  .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
+  .doc pre { font-size: 0.7rem; }
+  .doc .colist { font-size: 0.75rem; }
+  /* Make links more visible: */
+  .doc a { text-decoration: underline; }
+  .doc a code { text-decoration: underline; color: #1565c0; }
+  /* Make nav bar wider */
+  .nav-container { width:19rem; }
+  /* Tab header fonts aren't rendered good, adjusting the font weight: */
+  .tablist > ul li { font-weight: 500; }
+  /* `page-toclevels` greater than 4 are not supported by Antora UI, patching it: */
+  .toc .toc-menu li[data-level="4"] a {
+    padding-left: 2.75rem;
+  }
+  /* Replace the default highlight.js color for strings from red (unnecessarily signaling something negative) to green: */
+  .hljs-string {
+    color: #0f8532;
+  }
+</style>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+    <a class="navbar-item" href="https://logging.apache.org">Logging Services</a>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://apache.org">a project of&nbsp;<strong>Apache Software Foundation</strong></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Home</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">About</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../guidelines.html">Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../charter.html">Charter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../team-list.html">Team</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../processes.html">Processes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../what-is-logging.html">What is logging?</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../download.html">Download</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support.html">Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../xml/ns/index.html">XML Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Blog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="https://apache.org">The ASF</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/licenses/">License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsorship">Donate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsors">Thanks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="20231214-announcing-support-from-the-stf.html">Receiving Support from the Sovereign Tech Fund</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/ROOT/pages/blog/20231214-announcing-support-from-the-stf.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Receiving Support from the Sovereign Tech Fund</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>For a long time, Apache Log4j has thrived through the dedication and contributions
+of our community, relying mostly on unpaid volunteers. Today, we&#8217;re excited to announce
+a pivotal moment in our journey – <a href="https://www.sprind.org/de/projekte/sovereign-tech-fund">the Sovereign Tech Fund (STF)</a> has chosen to support us in the further development of specific Log4j projects.</p>
+</div>
+<div class="paragraph">
+<p>The STF, known for its commitment to critical projects,
+recognizes the significance of Log4j in the global tech landscape. This support
+is a testament to the essential role Log4j plays in the IT infrastructure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_focused_development_and_security_enhancement"><a class="anchor" href="#_focused_development_and_security_enhancement"></a>Focused Development and Security Enhancement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;re honored that three of our maintainers - <a href="https://grobmeier.solutions">Christian Grobmeier</a>,
+Piotr Karwasz, and <a href="https://volkan.yazi.ci">Volkan Yazıcı</a> - are being supported through
+this initiative. Collaborating closely with the Project Management Committee (PMC),
+their focus will be on enhancing security, elevating code quality, and adding new,
+advanced features.</p>
+</div>
+<div class="paragraph">
+<p>We have already made significant progress: implemented a CI-based
+release pipeline, modernized the code base and dependencies, started
+publishing <a href="https://logging.apache.org/logging-parent/latest/#cyclonedx-sbom">Software Bill of Materials (SBOM) and Vulnerability Disclosure Report (VDR)</a>
+for released artifacts, and several other enhancements. This funding
+will also enable us to substantially improve our documentation, tests, and overall stability.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_broadening_our_horizons"><a class="anchor" href="#_broadening_our_horizons"></a>Broadening Our Horizons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an extraordinary opportunity for Log4j and the Logging Services team. It enables us to refine our library,
+making it more user-friendly and maintaining our position as a leading logging solution.
+Our team&#8217;s size and expertise allow us to respond swiftly to security issues.
+With the STF&#8217;s support, we can further enhance the security and stability that
+enterprises and our diverse user base have come to expect from us.</p>
+</div>
+<div class="paragraph">
+<p>Without this funding, many of these improvements would not have been feasible.
+It marks a significant leap in our ability to serve the community and
+contribute to the open-source ecosystem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgments_and_future_endeavors"><a class="anchor" href="#_acknowledgments_and_future_endeavors"></a>Acknowledgments and Future Endeavors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On a personal note, we would like to extend our gratitude to the (<a href="https://www.inoeg.de/">InÖG</a>)
+for their pivotal role in facilitating these developments. They made us aware of the STF
+during our participation in their remarkable project <a href="https://www.dialog-cybersicherheit.de/b3/">Buntes Bug Bounty</a>
+program, a commendable open-source project to bolster software security
+(<a href="https://www.dialog-cybersicherheit.de/workstreams/">Dialog-Cybersicherheit</a>) in Germany.</p>
+</div>
+<div class="paragraph">
+<p>As we embark on this new chapter, we invite the global tech community to join us
+in celebrating this milestone. Your support and contributions have brought us here,
+and together, we&#8217;ll continue to strengthen the foundation of digital infrastructure
+for a safer, more robust technological future.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright © 1999-2025 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
+    Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
+  </p>
+  <p>
+    Apache, Log4j, and the Apache feather logo are trademarks or registered trademarks of The Apache Software Foundation.
+    Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+    Other names may be trademarks of their respective owners.
+  </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<!-- `@asciidoctor/tabs` extension scripts -->
+<script async src="../_/js/vendor/tabs.js"></script>
+  </body>
+</html>

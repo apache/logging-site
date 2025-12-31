@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Download :: Apache Logging Services</title>
+    <link rel="canonical" href="https://logging.apache.org/download.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.11">
+<link rel="stylesheet" href="./_/css/site.css">
+<link rel="icon" href="./_/../_images/favicon.ico" type="image/x-icon">
+<!-- `@asciidoctor/tabs` extension styles -->
+<link rel="stylesheet" href="./_/css/vendor/tabs.css">
+<style>
+  /* Swap colors of `IMPORTANT` and `WARNING` blocks */ 
+  .doc .admonitionblock.important .icon { background-color: #f70; }
+  .doc .admonitionblock.warning .icon { background-color: #e40046; }
+  /* Default `h4`, `h5`, and `h6` are smaller than the normal text, fix header font sizing: */
+  .doc h1 { font-size: 1.9rem; }
+  .doc h2 { font-size: 1.7rem; }
+  .doc h3 { font-size: 1.5rem; font-weight: 400; }
+  .doc h4 { font-size: 1.3rem; font-weight: 500; }
+  .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
+  .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+  /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
+  .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
+  .doc pre { font-size: 0.7rem; }
+  .doc .colist { font-size: 0.75rem; }
+  /* Make links more visible: */
+  .doc a { text-decoration: underline; }
+  .doc a code { text-decoration: underline; color: #1565c0; }
+  /* Make nav bar wider */
+  .nav-container { width:19rem; }
+  /* Tab header fonts aren't rendered good, adjusting the font weight: */
+  .tablist > ul li { font-weight: 500; }
+  /* `page-toclevels` greater than 4 are not supported by Antora UI, patching it: */
+  .toc .toc-menu li[data-level="4"] a {
+    padding-left: 2.75rem;
+  }
+  /* Replace the default highlight.js color for strings from red (unnecessarily signaling something negative) to green: */
+  .hljs-string {
+    color: #0f8532;
+  }
+</style>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+    <a class="navbar-item" href="https://logging.apache.org">Logging Services</a>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://apache.org">a project of&nbsp;<strong>Apache Software Foundation</strong></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Home</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">About</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="guidelines.html">Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="charter.html">Charter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="team-list.html">Team</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="processes.html">Processes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="what-is-logging.html">What is logging?</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="download.html">Download</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="support.html">Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="xml/ns/index.html">XML Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="blog/index.html">Blog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="https://apache.org">The ASF</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/licenses/">License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsorship">Donate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsors">Thanks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="download.html">Download</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/ROOT/pages/download.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Download</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use one of the following channels to download the Logging Services release distributions.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All Logging Services projects distribute convenience binaries that are easy to install for the programming language platform they target.
+You are strongly advised to <strong>check the installation instructions in the website of the project</strong> (<a href="/log4cxx">Log4cxx</a>, <a href="/log4j">Log4j</a>, <a href="/log4net">Log4net</a>, etc.) you are trying to install.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Official distribution channels</dt>
+<dd>
+<p>In accordance with the Apache Software Foundation&#8217;s release <a href="https://infra.apache.org/release-distribution.html">distribution policy</a> and <a href="https://infra.apache.org/release-publishing.html">creation process</a>, all Logging Services release distributions are <em>officially</em> accessible from the following channels:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ASF <a href="https://downloads.apache.org/logging">Distribution directory</a> (contains <strong>the most recent releases</strong>)</p>
+</li>
+<li>
+<p>ASF <a href="https://archive.apache.org/dist/logging">Distribution directory <strong>archive</strong></a> (contains all published releases)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Java distribution channels</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>ASF <a href="https://repository.apache.org/content/repositories/releases">Release</a> and <a href="https://repository.apache.org/content/repositories/snapshots">snapshot</a> Nexus repositories (mirrored to <a href="https://central.sonatype.dev/">the Maven Central Repository</a>)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">.NET distribution channels</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.nuget.org/profiles/asf"><code>asf</code> organization in NuGet</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="verify"><a class="anchor" href="#verify"></a>Verification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Logging Services release distributions are digitally signed by the release manager and provided with checksum files.
+You can verify a distribution by following instructions:</p>
+</div>
+<div id="_tabs_1" class="openblock tabs is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_1_linuxmacos" class="tab">
+<p>Linux/macOS</p>
+</li>
+<li id="_tabs_1_windows" class="tab">
+<p>Windows</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_1_linuxmacos--panel" class="tabpanel" aria-labelledby="_tabs_1_linuxmacos">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Download and import the release manager public keys
+wget -O - https://downloads.apache.org/logging/KEYS | gpg --import
+
+# Verify signatures
+for sigFile in *.asc; do gpg --verify $sigFile ${sigFile%.asc}; done
+
+# Verify checksums
+shasum --check *.sha512</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_1_windows--panel" class="tabpanel" aria-labelledby="_tabs_1_windows">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download <a href="https://downloads.apache.org/logging/KEYS">the release manager public keys</a></p>
+</li>
+<li>
+<p>Use <code>gpg --import</code> to import the keys</p>
+</li>
+<li>
+<p>Verify signature files: <code>gpg --verify some.file.asc some.file</code></p>
+</li>
+<li>
+<p>Verify checksums: <code>certUtil -hashfile some.file SHA512</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sbom"><a class="anchor" href="#sbom"></a>Software Bill of Materials (SBOM)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many Logging Services projects distribute <a href="https://cyclonedx.org/capabilities/vdr">CycloneDX Software Bill of Materials (SBOM)</a> along with each deployed artifact.
+This is streamlined by <a href="/logging-parent">Logging Parent</a> for Maven-based projects.</p>
+</div>
+<div class="paragraph">
+<p>Produced SBOMs contain BOM-links referring to a <a href="https://cyclonedx.org/capabilities/vdr">CycloneDX Vulnerability Disclosure Report (VDR)</a> that Apache Logging Services uses for all projects it maintains.
+This VDR is accessible through the following URL: <a href="https://logging.apache.org/cyclonedx/vdr.xml" class="bare">https://logging.apache.org/cyclonedx/vdr.xml</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright © 1999-2025 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
+    Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
+  </p>
+  <p>
+    Apache, Log4j, and the Apache feather logo are trademarks or registered trademarks of The Apache Software Foundation.
+    Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+    Other names may be trademarks of their respective owners.
+  </p>
+</footer>
+<script id="site-script" src="./_/js/site.js" data-ui-root-path="./_"></script>
+<script async src="./_/js/vendor/highlight.js"></script>
+<!-- `@asciidoctor/tabs` extension scripts -->
+<script async src="./_/js/vendor/tabs.js"></script>
+  </body>
+</html>
