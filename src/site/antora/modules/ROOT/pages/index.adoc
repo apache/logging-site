@@ -59,7 +59,7 @@ The very first Log4j® major release.
 Reached End-Of-Life in August 2015.
 
 https://logging.apache.org/log4j-audit/latest[Log4j® Audit]::
-Audit logging framework built upon Apache Log4j®.
+Audit logging framework built upon Log4j®.
 
 https://logging.apache.org/log4j/extras[Log4j® Extras]::
 Extras for Log4j® 1; companions, receivers, and more.

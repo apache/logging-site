@@ -84,7 +84,7 @@ Following schemas model the Log4j runtime configuration, i.e., `log4j2.xml`{empt
 == Log4j Changelog schemas
 
 link:/log4j/tools/log4j-changelog.html[Log4j Changelog] is a tool to maintain changelogs.
-It is designed for Apache Log4j, but can be used for any Java project.
+It is designed for Log4j, but can be used for any Java project.
 
 [%header,cols="3*"]
 |===
@@ -137,7 +137,7 @@ It is designed for Apache Log4j, but can be used for any Java project.
 == Log4j Docgen schemas
 
 link:/log4j/tools/log4j-docgen.html[Log4j Docgen] is a tool to maintain Log4j Core plugin documentation.
-It is designed for Apache Log4j.
+It is designed for Log4j.
 
 [%header,cols="3*"]
 |===

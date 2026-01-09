@@ -17,7 +17,7 @@
 
 = Receiving Support from the Sovereign Tech Fund
 
-For a long time, Apache Log4j has thrived through the dedication and contributions 
+For a long time, Log4j has thrived through the dedication and contributions
 of our community, relying mostly on unpaid volunteers. Today, we're excited to announce 
 a pivotal moment in our journey – https://www.sprind.org/de/projekte/sovereign-tech-fund[the Sovereign Tech Fund (STF)] has chosen to support us in the further development of specific Log4j projects.
 

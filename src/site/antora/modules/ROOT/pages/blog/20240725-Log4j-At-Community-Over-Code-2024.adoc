@@ -15,9 +15,9 @@
     limitations under the License.
 ////
 
-= Apache Log4j at Community Over Code 2024 in Bratislava
+= Log4j at Community Over Code 2024 in Bratislava
 
-On July 25, 2024, Apache Log4j was featured at the Community Over Code conference in Bratislava.
+On July 25, 2024, Log4j was featured at the Community Over Code conference in Bratislava.
 Matt Sicker and Piotr Karwasz, two of the project's key contributors, shared insights into the history and future of Log4j.
 
 If you are interested in what we learned about security and how we want to 
