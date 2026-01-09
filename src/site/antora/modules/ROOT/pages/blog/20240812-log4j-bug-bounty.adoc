@@ -15,7 +15,7 @@
     limitations under the License.
 ////
 
-= Apache Log4j participates in the bug bounty program
+= Log4j participates in the bug bounty program
 
 We were proud to be xref:blog/20231214-announcing-support-from-the-stf.adoc[supported by the STF] last year.
 This support helped us to fix many bugs, rewrite documentation, and improve the overall quality of the codebase and security.

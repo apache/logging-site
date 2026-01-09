@@ -24,10 +24,10 @@
   <Project rdf:about="https://logging.apache.org/log4j">
     <created>1999-01-01</created>
     <license rdf:resource="https://spdx.org/licenses/Apache-2.0" />
-    <name>Apache Log4j</name>
+    <name>Log4j</name>
     <homepage rdf:resource="https://logging.apache.org/log4j/2.x/index.html" />
     <asfext:pmc rdf:resource="https://logging.apache.org" />
-    <shortdesc>Apache Log4j is a versatile, feature-rich, efficient logging API and backend for Java.</shortdesc>
+    <shortdesc>Log4j is a versatile, feature-rich, efficient logging API and backend for Java.</shortdesc>
     <bug-database rdf:resource="https://github.com/apache/logging-log4j2/issues" />
     <mailing-list rdf:resource="https://logging.apache.org/support.html" />
     <download-page rdf:resource="https://logging.apache.org/log4j/2.x/download.html" />
