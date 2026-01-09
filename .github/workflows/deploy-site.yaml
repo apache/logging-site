@@ -41,7 +41,7 @@ jobs:
         staging:
           profile: ~
           whoami: ${{ github.ref_name }}-site-stg-out
-          subdir: content/
+          subdir: content
       target-branch: ${{ github.ref_name }}-site-stg-out
       # For some unknown reason, `target-path` needs to be `content`.
       # Fortunately, it is only `logging-site` that needs to implement this hack.
@@ -62,7 +62,7 @@ jobs:
       asf-yaml-content: |
         publish:
           whoami: ${{ github.ref_name }}-out
-          subdir: content/
+          subdir: content
       target-branch: ${{ github.ref_name }}-out
       # For some unknown reason, `target-path` needs to be `content`.
       # Fortunately, it is only `logging-site` that needs to implement this hack.
