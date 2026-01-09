@@ -43,11 +43,6 @@ jobs:
           whoami: ${{ github.ref_name }}-site-stg-out
           subdir: content
       target-branch: ${{ github.ref_name }}-site-stg-out
-      # For some unknown reason, `target-path` needs to be `content`.
-      # Fortunately, it is only `logging-site` that needs to implement this hack.
-      # Other `logging-*` repositories using `deploy-site-reusable.yaml` can continue using the default `target-path`.
-      # See https://issues.apache.org/jira/browse/INFRA-27533
-      target-path: content
 
   deploy-site-pro:
     if: github.repository == 'apache/logging-site' && github.ref_name == 'main-site-pro'
@@ -64,8 +59,3 @@ jobs:
           whoami: ${{ github.ref_name }}-out
           subdir: content
       target-branch: ${{ github.ref_name }}-out
-      # For some unknown reason, `target-path` needs to be `content`.
-      # Fortunately, it is only `logging-site` that needs to implement this hack.
-      # Other `logging-*` repositories using `deploy-site-reusable.yaml` can continue using the default `target-path`.
-      # See https://issues.apache.org/jira/browse/INFRA-27533
-      target-path: content
