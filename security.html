@@ -549,7 +549,7 @@ We choose to pool all information on this one page, allowing easy searching for 
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4j Core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j Core</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
@@ -564,7 +564,7 @@ We choose to pool all information on this one page, allowing easy searching for 
 <div class="sect3">
 <h4 id="CVE-2025-68161-description"><a class="anchor" href="#CVE-2025-68161-description"></a>Description</h4>
 <div class="paragraph">
-<p>The Socket Appender in Apache Log4j Core versions <code>2.0-beta9</code> through <code>2.25.2</code> does not perform TLS hostname verification of the peer certificate, even when the
+<p>The Socket Appender in Log4j Core versions <code>2.0-beta9</code> through <code>2.25.2</code> does not perform TLS hostname verification of the peer certificate, even when the
 <a href="https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName"><code>verifyHostName</code></a>
 configuration attribute or the
 <a href="https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName"><code>log4j2.sslVerifyHostName</code></a>
@@ -587,7 +587,7 @@ system property is set to <code>true</code>.</p>
 <div class="sect3">
 <h4 id="CVE-2025-68161-remediation"><a class="anchor" href="#CVE-2025-68161-remediation"></a>Remediation</h4>
 <div class="paragraph">
-<p>Users are advised to upgrade to Apache Log4j Core version <code>2.25.3</code>, which fully addresses this issue.</p>
+<p>Users are advised to upgrade to Log4j Core version <code>2.25.3</code>, which fully addresses this issue.</p>
 </div>
 <div class="paragraph">
 <p>For earlier versions, the risk can be reduced by carefully restricting the trust store used by the Socket Appender.</p>
@@ -616,7 +616,7 @@ For example,
 <p>This issue was discovered by Samuli Leinonen.</p>
 </div>
 <div class="paragraph">
-<p>It was reported through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a> funded by the Sovereign Tech Agency.</p>
+<p>It was reported through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Log4j Bug Bounty Program on YesWeHack</a> funded by the Sovereign Tech Agency.</p>
 </div>
 </div>
 <div class="sect3">
@@ -651,7 +651,7 @@ For example,
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4cxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
@@ -680,7 +680,7 @@ This may prevent applications that consume these logs from correctly interpretin
 <div class="sect3">
 <h4 id="CVE-2025-54813-credits"><a class="anchor" href="#CVE-2025-54813-credits"></a>Credits</h4>
 <div class="paragraph">
-<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a>.</p>
+<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Log4j Bug Bounty Program on YesWeHack</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -715,7 +715,7 @@ This may prevent applications that consume these logs from correctly interpretin
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Apache Log4cxx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
@@ -763,7 +763,7 @@ In order to activate this, the following sequence must occur:</p>
 <div class="sect3">
 <h4 id="CVE-2025-54812-credits"><a class="anchor" href="#CVE-2025-54812-credits"></a>Credits</h4>
 <div class="paragraph">
-<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Apache Log4j Bug Bounty Program on YesWeHack</a>.</p>
+<p>This issue was discovered and remediated with support from the Sovereign Tech Agency, through the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">Log4j Bug Bounty Program on YesWeHack</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1250,7 +1250,7 @@ Java 6 users should avoid using the TCP or UDP socket server classes, or they ca
 </div>
 <footer class="footer">
   <p>
-    Copyright © 1999-2025 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Copyright © 1999-2026 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
     Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
     Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
   </p>
