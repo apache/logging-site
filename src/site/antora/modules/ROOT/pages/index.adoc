@@ -35,9 +35,6 @@ A versatile, industrial-grade Java logging framework composed of an API, its imp
 +
 https://logging.apache.org/log4j/kotlin[Log4j® Kotlin]:::
 A Kotlin-friendly interface to log against the Log4j® API.
-+
-https://logging.apache.org/log4j/kotlin[Log4j® Scala]:::
-A Scala-friendly interface to log against the Log4j® API.
 
 https://logging.apache.org/log4cxx[Log4cxx]::
 A logging framework for C++ patterned after Log4j®.
@@ -45,7 +42,7 @@ A logging framework for C++ patterned after Log4j®.
 https://logging.apache.org/log4Net[Log4Net]::
 A port of the Log4j® to the Microsoft .NET runtime.
 
-.Click to see list of dormant subprojects
+.Click to see list of inactive subprojects
 [%collapsible]
 ====
 https://logging.apache.org/chainsaw[Chainsaw]::
@@ -57,12 +54,16 @@ Distributed, reliable, and available service for efficiently collecting, aggrega
 https://logging.apache.org/log4j/1.x[Log4j® 1]::
 The very first Log4j® major release.
 Reached End-Of-Life in August 2015.
-
-https://logging.apache.org/log4j-audit/latest[Log4j® Audit]::
++
+https://logging.apache.org/log4j/audit[Log4j® Audit]:::
 Audit logging framework built upon Log4j®.
-
-https://logging.apache.org/log4j/extras[Log4j® Extras]::
++
+https://logging.apache.org/log4j/extras[Log4j® Extras]:::
 Extras for Log4j® 1; companions, receivers, and more.
++
+https://logging.apache.org/log4j/kotlin[Log4j® Scala]:::
+A Scala-friendly interface to log against the Log4j® API.
+Retired on 2026-01-19.
 
 https://logging.apache.org/log4php[Log4php]::
 A versatile logging framework for PHP.
