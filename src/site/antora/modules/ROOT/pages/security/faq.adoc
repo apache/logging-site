@@ -40,7 +40,7 @@ Apache Logging Services libraries (Log4cxx, Log4j, and Log4net) allow users to c
 A frequently reported issue is that CR (`\r`) and LF (`\n`) characters present in a log event can appear in the output,
 making it difficult to reliably delimit individual events when parsing.
 
-In most cases this behavior is intentional and not considered a vulnerability.
+In most configurations, this behavior is intentional and not considered a vulnerability within the defined threat model.
 The sections below cover the layouts for which this has most commonly been reported.
 
 [#crlf-injection-pattern-layout]
@@ -65,7 +65,7 @@ CRLF injection is a concern only when both of the following conditions apply:
 * Log output is consumed as **structured data** (for example, by an ingestion pipeline), _and_
 * Downstream consumers assume that the output has been sanitized.
 
-Pattern layout makes neither of those guarantees: that responsibility falls to the user.
+Pattern layout guarantees only formatting, not safety or parseability.
 Tools such as https://www.elastic.co/docs/reference/enrich-processor/grok-processor[Grok] can parse Pattern layout output automatically, but only when the output consistently matches the expected pattern.
 Unescaped CRLF sequences can break that assumption.
 
@@ -87,7 +87,7 @@ Common oversights include:
 
 * Sanitizing only `%m` (e.g. `%enc{%m}\{CRLF}` in Log4j Core) while leaving other fields unescaped
 * The implicit `%ex` pattern specifier (exception stack traces), which are a frequent and overlooked source of CRLF characters
-* Ostensibly "safe" values such as logger names, thread names, and log levels, which may contain unexpected data depending on your application
+* Seemingly "safe" values such as logger names, thread names, and log levels, which may contain unexpected data depending on your application
 ====
 
 [#crlf-injection-rfc5424-layout]
@@ -153,7 +153,7 @@ While unvalidated file paths in configuration are not a vulnerability in themsel
 
 This risk is compounded when interpolation occurs at **runtime** rather than at configuration time: for example, when appenders are created dynamically by Log4j Core's
 {site-url}/log4j/2.x/manual/appenders/delegating.html#RoutingAppender[Routing appender].
-In those cases, the interpolated values originate outside the configuration file itself and may not be equally trustworthy.
+In those cases, the interpolated values originate outside the configuration file itself and may originate from untrusted or attacker-controlled sources.
 
 It is the user's responsibility to ensure that the sources of any interpolated values used in file paths are trustworthy.
 
