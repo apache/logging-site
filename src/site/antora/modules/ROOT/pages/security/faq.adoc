@@ -43,6 +43,7 @@ making it difficult to reliably delimit individual events when parsing.
 In most cases this behavior is intentional and not considered a vulnerability.
 The sections below cover the layouts for which this has most commonly been reported.
 
+[#crlf-injection-pattern-layout]
 === Pattern layout
 
 **Claim**: Pattern layout is vulnerable to CRLF injection because it does not escape CRLF characters.
@@ -56,6 +57,7 @@ This means:
 
 This behavior is by design and consistent with the layout's purpose.
 
+[#crlf-injection-pattern-layout-why-not]
 ==== Why this is not a vulnerability
 
 CRLF injection is a concern only when both of the following conditions apply:
@@ -88,6 +90,7 @@ Common oversights include:
 * Ostensibly "safe" values such as logger names, thread names, and log levels, which may contain unexpected data depending on your application
 ====
 
+[#crlf-injection-rfc5424-layout]
 === RFC 5424 layout
 
 **Claim**: RFC 5424 layout is vulnerable to CRLF injection because it does not escape CRLF characters by default.
@@ -98,6 +101,7 @@ Instead, responsibility for handling those characters is delegated to the **tran
 
 For this reason, Log4j Core does not escape CRLF characters by default, and this is **not** considered a vulnerability.
 
+[#crlf-injection-rfc5424-layout-why-not]
 ==== Why this is not a vulnerability
 
 The appropriate handling of CRLF characters depends on which transport protocol carries the log messages.
@@ -126,12 +130,14 @@ Refer to the layout configuration reference for details.
 If you are starting a new deployment, prefer TLS-encrypted TCP (RFC 5425), which avoids this concern entirely through length-prefixed framing.
 ====
 
+[#path-traversal]
 == https://cwe.mitre.org/data/definitions/35.html[CWE-35: Path Traversal]
 
 A frequently reported issue is the presence of unvalidated file paths in configuration files, such as file appender file names.
 
 **Claim**: File appenders are vulnerable to path traversal because they accept unvalidated file paths.
 
+[#path-traversal-why-not]
 === Why this is not a vulnerability
 
 Configuration files are **trusted** resources according to our xref:security.adoc#threat-model[threat model] and must be protected accordingly.
@@ -140,6 +146,7 @@ Given that trust, constraining the file paths they may contain provides no meani
 Limiting file paths to a specific directory would also introduce a **chicken-and-egg problem**: doing so would require an additional configuration resource to define the allowed directory, which itself would need to be trusted and protected.
 We do not establish a hierarchy of trust between configuration resources (environment variables, system properties, configuration files, and so on): they are all considered equally trusted.
 
+[#path-traversal-problematic-contexts]
 === Problematic contexts
 
 While unvalidated file paths in configuration are not a vulnerability in themselves, they can become one when **interpolation** features (arbiters, lookups, etc.) are used to construct file paths dynamically.
