@@ -26,6 +26,7 @@
 * xref:download.adoc[]
 * xref:support.adoc[]
 * xref:security.adoc[]
+** xref:security/faq.adoc[FAQ]
 * xref:xml/ns/index.adoc[XML Schema]
 * xref:blog/index.adoc[]
 

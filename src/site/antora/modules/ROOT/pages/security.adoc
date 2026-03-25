@@ -45,6 +45,11 @@ If you have encountered an unlisted security vulnerability or other unexpected b
 ====
 We urge you to **carefully read the threat model** detailed in following sections before submitting a report.
 It guides users on certain safety instructions while using Logging Services software and elaborates on what counts as an unexpected behaviour that has a security impact.
+
+Before reporting a vulnerability, please make sure to check:
+
+- The xref:security/faq.adoc[FAQ] for frequently reported issues that are not considered vulnerabilities.
+- The list of xref:security.adoc#vulnerabilities[known vulnerabilities] to check if the issue has already been reported.
 ====
 
 include::_threat-model-common.adoc[leveloffset=+1]
