@@ -121,3 +121,35 @@ Refer to the layout configuration reference for details.
 
 If you are starting a new deployment, prefer TLS-encrypted TCP (RFC 5425), which avoids this concern entirely through length-prefixed framing.
 ====
+
+== https://cwe.mitre.org/data/definitions/35.html[CWE-35: Path Traversal]
+
+A frequently reported issue is the presence of unvalidated file paths in configuration files, such as file appender file names.
+
+**Claim**: File appenders are vulnerable to path traversal because they accept unvalidated file paths.
+
+=== Why this is not a vulnerability
+
+Configuration files are **trusted** resources according to our xref:security.adoc#threat-model[threat model] and must be protected accordingly.
+Given that trust, constraining the file paths they may contain provides no meaningful security benefit.
+
+Limiting file paths to a specific directory would also introduce a **chicken-and-egg problem**: doing so would require an additional configuration resource to define the allowed directory, which itself would need to be trusted and protected.
+We do not establish a hierarchy of trust between configuration resources (environment variables, system properties, configuration files, and so on): they are all considered equally trusted.
+
+=== Problematic contexts
+
+While unvalidated file paths in configuration are not a vulnerability in themselves, they can become one when **interpolation** features (arbiters, lookups, etc.) are used to construct file paths dynamically.
+
+This risk is compounded when interpolation occurs at **runtime** rather than at configuration time: for example, when appenders are created dynamically by Log4j Core's
+{site-url}/log4j/2.x/manual/appenders/delegating.html#RoutingAppender[Routing appender].
+In those cases, the interpolated values originate outside the configuration file itself and may not be equally trustworthy.
+
+It is the user's responsibility to ensure that the sources of any interpolated values used in file paths are trustworthy.
+
+[IMPORTANT]
+====
+The trustworthiness of an interpolation source cannot be determined a priori by the Logging Services libraries, because it depends on the specific application and how it uses that source.
+
+Consider `${ctx:...}` lookups as an example: some applications populate the thread context map exclusively with internally generated values (such as request IDs), while others may include user-provided data (such as HTTP headers).
+In practice, trustworthiness often varies even at the per-key level: some context map keys may be safe to use in file paths, while others may not.
+====
