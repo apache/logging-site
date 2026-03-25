@@ -36,8 +36,12 @@ Depending on your environment, some of these topics may still warrant **defensiv
 [#crlf-injection]
 == https://cwe.mitre.org/data/definitions/93.html[CWE-93: CRLF Injection]
 
-A frequently reported issue is the presence of CR (`\r`) and LF (`\n`) characters in layout output.
-In most logging contexts this behavior is **intentional** and **not considered a vulnerability**.
+Apache Logging Services libraries (Log4cxx, Log4j, and Log4net) allow users to customize log output through a variety of layouts.
+A frequently reported issue is that CR (`\r`) and LF (`\n`) characters present in a log event can appear in the output,
+making it difficult to reliably delimit individual events when parsing.
+
+In most cases this behavior is **intentional** and **not considered a vulnerability**.
+The sections below cover the layouts for which this has most commonly been reported.
 
 === Pattern layout
 
