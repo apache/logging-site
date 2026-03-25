@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Frequently Reported Vulnerabilities :: Apache Logging Services</title>
+    <link rel="canonical" href="https://logging.apache.org/security/faq.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.11">
+<link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/../_images/favicon.ico" type="image/x-icon">
+<!-- `@asciidoctor/tabs` extension styles -->
+<link rel="stylesheet" href="../_/css/vendor/tabs.css">
+<style>
+  /* Swap colors of `IMPORTANT` and `WARNING` blocks */ 
+  .doc .admonitionblock.important .icon { background-color: #f70; }
+  .doc .admonitionblock.warning .icon { background-color: #e40046; }
+  /* Default `h4`, `h5`, and `h6` are smaller than the normal text, fix header font sizing: */
+  .doc h1 { font-size: 1.9rem; }
+  .doc h2 { font-size: 1.7rem; }
+  .doc h3 { font-size: 1.5rem; font-weight: 400; }
+  .doc h4 { font-size: 1.3rem; font-weight: 500; }
+  .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
+  .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+  /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
+  .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
+  .doc pre { font-size: 0.7rem; }
+  .doc .colist { font-size: 0.75rem; }
+  /* Make links more visible: */
+  .doc a { text-decoration: underline; }
+  .doc a code { text-decoration: underline; color: #1565c0; }
+  /* Make nav bar wider */
+  .nav-container { width:19rem; }
+  /* Tab header fonts aren't rendered good, adjusting the font weight: */
+  .tablist > ul li { font-weight: 500; }
+  /* `page-toclevels` greater than 4 are not supported by Antora UI, patching it: */
+  .toc .toc-menu li[data-level="4"] a {
+    padding-left: 2.75rem;
+  }
+  /* Replace the default highlight.js color for strings from red (unnecessarily signaling something negative) to green: */
+  .hljs-string {
+    color: #0f8532;
+  }
+</style>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+    <a class="navbar-item" href="https://logging.apache.org">Logging Services</a>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://apache.org">a project of&nbsp;<strong>Apache Software Foundation</strong></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Home</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">About</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../guidelines.html">Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../charter.html">Charter</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../team-list.html">Team</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../processes.html">Processes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://cwiki.apache.org/confluence/display/LOGGING/Home">Wiki</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../what-is-logging.html">What is logging?</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../download.html">Download</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../support.html">Support</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../xml/ns/index.html">XML Schema</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../blog/index.html">Blog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="https://apache.org">The ASF</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/licenses/">License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsorship">Donate</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="https://apache.org/foundation/sponsors">Thanks</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../security.html">Security</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/apache/logging-site/edit/main/src/site/antora/modules/ROOT/pages/security/faq.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Frequently Reported Vulnerabilities</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page documents issues that are <strong>frequently reported</strong> in Logging Services software but are <strong>not considered vulnerabilities</strong> according to our <a href="../security.html#threat-model" class="xref page">threat model</a>.</p>
+</div>
+<div class="paragraph">
+<p>These reports often stem from valid concerns in specific contexts, but reflect common misunderstandings about how logging systems are designed to operate and what security guarantees they provide.</p>
+</div>
+<div class="paragraph">
+<p>The goal of this FAQ is to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clarify common misconceptions</p>
+</li>
+<li>
+<p>Explain why these reports fall outside our threat model</p>
+</li>
+<li>
+<p>Help you make informed decisions when configuring logging</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This document is not intended to dismiss security concerns, but to provide context and guidance.
+Depending on your environment, some of these topics may still warrant <strong>defensive configuration</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="crlf-injection"><a class="anchor" href="#crlf-injection"></a><a href="https://cwe.mitre.org/data/definitions/93.html">CWE-93: CRLF Injection</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Logging Services libraries (Log4cxx, Log4j, and Log4net) allow users to customize log output through a variety of layouts.
+A frequently reported issue is that CR (<code>\r</code>) and LF (<code>\n</code>) characters present in a log event can appear in the output,
+making it difficult to reliably delimit individual events when parsing.</p>
+</div>
+<div class="paragraph">
+<p>In most configurations, this behavior is intentional and not considered a vulnerability within the defined threat model.
+The sections below cover the layouts for which this has most commonly been reported.</p>
+</div>
+<div class="sect2">
+<h3 id="crlf-injection-pattern-layout"><a class="anchor" href="#crlf-injection-pattern-layout"></a>Pattern layout</h3>
+<div class="paragraph">
+<p><strong>Claim</strong>: Pattern layout is vulnerable to CRLF injection because it does not escape CRLF characters.</p>
+</div>
+<div class="paragraph">
+<p>Pattern layout is an <strong>unstructured</strong> text format.
+It defines no fields, no delimiters, and no escaping rules, so it makes no attempt to neutralize control characters, including CRLF sequences.
+This means:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Log output will contain CRLF characters if they are present in the input.</p>
+</li>
+<li>
+<p>The layout itself provides <strong>no output sanitization</strong> guarantees.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This behavior is by design and consistent with the layout&#8217;s purpose.</p>
+</div>
+<div class="sect3">
+<h4 id="crlf-injection-pattern-layout-why-not"><a class="anchor" href="#crlf-injection-pattern-layout-why-not"></a>Why this is not a vulnerability</h4>
+<div class="paragraph">
+<p>CRLF injection is a concern only when both of the following conditions apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Log output is consumed as <strong>structured data</strong> (for example, by an ingestion pipeline), <em>and</em></p>
+</li>
+<li>
+<p>Downstream consumers assume that the output has been sanitized.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pattern layout guarantees only formatting, not safety or parseability.
+Tools such as <a href="https://www.elastic.co/docs/reference/enrich-processor/grok-processor">Grok</a> can parse Pattern layout output automatically, but only when the output consistently matches the expected pattern.
+Unescaped CRLF sequences can break that assumption.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your logs are consumed in any of these ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Parsed automatically by a downstream tool</p>
+</li>
+<li>
+<p>Ingested into a structured storage or SIEM system</p>
+</li>
+<li>
+<p>Used in security-sensitive workflows</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>then <strong>avoid Pattern layout</strong> and use a <strong>structured layout</strong> instead, such as JSON or RFC 5424.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you must use Pattern layout, <strong>sanitize all inputs explicitly</strong>, not just the log message.
+Common oversights include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sanitizing only <code>%m</code> (e.g. <code>%enc{%m}{CRLF}</code> in Log4j Core) while leaving other fields unescaped</p>
+</li>
+<li>
+<p>The implicit <code>%ex</code> pattern specifier (exception stack traces), which are a frequent and overlooked source of CRLF characters</p>
+</li>
+<li>
+<p>Seemingly "safe" values such as logger names, thread names, and log levels, which may contain unexpected data depending on your application</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="crlf-injection-rfc5424-layout"><a class="anchor" href="#crlf-injection-rfc5424-layout"></a>RFC 5424 layout</h3>
+<div class="paragraph">
+<p><strong>Claim</strong>: RFC 5424 layout is vulnerable to CRLF injection because it does not escape CRLF characters by default.</p>
+</div>
+<div class="paragraph">
+<p>RFC 5424 layout is a <strong>structured format</strong> with well-defined fields and delimiters, enabling reliable and unambiguous parsing.
+However, per <a href="https://datatracker.ietf.org/doc/html/rfc5424#section-8.2">Section 8.2 of RFC 5424</a>, the spec itself does <strong>not</strong> require escaping of control characters (including CRLF) in the <code>PARAM-VALUE</code> or <code>MSG</code> fields.
+Instead, responsibility for handling those characters is delegated to the <strong>transport binding</strong> in use.</p>
+</div>
+<div class="paragraph">
+<p>For this reason, Log4j Core does not escape CRLF characters by default, and this is <strong>not</strong> considered a vulnerability.</p>
+</div>
+<div class="sect3">
+<h4 id="crlf-injection-rfc5424-layout-why-not"><a class="anchor" href="#crlf-injection-rfc5424-layout-why-not"></a>Why this is not a vulnerability</h4>
+<div class="paragraph">
+<p>The appropriate handling of CRLF characters depends on which transport protocol carries the log messages.
+RFC 5424 is used with several protocol bindings, each with different framing semantics:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">UDP (<a href="https://datatracker.ietf.org/doc/html/rfc5426">RFC 5426</a>)</dt>
+<dd>
+<p>Each message is transmitted as a self-contained datagram, so CRLF characters carry no special meaning and require no escaping.</p>
+</dd>
+<dt class="hdlist1">TLS-encrypted TCP (<a href="https://datatracker.ietf.org/doc/html/rfc5425">RFC 5425</a>)</dt>
+<dd>
+<p>The recommended transport for new deployments.
+Uses length-prefixed framing, so message boundaries are established independently of content.
+CRLF escaping is not required.</p>
+</dd>
+<dt class="hdlist1">Legacy TCP (<a href="https://datatracker.ietf.org/doc/html/rfc6587">RFC 6587</a>)</dt>
+<dd>
+<p>Uses LF as a message delimiter, so LF characters within a message must be escaped.
+This protocol is <strong>discouraged</strong> for new deployments due to known limitations.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Applying CRLF escaping unconditionally at the layout level would silently alter log content for transport bindings that do not need it.
+Defaulting to no escaping preserves the original log data while allowing each transport binding to apply the appropriate treatment.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>RFC 5424 layout does support optional CRLF escaping, which you can enable explicitly when using a transport that requires it (such as legacy TCP over RFC 6587).
+Refer to the layout configuration reference for details.</p>
+</div>
+<div class="paragraph">
+<p>If you are starting a new deployment, prefer TLS-encrypted TCP (RFC 5425), which avoids this concern entirely through length-prefixed framing.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="path-traversal"><a class="anchor" href="#path-traversal"></a><a href="https://cwe.mitre.org/data/definitions/35.html">CWE-35: Path Traversal</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A frequently reported issue is the presence of unvalidated file paths in configuration files, such as file appender file names.</p>
+</div>
+<div class="paragraph">
+<p><strong>Claim</strong>: File appenders are vulnerable to path traversal because they accept unvalidated file paths.</p>
+</div>
+<div class="sect2">
+<h3 id="path-traversal-why-not"><a class="anchor" href="#path-traversal-why-not"></a>Why this is not a vulnerability</h3>
+<div class="paragraph">
+<p>Configuration files are <strong>trusted</strong> resources according to our <a href="../security.html#threat-model" class="xref page">threat model</a> and must be protected accordingly.
+Given that trust, constraining the file paths they may contain provides no meaningful security benefit.</p>
+</div>
+<div class="paragraph">
+<p>Limiting file paths to a specific directory would also introduce a <strong>chicken-and-egg problem</strong>: doing so would require an additional configuration resource to define the allowed directory, which itself would need to be trusted and protected.
+We do not establish a hierarchy of trust between configuration resources (environment variables, system properties, configuration files, and so on): they are all considered equally trusted.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="path-traversal-problematic-contexts"><a class="anchor" href="#path-traversal-problematic-contexts"></a>Problematic contexts</h3>
+<div class="paragraph">
+<p>While unvalidated file paths in configuration are not a vulnerability in themselves, they can become one when <strong>interpolation</strong> features (arbiters, lookups, etc.) are used to construct file paths dynamically.</p>
+</div>
+<div class="paragraph">
+<p>This risk is compounded when interpolation occurs at <strong>runtime</strong> rather than at configuration time: for example, when appenders are created dynamically by Log4j Core&#8217;s
+<a href="https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#RoutingAppender">Routing appender</a>.
+In those cases, the interpolated values originate outside the configuration file itself and may originate from untrusted or attacker-controlled sources.</p>
+</div>
+<div class="paragraph">
+<p>It is the user&#8217;s responsibility to ensure that the sources of any interpolated values used in file paths are trustworthy.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The trustworthiness of an interpolation source cannot be determined a priori by the Logging Services libraries, because it depends on the specific application and how it uses that source.</p>
+</div>
+<div class="paragraph">
+<p>Consider <code>${ctx:&#8230;&#8203;}</code> lookups as an example: some applications populate the thread context map exclusively with internally generated values (such as request IDs), while others may include user-provided data (such as HTTP headers).
+In practice, trustworthiness often varies even at the per-key level: some context map keys may be safe to use in file paths, while others may not.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>
+    Copyright © 1999-2026 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software License, Version 2.0</a>.
+    Please read our <a href="https://privacy.apache.org/policies/privacy-policy-public.html">privacy policy</a>.
+  </p>
+  <p>
+    Apache, Log4j, and the Apache feather logo are trademarks or registered trademarks of The Apache Software Foundation.
+    Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+    Other names may be trademarks of their respective owners.
+  </p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<!-- `@asciidoctor/tabs` extension scripts -->
+<script async src="../_/js/vendor/tabs.js"></script>
+  </body>
+</html>
