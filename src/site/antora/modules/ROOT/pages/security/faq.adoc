@@ -1,0 +1,123 @@
+////
+//  Licensed to the Apache Software Foundation (ASF) under one or more
+//  contributor license agreements.  See the NOTICE file distributed with
+//  this work for additional information regarding copyright ownership.
+//  The ASF licenses this file to You under the Apache License, Version 2.0
+//  (the "License"); you may not use this file except in compliance with
+//  the License.  You may obtain a copy of the License at
+//
+//       https://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+////
+
+= Frequently Reported Vulnerabilities
+
+This page documents issues that are **frequently reported** in Logging Services software but are **not considered vulnerabilities** according to our xref:security.adoc#threat-model[threat model].
+
+These reports often stem from valid concerns in specific contexts, but reflect common misunderstandings about how logging systems are designed to operate and what security guarantees they provide.
+
+The goal of this FAQ is to:
+
+* Clarify common misconceptions
+* Explain why these reports fall outside our threat model
+* Help you make informed decisions when configuring logging
+
+[NOTE]
+====
+This document is not intended to dismiss security concerns, but to provide context and guidance.
+Depending on your environment, some of these topics may still warrant **defensive configuration**.
+====
+
+[#crlf-injection]
+== https://cwe.mitre.org/data/definitions/93.html[CWE-93: CRLF Injection]
+
+A frequently reported issue is the presence of CR (`\r`) and LF (`\n`) characters in layout output.
+In most logging contexts this behavior is **intentional** and **not considered a vulnerability**.
+
+=== Pattern layout
+
+**Claim**: Pattern layout is vulnerable to CRLF injection because it does not escape CRLF characters.
+
+Pattern layout is an **unstructured text format**.
+It defines no fields, no delimiters, and no escaping rules, so it makes no attempt to neutralize control characters, including CRLF sequences.
+This means:
+
+* Log output will contain CRLF characters if they are present in the input.
+* The layout itself provides **no output sanitization** guarantees.
+
+This behavior is by design and consistent with the layout's purpose.
+
+==== Why this is not a vulnerability
+
+CRLF injection is a concern only when both of the following conditions apply:
+
+* Log output is consumed as **structured data** (for example, by an ingestion pipeline), _and_
+* Downstream consumers assume that the output has been sanitized.
+
+Pattern layout makes neither of those guarantees: that responsibility falls to the user.
+Tools such as https://www.elastic.co/docs/reference/enrich-processor/grok-processor[Grok] can parse Pattern layout output automatically, but only when the output consistently matches the expected pattern.
+Unescaped CRLF sequences can break that assumption.
+
+[IMPORTANT]
+====
+If your logs are consumed in any of these ways:
+
+* Parsed automatically by a downstream tool
+* Ingested into a structured storage or SIEM system
+* Used in security-sensitive workflows
+
+then **avoid Pattern layout** and use a **structured layout** instead, such as JSON or RFC 5424.
+====
+
+[TIP]
+====
+If you must use Pattern layout, **sanitize all inputs explicitly**, not just the log message.
+Common oversights include:
+
+* Sanitizing only `%m` (e.g. `%enc{%m}\{CRLF}` in Log4j Core) while leaving other fields unescaped
+* The implicit `%ex` pattern specifier (exception stack traces), which are a frequent and overlooked source of CRLF characters
+* Ostensibly "safe" values such as logger names, thread names, and log levels, which may contain unexpected data depending on your application
+====
+
+=== RFC 5424 layout
+
+**Claim**: RFC 5424 layout is vulnerable to CRLF injection because it does not escape CRLF characters by default.
+
+RFC 5424 layout is a **structured format** with well-defined fields and delimiters, enabling reliable and unambiguous parsing.
+However, per https://datatracker.ietf.org/doc/html/rfc5424#section-8.2[Section 8.2 of RFC 5424], the spec itself does **not** require escaping of control characters (including CRLF) in the `PARAM-VALUE` or `MSG` fields.
+Instead, responsibility for handling those characters is delegated to the **transport binding** in use.
+
+For this reason, Log4j Core does not escape CRLF characters by default, and this is **not** considered a vulnerability.
+
+==== Why this is not a vulnerability
+
+The appropriate handling of CRLF characters depends on which transport protocol carries the log messages.
+RFC 5424 is used with several protocol bindings, each with different framing semantics:
+
+UDP (https://datatracker.ietf.org/doc/html/rfc5426[RFC 5426])::
+Each message is transmitted as a self-contained datagram, so CRLF characters carry no special meaning and require no escaping.
+
+TLS-encrypted TCP (https://datatracker.ietf.org/doc/html/rfc5425[RFC 5425])::
+The recommended transport for new deployments.
+Uses length-prefixed framing, so message boundaries are established independently of content.
+CRLF escaping is not required.
+
+Legacy TCP (https://datatracker.ietf.org/doc/html/rfc6587[RFC 6587])::
+Uses LF as a message delimiter, so LF characters within a message must be escaped.
+This protocol is **discouraged** for new deployments due to known limitations.
+
+Applying CRLF escaping unconditionally at the layout level would silently alter log content for transport bindings that do not need it.
+Defaulting to no escaping preserves the original log data while allowing each transport binding to apply the appropriate treatment.
+
+[TIP]
+====
+RFC 5424 layout does support optional CRLF escaping, which you can enable explicitly when using a transport that requires it (such as legacy TCP over RFC 6587).
+Refer to the layout configuration reference for details.
+
+If you are starting a new deployment, prefer TLS-encrypted TCP (RFC 5425), which avoids this concern entirely through length-prefixed framing.
+====
