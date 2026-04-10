@@ -29,6 +29,46 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-34481]
+== {cve-url-prefix}/CVE-2026-34481[CVE-2026-34481]
+
+[cols="1h,5"]
+|===
+|Summary |Improper serialization of non-finite floating-point values in `JsonTemplateLayout`
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |`log4j-layout-template-json`
+|Versions affected |`[2.14.0, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]`
+|Versions fixed |`2.25.4`
+|===
+
+[#CVE-2026-34481-description]
+=== Description
+
+Apache Log4j's
+https://logging.apache.org/log4j/2.x/manual/json-template-layout.html[`JsonTemplateLayout`],
+in versions up to and including 2.25.3, produces invalid JSON output when log events contain non-finite floating-point values (`NaN`, `Infinity`, or `-Infinity`), which are prohibited by RFC 8259.
+This may cause downstream log processing systems to reject or fail to index affected records.
+
+An attacker can exploit this issue only if both of the following conditions are met:
+
+* The application uses `JsonTemplateLayout`.
+* The application logs a `MapMessage` containing an attacker-controlled floating-point value.
+
+[#CVE-2026-34481-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4j JSON Template Layout version `2.25.4`, which corrects this issue.
+
+[#CVE-2026-34481-credits]
+=== Credits
+
+This issue was discovered by Ap4sh (Samy Medjahed) and Ethicxz (Eliott Laurie).
+
+[#CVE-2026-34481-references]
+=== References
+* {cve-url-prefix}/CVE-2026-34481[CVE-2026-34481]
+* https://github.com/apache/logging-log4j2/pull/4080[Pull request that fixes the issue]
+
 [#CVE-2026-34480]
 == {cve-url-prefix}/CVE-2026-34480[CVE-2026-34480]
 
