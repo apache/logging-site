@@ -90,6 +90,72 @@
   <vulnerabilities>
 
     <vulnerability>
+        <id>CVE-2026-34479</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34479</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.9</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>116</cwe>
+        </cwes>
+        <description><![CDATA[The `Log4j1XmlLayout` from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output.
+Conforming XML parsers are required to reject documents containing such characters with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
+
+Two groups of users are affected:
+
+* Those using `Log4j1XmlLayout` directly in a Log4j Core 2 configuration file.
+* Those using the Log4j 1 configuration compatibility layer with `org.apache.log4j.xml.XMLLayout` specified as the layout class.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j 1-to-Log4j 2 bridge version `2.25.4`, which corrects this issue.
+
+NOTE: The Apache Log4j 1-to-Log4j 2 bridge is deprecated and will not be present in Log4j 3.
+Users are encouraged to consult the
+https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html[Log4j 1 to Log4j 2 migration guide],
+and specifically the section on eliminating reliance on the bridge.]]></recommendation>
+        <created>2026-04-10T11:53:17Z</created>
+        <published>2026-04-10T11:53:17Z</published>
+        <updated>2026-04-10T11:53:17Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Ap4sh (Samy Medjahed)</name>
+                </individual>
+                <individual>
+                    <name>Ethicxz (Eliott Laurie)</name>
+                </individual>
+                <individual>
+                    <name>jabaltarik1</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4j-1.2-api</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.7|<2.25.4]]></range>
+                    </version>
+                    <version>
+                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta2]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
         <id>CVE-2026-34478</id>
         <source>
             <name>NVD</name>
