@@ -29,6 +29,45 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-40023]
+== {cve-url-prefix}/CVE-2026-40023[CVE-2026-40023]
+
+[cols="1h,5"]
+|===
+|Summary |Silent log event loss in `XMLLayout` due to unescaped XML 1.0 forbidden characters
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Log4cxx
+|Versions affected |`[0, 1.7.0)`
+|Versions fixed |`1.7.0`
+|===
+
+[#CVE-2026-40023-description]
+=== Description
+
+Apache Log4cxx's
+https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html[`XMLLayout`],
+in versions before 1.7.0, fails to sanitize characters forbidden by the
+https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
+in log messages, NDC, and MDC property keys and values, producing invalid XML output.
+Conforming XML parsers must reject such documents with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
+
+An attacker who can influence logged data can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.
+
+[#CVE-2026-40023-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4cxx version `1.7.0`, which fixes this issue.
+
+[#CVE-2026-40023-credits]
+=== Credits
+
+This issue was discovered by Olawale Titiloye.
+
+[#CVE-2026-40023-references]
+=== References
+* {cve-url-prefix}/CVE-2026-40023[CVE-2026-40023]
+* https://github.com/apache/logging-log4cxx/pull/609[Pull request that fixes the issue]
+
 [#CVE-2026-40021]
 == {cve-url-prefix}/CVE-2026-40021[CVE-2026-40021]
 

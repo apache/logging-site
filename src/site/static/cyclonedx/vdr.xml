@@ -90,6 +90,67 @@
   <vulnerabilities>
 
     <vulnerability>
+        <id>CVE-2026-40023</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-40023</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.3</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>116</cwe>
+        </cwes>
+        <description><![CDATA[Apache Log4cxx's
+https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html[`XMLLayout`],
+in versions before 1.7.0, fails to sanitize characters forbidden by the
+https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
+in log messages, NDC, and MDC property keys and values, producing invalid XML output.
+Conforming XML parsers must reject such documents with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
+
+An attacker who can influence logged data can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4cxx version `1.7.0`, which fixes this issue.]]></recommendation>
+        <created>2026-04-10T11:53:17Z</created>
+        <published>2026-04-10T11:53:17Z</published>
+        <updated>2026-04-10T11:53:17Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Olawale Titiloye</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4cxx</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
+                    </version>
+                </versions>
+            </target>
+            <target>
+                <ref>log4cxx-conan</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
         <id>CVE-2026-40021</id>
         <source>
             <name>NVD</name>
