@@ -29,6 +29,48 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-34480]
+== {cve-url-prefix}/CVE-2026-34480[CVE-2026-34480]
+
+[cols="1h,5"]
+|===
+|Summary |Silent log event loss in `XmlLayout` due to unescaped XML 1.0 forbidden characters
+|CVSS 4.x Score & Vector |6.9 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Log4j Core
+|Versions affected |`[2.0-alpha1, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]`
+|Versions fixed |`2.25.4`
+|===
+
+[#CVE-2026-34480-description]
+=== Description
+
+Apache Log4j Core's
+https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout[`XmlLayout`],
+in versions up to and including 2.25.3, fails to sanitize characters forbidden by the
+https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
+producing invalid XML output whenever a log message or MDC value contains such characters.
+
+The impact depends on the StAX implementation in use:
+
+* *JRE built-in StAX:* Forbidden characters are silently written to the output, producing malformed XML.
+Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.
+* *Alternative StAX implementations* (e.g., https://github.com/FasterXML/woodstox[Woodstox], a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j's internal status logger.
+
+[#CVE-2026-34480-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue by sanitizing forbidden characters before XML output.
+
+[#CVE-2026-34480-credits]
+=== Credits
+
+This issue was originally reported by Ap4sh (Samy Medjahed) and Ethicxz (Eliott Laurie), and independently reported by jabaltarik1.
+
+[#CVE-2026-34480-references]
+=== References
+* {cve-url-prefix}/CVE-2026-34480[CVE-2026-34480]
+* https://github.com/apache/logging-log4j2/pull/4077[Pull request that fixes the issue]
+
 [#CVE-2026-34479]
 == {cve-url-prefix}/CVE-2026-34479[CVE-2026-34479]
 

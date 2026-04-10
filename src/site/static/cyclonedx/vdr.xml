@@ -90,6 +90,71 @@
   <vulnerabilities>
 
     <vulnerability>
+        <id>CVE-2026-34480</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34480</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.9</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>116</cwe>
+        </cwes>
+        <description><![CDATA[Apache Log4j Core's
+https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout[`XmlLayout`],
+in versions up to and including 2.25.3, fails to sanitize characters forbidden by the
+https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
+producing invalid XML output whenever a log message or MDC value contains such characters.
+
+The impact depends on the StAX implementation in use:
+
+* *JRE built-in StAX:* Forbidden characters are silently written to the output, producing malformed XML.
+Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.
+* *Alternative StAX implementations* (e.g., https://github.com/FasterXML/woodstox[Woodstox], a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j's internal status logger.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue by sanitizing forbidden characters before XML output.]]></recommendation>
+        <created>2026-04-10T11:53:17Z</created>
+        <published>2026-04-10T11:53:17Z</published>
+        <updated>2026-04-10T11:53:17Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Ap4sh (Samy Medjahed)</name>
+                </individual>
+                <individual>
+                    <name>Ethicxz (Eliott Laurie)</name>
+                </individual>
+                <individual>
+                    <name>jabaltarik1</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4j-core</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.0-alpha1|<2.25.4]]></range>
+                    </version>
+                    <version>
+                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
         <id>CVE-2026-34479</id>
         <source>
             <name>NVD</name>
