@@ -29,6 +29,54 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-34477]
+== {cve-url-prefix}/CVE-2026-34477[CVE-2026-34477]
+
+[cols="1h,5"]
+|===
+|Summary |`verifyHostName` attribute silently ignored in TLS configuration
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Log4j Core
+|Versions affected |`[2.12.0, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]`
+|Versions fixed |`2.25.4`
+|===
+
+[#CVE-2026-34477-description]
+=== Description
+
+The fix for <<CVE-2025-68161>> was incomplete: it addressed hostname verification only when enabled via the
+https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
+system property, but not when configured through the
+https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
+attribute of the `<Ssl>` element.
+
+Although the `verifyHostName` configuration attribute was introduced in Log4j Core 2.12.0, it was silently ignored in all versions through 2.25.3, leaving TLS connections vulnerable to interception regardless of the configured value.
+
+A network-based attacker may be able to perform a man-in-the-middle attack when *all* of the following conditions are met:
+
+* An SMTP, Socket, or Syslog appender is in use.
+* TLS is configured via a nested `<Ssl>` element.
+* The attacker can present a certificate issued by a CA trusted by the appender's configured trust store, or by the default Java trust store if none is configured.
+
+This issue does not affect users of the HTTP appender, which uses a separate
+https://logging.apache.org/log4j/2.x/manual/appenders/network.html#HttpAppender-attr-verifyHostName[`verifyHostname`]
+attribute that was not subject to this bug and verifies host names by default.
+
+[#CVE-2026-34477-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.
+
+[#CVE-2026-34477-credits]
+=== Credits
+
+This issue was originally reported by Samuli Leinonen and independently reported by Naresh Kandula, Vitaly Simonovich, Raijuna, Danish Siddiqui (djvirus), Markus Magnuson, and Haruki Oyama (Waseda University).
+
+[#CVE-2026-34477-references]
+=== References
+* {cve-url-prefix}/CVE-2026-34477[CVE-2026-34477]
+* https://github.com/apache/logging-log4j2/pull/4075[Pull request that fixes the issue]
+
 [#CVE-2025-68161]
 == {cve-url-prefix}/CVE-2025-68161[CVE-2025-68161]
 
