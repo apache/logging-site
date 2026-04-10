@@ -341,7 +341,7 @@ This issue was originally reported by Samuli Leinonen and independently reported
 [#CVE-2025-68161-description]
 === Description
 
-The Socket Appender in Log4j Core versions `2.0-beta9` through `2.25.2` does not perform TLS hostname verification of the peer certificate, even when the
+The Socket Appender in affected Log4j Core versions does not perform TLS hostname verification of the peer certificate, even when the
 https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
 configuration attribute or the
 https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
