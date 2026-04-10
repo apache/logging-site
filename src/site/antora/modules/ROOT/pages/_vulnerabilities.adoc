@@ -29,6 +29,47 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-40021]
+== {cve-url-prefix}/CVE-2026-40021[CVE-2026-40021]
+
+[cols="1h,5"]
+|===
+|Summary |Silent log event loss in `XmlLayout` and `XmlLayoutSchemaLog4J` due to unescaped XML 1.0 forbidden characters
+|CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Log4net
+|Versions affected |`[0, 3.3.0)`
+|Versions fixed |`3.3.0`
+|===
+
+[#CVE-2026-40021-description]
+=== Description
+
+Apache Log4net's
+https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list[`XmlLayout`]
+and
+https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list[`XmlLayoutSchemaLog4J`],
+in versions before 3.3.0, fail to sanitize characters forbidden by the
+https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
+in MDC property keys and values, as well as the identity field that may carry attacker-influenced data.
+This causes an exception during serialization and the silent loss of the affected log event.
+
+An attacker who can influence any of these fields can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.
+
+[#CVE-2026-40021-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.3.0`, which fixes this issue.
+
+[#CVE-2026-40021-credits]
+=== Credits
+
+This issue was discovered by f00dat.
+
+[#CVE-2026-40021-references]
+=== References
+* {cve-url-prefix}/CVE-2026-40021[CVE-2026-40021]
+* https://github.com/apache/logging-log4net/pull/280[Pull request that fixes the issue]
+
 [#CVE-2026-34481]
 == {cve-url-prefix}/CVE-2026-34481[CVE-2026-34481]
 
