@@ -29,6 +29,47 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-34478]
+== {cve-url-prefix}/CVE-2026-34478[CVE-2026-34478]
+
+[cols="1h,5"]
+|===
+|Summary |Log injection in `Rfc5424Layout` due to silent configuration incompatibility
+|CVSS 4.x Score & Vector |6.9 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
+|Components affected |Log4j Core
+|Versions affected |`[2.21.0, 2.25.4) ∪ [3.0.0-beta1, 3.0.0-beta3]`
+|Versions fixed |`2.25.4`
+|===
+
+[#CVE-2026-34478-description]
+=== Description
+
+Apache Log4j Core's
+https://logging.apache.org/log4j/2.x/manual/layouts.html#RFC5424Layout[`Rfc5424Layout`],
+in versions 2.21.0 through 2.25.3, is vulnerable to log injection via CRLF sequences due to undocumented renames of security-relevant configuration attributes.
+
+Two distinct issues affect users of stream-based syslog services who configure `Rfc5424Layout` directly:
+
+* The `newLineEscape` attribute was silently renamed, causing newline escaping to stop working for users of TCP framing (RFC 6587), exposing them to CRLF injection in log output.
+* The `useTlsMessageFormat` attribute was silently renamed, causing users of TLS framing (RFC 5425) to be silently downgraded to unframed TCP (RFC 6587), without newline escaping.
+
+Users of the `SyslogAppender` are not affected, as its configuration attributes were not modified.
+
+[#CVE-2026-34478-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.
+
+[#CVE-2026-34478-credits]
+=== Credits
+
+This issue was discovered by Samuli Leinonen.
+
+[#CVE-2026-34478-references]
+=== References
+* {cve-url-prefix}/CVE-2026-34478[CVE-2026-34478]
+* https://github.com/apache/logging-log4j2/pull/4074[Pull request that fixes the issue]
+
 [#CVE-2026-34477]
 == {cve-url-prefix}/CVE-2026-34477[CVE-2026-34477]
 

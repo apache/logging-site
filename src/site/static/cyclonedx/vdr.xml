@@ -40,7 +40,7 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="7"
+     version="6"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
@@ -88,6 +88,65 @@
   </components>
 
   <vulnerabilities>
+
+    <vulnerability>
+        <id>CVE-2026-34478</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34478</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.9</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>684</cwe>
+            <cwe>117</cwe>
+        </cwes>
+        <description><![CDATA[Apache Log4j Core's
+https://logging.apache.org/log4j/2.x/manual/layouts.html#RFC5424Layout[`Rfc5424Layout`],
+in versions 2.21.0 through 2.25.3, is vulnerable to log injection via CRLF sequences due to undocumented renames of security-relevant configuration attributes.
+
+Two distinct issues affect users of stream-based syslog services who configure `Rfc5424Layout` directly:
+
+* The `newLineEscape` attribute was silently renamed, causing newline escaping to stop working for users of TCP framing (RFC 6587), exposing them to CRLF injection in log output.
+* The `useTlsMessageFormat` attribute was silently renamed, causing users of TLS framing (RFC 5425) to be silently downgraded to unframed TCP (RFC 6587), without newline escaping.
+
+Users of the `SyslogAppender` are not affected, as its configuration attributes were not modified.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.]]></recommendation>
+        <created>2026-04-10T11:53:17Z</created>
+        <published>2026-04-10T11:53:17Z</published>
+        <updated>2026-04-10T11:53:17Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Samuli Leinonen</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4j-core</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.21.0|<2.25.4]]></range>
+                    </version>
+                    <version>
+                        <range><![CDATA[vers:maven/>=3.0.0-beta1|<=3.0.0-beta3]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
 
     <vulnerability>
         <id>CVE-2026-34477</id>
