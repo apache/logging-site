@@ -40,11 +40,11 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="5"
+     version="6"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
-    <timestamp>2025-12-18T16:09:38Z</timestamp>
+    <timestamp>2026-04-10T11:53:17Z</timestamp>
     <manufacturer>
       <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
@@ -56,12 +56,34 @@
   <components>
     <component type="library" bom-ref="log4cxx">
       <name>Log4cxx</name>
+      <cpe>cpe:2.3:a:apache:log4cxx:*:*:*:*:*:*:*:*</cpe>
     </component>
-    <component type="library" bom-ref="pkg:maven/org.apache.logging.log4j/log4j-core?type=jar">
+    <component type="library" bom-ref="log4cxx-conan">
+      <name>Log4cxx</name>
+      <purl>pkg:conan/log4cxx</purl>
+    </component>
+    <component type="library" bom-ref="log4j-core">
       <group>org.apache.logging.log4j</group>
       <name>log4j-core</name>
       <cpe>cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*</cpe>
       <purl>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</purl>
+    </component>
+    <component type="library" bom-ref="log4j-1.2-api">
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-1.2-api</name>
+      <cpe>cpe:2.3:a:apache:log4j_1_2_api:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-1.2-api?type=jar</purl>
+    </component>
+    <component type="library" bom-ref="log4j-layout-template-json">
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-layout-template-json</name>
+      <cpe>cpe:2.3:a:apache:log4j_layout_template_json:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-layout-template-json?type=jar</purl>
+    </component>
+    <component type="library" bom-ref="log4net">
+      <name>Log4net</name>
+      <cpe>cpe:2.3:a:apache:log4net:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:nuget/log4net</purl>
     </component>
   </components>
 
@@ -107,7 +129,7 @@ For earlier versions, the risk can be reduced by carefully restricting the trust
         <updated>2025-12-18T16:09:38Z</updated>
         <affects>
             <target>
-                <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+                <ref>log4j-core</ref>
                 <versions>
                     <version>
                         <range><![CDATA[vers:maven/>=2.0-beta9|<2.25.3]]></range>
@@ -158,7 +180,7 @@ This may prevent applications that consume these logs from correctly interpretin
       </credits>
       <affects>
         <target>
-          <ref>logcxx</ref>
+          <ref>log4cxx</ref>
           <versions>
             <version>
               <range><![CDATA[vers:semver>=0.11.0|<1.5.0]]></range>
@@ -216,7 +238,7 @@ Because logger names are generally constant strings, we assess the impact to use
       </credits>
       <affects>
         <target>
-          <ref>logcxx</ref>
+          <ref>log4cxx</ref>
           <versions>
             <version>
               <range><![CDATA[vers:semver<1.5.0]]></range>
@@ -259,7 +281,7 @@ In prior releases confirm that if the JDBC Appender is being used it is not conf
       <updated>2025-08-17T11:18:06Z</updated>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-beta7|<2.3.1]]></range>
@@ -332,7 +354,7 @@ Note that this mitigation is insufficient in releases older than `2.12.2` (for J
       </credits>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-alpha1|<2.3.1]]></range>
@@ -416,7 +438,7 @@ Any other Lookup could also be included in a Thread Context Map variable and pos
       </credits>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-beta9|<2.3.1]]></range>
@@ -487,7 +509,7 @@ An attacker who can control log messages or log message parameters can execute a
       </credits>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-beta9|<2.3.1]]></range>
@@ -556,7 +578,7 @@ Alternatively, users can set the `mail.smtp.ssl.checkserveridentity` system prop
       </credits>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-beta1|<2.3.2]]></range>
@@ -626,7 +648,7 @@ Java 6 users should avoid using the TCP or UDP socket server classes, or they ca
       </credits>
       <affects>
         <target>
-          <ref>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</ref>
+          <ref>log4j-core</ref>
           <versions>
             <version>
               <range><![CDATA[vers:maven/>=2.0-alpha1|<2.8.2]]></range>
