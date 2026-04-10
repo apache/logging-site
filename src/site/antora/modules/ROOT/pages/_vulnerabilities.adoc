@@ -334,7 +334,7 @@ This issue was originally reported by Samuli Leinonen and independently reported
 |Summary |Missing TLS hostname verification in Socket appender
 |CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N)
 |Components affected |Log4j Core
-|Versions affected |`[2.0-beta9, 2.25.3) ∪ [3.0.0-alpha1, 3.0.0-beta3]Ba`
+|Versions affected |`[2.0-beta9, 2.25.3) ∪ [3.0.0-alpha1, 3.0.0-beta3]`
 |Versions fixed |`2.25.3`
 |===
 
