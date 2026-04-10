@@ -618,7 +618,7 @@ This may prevent applications that consume these logs from correctly interpretin
         <![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
       <created>2025-08-22T07:31:10Z</created>
       <published>2025-08-22T07:31:10Z</published>
-      <updated>2025-08-22T07:31:10Z</updated>
+      <updated>2026-04-10T11:53:17Z</updated>
       <credits>
         <organizations>
           <organization>
@@ -630,6 +630,14 @@ This may prevent applications that consume these logs from correctly interpretin
       <affects>
         <target>
           <ref>log4cxx</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:semver>=0.11.0|<1.5.0]]></range>
+            </version>
+          </versions>
+        </target>
+        <target>
+          <ref>log4cxx-conan</ref>
           <versions>
             <version>
               <range><![CDATA[vers:semver>=0.11.0|<1.5.0]]></range>
@@ -676,7 +684,7 @@ Because logger names are generally constant strings, we assess the impact to use
         <![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
       <created>2025-08-22T07:31:10Z</created>
       <published>2025-08-22T07:31:10Z</published>
-      <updated>2025-08-22T07:31:10Z</updated>
+      <updated>2026-04-10T11:53:17Z</updated>
       <credits>
         <organizations>
           <organization>
@@ -688,6 +696,14 @@ Because logger names are generally constant strings, we assess the impact to use
       <affects>
         <target>
           <ref>log4cxx</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:semver<1.5.0]]></range>
+            </version>
+          </versions>
+        </target>
+        <target>
+          <ref>log4cxx-conan</ref>
           <versions>
             <version>
               <range><![CDATA[vers:semver<1.5.0]]></range>
