@@ -551,6 +551,569 @@ We choose to pool all information on this one page, allowing easy searching for 
 </table>
 </div>
 <div class="sect2">
+<h3 id="CVE-2026-40023"><a class="anchor" href="#CVE-2026-40023"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40023">CVE-2026-40023</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Silent log event loss in <code>XMLLayout</code> due to unescaped XML 1.0 forbidden characters</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4cxx</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0, 1.7.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.7.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-40023-description"><a class="anchor" href="#CVE-2026-40023-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache Log4cxx&#8217;s
+<a href="https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html"><code>XMLLayout</code></a>,
+in versions before 1.7.0, fails to sanitize characters forbidden by the
+<a href="https://www.w3.org/TR/xml/#charsets">XML 1.0 specification</a>
+in log messages, NDC, and MDC property keys and values, producing invalid XML output.
+Conforming XML parsers must reject such documents with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.</p>
+</div>
+<div class="paragraph">
+<p>An attacker who can influence logged data can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40023-remediation"><a class="anchor" href="#CVE-2026-40023-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4cxx version <code>1.7.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40023-credits"><a class="anchor" href="#CVE-2026-40023-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by Olawale Titiloye.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40023-references"><a class="anchor" href="#CVE-2026-40023-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40023">CVE-2026-40023</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4cxx/pull/609">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-40021"><a class="anchor" href="#CVE-2026-40021"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40021">CVE-2026-40021</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Silent log event loss in <code>XmlLayout</code> and <code>XmlLayoutSchemaLog4J</code> due to unescaped XML 1.0 forbidden characters</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0, 3.3.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.3.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-40021-description"><a class="anchor" href="#CVE-2026-40021-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache Log4net&#8217;s
+<a href="https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list"><code>XmlLayout</code></a>
+and
+<a href="https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list"><code>XmlLayoutSchemaLog4J</code></a>,
+in versions before 3.3.0, fail to sanitize characters forbidden by the
+<a href="https://www.w3.org/TR/xml/#charsets">XML 1.0 specification</a>
+in MDC property keys and values, as well as the identity field that may carry attacker-influenced data.
+This causes an exception during serialization and the silent loss of the affected log event.</p>
+</div>
+<div class="paragraph">
+<p>An attacker who can influence any of these fields can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40021-remediation"><a class="anchor" href="#CVE-2026-40021-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.3.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40021-credits"><a class="anchor" href="#CVE-2026-40021-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by f00dat.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-40021-references"><a class="anchor" href="#CVE-2026-40021-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-40021">CVE-2026-40021</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/280">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-34481"><a class="anchor" href="#CVE-2026-34481"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34481">CVE-2026-34481</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Improper serialization of non-finite floating-point values in <code>JsonTemplateLayout</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>log4j-layout-template-json</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.14.0, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.4</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-34481-description"><a class="anchor" href="#CVE-2026-34481-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache Log4j&#8217;s
+<a href="https://logging.apache.org/log4j/2.x/manual/json-template-layout.html"><code>JsonTemplateLayout</code></a>,
+in versions up to and including 2.25.3, produces invalid JSON output when log events contain non-finite floating-point values (<code>NaN</code>, <code>Infinity</code>, or <code>-Infinity</code>), which are prohibited by RFC 8259.
+This may cause downstream log processing systems to reject or fail to index affected records.</p>
+</div>
+<div class="paragraph">
+<p>An attacker can exploit this issue only if both of the following conditions are met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The application uses <code>JsonTemplateLayout</code>.</p>
+</li>
+<li>
+<p>The application logs a <code>MapMessage</code> containing an attacker-controlled floating-point value.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34481-remediation"><a class="anchor" href="#CVE-2026-34481-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j JSON Template Layout version <code>2.25.4</code>, which corrects this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34481-credits"><a class="anchor" href="#CVE-2026-34481-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by Ap4sh (Samy Medjahed) and Ethicxz (Eliott Laurie).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34481-references"><a class="anchor" href="#CVE-2026-34481-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34481">CVE-2026-34481</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4080">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-34480"><a class="anchor" href="#CVE-2026-34480"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34480">CVE-2026-34480</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Silent log event loss in <code>XmlLayout</code> due to unescaped XML 1.0 forbidden characters</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j Core</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.0-alpha1, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.4</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-34480-description"><a class="anchor" href="#CVE-2026-34480-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache Log4j Core&#8217;s
+<a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout"><code>XmlLayout</code></a>,
+in versions up to and including 2.25.3, fails to sanitize characters forbidden by the
+<a href="https://www.w3.org/TR/xml/#charsets">XML 1.0 specification</a>
+producing invalid XML output whenever a log message or MDC value contains such characters.</p>
+</div>
+<div class="paragraph">
+<p>The impact depends on the StAX implementation in use:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JRE built-in StAX:</strong> Forbidden characters are silently written to the output, producing malformed XML.
+Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.</p>
+</li>
+<li>
+<p><strong>Alternative StAX implementations</strong> (e.g., <a href="https://github.com/FasterXML/woodstox">Woodstox</a>, a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j&#8217;s internal status logger.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34480-remediation"><a class="anchor" href="#CVE-2026-34480-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j Core version <code>2.25.4</code>, which corrects this issue by sanitizing forbidden characters before XML output.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34480-credits"><a class="anchor" href="#CVE-2026-34480-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was originally reported by Ap4sh (Samy Medjahed) and Ethicxz (Eliott Laurie), and independently reported by jabaltarik1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34480-references"><a class="anchor" href="#CVE-2026-34480-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34480">CVE-2026-34480</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4077">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-34479"><a class="anchor" href="#CVE-2026-34479"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34479">CVE-2026-34479</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Silent log event loss in <code>Log4j1XmlLayout</code> due to unescaped XML 1.0 forbidden characters</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>log4j-1.2-api</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.7, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta2]</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.4</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-34479-description"><a class="anchor" href="#CVE-2026-34479-description"></a>Description</h4>
+<div class="paragraph">
+<p>The <code>Log4j1XmlLayout</code> from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output.
+Conforming XML parsers are required to reject documents containing such characters with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.</p>
+</div>
+<div class="paragraph">
+<p>Two groups of users are affected:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Those using <code>Log4j1XmlLayout</code> directly in a Log4j Core 2 configuration file.</p>
+</li>
+<li>
+<p>Those using the Log4j 1 configuration compatibility layer with <code>org.apache.log4j.xml.XMLLayout</code> specified as the layout class.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34479-remediation"><a class="anchor" href="#CVE-2026-34479-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j 1-to-Log4j 2 bridge version <code>2.25.4</code>, which corrects this issue.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Apache Log4j 1-to-Log4j 2 bridge is deprecated and will not be present in Log4j 3.
+Users are encouraged to consult the
+<a href="https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html">Log4j 1 to Log4j 2 migration guide</a>,
+and specifically the section on eliminating reliance on the bridge.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34479-credits"><a class="anchor" href="#CVE-2026-34479-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was originally reported by Ap4sh (Samy Medjahed) and Ethicxz (Eliott Laurie), and independently reported by jabaltarik1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34479-references"><a class="anchor" href="#CVE-2026-34479-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34479">CVE-2026-34479</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4078">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-34478"><a class="anchor" href="#CVE-2026-34478"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34478">CVE-2026-34478</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log injection in <code>Rfc5424Layout</code> due to silent configuration incompatibility</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j Core</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.21.0, 2.25.4) ∪ [3.0.0-beta1, 3.0.0-beta3]</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.4</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-34478-description"><a class="anchor" href="#CVE-2026-34478-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache Log4j Core&#8217;s
+<a href="https://logging.apache.org/log4j/2.x/manual/layouts.html#RFC5424Layout"><code>Rfc5424Layout</code></a>,
+in versions 2.21.0 through 2.25.3, is vulnerable to log injection via CRLF sequences due to undocumented renames of security-relevant configuration attributes.</p>
+</div>
+<div class="paragraph">
+<p>Two distinct issues affect users of stream-based syslog services who configure <code>Rfc5424Layout</code> directly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>newLineEscape</code> attribute was silently renamed, causing newline escaping to stop working for users of TCP framing (RFC 6587), exposing them to CRLF injection in log output.</p>
+</li>
+<li>
+<p>The <code>useTlsMessageFormat</code> attribute was silently renamed, causing users of TLS framing (RFC 5425) to be silently downgraded to unframed TCP (RFC 6587), without newline escaping.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Users of the <code>SyslogAppender</code> are not affected, as its configuration attributes were not modified.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34478-remediation"><a class="anchor" href="#CVE-2026-34478-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j Core version <code>2.25.4</code>, which corrects this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34478-credits"><a class="anchor" href="#CVE-2026-34478-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by Samuli Leinonen.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34478-references"><a class="anchor" href="#CVE-2026-34478-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34478">CVE-2026-34478</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4074">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-34477"><a class="anchor" href="#CVE-2026-34477"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34477">CVE-2026-34477</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verifyHostName</code> attribute silently ignored in TLS configuration</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 4.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3 MEDIUM (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4j Core</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.12.0, 2.25.4) ∪ [3.0.0-alpha1, 3.0.0-beta3]</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.4</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-34477-description"><a class="anchor" href="#CVE-2026-34477-description"></a>Description</h4>
+<div class="paragraph">
+<p>The fix for <a href="#CVE-2025-68161">CVE-2025-68161</a> was incomplete: it addressed hostname verification only when enabled via the
+<a href="https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName"><code>log4j2.sslVerifyHostName</code></a>
+system property, but not when configured through the
+<a href="https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName"><code>verifyHostName</code></a>
+attribute of the <code>&lt;Ssl&gt;</code> element.</p>
+</div>
+<div class="paragraph">
+<p>Although the <code>verifyHostName</code> configuration attribute was introduced in Log4j Core 2.12.0, it was silently ignored in all versions through 2.25.3, leaving TLS connections vulnerable to interception regardless of the configured value.</p>
+</div>
+<div class="paragraph">
+<p>A network-based attacker may be able to perform a man-in-the-middle attack when <strong>all</strong> of the following conditions are met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An SMTP, Socket, or Syslog appender is in use.</p>
+</li>
+<li>
+<p>TLS is configured via a nested <code>&lt;Ssl&gt;</code> element.</p>
+</li>
+<li>
+<p>The attacker can present a certificate issued by a CA trusted by the appender&#8217;s configured trust store, or by the default Java trust store if none is configured.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This issue does not affect users of the HTTP appender, which uses a separate
+<a href="https://logging.apache.org/log4j/2.x/manual/appenders/network.html#HttpAppender-attr-verifyHostName"><code>verifyHostname</code></a>
+attribute that was not subject to this bug and verifies host names by default.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34477-remediation"><a class="anchor" href="#CVE-2026-34477-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4j Core version <code>2.25.4</code>, which corrects this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34477-credits"><a class="anchor" href="#CVE-2026-34477-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was originally reported by Samuli Leinonen and independently reported by Naresh Kandula, Vitaly Simonovich, Raijuna, Danish Siddiqui (djvirus), Markus Magnuson, and Haruki Oyama (Waseda University).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-34477-references"><a class="anchor" href="#CVE-2026-34477-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-34477">CVE-2026-34477</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4j2/pull/4075">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="CVE-2025-68161"><a class="anchor" href="#CVE-2025-68161"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68161">CVE-2025-68161</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -572,7 +1135,7 @@ We choose to pool all information on this one page, allowing easy searching for 
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.0-beta9, 2.25.3)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[2.0-beta9, 2.25.3) ∪ [3.0.0-alpha1, 3.0.0-beta3]</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
@@ -583,7 +1146,7 @@ We choose to pool all information on this one page, allowing easy searching for 
 <div class="sect3">
 <h4 id="CVE-2025-68161-description"><a class="anchor" href="#CVE-2025-68161-description"></a>Description</h4>
 <div class="paragraph">
-<p>The Socket Appender in Log4j Core versions <code>2.0-beta9</code> through <code>2.25.2</code> does not perform TLS hostname verification of the peer certificate, even when the
+<p>The Socket Appender in affected Log4j Core versions does not perform TLS hostname verification of the peer certificate, even when the
 <a href="https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName"><code>verifyHostName</code></a>
 configuration attribute or the
 <a href="https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName"><code>log4j2.sslVerifyHostName</code></a>
@@ -750,7 +1313,7 @@ This may prevent applications that consume these logs from correctly interpretin
 <h4 id="CVE-2025-54812-description"><a class="anchor" href="#CVE-2025-54812-description"></a>Description</h4>
 <div class="paragraph">
 <p>When using <code>HTMLLayout</code>, logger names are not properly escaped when writing out to the HTML file.
-If untrusted data is used to retrieve the name of a logger, an attacker could theoretically inject HTML or Javascript in order to hide information from logs or steal data from the user.
+If untrusted data is used to retrieve the name of a logger, an attacker could theoretically inject HTML or JavaScript in order to hide information from logs or steal data from the user.
 In order to activate this, the following sequence must occur:</p>
 </div>
 <div class="ulist">
