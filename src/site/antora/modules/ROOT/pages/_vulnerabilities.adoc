@@ -662,6 +662,46 @@ This issue was discovered by Peter Stöckli.
 - {cve-url-prefix}/CVE-2020-9488[CVE-2020-9488]
 - https://issues.apache.org/jira/browse/LOG4J2-2819[LOG4J2-2819]
 
+[#CVE-2018-1285]
+== {cve-url-prefix}/CVE-2018-1285[CVE-2018-1285]
+
+[cols="1h,5"]
+|===
+|Summary |XXE via attacker-controlled log4net config files
+|CVSS 3.x Score & Vector |9.8 HIGH (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+|Components affected |`log4net`
+|Versions affected |`[0,2.0.10)`
+|Versions fixed |`2.0.10`
+|===
+
+[#CVE-2018-1285-description]
+=== Description
+
+Apache log4net versions before 2.0.10 do not disable XML external entities when parsing log4net configuration files. This allows for XXE-based attacks in applications that accept attacker-controlled log4net configuration files.
+
+[#CVE-2018-1285-threat-model]
+=== Threat Model
+According to the current threat model, this is no longer considered a
+vulnerability. The attack requires an attacker-controlled log4net
+configuration file, which is outside the scope of the threat model.
+
+[#CVE-2018-1285-mitigation]
+=== Mitigation
+Users are advised to upgrade to Apache Log4net version `2.0.10`, which fixes this issue.
+
+[#CVE-2018-1285-credits]
+=== Credits
+This issue was discovered by Karthik Kumar Balasundaram.
+
+[#CVE-2018-1285-references]
+=== References
+
+- {cve-url-prefix}/CVE-2018-1285[CVE-2018-1285]
+- https://issues.apache.org/jira/browse/LOG4NET-575[LOG4NET-575]
+- https://github.com/apache/logging-log4net/commit/3242db510c27e825af7164415402f5012df521a2[Security fix commit]
+- https://github.com/apache/logging-log4net/pull/64[Pull request that fixes the issue]
+
+
 [#CVE-2017-5645]
 == {cve-url-prefix}/CVE-2017-5645[CVE-2017-5645]
 
