@@ -29,7 +29,7 @@ permissions: read-all
 jobs:
 
   build:
-    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@rel/12.1.1
+    uses: apache/logging-parent/.github/workflows/build-reusable.yaml@gha/v0
     with:
       java-version: 17
       site-enabled: true
