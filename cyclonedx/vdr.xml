@@ -40,7 +40,7 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="6"
+     version="7"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
@@ -1057,6 +1057,83 @@ Alternatively, users can set the `mail.smtp.ssl.checkserveridentity` system prop
           </versions>
         </target>
       </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2018-1285</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2018-1285</url>
+        </source>
+        <references>
+            <reference>
+                <id>LOG4NET-575</id>
+                <source>
+                    <name>Issue tracker</name>
+                    <url>https://issues.apache.org/jira/browse/LOG4NET-575</url>
+                </source>
+            </reference>
+            <reference>
+                <id>Security fix commit</id>
+                <source>
+                    <name>Source code repository</name>
+                    <url>https://github.com/apache/logging-log4net/commit/3242db510c27e825af7164415402f5012df521a2</url>
+                </source>
+            </reference>
+            <reference>
+                <id>Pull request</id>
+                <source>
+                    <name>Pull request that fixes the issue</name>
+                    <url>https://github.com/apache/logging-log4net/pull/64</url>
+                </source>
+            </reference>
+        </references>
+        <ratings>
+            <rating>
+                <source>
+                    <name>NVD</name>
+                    <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H&version=3.1]]></url>
+                </source>
+                <score>9.8</score>
+                <severity>high</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>611</cwe>
+        </cwes>
+        <description><![CDATA[Apache log4net versions before 2.0.10 do not disable XML external entities
+        when parsing log4net configuration files. This allows for XXE-based attacks
+        in applications that accept attacker-controlled log4net configuration files.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `2.0.10`, which fixes this issue.]]></recommendation>
+        <analysis>
+            <state>not_affected</state>
+            <justification>protected_by_mitigating_control</justification>
+            <detail><![CDATA[According to the current threat model, this is no longer considered a
+        vulnerability. The attack requires an attacker-controlled log4net configuration
+        file, which is outside the scope of the threat model.]]></detail>
+        </analysis>
+        <created>2020-05-11T00:00:00Z</created>
+        <published>2020-05-11T00:00:00Z</published>
+        <updated>2026-04-17T00:00:00Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Karthik Kumar Balasundaram</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=0|<2.0.10]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
     </vulnerability>
 
     <vulnerability>

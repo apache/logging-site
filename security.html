@@ -483,6 +483,39 @@ See the
 </ul>
 </div>
 </dd>
+<dt class="hdlist1">Deserialization of untrusted data (<a href="https://cwe.mitre.org/data/definitions/502.html">CWE-502</a>)</dt>
+<dd>
+<div class="paragraph">
+<p>Log4cxx, Log4j, and Log4net <strong>do not</strong> deserialize data from any source as part of their normal operation.
+For backward compatibility, several classes in Log4j 2 and Log4net 2 still implement <code>Serializable</code> (in Java) or carry the <code>[Serializable]</code> attribute (in .NET); Log4j&#8217;s <code>log4j-api</code> also ships an allowlist-based <code>FilteredObjectInputStream</code> utility to assist applications that nonetheless deserialize log event streams.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Regarding this threat:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We provide <strong>no guarantee</strong> that deserializing a stream containing classes from these projects is safe, regardless of the source of the stream.</p>
+</li>
+<li>
+<p>Filtering such a stream by the <code>org.apache.logging</code> Java package, the <code>log4net</code> .NET namespace, or any allowlist derived from project-owned types is <strong>not</strong> sufficient to make deserialization safe.</p>
+</li>
+<li>
+<p>The hardening utilities we ship are <strong>partial</strong> and <strong>not exhaustive</strong>; bypasses are treated as opportunities for further hardening, not as vulnerabilities in the project.</p>
+</li>
+<li>
+<p>The application performing the deserialization is responsible for ensuring that the byte stream originates from a <strong>trusted source</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="security/faq.html#deserialization" class="xref page">the FAQ entry on CWE-502</a> for the recommended alternatives.</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
@@ -1753,6 +1786,82 @@ Usages of <code>SslConfiguration</code> that are configured via system propertie
 </li>
 <li>
 <p><a href="https://issues.apache.org/jira/browse/LOG4J2-2819">LOG4J2-2819</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2018-1285"><a class="anchor" href="#CVE-2018-1285"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-1285">CVE-2018-1285</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XXE via attacker-controlled log4net config files</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.8 HIGH (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>log4net</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0,2.0.10)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.0.10</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2018-1285-description"><a class="anchor" href="#CVE-2018-1285-description"></a>Description</h4>
+<div class="paragraph">
+<p>Apache log4net versions before 2.0.10 do not disable XML external entities when parsing log4net configuration files. This allows for XXE-based attacks in applications that accept attacker-controlled log4net configuration files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2018-1285-threat-model"><a class="anchor" href="#CVE-2018-1285-threat-model"></a>Threat Model</h4>
+<div class="paragraph">
+<p>According to the current threat model, this is no longer considered a
+vulnerability. The attack requires an attacker-controlled log4net
+configuration file, which is outside the scope of the threat model.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2018-1285-mitigation"><a class="anchor" href="#CVE-2018-1285-mitigation"></a>Mitigation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>2.0.10</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2018-1285-credits"><a class="anchor" href="#CVE-2018-1285-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was discovered by Karthik Kumar Balasundaram.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2018-1285-references"><a class="anchor" href="#CVE-2018-1285-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-1285">CVE-2018-1285</a></p>
+</li>
+<li>
+<p><a href="https://issues.apache.org/jira/browse/LOG4NET-575">LOG4NET-575</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/commit/3242db510c27e825af7164415402f5012df521a2">Security fix commit</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/64">Pull request that fixes the issue</a></p>
 </li>
 </ul>
 </div>
