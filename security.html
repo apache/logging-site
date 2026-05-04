@@ -483,6 +483,39 @@ See the
 </ul>
 </div>
 </dd>
+<dt class="hdlist1">Deserialization of untrusted data (<a href="https://cwe.mitre.org/data/definitions/502.html">CWE-502</a>)</dt>
+<dd>
+<div class="paragraph">
+<p>Log4cxx, Log4j, and Log4net <strong>do not</strong> deserialize data from any source as part of their normal operation.
+For backward compatibility, several classes in Log4j 2 and Log4net 2 still implement <code>Serializable</code> (in Java) or carry the <code>[Serializable]</code> attribute (in .NET); Log4j&#8217;s <code>log4j-api</code> also ships an allowlist-based <code>FilteredObjectInputStream</code> utility to assist applications that nonetheless deserialize log event streams.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Regarding this threat:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We provide <strong>no guarantee</strong> that deserializing a stream containing classes from these projects is safe, regardless of the source of the stream.</p>
+</li>
+<li>
+<p>Filtering such a stream by the <code>org.apache.logging</code> Java package, the <code>log4net</code> .NET namespace, or any allowlist derived from project-owned types is <strong>not</strong> sufficient to make deserialization safe.</p>
+</li>
+<li>
+<p>The hardening utilities we ship are <strong>partial</strong> and <strong>not exhaustive</strong>; bypasses are treated as opportunities for further hardening, not as vulnerabilities in the project.</p>
+</li>
+<li>
+<p>The application performing the deserialization is responsible for ensuring that the byte stream originates from a <strong>trusted source</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="security/faq.html#deserialization" class="xref page">the FAQ entry on CWE-502</a> for the recommended alternatives.</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
