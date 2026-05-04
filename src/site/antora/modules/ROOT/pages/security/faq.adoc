@@ -164,3 +164,62 @@ The trustworthiness of an interpolation source cannot be determined a priori by 
 Consider `${ctx:...}` lookups as an example: some applications populate the thread context map exclusively with internally generated values (such as request IDs), while others may include user-provided data (such as HTTP headers).
 In practice, trustworthiness often varies even at the per-key level: some context map keys may be safe to use in file paths, while others may not.
 ====
+
+[#deserialization]
+== https://cwe.mitre.org/data/definitions/502.html[CWE-502: Deserialization of Untrusted Data] in Log4j
+
+A frequently reported issue concerns Log4j's `Serializable` classes and the allowlist-based `FilteredObjectInputStream` utility shipped in `log4j-api`.
+Reports typically claim that, taken together, these expose Log4j to deserialization-based remote code execution when an attacker reaches a deserialization sink.
+
+**Claim**: Log4j is vulnerable to deserialization of untrusted data because some of its classes are `Serializable` without hardening logic that guarantees secure deserialization, allowing an attacker who reaches a deserialization sink to construct a gadget chain through them.
+
+[#deserialization-why-not]
+=== Why this is not a vulnerability
+
+Log4j Core **does not** deserialize data from any source as part of its normal operation.
+There is no code path in current Log4j Core production code that reads bytes from a network socket, a message queue, or any other input and passes them to `ObjectInputStream.readObject()`.
+
+For a deserialization vulnerability to exist, an application must:
+
+* Obtain a stream of bytes from an untrusted source, _and_
+* Pass those bytes to `ObjectInputStream.readObject()` (or an equivalent API).
+
+Both of these steps occur **outside** Log4j.
+The fact that Log4j classes happen to appear in such a stream does not make Log4j the source of the vulnerability, any more than the presence of `java.util.HashMap` in a gadget chain makes the JDK responsible for it.
+
+Log4j provides **no guarantee** that deserializing a stream containing its classes from an untrusted source is safe, and reports premised on the assumption that such a guarantee exists fall outside our xref:security.adoc#threat-model[threat model].
+
+[#deserialization-historical-context]
+=== Historical context
+
+Log4j 1 shipped a `SocketServer` and a `SocketAppender` that exchanged log events over the network using Java serialization.
+
+In Log4j 2:
+
+* The `SocketServer` receiver was never reintroduced into the production codebase.
+* `SerializedLayout`, originally provided for Log4j 1 compatibility, has been **deprecated since version 2.9** and should not be used.
+See the {site-url}/log4j/2.x/manual/layouts.html#SerializedLayout[SerializedLayout documentation] for details.
+* Several Log4j 2 classes, most notably `Logger`, `Message` and `LogEvent`, remain `Serializable` for backward compatibility.
+The `Serializable` interface cannot be removed in a minor release without breaking applications that rely on it.
+
+In Log4j Core 3, the `Serializable` interface has been removed from these classes.
+
+[#deserialization-filtered-object-input-stream]
+=== About `FilteredObjectInputStream`
+
+The Log4j API provides a `FilteredObjectInputStream` utility that enforces a class allowlist when deserializing log event streams.
+This class exists as a **defense-in-depth helper** for applications that, despite the guidance above, still consume serialized log events.
+
+`FilteredObjectInputStream` is **not** a security boundary, and the project makes no guarantee that its allowlist is exhaustive or bypass-proof:
+
+* Reports of allowlist bypasses are evaluated as **hardening opportunities**, not as vulnerabilities in Log4j.
+* The underlying unsafe operation, deserializing untrusted bytes against a classpath that exposes arbitrary `Serializable` classes, is performed by the consuming application, not by Log4j.
+
+[IMPORTANT]
+====
+If your application deserializes log event streams from any source you do not fully control, you are performing an operation that the Logging Services PMC does not endorse and cannot make safe.
+Recommended alternatives include:
+
+* Migrating to a structured layout such as JSON or RFC 5424, transported over TLS.
+* If serialized transport must be retained for legacy reasons, configuring a JVM-wide serialization filter via `jdk.serialFilter` and ensuring the producer and consumer endpoints are mutually authenticated and not exposed to untrusted networks.
+====

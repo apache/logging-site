@@ -141,3 +141,19 @@ https://logging.apache.org/log4j/2.x/manual/api.html#best-practice-concat[Log4j 
 Improper neutralization of Special Elements (https://cwe.mitre.org/data/definitions/138.html[CWE-138])::
 +
 * Log4cxx, Log4j, and Log4net **do** allow users to pass untrusted strings to log statements and thread context, except in the format string of parameterized logging, as mentioned above.
+
+Deserialization of untrusted data (https://cwe.mitre.org/data/definitions/502.html[CWE-502])::
++
+Log4cxx, Log4j, and Log4net **do not** deserialize data from any source as part of their normal operation.
+For backward compatibility, several classes in Log4j 2 and Log4net 2 still implement `Serializable` (in Java) or carry the `[Serializable]` attribute (in .NET); Log4j's `log4j-api` also ships an allowlist-based `FilteredObjectInputStream` utility to assist applications that nonetheless deserialize log event streams.
++
+--
+Regarding this threat:
+
+* We provide **no guarantee** that deserializing a stream containing classes from these projects is safe, regardless of the source of the stream.
+* Filtering such a stream by the `org.apache.logging` Java package, the `log4net` .NET namespace, or any allowlist derived from project-owned types is **not** sufficient to make deserialization safe.
+* The hardening utilities we ship are **partial** and **not exhaustive**; bypasses are treated as opportunities for further hardening, not as vulnerabilities in the project.
+* The application performing the deserialization is responsible for ensuring that the byte stream originates from a **trusted source**.
+--
++
+See xref:security/faq.adoc#deserialization[the FAQ entry on CWE-502] for the recommended alternatives.
