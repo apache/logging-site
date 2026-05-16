@@ -89,7 +89,7 @@ Out-of-scope adversary::
 The following adversaries are explicitly **out of scope**; a report relying on any of these capabilities will not be accepted:
 +
 * An adversary able to modify environment variables, configuration properties, or configuration files: these are trusted sources (see <<threat-common-sources>>).
-* An adversary able to execute code in the same process as the logging framework, including through plugins or other extensions added to the application.
+* An adversary able to execute arbitrary code in the same process as the logging framework. Code running in the same process shares the same trust level as the logging framework itself; there is no boundary to enforce. This includes code introduced through plugins, custom appenders, or other application extensions.
 * An adversary able to cause a self-referential or otherwise non-terminating object structure to be passed to a log statement.
 The logging frameworks trust that logged objects can be safely converted to a string; converting such a structure is the responsibility of the calling code.
 * An adversary observing side channels, such as the timing or memory behavior of the logging framework.
