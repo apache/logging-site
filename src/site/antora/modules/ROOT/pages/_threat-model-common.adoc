@@ -22,7 +22,7 @@ All the logging frameworks maintained by Apache Logging Services (https://loggin
 https://logging.apache.org/log4j/index.html[Log4j]
 and
 https://logging.apache.org/log4net/index.html[Log4net]) face similar challenges from malicious actors.
-The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources.
+The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources and the capabilities assumed of potential adversaries.
 Vulnerability reports that do not adhere to these assumptions will not be accepted and are **not** eligible for the https://yeswehack.com/programs/log4j-bug-bounty-program[YesWeHack Bug Bounty Program].
 
 [#threat-common-users]
@@ -68,6 +68,33 @@ Untrusted Sources::
 No particular input validation for log messages is necessary.
 * They **do not** trust the string representation of log parameters.
 * The logging frameworks do not trust neither the keys nor the values in the thread context.
+
+[#threat-common-adversary]
+== Adversary capabilities
+
+The threats listed below are evaluated against an adversary with a well-defined and limited set of capabilities.
+Defining these capabilities clarifies which reports are in scope: a report that requires a capability not listed here is **not** considered a vulnerability.
+
+In-scope adversary::
++
+An in-scope adversary is any party whose data reaches the logging framework **exclusively** through the untrusted sources described above.
+Such an adversary is assumed to be able to:
++
+* Submit arbitrary byte sequences, including malformed text encodings and control characters (such as `CR`, `LF` and `NUL`), through log messages, the string representation of log parameters, and the keys and values of the thread context.
+* Submit excessively long inputs, within whatever limits the calling application enforces.
+* Submit input that resembles the framework's own interpolation or lookup syntax, including input that triggers recursive interpolation.
+
+Out-of-scope adversary::
++
+The following adversaries are explicitly **out of scope**; a report relying on any of these capabilities will not be accepted:
++
+* An adversary able to modify environment variables, configuration properties, or configuration files: these are trusted sources (see <<threat-common-sources>>).
+* An adversary able to execute arbitrary code in the same process as the logging framework. Code running in the same process shares the same trust level as the logging framework itself; there is no boundary to enforce. This includes code introduced through plugins, custom appenders, or other application extensions.
+* An adversary able to cause a self-referential or otherwise non-terminating object structure to be passed to a log statement.
+The logging frameworks trust that logged objects can be safely converted to a string; converting such a structure is the responsibility of the calling code.
+* An adversary observing side channels, such as the timing or memory behavior of the logging framework.
+* A malicious destination of an appender (e.g. a hostile database, message broker, or mail server).
+Appender destinations are configured by trusted users and are treated as an extension of the deployer.
 
 [#threat-common-threat]
 == Threats
@@ -157,3 +184,19 @@ Regarding this threat:
 --
 +
 See xref:security/faq.adoc#deserialization[the FAQ entry on CWE-502] for the recommended alternatives.
+
+[#threat-common-revision]
+== Revising this threat model
+
+This threat model reflects the current design of Log4cxx, Log4j, and Log4net.
+It is **not** immutable: a revision is required whenever a change to one of the frameworks invalidates an assumption stated above.
+In particular, this document must be revisited when any of the following becomes true:
+
+* A new public API is added that accepts a kind of input not yet covered by <<threat-common-sources>>.
+* An existing entry point begins to accept input from a new source, changing whether that input is trusted or untrusted.
+* A security-relevant default changes, or a configuration option that affects the security posture is added or removed.
+* A framework gains a network listener or any other inbound surface of its own.
+* A vulnerability report cannot be cleanly classified as either in scope or out of scope using the assumptions above.
+
+Internal refactors that do not change any of the above do **not** require a revision.
+Proposed changes to this document are reviewed by the Apache Logging Services PMC.
