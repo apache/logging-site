@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Security :: Apache Logging Services</title>
     <link rel="canonical" href="https://logging.apache.org/security.html">
-    <meta name="generator" content="Antora 3.2.0-alpha.11">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
 <link rel="stylesheet" href="./_/css/site.css">
 <link rel="icon" href="./_/../_images/favicon.ico" type="image/x-icon">
 <!-- `@asciidoctor/tabs` extension styles -->
@@ -244,7 +244,7 @@ It guides users on certain safety instructions while using Logging Services soft
 <a href="https://logging.apache.org/log4j/index.html">Log4j</a>
 and
 <a href="https://logging.apache.org/log4net/index.html">Log4net</a>) face similar challenges from malicious actors.
-The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources.
+The following sections outline the most common threats to logging frameworks and clarify the assumptions regarding the origin and trustworthiness of various data sources and the capabilities assumed of potential adversaries.
 Vulnerability reports that do not adhere to these assumptions will not be accepted and are <strong>not</strong> eligible for the <a href="https://yeswehack.com/programs/log4j-bug-bounty-program">YesWeHack Bug Bounty Program</a>.</p>
 </div>
 <div class="sect2">
@@ -343,6 +343,64 @@ No particular input validation for log messages is necessary.</p>
 </li>
 <li>
 <p>The logging frameworks do not trust neither the keys nor the values in the thread context.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="threat-common-adversary"><a class="anchor" href="#threat-common-adversary"></a>Adversary capabilities</h3>
+<div class="paragraph">
+<p>The threats listed below are evaluated against an adversary with a well-defined and limited set of capabilities.
+Defining these capabilities clarifies which reports are in scope: a report that requires a capability not listed here is <strong>not</strong> considered a vulnerability.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">In-scope adversary</dt>
+<dd>
+<div class="paragraph">
+<p>An in-scope adversary is any party whose data reaches the logging framework <strong>exclusively</strong> through the untrusted sources described above.
+Such an adversary is assumed to be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Submit arbitrary byte sequences, including malformed text encodings and control characters (such as <code>CR</code>, <code>LF</code> and <code>NUL</code>), through log messages, the string representation of log parameters, and the keys and values of the thread context.</p>
+</li>
+<li>
+<p>Submit excessively long inputs, within whatever limits the calling application enforces.</p>
+</li>
+<li>
+<p>Submit input that resembles the framework&#8217;s own interpolation or lookup syntax, including input that triggers recursive interpolation.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Out-of-scope adversary</dt>
+<dd>
+<div class="paragraph">
+<p>The following adversaries are explicitly <strong>out of scope</strong>; a report relying on any of these capabilities will not be accepted:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An adversary able to modify environment variables, configuration properties, or configuration files: these are trusted sources (see <a href="#threat-common-sources">Data sources</a>).</p>
+</li>
+<li>
+<p>An adversary able to execute arbitrary code in the same process as the logging framework. Code running in the same process shares the same trust level as the logging framework itself; there is no boundary to enforce. This includes code introduced through plugins, custom appenders, or other application extensions.</p>
+</li>
+<li>
+<p>An adversary able to cause a self-referential or otherwise non-terminating object structure to be passed to a log statement.
+The logging frameworks trust that logged objects can be safely converted to a string; converting such a structure is the responsibility of the calling code.</p>
+</li>
+<li>
+<p>An adversary observing side channels, such as the timing or memory behavior of the logging framework.</p>
+</li>
+<li>
+<p>A malicious destination of an appender (e.g. a hostile database, message broker, or mail server).
+Appender destinations are configured by trusted users and are treated as an extension of the deployer.</p>
 </li>
 </ul>
 </div>
@@ -517,6 +575,37 @@ For backward compatibility, several classes in Log4j 2 and Log4net 2 still imple
 </div>
 </dd>
 </dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="threat-common-revision"><a class="anchor" href="#threat-common-revision"></a>Revising this threat model</h3>
+<div class="paragraph">
+<p>This threat model reflects the current design of Log4cxx, Log4j, and Log4net.
+It is <strong>not</strong> immutable: a revision is required whenever a change to one of the frameworks invalidates an assumption stated above.
+In particular, this document must be revisited when any of the following becomes true:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A new public API is added that accepts a kind of input not yet covered by <a href="#threat-common-sources">Data sources</a>.</p>
+</li>
+<li>
+<p>An existing entry point begins to accept input from a new source, changing whether that input is trusted or untrusted.</p>
+</li>
+<li>
+<p>A security-relevant default changes, or a configuration option that affects the security posture is added or removed.</p>
+</li>
+<li>
+<p>A framework gains a network listener or any other inbound surface of its own.</p>
+</li>
+<li>
+<p>A vulnerability report cannot be cleanly classified as either in scope or out of scope using the assumptions above.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Internal refactors that do not change any of the above do <strong>not</strong> require a revision.
+Proposed changes to this document are reviewed by the Apache Logging Services PMC.</p>
 </div>
 </div>
 </div>
