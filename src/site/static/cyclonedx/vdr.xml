@@ -26,92 +26,96 @@
 
      This file is maintained in version control[4].
 
-     To update the VDR:
-     1. Increment the `version` attribute in the `<bom>` element.
-     2. Update the `<timestamp>` element in the `<metadata>` section
-        to the current UTC date and time.
-     3. For each modified `<vulnerability>`, update its `<updated>` element.
+     GENERATED FILE. Do not edit by hand. To update the VDR, edit the per-CVE
+     files under `src/vulnerabilities/` and regenerate this file with:
+
+         uv run scripts/vdr_aggregate.py
 
      [1] https://logging.apache.org
      [2] https://cyclonedx.org
      [3] https://logging.apache.org/log4j/2.x/support.html
      [4] https://github.com/apache/logging-site/tree/cyclonedx
      -->
-<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns="http://cyclonedx.org/schema/bom/1.6"
-     xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="7"
-     serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
-
+<bom xmlns="http://cyclonedx.org/schema/bom/1.7"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.7 https://cyclonedx.org/schema/bom-1.7.xsd"
+     serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06"
+     version="8">
   <metadata>
-    <timestamp>2026-04-10T11:53:17Z</timestamp>
+    <timestamp>2026-04-17T00:00:00Z</timestamp>
     <manufacturer>
       <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
     </manufacturer>
   </metadata>
-
-  <!-- We add *dummy* components to refer to in `affects` blocks.
-       This is necessary, since not all Log4j components have SBOMs associated with them. -->
+  <!--We add *dummy* components to refer to in `affects` blocks.
+    This is necessary, since not all Log4j components have SBOMs associated with them.
+-->
   <components>
+
     <component type="library" bom-ref="log4cxx">
       <name>Log4cxx</name>
       <cpe>cpe:2.3:a:apache:log4cxx:*:*:*:*:*:*:*:*</cpe>
     </component>
+
     <component type="library" bom-ref="log4cxx-conan">
       <name>Log4cxx</name>
       <purl>pkg:conan/log4cxx</purl>
     </component>
-    <component type="library" bom-ref="log4j-core">
-      <group>org.apache.logging.log4j</group>
-      <name>log4j-core</name>
-      <cpe>cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*</cpe>
-      <purl>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</purl>
-    </component>
+
     <component type="library" bom-ref="log4j-1.2-api">
       <group>org.apache.logging.log4j</group>
       <name>log4j-1.2-api</name>
       <cpe>cpe:2.3:a:apache:log4j_1_2_api:*:*:*:*:*:*:*:*</cpe>
       <purl>pkg:maven/org.apache.logging.log4j/log4j-1.2-api?type=jar</purl>
     </component>
+
+    <component type="library" bom-ref="log4j-core">
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-core</name>
+      <cpe>cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-core?type=jar</purl>
+    </component>
+
     <component type="library" bom-ref="log4j-layout-template-json">
       <group>org.apache.logging.log4j</group>
       <name>log4j-layout-template-json</name>
       <cpe>cpe:2.3:a:apache:log4j_layout_template_json:*:*:*:*:*:*:*:*</cpe>
       <purl>pkg:maven/org.apache.logging.log4j/log4j-layout-template-json?type=jar</purl>
     </component>
+
     <component type="library" bom-ref="log4net">
       <name>Log4net</name>
       <cpe>cpe:2.3:a:apache:log4net:*:*:*:*:*:*:*:*</cpe>
       <purl>pkg:nuget/log4net</purl>
     </component>
+
   </components>
 
   <vulnerabilities>
 
     <vulnerability>
-        <id>CVE-2026-40023</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-40023</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.3</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>116</cwe>
-        </cwes>
-        <description><![CDATA[Apache Log4cxx's
+      <id>CVE-2026-40023</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-40023</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>116</cwe>
+      </cwes>
+      <description><![CDATA[Apache Log4cxx's
 https://logging.apache.org/log4cxx/1.7.0/classlog4cxx_1_1xml_1_1XMLLayout.html[`XMLLayout`],
 in versions before 1.7.0, fails to sanitize characters forbidden by the
 https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
@@ -119,60 +123,59 @@ in log messages, NDC, and MDC property keys and values, producing invalid XML ou
 Conforming XML parsers must reject such documents with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
 
 An attacker who can influence logged data can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4cxx version `1.7.0`, which fixes this issue.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Olawale Titiloye</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4cxx</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
-                    </version>
-                </versions>
-            </target>
-            <target>
-                <ref>log4cxx-conan</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4cxx version `1.7.0`, which fixes this issue.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Olawale Titiloye</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4cxx</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
+            </version>
+          </versions>
+        </target>
+        <target>
+          <ref>log4cxx-conan</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:semver/>=0|<1.7.0]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-40021</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-40021</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.3</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>116</cwe>
-        </cwes>
-        <description><![CDATA[Apache Log4net's
+      <id>CVE-2026-40021</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-40021</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>116</cwe>
+      </cwes>
+      <description><![CDATA[Apache Log4net's
 https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list[`XmlLayout`]
 and
 https://logging.apache.org/log4net/manual/configuration/layouts.html#layout-list[`XmlLayoutSchemaLog4J`],
@@ -182,52 +185,51 @@ in MDC property keys and values, as well as the identity field that may carry at
 This causes an exception during serialization and the silent loss of the affected log event.
 
 An attacker who can influence any of these fields can exploit this to suppress individual log records, impairing audit trails and detection of malicious activity.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.3.0`, which fixes this issue.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>f00dat</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4net</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:nuget/>=0|<3.3.0]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.3.0`, which fixes this issue.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>f00dat</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4net</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:nuget/>=0|<3.3.0]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-34481</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34481</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.3</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>116</cwe>
-        </cwes>
-        <description><![CDATA[Apache Log4j's
+      <id>CVE-2026-34481</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34481</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>116</cwe>
+      </cwes>
+      <description><![CDATA[Apache Log4j's
 https://logging.apache.org/log4j/2.x/manual/json-template-layout.html[`JsonTemplateLayout`],
 in versions up to and including 2.25.3, produces invalid JSON output when log events contain non-finite floating-point values (`NaN`, `Infinity`, or `-Infinity`), which are prohibited by RFC 8259.
 This may cause downstream log processing systems to reject or fail to index affected records.
@@ -236,58 +238,57 @@ An attacker can exploit this issue only if both of the following conditions are 
 
 * The application uses `JsonTemplateLayout`.
 * The application logs a `MapMessage` containing an attacker-controlled floating-point value.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j JSON Template Layout version `2.25.4`, which corrects this issue.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Ap4sh (Samy Medjahed)</name>
-                </individual>
-                <individual>
-                    <name>Ethicxz (Eliott Laurie)</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4j-layout-template-json</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.14.0|<2.25.4]]></range>
-                    </version>
-                    <version>
-                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j JSON Template Layout version `2.25.4`, which corrects this issue.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Ap4sh (Samy Medjahed)</name>
+          </individual>
+          <individual>
+            <name>Ethicxz (Eliott Laurie)</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4j-layout-template-json</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.14.0|<2.25.4]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-34480</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34480</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.9</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>116</cwe>
-        </cwes>
-        <description><![CDATA[Apache Log4j Core's
+      <id>CVE-2026-34480</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34480</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.9</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>116</cwe>
+      </cwes>
+      <description><![CDATA[Apache Log4j Core's
 https://logging.apache.org/log4j/2.x/manual/layouts.html#XmlLayout[`XmlLayout`],
 in versions up to and including 2.25.3, fails to sanitize characters forbidden by the
 https://www.w3.org/TR/xml/#charsets[XML 1.0 specification]
@@ -298,128 +299,126 @@ The impact depends on the StAX implementation in use:
 * *JRE built-in StAX:* Forbidden characters are silently written to the output, producing malformed XML.
 Conforming parsers must reject such documents with a fatal error, which may cause downstream log-processing systems to drop the affected records.
 * *Alternative StAX implementations* (e.g., https://github.com/FasterXML/woodstox[Woodstox], a transitive dependency of the Jackson XML Dataformat module): An exception is thrown during the logging call, and the log event is never delivered to its intended appender, only to Log4j's internal status logger.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue by sanitizing forbidden characters before XML output.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Ap4sh (Samy Medjahed)</name>
-                </individual>
-                <individual>
-                    <name>Ethicxz (Eliott Laurie)</name>
-                </individual>
-                <individual>
-                    <name>jabaltarik1</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4j-core</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.0-alpha1|<2.25.4]]></range>
-                    </version>
-                    <version>
-                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue by sanitizing forbidden characters before XML output.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Ap4sh (Samy Medjahed)</name>
+          </individual>
+          <individual>
+            <name>Ethicxz (Eliott Laurie)</name>
+          </individual>
+          <individual>
+            <name>jabaltarik1</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4j-core</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.0-alpha1|<2.25.4]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-34479</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34479</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.9</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>116</cwe>
-        </cwes>
-        <description><![CDATA[The `Log4j1XmlLayout` from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output.
+      <id>CVE-2026-34479</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34479</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.9</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>116</cwe>
+      </cwes>
+      <description><![CDATA[The `Log4j1XmlLayout` from the Apache Log4j 1-to-Log4j 2 bridge fails to escape characters forbidden by the XML 1.0 standard, producing malformed XML output.
 Conforming XML parsers are required to reject documents containing such characters with a fatal error, which may cause downstream log processing systems to drop or fail to index affected records.
 
 Two groups of users are affected:
 
 * Those using `Log4j1XmlLayout` directly in a Log4j Core 2 configuration file.
 * Those using the Log4j 1 configuration compatibility layer with `org.apache.log4j.xml.XMLLayout` specified as the layout class.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j 1-to-Log4j 2 bridge version `2.25.4`, which corrects this issue.
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j 1-to-Log4j 2 bridge version `2.25.4`, which corrects this issue.
 
 NOTE: The Apache Log4j 1-to-Log4j 2 bridge is deprecated and will not be present in Log4j 3.
 Users are encouraged to consult the
 https://logging.apache.org/log4j/2.x/migrate-from-log4j1.html[Log4j 1 to Log4j 2 migration guide],
 and specifically the section on eliminating reliance on the bridge.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Ap4sh (Samy Medjahed)</name>
-                </individual>
-                <individual>
-                    <name>Ethicxz (Eliott Laurie)</name>
-                </individual>
-                <individual>
-                    <name>jabaltarik1</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4j-1.2-api</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.7|<2.25.4]]></range>
-                    </version>
-                    <version>
-                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta2]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Ap4sh (Samy Medjahed)</name>
+          </individual>
+          <individual>
+            <name>Ethicxz (Eliott Laurie)</name>
+          </individual>
+          <individual>
+            <name>jabaltarik1</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4j-1.2-api</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.7|<2.25.4]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta2]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-34478</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34478</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.9</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>684</cwe>
-            <cwe>117</cwe>
-        </cwes>
-        <description><![CDATA[Apache Log4j Core's
+      <id>CVE-2026-34478</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34478</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.9</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>684</cwe>
+        <cwe>117</cwe>
+      </cwes>
+      <description><![CDATA[Apache Log4j Core's
 https://logging.apache.org/log4j/2.x/manual/layouts.html#RFC5424Layout[`Rfc5424Layout`],
 in versions 2.21.0 through 2.25.3, is vulnerable to log injection via CRLF sequences due to undocumented renames of security-relevant configuration attributes.
 
@@ -429,55 +428,54 @@ Two distinct issues affect users of stream-based syslog services who configure `
 * The `useTlsMessageFormat` attribute was silently renamed, causing users of TLS framing (RFC 5425) to be silently downgraded to unframed TCP (RFC 6587), without newline escaping.
 
 Users of the `SyslogAppender` are not affected, as its configuration attributes were not modified.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Samuli Leinonen</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4j-core</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.21.0|<2.25.4]]></range>
-                    </version>
-                    <version>
-                        <range><![CDATA[vers:maven/>=3.0.0-beta1|<=3.0.0-beta3]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Samuli Leinonen</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4j-core</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.21.0|<2.25.4]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=3.0.0-beta1|<=3.0.0-beta3]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2026-34477</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34477</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.3</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>297</cwe>
-        </cwes>
-        <description><![CDATA[The fix for CVE-2025-68161 was incomplete: it addressed hostname verification only when enabled via the
+      <id>CVE-2026-34477</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2026-34477</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>297</cwe>
+      </cwes>
+      <description><![CDATA[The fix for CVE-2025-68161 was incomplete: it addressed hostname verification only when enabled via the
 https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
 system property, but not when configured through the
 https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
@@ -494,73 +492,72 @@ A network-based attacker may be able to perform a man-in-the-middle attack when 
 This issue does not affect users of the HTTP appender, which uses a separate
 https://logging.apache.org/log4j/2.x/manual/appenders/network.html#HttpAppender-attr-verifyHostName[`verifyHostname`]
 attribute that was not subject to this bug and verifies host names by default.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.]]></recommendation>
-        <created>2026-04-10T11:53:17Z</created>
-        <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Samuli Leinonen</name>
-                </individual>
-                <individual>
-                    <name>Naresh Kandula</name>
-                </individual>
-                <individual>
-                    <name>Vitaly Simonovich</name>
-                </individual>
-                <individual>
-                    <name>Raijuna</name>
-                </individual>
-                <individual>
-                    <name>Danish Siddiqui</name>
-                </individual>
-                <individual>
-                    <name>Markus Magnuson</name>
-                </individual>
-                <individual>
-                    <name>Haruki Oyama</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4j-core</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.12.0|<2.25.4]]></range>
-                    </version>
-                    <version>
-                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j Core version `2.25.4`, which corrects this issue.]]></recommendation>
+      <created>2026-04-10T11:53:17Z</created>
+      <published>2026-04-10T11:53:17Z</published>
+      <updated>2026-04-10T11:53:17Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Samuli Leinonen</name>
+          </individual>
+          <individual>
+            <name>Naresh Kandula</name>
+          </individual>
+          <individual>
+            <name>Vitaly Simonovich</name>
+          </individual>
+          <individual>
+            <name>Raijuna</name>
+          </individual>
+          <individual>
+            <name>Danish Siddiqui</name>
+          </individual>
+          <individual>
+            <name>Markus Magnuson</name>
+          </individual>
+          <individual>
+            <name>Haruki Oyama</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4j-core</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.12.0|<2.25.4]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta3]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2025-68161</id>
-        <source>
-            <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2025-68161</url>
-        </source>
-        <ratings>
-            <rating>
-                <source>
-                    <name>The Apache Software Foundation</name>
-                    <url>
-                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
-                </source>
-                <score>6.3</score>
-                <severity>medium</severity>
-                <method>CVSSv4</method>
-                <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>297</cwe>
-        </cwes>
-        <description><![CDATA[The Socket Appender in Log4j Core versions `2.0-beta9` through `2.25.2` does not perform TLS hostname verification of the peer certificate, even when the
+      <id>CVE-2025-68161</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2025-68161</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>The Apache Software Foundation</name>
+            <url><![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+          </source>
+          <score>6.3</score>
+          <severity>medium</severity>
+          <method>CVSSv4</method>
+          <vector>AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>297</cwe>
+      </cwes>
+      <description><![CDATA[The Socket Appender in Log4j Core versions `2.0-beta9` through `2.25.2` does not perform TLS hostname verification of the peer certificate, even when the
 https://logging.apache.org/log4j/2.x/manual/appenders/network.html#SslConfiguration-attr-verifyHostName[`verifyHostName`]
 configuration attribute or the
 https://logging.apache.org/log4j/2.x/manual/systemproperties.html#log4j2.sslVerifyHostName[`log4j2.sslVerifyHostName`]
@@ -570,22 +567,22 @@ This issue may allow a man-in-the-middle attacker to intercept or redirect log t
 
 * The attacker is able to intercept or redirect network traffic between the client and the log receiver.
 * The attacker can present a server certificate issued by a certification authority trusted by the Socket Appender’s configured trust store (or by the default Java trust store if no custom trust store is configured).]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Log4j Core version `2.25.3`, which fully addresses this issue.
+      <recommendation><![CDATA[Users are advised to upgrade to Log4j Core version `2.25.3`, which fully addresses this issue.
 
 For earlier versions, the risk can be reduced by carefully restricting the trust store used by the Socket Appender.]]></recommendation>
-        <created>2025-12-18T16:09:38Z</created>
-        <published>2025-12-18T16:09:38Z</published>
-        <updated>2025-12-18T16:09:38Z</updated>
-        <affects>
-            <target>
-                <ref>log4j-core</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:maven/>=2.0-beta9|<2.25.3]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      <created>2025-12-18T16:09:38Z</created>
+      <published>2025-12-18T16:09:38Z</published>
+      <updated>2025-12-18T16:09:38Z</updated>
+      <affects>
+        <target>
+          <ref>log4j-core</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.0-beta9|<2.25.3]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
@@ -614,8 +611,7 @@ For earlier versions, the risk can be reduced by carefully restricting the trust
       <description><![CDATA[When using `JSONLayout`, not all payload bytes are properly escaped.
 If an attacker-supplied message contains certain non-printable characters, these will be passed along in the message and written out as part of the JSON message.
 This may prevent applications that consume these logs from correctly interpreting the information within them.]]></description>
-      <recommendation>
-        <![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
+      <recommendation><![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
       <created>2025-08-22T07:31:10Z</created>
       <published>2025-08-22T07:31:10Z</published>
       <updated>2026-04-10T11:53:17Z</updated>
@@ -680,8 +676,7 @@ In order to activate this, the following sequence must occur:
 * User opens the generated HTML log file in their browser, leading to potential XSS.
 
 Because logger names are generally constant strings, we assess the impact to users as LOW.]]></description>
-      <recommendation>
-        <![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
+      <recommendation><![CDATA[Users are recommended to upgrade to version `1.5.0`, which fixes the issue.]]></recommendation>
       <created>2025-08-22T07:31:10Z</created>
       <published>2025-08-22T07:31:10Z</published>
       <updated>2026-04-10T11:53:17Z</updated>
@@ -714,55 +709,6 @@ Because logger names are generally constant strings, we assess the impact to use
     </vulnerability>
 
     <vulnerability>
-      <id>CVE-2021-44832</id>
-      <source>
-        <name>NVD</name>
-        <url>https://nvd.nist.gov/vuln/detail/CVE-2021-44832</url>
-      </source>
-      <ratings>
-        <rating>
-          <source>
-            <name>NVD</name>
-            <url>
-              <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H&version=3.1]]></url>
-          </source>
-          <score>6.6</score>
-          <severity>medium</severity>
-          <method>CVSSv3</method>
-          <vector>AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H</vector>
-        </rating>
-      </ratings>
-      <cwes>
-        <cwe>20</cwe>
-        <cwe>74</cwe>
-      </cwes>
-      <description><![CDATA[An attacker with write access to the logging configuration can construct a malicious configuration using a JDBC Appender with a data source referencing a JNDI URI which can execute remote code.
-This issue is fixed by limiting JNDI data source names to the `java` protocol.]]></description>
-      <recommendation><![CDATA[Upgrade to `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 and later).
-
-In prior releases confirm that if the JDBC Appender is being used it is not configured to use any protocol other than `java`.]]></recommendation>
-      <created>2021-12-28T00:00:00Z</created>
-      <published>2021-12-28T00:00:00Z</published>
-      <updated>2025-08-17T11:18:06Z</updated>
-      <affects>
-        <target>
-          <ref>log4j-core</ref>
-          <versions>
-            <version>
-              <range><![CDATA[vers:maven/>=2.0-beta7|<2.3.1]]></range>
-            </version>
-            <version>
-              <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
-            </version>
-            <version>
-              <range><![CDATA[vers:maven/>=2.13.0|<2.17.0]]></range>
-            </version>
-          </versions>
-        </target>
-      </affects>
-    </vulnerability>
-
-    <vulnerability>
       <id>CVE-2021-45105</id>
       <source>
         <name>NVD</name>
@@ -781,8 +727,7 @@ In prior releases confirm that if the JDBC Appender is being used it is not conf
         <rating>
           <source>
             <name>NVD</name>
-            <url>
-              <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H&version=3.1]]></url>
+            <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H&version=3.1]]></url>
           </source>
           <score>5.9</score>
           <severity>medium</severity>
@@ -854,8 +799,7 @@ Note that this mitigation is insufficient in releases older than `2.12.2` (for J
         <rating>
           <source>
             <name>NVD</name>
-            <url>
-              <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H&version=3.1]]></url>
+            <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H&version=3.1]]></url>
           </source>
           <score>9.0</score>
           <severity>critical</severity>
@@ -913,6 +857,54 @@ Any other Lookup could also be included in a Thread Context Map variable and pos
             </version>
             <version>
               <range><![CDATA[vers:maven/>=2.13.0|<2.16.0]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
+    </vulnerability>
+
+    <vulnerability>
+      <id>CVE-2021-44832</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2021-44832</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>NVD</name>
+            <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H&version=3.1]]></url>
+          </source>
+          <score>6.6</score>
+          <severity>medium</severity>
+          <method>CVSSv3</method>
+          <vector>AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>20</cwe>
+        <cwe>74</cwe>
+      </cwes>
+      <description><![CDATA[An attacker with write access to the logging configuration can construct a malicious configuration using a JDBC Appender with a data source referencing a JNDI URI which can execute remote code.
+This issue is fixed by limiting JNDI data source names to the `java` protocol.]]></description>
+      <recommendation><![CDATA[Upgrade to `2.3.1` (for Java 6), `2.12.3` (for Java 7), or `2.17.0` (for Java 8 and later).
+
+In prior releases confirm that if the JDBC Appender is being used it is not configured to use any protocol other than `java`.]]></recommendation>
+      <created>2021-12-28T00:00:00Z</created>
+      <published>2021-12-28T00:00:00Z</published>
+      <updated>2025-08-17T11:18:06Z</updated>
+      <affects>
+        <target>
+          <ref>log4j-core</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:maven/>=2.0-beta7|<2.3.1]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=2.4|<2.12.3]]></range>
+            </version>
+            <version>
+              <range><![CDATA[vers:maven/>=2.13.0|<2.17.0]]></range>
             </version>
           </versions>
         </target>
@@ -1060,80 +1052,80 @@ Alternatively, users can set the `mail.smtp.ssl.checkserveridentity` system prop
     </vulnerability>
 
     <vulnerability>
-        <id>CVE-2018-1285</id>
-        <source>
+      <id>CVE-2018-1285</id>
+      <source>
+        <name>NVD</name>
+        <url>https://nvd.nist.gov/vuln/detail/CVE-2018-1285</url>
+      </source>
+      <references>
+        <reference>
+          <id>LOG4NET-575</id>
+          <source>
+            <name>Issue tracker</name>
+            <url>https://issues.apache.org/jira/browse/LOG4NET-575</url>
+          </source>
+        </reference>
+        <reference>
+          <id>Security fix commit</id>
+          <source>
+            <name>Source code repository</name>
+            <url>https://github.com/apache/logging-log4net/commit/3242db510c27e825af7164415402f5012df521a2</url>
+          </source>
+        </reference>
+        <reference>
+          <id>Pull request</id>
+          <source>
+            <name>Pull request that fixes the issue</name>
+            <url>https://github.com/apache/logging-log4net/pull/64</url>
+          </source>
+        </reference>
+      </references>
+      <ratings>
+        <rating>
+          <source>
             <name>NVD</name>
-            <url>https://nvd.nist.gov/vuln/detail/CVE-2018-1285</url>
-        </source>
-        <references>
-            <reference>
-                <id>LOG4NET-575</id>
-                <source>
-                    <name>Issue tracker</name>
-                    <url>https://issues.apache.org/jira/browse/LOG4NET-575</url>
-                </source>
-            </reference>
-            <reference>
-                <id>Security fix commit</id>
-                <source>
-                    <name>Source code repository</name>
-                    <url>https://github.com/apache/logging-log4net/commit/3242db510c27e825af7164415402f5012df521a2</url>
-                </source>
-            </reference>
-            <reference>
-                <id>Pull request</id>
-                <source>
-                    <name>Pull request that fixes the issue</name>
-                    <url>https://github.com/apache/logging-log4net/pull/64</url>
-                </source>
-            </reference>
-        </references>
-        <ratings>
-            <rating>
-                <source>
-                    <name>NVD</name>
-                    <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H&version=3.1]]></url>
-                </source>
-                <score>9.8</score>
-                <severity>high</severity>
-                <method>CVSSv3</method>
-                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</vector>
-            </rating>
-        </ratings>
-        <cwes>
-            <cwe>611</cwe>
-        </cwes>
-        <description><![CDATA[Apache log4net versions before 2.0.10 do not disable XML external entities
+            <url><![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H&version=3.1]]></url>
+          </source>
+          <score>9.8</score>
+          <severity>high</severity>
+          <method>CVSSv3</method>
+          <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</vector>
+        </rating>
+      </ratings>
+      <cwes>
+        <cwe>611</cwe>
+      </cwes>
+      <description><![CDATA[Apache log4net versions before 2.0.10 do not disable XML external entities
         when parsing log4net configuration files. This allows for XXE-based attacks
         in applications that accept attacker-controlled log4net configuration files.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `2.0.10`, which fixes this issue.]]></recommendation>
-        <analysis>
-            <state>not_affected</state>
-            <justification>protected_by_mitigating_control</justification>
-            <detail><![CDATA[According to the current threat model, this is no longer considered a
+      <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `2.0.10`, which fixes this issue.]]></recommendation>
+      <analysis>
+        <state>not_affected</state>
+        <justification>protected_by_mitigating_control</justification>
+        <detail><![CDATA[According to the current threat model, this is no longer considered a
         vulnerability. The attack requires an attacker-controlled log4net configuration
         file, which is outside the scope of the threat model.]]></detail>
-        </analysis>
-        <created>2020-05-11T00:00:00Z</created>
-        <published>2020-05-11T00:00:00Z</published>
-        <updated>2026-04-17T00:00:00Z</updated>
-        <credits>
-            <individuals>
-                <individual>
-                    <name>Karthik Kumar Balasundaram</name>
-                </individual>
-            </individuals>
-        </credits>
-        <affects>
-            <target>
-                <ref>log4net</ref>
-                <versions>
-                    <version>
-                        <range><![CDATA[vers:nuget/>=0|<2.0.10]]></range>
-                    </version>
-                </versions>
-            </target>
-        </affects>
+      </analysis>
+      <created>2020-05-11T00:00:00Z</created>
+      <published>2020-05-11T00:00:00Z</published>
+      <updated>2026-04-17T00:00:00Z</updated>
+      <credits>
+        <individuals>
+          <individual>
+            <name>Karthik Kumar Balasundaram</name>
+          </individual>
+        </individuals>
+      </credits>
+      <affects>
+        <target>
+          <ref>log4net</ref>
+          <versions>
+            <version>
+              <range><![CDATA[vers:nuget/>=0|<2.0.10]]></range>
+            </version>
+          </versions>
+        </target>
+      </affects>
     </vulnerability>
 
     <vulnerability>
