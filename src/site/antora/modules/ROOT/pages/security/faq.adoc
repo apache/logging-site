@@ -91,21 +91,35 @@ Common oversights include:
 ====
 
 [#crlf-injection-rfc5424-layout]
-=== RFC 5424 layout
+=== Syslog and RFC 5424 layouts
 
-**Claim**: RFC 5424 layout is vulnerable to CRLF injection because it does not escape CRLF characters by default.
+**Claim**: The Syslog and RFC 5424 layouts are vulnerable to CRLF injection because they do not escape CRLF characters by default.
+
+Log4j Core provides two syslog-oriented layouts:
+
+* the **RFC 5424 layout**, which follows https://datatracker.ietf.org/doc/html/rfc5424[RFC 5424] (the modern syslog protocol), and
+* the **Syslog layout**, which follows https://datatracker.ietf.org/doc/html/rfc3164[RFC 3164] (the legacy BSD syslog format).
 
 RFC 5424 layout is a **structured format** with well-defined fields and delimiters, enabling reliable and unambiguous parsing.
-However, per https://datatracker.ietf.org/doc/html/rfc5424#section-8.2[Section 8.2 of RFC 5424], the spec itself does **not** require escaping of control characters (including CRLF) in the `PARAM-VALUE` or `MSG` fields.
-Instead, responsibility for handling those characters is delegated to the **transport binding** in use.
+RFC 3164 is weaker: it is an _informational_ document that describes observed BSD syslog behavior rather than mandating a strict format.
 
-For this reason, Log4j Core does not escape CRLF characters by default, and this is **not** considered a vulnerability.
+Neither spec, however, requires escaping of control characters (including CRLF) in the message body.
+Per https://datatracker.ietf.org/doc/html/rfc5424#section-8.2[Section 8.2 of RFC 5424], the spec does **not** require escaping such characters in the `PARAM-VALUE` or `MSG` fields, and RFC 3164 leaves their handling unspecified altogether.
+In both cases, responsibility for handling those characters is delegated to the **transport binding** in use.
+
+For this reason, neither layout escapes CRLF characters by default, and this is **not** considered a vulnerability.
+
+[NOTE]
+====
+The {site-url}/log4j/2.x/manual/appenders.html#SyslogAppender[Syslog appender] can be configured with either layout: the RFC 5424 layout (`format="RFC5424"`) or the Syslog layout (`format="BSD"`, the default).
+The considerations described here apply to the appender regardless of which of the two layouts it uses.
+====
 
 [#crlf-injection-rfc5424-layout-why-not]
 ==== Why this is not a vulnerability
 
 The appropriate handling of CRLF characters depends on which transport protocol carries the log messages.
-RFC 5424 is used with several protocol bindings, each with different framing semantics:
+These layouts are used with several protocol bindings, each with different framing semantics:
 
 UDP (https://datatracker.ietf.org/doc/html/rfc5426[RFC 5426])::
 Each message is transmitted as a self-contained datagram, so CRLF characters carry no special meaning and require no escaping.
@@ -124,7 +138,7 @@ Defaulting to no escaping preserves the original log data while allowing each tr
 
 [TIP]
 ====
-RFC 5424 layout does support optional CRLF escaping, which you can enable explicitly when using a transport that requires it (such as legacy TCP over RFC 6587).
+Both layouts support optional CRLF escaping, which you can enable explicitly when using a transport that requires it (such as legacy TCP over RFC 6587).
 Refer to the layout configuration reference for details.
 
 If you are starting a new deployment, prefer TLS-encrypted TCP (RFC 5425), which avoids this concern entirely through length-prefixed framing.
