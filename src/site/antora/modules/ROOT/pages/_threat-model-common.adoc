@@ -40,34 +40,61 @@ Untrusted Users::
 All the other users are considered untrusted.
 
 [#threat-common-sources]
-== Data sources
+== Sources
 
-Logging systems read data from multiple sources that are controlled by both trusted and untrusted users:
+Logging systems read data from multiple sources.
+Each source is classified by **who controls it**, since that determines whether the frameworks can trust the data and how they must handle it.
+The three categories below are defined by their controller: the **operator** who deploys the application, the **developer** who writes it, and the **user** whose data the application processes.
 
-Trusted Sources::
-+
-* Log4cxx, Log4j, and Log4net **trust** environment variables, configuration properties, and configuration files.
+[#threat-common-sources-configuration]
+=== Configuration (operator-controlled)
+
+Configuration is supplied by the **operator** (the deployer or administrator) and is **trusted**.
+It comprises environment variables, configuration properties, and configuration files.
+
 To maintain security, the following responsibilities fall on the deployer:
-** Ensure that untrusted parties do not have write access to these resources.
-** Ensure these resources are transmitted only over **confidential** channels (e.g., HTTPS, secure file systems).
-** Be aware that **non-confidential** channels such as HTTP or JMX are **disabled by default** to prevent accidental exposure.
-** If configuration files use interpolation features (e.g., (https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups])), ensure that only trusted data sources are used.
-** Pay special attention to values stored in the context map (see https://logging.apache.org/log4j/2.x/manual/thread-context.html[Thread Context in Log4j]).
-Although the context map is only accessible by developers, it has been known to include user-provided data, such as HTTP headers, which can introduce risks.
 
-* The logging frameworks **trust** that the objects passed to the log statements can be safely converted to strings:
-** These frameworks should not be used to log deserialized data from untrusted sources.
-See https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide] for details.
+* Ensure that untrusted parties do not have write access to these resources.
+* Ensure these resources are transmitted only over **confidential** channels (e.g., HTTPS, secure file systems).
+* Be aware that **non-confidential** channels such as HTTP or JMX are **disabled by default** to prevent accidental exposure.
+* If configuration files use interpolation features (e.g., https://logging.apache.org/log4j/2.x/manual/lookups.html[Log4j Lookups]), ensure that only trusted data sources are used.
+In particular, values read from the context map (see https://logging.apache.org/log4j/2.x/manual/thread-context.html[Thread Context in Log4j]) may contain user-provided data, such as HTTP headers; see <<threat-common-sources-content>>.
 
-* If parameterized logging is used, the format string is **trusted**:
-** Programmers **should** use compile-time constants as format strings to prevent attackers from tampering messages.
+[#threat-common-sources-structural]
+=== Structural identifiers and control (developer-controlled)
+
+Structural identifiers and control inputs are supplied by the **developer** in the application source code and are **trusted**.
+They are expected to be compile-time constants, or values otherwise chosen by the developer, rather than data derived from end users.
+Examples include:
+
+* Logger names, levels, and markers.
+* The identifiers and field names of a structured log message, such as the `MSGID` and `SD-ID` fields of an RFC 5424 syslog message.
+* The format string of a parameterized log statement.
+Programmers **should** use compile-time constants as format strings to prevent message tampering and log injection.
 See https://logging.apache.org/log4j/2.x/manual/api.html#best-practice-concat[Don't use string concatenation] for an example.
 
-Untrusted Sources::
-* Log4cxx, Log4j and Log4net **do not** trust log messages.
+Because these inputs are trusted, the frameworks **may** reject a malformed value (for example, by throwing an exception) instead of silently altering it: a malformed structural identifier is a programming error.
+Routing untrusted data into one of these inputs is application misuse and is **out of scope**.
+
+[#threat-common-sources-content]
+=== Content (user-controlled)
+
+Content is the data an application logs on behalf of its **users** and is **not trusted**.
+The frameworks accept arbitrary content and **must not** reject it: rejecting user-controlled input would turn a malicious value into a denial of service.
+
+* Log4cxx, Log4j, and Log4net **do not** trust log messages.
 No particular input validation for log messages is necessary.
 * They **do not** trust the string representation of log parameters.
-* The logging frameworks do not trust neither the keys nor the values in the thread context.
+* They **do not** trust the **values** stored in the thread context.
+
+The frameworks **trust** that the objects passed to a log statement can be safely converted to strings.
+They **should not** be used to log deserialized data from untrusted sources; see https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide].
+
+[NOTE]
+====
+The trust level of thread context **keys** is under discussion in https://github.com/apache/logging-log4j2/discussions/4132[logging-log4j2#4132].
+Until that discussion concludes, this document classifies only thread context **values** as content; the classification of keys is a **known open gap**.
+====
 
 [#threat-common-adversary]
 == Adversary capabilities
@@ -77,10 +104,10 @@ Defining these capabilities clarifies which reports are in scope: a report that 
 
 In-scope adversary::
 +
-An in-scope adversary is any party whose data reaches the logging framework **exclusively** through the untrusted sources described above.
+An in-scope adversary is any party whose data reaches the logging framework **exclusively** through the user-controlled content described in <<threat-common-sources-content>>.
 Such an adversary is assumed to be able to:
 +
-* Submit arbitrary byte sequences, including malformed text encodings and control characters (such as `CR`, `LF` and `NUL`), through log messages, the string representation of log parameters, and the keys and values of the thread context.
+* Submit arbitrary byte sequences, including malformed text encodings and control characters (such as `CR`, `LF` and `NUL`), through log messages, the string representation of log parameters, and the values of the thread context.
 * Submit excessively long inputs, within whatever limits the calling application enforces.
 * Submit input that resembles the framework's own interpolation or lookup syntax, including input that triggers recursive interpolation.
 
@@ -88,7 +115,8 @@ Out-of-scope adversary::
 +
 The following adversaries are explicitly **out of scope**; a report relying on any of these capabilities will not be accepted:
 +
-* An adversary able to modify environment variables, configuration properties, or configuration files: these are trusted sources (see <<threat-common-sources>>).
+* An adversary able to modify environment variables, configuration properties, or configuration files: these are trusted sources (see <<threat-common-sources-configuration>>).
+* An adversary able to control the structural identifiers or control inputs of a log statement, such as logger names, levels, markers, structured-message identifiers, or format strings: these are developer-controlled, trusted inputs (see <<threat-common-sources-structural>>). Populating them from untrusted data is application misuse.
 * An adversary able to execute arbitrary code in the same process as the logging framework. Code running in the same process shares the same trust level as the logging framework itself; there is no boundary to enforce. This includes code introduced through plugins, custom appenders, or other application extensions.
 * An adversary able to cause a self-referential or otherwise non-terminating object structure to be passed to a log statement.
 The logging frameworks trust that logged objects can be safely converted to a string; converting such a structure is the responsibility of the calling code.
