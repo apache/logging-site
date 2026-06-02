@@ -38,6 +38,7 @@ See xref:guidelines.adoc[] for further details on roles.
 | Piotr Karwasz | pkarwasz | PMC Chair | Log4j
 | Ralph Goers | rgoers | PMC Member | Flume, Log4j, Log4j Audit
 | Raman Gupta | rgupta | Committer | Log4j Kotlin
+| Ramanathan Muthu | ramanathan | Committer | Log4j
 | Remko Popma | rpopma | PMC Member | Log4j
 | Robert Middleton | rmiddleton | PMC Member | Log4cxx
 | Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
