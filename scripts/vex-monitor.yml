@@ -1,0 +1,192 @@
+# SPDX-License-Identifier: Apache-2.0
+# .github/workflows/vex-monitor.yml
+#
+# Scans published SBOMs for new CVEs daily via OSV.dev.
+# For each previously-unseen CVE, opens a PR with a draft VDR file
+# so maintainers can complete the justification / response fields.
+#
+# Required secrets / permissions:
+#   GITHUB_TOKEN  — default token; needs `contents: write` and
+#                   `pull-requests: write` (set below).
+#
+# No additional secrets are needed.  The workflow reads callgraph-metadata
+# as a public repo without authentication.
+
+name: VEX Vulnerability Monitor
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC (new CVEs registered overnight will be caught)
+    - cron: "0 6 * * *"
+  workflow_dispatch:   # allow manual runs for testing
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      # ── Checkout repos ──────────────────────────────────────────────────
+      - name: Check out logging-site
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history so we can push new branches
+          fetch-depth: 0
+
+      - name: Check out callgraph-metadata (read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: vex-generation-toolset/callgraph-metadata
+          path: callgraph-metadata
+          # No token needed — public repo
+
+      # ── Python setup ────────────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      # osv_scan.py and vex_draft.py use only stdlib — no pip install needed.
+
+      # ── Scan SBOMs ──────────────────────────────────────────────────────
+      - name: Scan SBOMs for new CVEs
+        id: scan
+        run: |
+          python scripts/osv_scan.py \
+            --sbom-dir  callgraph-metadata/sboms \
+            --vuln-dir  src/vulnerabilities \
+            --output    /tmp/new-cves.json
+
+          COUNT=$(python -c "
+          import json, pathlib
+          data = json.loads(pathlib.Path('/tmp/new-cves.json').read_text())
+          print(len(data))
+          ")
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Found $COUNT new CVE(s)."
+
+      # ── Nothing to do? ──────────────────────────────────────────────────
+      - name: No new CVEs — exit early
+        if: steps.scan.outputs.count == '0'
+        run: echo "No new CVEs. Nothing to do."
+
+      # ── Create one PR per CVE ───────────────────────────────────────────
+      - name: Open draft-VEX PRs for new CVEs
+        if: steps.scan.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+        run: |
+          # Configure git identity for commits
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          BASE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+          # Iterate over each unique CVE id in the findings
+          python -c "
+          import json, pathlib, sys
+          data = json.loads(pathlib.Path('/tmp/new-cves.json').read_text())
+          seen = set()
+          for f in data:
+              cve = f['cve_id']
+              if cve not in seen:
+                  seen.add(cve)
+                  print(cve)
+          " | while read -r CVE_ID; do
+
+            BRANCH="vex/auto/${CVE_ID}"
+
+            # Skip if a PR branch already exists (previous run / manual branch)
+            if git ls-remote --exit-code origin "refs/heads/${BRANCH}" > /dev/null 2>&1; then
+              echo "Branch ${BRANCH} already exists — skipping."
+              continue
+            fi
+
+            # Skip if a PR for this branch is already open
+            EXISTING_PR=$(gh pr list \
+              --head "${BRANCH}" \
+              --state open \
+              --json number \
+              --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$EXISTING_PR" ]; then
+              echo "PR #${EXISTING_PR} already open for ${CVE_ID} — skipping."
+              continue
+            fi
+
+            echo "Processing ${CVE_ID} …"
+
+            # Create and switch to the new branch
+            git checkout -b "${BRANCH}"
+
+            # Generate a draft VDR file for every finding related to this CVE
+            python -c "
+          import json, pathlib, subprocess, sys
+          data = json.loads(pathlib.Path('/tmp/new-cves.json').read_text())
+          for f in data:
+              if f['cve_id'] == '${CVE_ID}':
+                  result = subprocess.run(
+                      [sys.executable, 'scripts/vex_draft.py',
+                       '--cve-id',   f['cve_id'],
+                       '--finding',  json.dumps(f),
+                       '--vuln-dir', 'src/vulnerabilities'],
+                      check=True,
+                  )
+          "
+
+            # Stage the new file(s) and commit
+            git add src/vulnerabilities/
+            if git diff --cached --quiet; then
+              echo "No files added for ${CVE_ID} — skipping commit."
+              git checkout "${BASE_BRANCH}"
+              git branch -D "${BRANCH}"
+              continue
+            fi
+
+            git commit -m "security: add draft VDR for ${CVE_ID}
+
+          Generated automatically by the VEX monitoring workflow.
+          Maintainers must complete justification / response before merge."
+
+            git push origin "${BRANCH}"
+
+            # Open the PR
+            gh pr create \
+              --base  "${BASE_BRANCH}" \
+              --head  "${BRANCH}" \
+              --title "security: draft VDR for ${CVE_ID}" \
+              --body  "$(cat <<'PREOF'
+          ## Automated draft VDR
+
+          This PR was opened by the [VEX monitoring workflow](.github/workflows/vex-monitor.yml)
+          after OSV.dev reported a new CVE against a dependency in one of our published SBOMs.
+
+          ### What to do
+
+          1. Review the generated file(s) under \`src/vulnerabilities/${CVE_ID}/\`.
+          2. Complete the **TODO** fields:
+             - \`<description>\` — concise description of the vulnerability.
+             - \`<recommendation>\` — upgrade path / workaround.
+             - \`<analysis>\` — our assessment (\`state\`, \`justification\`, \`detail\`).
+             - \`<ratings>\` — CVSS score, severity, vector (copy from NVD).
+             - \`<credits>\` — reporter name / org.
+             - \`<affects>\` → \`<range>\` — narrow the version range once the fix version is known.
+          3. Bump \`<updated>\` and \`<metadata/timestamp>\` to the edit time.
+          4. Re-run \`uv run scripts/vdr_aggregate.py\` to regenerate \`vdr.xml\`.
+          5. Approve and merge.
+
+          ### CVE reference
+
+          - NVD: https://nvd.nist.gov/vuln/detail/${CVE_ID}
+          - OSV: https://osv.dev/vulnerability/${CVE_ID}
+          PREOF
+          )" \
+              --label "security"
+
+            # Return to base branch for the next iteration
+            git checkout "${BASE_BRANCH}"
+
+          done
