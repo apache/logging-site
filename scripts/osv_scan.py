@@ -34,7 +34,7 @@ def load_sboms(sbom_dir: Path) -> list[dict]:
     dep_purls are its dependencies — what we query OSV for.
     """
     sboms: list[dict] = []
-    for sbom_path in sorted(sbom_dir.rglob("*.cdx.json")):
+    for sbom_path in sorted(sbom_dir.rglob("*.json")):
         try:
             with open(sbom_path, encoding="utf-8") as fh:
                 sbom = json.load(fh)
@@ -60,14 +60,41 @@ def load_sboms(sbom_dir: Path) -> list[dict]:
     return sboms
 
 
+def _fetch_cve_for_vuln(vuln_id: str) -> str | None:
+    """
+    Fetch the full OSV record for vuln_id and return the first CVE alias,
+    or None if there is no CVE alias.
+
+    The batch API only returns id + modified; aliases require a full fetch.
+    """
+    url = f"https://api.osv.dev/v1/vulns/{vuln_id}"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            record = json.loads(resp.read())
+    except urllib.error.URLError as exc:
+        print(f"  WARNING: could not fetch {url}: {exc}", file=sys.stderr)
+        return None
+
+    for alias in record.get("aliases", []):
+        if alias.startswith("CVE-"):
+            return alias
+    # The primary id itself might be a CVE (less common on OSV)
+    if record.get("id", "").startswith("CVE-"):
+        return record["id"]
+    return None
+
+
 def query_osv(purls: list[str]) -> dict[str, list[str]]:
     """
     Batch-query OSV.dev for the given purls.
 
     Returns {purl: [cve_id, ...]} for purls that have CVE hits.
-    Only CVE-YYYY-NNNN identifiers are returned (GHSA aliases are ignored).
+    The batch endpoint only returns GHSA ids + modified; we follow up with
+    individual fetches to resolve CVE aliases.
     """
     hits: dict[str, list[str]] = {}
+    # Cache GHSA → CVE lookups to avoid redundant fetches
+    vuln_id_to_cve: dict[str, str | None] = {}
 
     for offset in range(0, len(purls), OSV_BATCH_LIMIT):
         chunk = purls[offset : offset + OSV_BATCH_LIMIT]
@@ -89,11 +116,16 @@ def query_osv(purls: list[str]) -> dict[str, list[str]]:
             raise
 
         for purl, result in zip(chunk, body["results"]):
-            cves = [
-                v["id"]
-                for v in result.get("vulns", [])
-                if v.get("id", "").startswith("CVE-")
-            ]
+            cves = []
+            for v in result.get("vulns", []):
+                vuln_id = v.get("id", "")
+                if not vuln_id:
+                    continue
+                if vuln_id not in vuln_id_to_cve:
+                    vuln_id_to_cve[vuln_id] = _fetch_cve_for_vuln(vuln_id)
+                cve = vuln_id_to_cve[vuln_id]
+                if cve and cve not in cves:
+                    cves.append(cve)
             if cves:
                 hits[purl] = cves
 

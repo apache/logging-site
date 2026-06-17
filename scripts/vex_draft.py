@@ -9,14 +9,17 @@ Usage (called once per CVE by the workflow):
         --finding '{"cve_id":...,"dep_purl":...,"root_component":{...}}' \
         --vuln-dir src/vulnerabilities
 """
+from __future__ import annotations
 
 import argparse
 import json
 import re
 import sys
 import uuid
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
+
+UTC = timezone.utc
 
 CDX_NS = "http://cyclonedx.org/schema/bom/1.7"
 XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
@@ -26,7 +29,7 @@ SCHEMA_LOC = (
 )
 
 # CPE pattern per artifact name (sans version wildcard)
-_CPE_MAP: dict[str, str] = {
+_CPE_MAP = {
     "log4j-core":                  "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*",
     "log4j-1.2-api":               "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*",
     "log4j-layout-template-json":  "cpe:2.3:a:apache:log4j:*:*:*:*:*:*:*:*",
@@ -35,7 +38,7 @@ _CPE_MAP: dict[str, str] = {
 }
 
 # Ecosystem type → vers prefix
-_VERS_PREFIX: dict[str, str] = {
+_VERS_PREFIX = {
     "maven": "vers:maven",
     "nuget": "vers:nuget",
     "conan": "vers:semver",
@@ -48,7 +51,14 @@ def _strip_version_from_purl(purl: str) -> str:
 
 
 def _bom_ref(root_component: dict) -> str:
-    return root_component.get("bom-ref") or root_component.get("name", "unknown")
+    """Return a simple artifact-name bom-ref, even if the SBOM uses a full purl."""
+    ref = root_component.get("bom-ref") or root_component.get("name", "unknown")
+    # If the ref looks like a purl (pkg:type/group/name@version?...), extract just the name
+    if ref.startswith("pkg:"):
+        # Strip version and qualifiers, then take the last path segment
+        base = re.sub(r"[@?#].*", "", ref)   # remove @version?qualifiers
+        return base.rsplit("/", 1)[-1]
+    return ref
 
 
 def _purl_type(purl: str) -> str:
@@ -205,9 +215,9 @@ def main() -> int:
     args = parser.parse_args()
 
     finding = json.loads(args.finding)
-    cve_id: str = finding["cve_id"]
-    dep_purl: str = finding["dep_purl"]
-    root_component: dict = finding["root_component"]
+    cve_id = finding["cve_id"]
+    dep_purl = finding["dep_purl"]
+    root_component = finding["root_component"]
 
     bref = _bom_ref(root_component)
     out_dir = args.vuln_dir / cve_id
