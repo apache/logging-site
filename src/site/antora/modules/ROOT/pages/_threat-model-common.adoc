@@ -87,8 +87,11 @@ No particular input validation for log messages is necessary.
 * They **do not** trust the string representation of log parameters.
 * They **do not** trust the **values** stored in the thread context.
 
-The frameworks **trust** that the objects passed to a log statement can be safely converted to strings.
+[NOTE]
+====
+Although the frameworks accept arbitrary content, they **trust** that the objects passed to a log statement can be safely converted to strings.
 They **should not** be used to log deserialized data from untrusted sources; see https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data[the related OWASP guide].
+====
 
 [NOTE]
 ====
