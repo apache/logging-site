@@ -39,7 +39,7 @@ A Kotlin-friendly interface to log against the Log4j® API.
 https://logging.apache.org/log4cxx[Log4cxx]::
 A logging framework for C++ patterned after Log4j®.
 
-https://logging.apache.org/log4Net[Log4Net]::
+https://logging.apache.org/log4net[Log4net]::
 A port of the Log4j® to the Microsoft .NET runtime.
 
 .Click to see list of inactive subprojects
