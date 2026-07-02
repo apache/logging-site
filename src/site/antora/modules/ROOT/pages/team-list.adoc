@@ -76,5 +76,5 @@ Inactive members are welcome to continue participating at any time.
 | Paul Smith | psmith | PMC Member | Chainsaw, Log4j | Emeritus 2014
 | Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net | Emeritus 2026
 | Stefan Bodewig | bodewig | PMC Member | Log4net | Emeritus 2018
-| Tristan Stevens | tristan | PMC Member | Flume | Last Active 2023
+| Tristan Stevens | tristan | PMC Member | Flume | Emeritus 2026
 |===
