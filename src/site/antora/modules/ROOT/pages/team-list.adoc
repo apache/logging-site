@@ -26,7 +26,6 @@ See xref:guidelines.adoc[] for further details on roles.
 [%header,cols="1,1m,1,2"]
 |===
 | Name | Apache ID | Role | Projects
-| Carter Kozak | ckozak | PMC Member | Log4j
 | Christian Grobmeier | grobmeier | PMC Member | Chainsaw, Log4j, Log4php
 | Davyd McColl | davydm | PMC Member | Log4net
 | Dominik Psenner | dpsenner | PMC Member | Log4net
@@ -42,7 +41,6 @@ See xref:guidelines.adoc[] for further details on roles.
 | Ramanathan Muthu | ramanathan | Committer | Log4j
 | Remko Popma | rpopma | PMC Member | Log4j
 | Robert Middleton | rmiddleton | PMC Member | Log4cxx
-| Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net
 | Scott Deboy | sdeboy | PMC Member | Chainsaw, Log4j
 | Stephen Webb | swebb2066 | PMC Member | Log4cxx
 | Thorsten Schöning | tschoening | Committer | Log4cxx
@@ -62,19 +60,21 @@ Inactive members are welcome to continue participating at any time.
 | Andrei Ivanov | shadow | Committer | Log4j Audit | Last Active 2020
 | Balázs Donát Bessenyei | bessbd | PMC Member | Flume | Last Active 2022
 | Bruce Brouwer | bbrouwer | Committer | Log4j | Last Active 2015
+| Carter Kozak | ckozak | PMC Member | Log4j | Last Active 2026
 | Ceki Gülcü | ceki | PMC Member | Log4j | Emeritus 2014
 | Christian Hammers | chammers | Committer | Log4php | Last Active 2010
 | Curt Arnold | carnold | PMC Member | Log4cxx, Log4j | Emeritus 2017
 | Ivan Habunek | ihabunek | PMC Member | Log4php | Last Active 2015
 | Jacob Kjome | hoju | PMC Member | Log4j | Emeritus 2014
-| Juhani Connolly | juhanic | PMC Member | Flume | Last Active 2014
+| Juhani Connolly | juhanic | PMC Member | Flume | Emeritus 2026
 | Knut Urdalen | kurdalen | Committer | Log4php | Last Active 2010
 | Mark Womack | mwomack | PMC Member | Log4j | Last Active 2006
-| Mikael Ståldal | mikes | PMC Member| Log4j | Last Active 2018
-| Mike Percy | mpercy | PMC Member | Flume | Last Active 2019
+| Mikael Ståldal | mikes | PMC Member| Log4j | Emeritus 2026
+| Mike Percy | mpercy | PMC Member | Flume | Emeritus 2026
 | Nick Williams | nickwilliams | PMC Member | Log4j | Last Active 2014
 | Nicko Cadell | nicko | PMC Member | Log4net | Emeritus 2014
 | Paul Smith | psmith | PMC Member | Chainsaw, Log4j | Emeritus 2014
+| Ron Grabowski | rgrabowski | PMC Member | Log4j, Log4net | Emeritus 2026
 | Stefan Bodewig | bodewig | PMC Member | Log4net | Emeritus 2018
 | Tristan Stevens | tristan | PMC Member | Flume | Last Active 2023
 |===
