@@ -99,6 +99,51 @@ The trust level of thread context **keys** is under discussion in https://github
 Until that discussion concludes, this document classifies only thread context **values** as content; the classification of keys is a **known open gap**.
 ====
 
+[#threat-common-sinks]
+== Sinks
+
+Just as they read from sources, logging systems write to **sinks**: the destinations to which an appender delivers a formatted log event, such as files, consoles, sockets, databases, and message brokers.
+Sinks are defined by the **operator** as part of the configuration and are therefore **trusted**.
+This is the counterpart of the source classification above: sources range from trusted configuration to untrusted content, but every sink is trusted, because a sink exists only where the operator has configured an appender that writes to it.
+
+[#threat-common-sinks-destination]
+=== Destination integrity (operator-controlled)
+
+The destination an appender writes to is chosen by the operator and is trusted, including a destination created dynamically at runtime.
+For example, a https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#RoutingAppender[Routing appender] may open a file whose path is interpolated from a lookup: selecting that destination is the operator's decision, and the trustworthiness of any value used to build it is the operator's responsibility (see xref:security/faq.adoc#path-traversal[the FAQ entry on path traversal]).
+
+It follows that:
+
+* Ensuring that untrusted parties do not have write access to a log destination, such as the directory or file a file appender writes to, is a **deployer responsibility**, exactly as it is for configuration resources (see <<threat-common-sources-configuration>>).
+* An adversary who can write to a destination, for example by planting a symbolic link where a file appender expects to create its output, can already tamper with the logs directly by deleting, truncating, or rewriting them.
+The frameworks therefore do **not** attempt to defend a destination they have been configured to trust, and a report that assumes such write access is **out of scope**.
+
+[#threat-common-sinks-passive-active]
+=== Passive and active sinks
+
+A logging framework is responsible for producing output that is **well-formed in the format the configured layout emits**: plain text for an unstructured layout such as the Pattern layout, and a structured document for a structured layout such as the XML, JSON, RFC 5424, or HTML layouts.
+Whether a defect observed at a sink is our responsibility depends on what the destination does with that output.
+
+Passive sink::
++
+A passive sink consumes the output **as the format the layout produced**: it stores the bytes in a file, transmits them over a socket, or renders the document the layout emitted.
+For structured layouts, the frameworks **must** ensure that untrusted content cannot break the structure of that document; this is the log-injection commitment stated in <<threat-common-threat>>.
+A failure to escape a metacharacter for the format we emit is a defect we **own**.
+For instance, https://www.cve.org/CVERecord?id=CVE-2025-54812[CVE-2025-54812] was fixed in Log4cxx because its HTML layout produced malformed HTML: the layout emits HTML, so it must emit **safe** HTML.
+
+Active sink::
++
+An active sink **re-interprets** our output in a language we did not produce and acts on that interpretation: a terminal that executes ANSI escape sequences embedded in plain text, a spreadsheet that evaluates formula syntax in a field, or a shell that expands metacharacters.
+The frameworks do not emit terminal control language, spreadsheet formulas, or shell scripts, and they cannot enumerate, let alone neutralize, every way a downstream consumer might re-interpret well-formed output.
+Defending against an active sink is therefore **out of scope**.
+This is why we do not treat the console ANSI-escape-sequence issue, the class of https://www.cve.org/CVERecord?id=CVE-2025-55754[CVE-2025-55754] as reported against Apache Tomcat, as a vulnerability in our projects: our Pattern layout emits correct plain text, and an ANSI-interpreting console is an active sink whose behavior, and the choice to view logs through it, belong to the operator.
+
+[NOTE]
+====
+The boundary is whether the framework emitted output that is malformed **in its own format** (a defect we own) or well-formed output that a downstream sink chose to re-interpret in another language (out of scope).
+Unstructured layouts such as the Pattern layout make **no** injection guarantee even for a passive sink, because they are meant for human consumption; see <<threat-common-threat>>.
+====
+
 [#threat-common-adversary]
 == Adversary capabilities
 
@@ -126,6 +171,8 @@ The logging frameworks trust that logged objects can be safely converted to a st
 * An adversary observing side channels, such as the timing or memory behavior of the logging framework.
 * A malicious destination of an appender (e.g. a hostile database, message broker, or mail server).
 Appender destinations are configured by trusted users and are treated as an extension of the deployer.
+* An adversary with write access to a log destination, such as the directory or file a file appender writes to, or the ability to plant a symbolic link there: log destinations are operator-controlled and trusted (see <<threat-common-sinks-destination>>).
+* An adversary who relies on an **active sink** re-interpreting well-formed log output, such as a terminal that executes injected ANSI escape sequences (see <<threat-common-sinks-passive-active>>).
 
 [#threat-common-threat]
 == Threats
@@ -139,7 +186,7 @@ Regarding this threat:
 
 * **Unstructured layouts** such as https://logging.apache.org/log4j/2.x/manual/pattern-layout.html[Pattern Layout in Log4j] do **not** protect users from log injection.
 These layouts are meant for **human** and not computer consumption.
-* Log4cxx, Log4j and Log4net **must** prevent log injection in **structured** layouts, such as XML, JSON and RFC 5424.
+* Log4cxx, Log4j and Log4net **must** prevent log injection in **structured** layouts, such as the XML, JSON, RFC 5424, and HTML layouts, when they are consumed by a passive sink; see <<threat-common-sinks-passive-active>>.
 
 Supply chain attacks (https://cwe.mitre.org/data/definitions/1357.html[CWE-1357])::
 
