@@ -384,6 +384,79 @@ Until that discussion concludes, this document classifies only thread context <s
 </div>
 </div>
 <div class="sect2">
+<h3 id="threat-common-sinks"><a class="anchor" href="#threat-common-sinks"></a>Sinks</h3>
+<div class="paragraph">
+<p>Just as they read from sources, logging systems write to <strong>sinks</strong>: the destinations to which an appender delivers a formatted log event, such as files, consoles, sockets, databases, and message brokers.
+Sinks are defined by the <strong>operator</strong> as part of the configuration and are therefore <strong>trusted</strong>.
+This is the counterpart of the source classification above: sources range from trusted configuration to untrusted content, but every sink is trusted, because a sink exists only where the operator has configured an appender that writes to it.</p>
+</div>
+<div class="sect3">
+<h4 id="threat-common-sinks-destination"><a class="anchor" href="#threat-common-sinks-destination"></a>Destination integrity (operator-controlled)</h4>
+<div class="paragraph">
+<p>The destination an appender writes to is chosen by the operator and is trusted, including a destination created dynamically at runtime.
+For example, a <a href="https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#RoutingAppender">Routing appender</a> may open a file whose path is interpolated from a lookup: selecting that destination is the operator&#8217;s decision, and the trustworthiness of any value used to build it is the operator&#8217;s responsibility (see <a href="security/faq.html#path-traversal" class="xref page">the FAQ entry on path traversal</a>).</p>
+</div>
+<div class="paragraph">
+<p>It follows that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensuring that untrusted parties do not have write access to a log destination, such as the directory or file a file appender writes to, is a <strong>deployer responsibility</strong>, exactly as it is for configuration resources (see <a href="#threat-common-sources-configuration">Configuration (operator-controlled)</a>).</p>
+</li>
+<li>
+<p>An adversary who can write to a destination, for example by planting a symbolic link where a file appender expects to create its output, can already tamper with the logs directly by deleting, truncating, or rewriting them.
+The frameworks therefore do <strong>not</strong> attempt to defend a destination they have been configured to trust, and a report that assumes such write access is <strong>out of scope</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="threat-common-sinks-passive-active"><a class="anchor" href="#threat-common-sinks-passive-active"></a>Passive and active sinks</h4>
+<div class="paragraph">
+<p>A logging framework is responsible for producing output that is <strong>well-formed in the format the configured layout emits</strong>: plain text for an unstructured layout such as the Pattern layout, and a structured document for a structured layout such as the XML, JSON, RFC 5424, or HTML layouts.
+Whether a defect observed at a sink is our responsibility depends on what the destination does with that output.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Passive sink</dt>
+<dd>
+<div class="paragraph">
+<p>A passive sink consumes the output <strong>as the format the layout produced</strong>: it stores the bytes in a file, transmits them over a socket, or renders the document the layout emitted.
+For structured layouts, the frameworks <strong>must</strong> ensure that untrusted content cannot break the structure of that document; this is the log-injection commitment stated in <a href="#threat-common-threat">Threats</a>.
+A failure to escape a metacharacter for the format we emit is a defect we <strong>own</strong>.
+For instance, <a href="https://www.cve.org/CVERecord?id=CVE-2025-54812">CVE-2025-54812</a> was fixed in Log4cxx because its HTML layout produced malformed HTML: the layout emits HTML, so it must emit <strong>safe</strong> HTML.</p>
+</div>
+</dd>
+<dt class="hdlist1">Active sink</dt>
+<dd>
+<div class="paragraph">
+<p>An active sink <strong>re-interprets</strong> our output in a language we did not produce and acts on that interpretation: a terminal that executes ANSI escape sequences embedded in plain text, a spreadsheet that evaluates formula syntax in a field, or a shell that expands metacharacters.
+The frameworks do not emit terminal control language, spreadsheet formulas, or shell scripts, and they cannot enumerate, let alone neutralize, every way a downstream consumer might re-interpret well-formed output.
+Defending against an active sink is therefore <strong>out of scope</strong>.
+This is why we do not treat the console ANSI-escape-sequence issue, the class of <a href="https://www.cve.org/CVERecord?id=CVE-2025-55754">CVE-2025-55754</a> as reported against Apache Tomcat, as a vulnerability in our projects: our Pattern layout emits correct plain text, and an ANSI-interpreting console is an active sink whose behavior, and the choice to view logs through it, belong to the operator.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The boundary is whether the framework emitted output that is malformed <strong>in its own format</strong> (a defect we own) or well-formed output that a downstream sink chose to re-interpret in another language (out of scope).
+Unstructured layouts such as the Pattern layout make <strong>no</strong> injection guarantee even for a passive sink, because they are meant for human consumption; see <a href="#threat-common-threat">Threats</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="threat-common-adversary"><a class="anchor" href="#threat-common-adversary"></a>Adversary capabilities</h3>
 <div class="paragraph">
 <p>The threats listed below are evaluated against an adversary with a well-defined and limited set of capabilities.
@@ -438,6 +511,12 @@ The logging frameworks trust that logged objects can be safely converted to a st
 <p>A malicious destination of an appender (e.g. a hostile database, message broker, or mail server).
 Appender destinations are configured by trusted users and are treated as an extension of the deployer.</p>
 </li>
+<li>
+<p>An adversary with write access to a log destination, such as the directory or file a file appender writes to, or the ability to plant a symbolic link there: log destinations are operator-controlled and trusted (see <a href="#threat-common-sinks-destination">Destination integrity (operator-controlled)</a>).</p>
+</li>
+<li>
+<p>An adversary who relies on an <strong>active sink</strong> re-interpreting well-formed log output, such as a terminal that executes injected ANSI escape sequences (see <a href="#threat-common-sinks-passive-active">Passive and active sinks</a>).</p>
+</li>
 </ul>
 </div>
 </dd>
@@ -464,7 +543,7 @@ Regarding this threat:</p>
 These layouts are meant for <strong>human</strong> and not computer consumption.</p>
 </li>
 <li>
-<p>Log4cxx, Log4j and Log4net <strong>must</strong> prevent log injection in <strong>structured</strong> layouts, such as XML, JSON and RFC 5424.</p>
+<p>Log4cxx, Log4j and Log4net <strong>must</strong> prevent log injection in <strong>structured</strong> layouts, such as the XML, JSON, RFC 5424, and HTML layouts, when they are consumed by a passive sink; see <a href="#threat-common-sinks-passive-active">Passive and active sinks</a>.</p>
 </li>
 </ul>
 </div>
