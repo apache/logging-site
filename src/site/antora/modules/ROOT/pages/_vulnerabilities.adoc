@@ -34,7 +34,7 @@ For brevity, mathematical interval notation is used, with the union operator (`�
 
 [cols="1h,5"]
 |===
-|Summary |Improper serialization of non-finite floating-point values in `MapMessageJsonFormatter`
+|Summary |Improper serialization of non-finite floating-point values in `MapMessage.asJson()`
 |CVSS 4.x Score & Vector |6.3 MEDIUM (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N)
 |Components affected |`log4j-api`
 |Versions affected |`[2.13.1, 2.25.5) ∪ [2.26.0, 2.26.1) ∪ [3.0.0-alpha1, 3.0.0-beta2]`
