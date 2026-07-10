@@ -40,11 +40,11 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="7"
+     version="8"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
-    <timestamp>2026-04-10T11:53:17Z</timestamp>
+    <timestamp>2026-07-10T20:53:31Z</timestamp>
     <manufacturer>
       <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
@@ -61,6 +61,12 @@
     <component type="library" bom-ref="log4cxx-conan">
       <name>Log4cxx</name>
       <purl>pkg:conan/log4cxx</purl>
+    </component>
+    <component type="library" bom-ref="log4j-api">
+      <group>org.apache.logging.log4j</group>
+      <name>log4j-api</name>
+      <cpe>cpe:2.3:a:apache:log4j_api:*:*:*:*:*:*:*:*</cpe>
+      <purl>pkg:maven/org.apache.logging.log4j/log4j-api?type=jar</purl>
     </component>
     <component type="library" bom-ref="log4j-core">
       <group>org.apache.logging.log4j</group>
@@ -88,6 +94,71 @@
   </components>
 
   <vulnerabilities>
+
+    <vulnerability>
+        <id>CVE-2026-49844</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-49844</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://www.first.org/cvss/calculator/4-0#CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N]]></url>
+                </source>
+                <score>6.3</score>
+                <severity>medium</severity>
+                <method>CVSSv4</method>
+                <vector>AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:L/SA:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>116</cwe>
+        </cwes>
+        <description><![CDATA[Improper encoding of non-finite floating-point values during `MapMessage` JSON serialization in Apache Log4j API produces output that is not valid JSON.
+This issue affects Apache Log4j API versions 2.13.1 through 2.25.4 and version 2.26.0.
+
+The fix for CVE-2026-34481 did not cover all code paths: when a `MapMessage` contains a non-finite IEEE 754 value (`NaN`, `Infinity`, or `-Infinity`), `MapMessage.asJson()` emits the corresponding bare token.
+RFC 8259 does not permit these tokens, so a conformant parser rejects the resulting document.
+
+The defect is reachable only when both of the following conditions hold:
+
+* The application uses the
+https://logging.apache.org/log4j/2.x/manual/json-template-layout.html#event-template-resolver-message[`message` resolver]
+of `JsonTemplateLayout`, or any other layout that relies on `MapMessage.asJson()` or `MapMessage.getFormattedMessage(new String[] {"JSON"})`.
+* The application logs a `MapMessage` that contains an attacker-controlled floating-point value.
+
+An attacker who can supply a non-finite value can cause the affected layout to emit malformed JSON, which may corrupt the enclosing log record or disrupt downstream log ingestion and parsing.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j API version `2.25.5` or `2.26.1`, both of which emit RFC 8259-compliant JSON for non-finite values.]]></recommendation>
+        <created>2026-07-10T20:53:31Z</created>
+        <published>2026-07-10T20:53:31Z</published>
+        <updated>2026-07-10T20:53:31Z</updated>
+        <credits>
+            <individuals>
+                <individual>
+                    <name>Himanshu Anand</name>
+                </individual>
+            </individuals>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4j-api</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.13.1|<2.25.5]]></range>
+                    </version>
+                    <version>
+                        <range><![CDATA[vers:maven/>=2.26.0|<2.26.1]]></range>
+                    </version>
+                    <version>
+                        <range><![CDATA[vers:maven/>=3.0.0-alpha1|<=3.0.0-beta2]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
 
     <vulnerability>
         <id>CVE-2026-40023</id>
@@ -235,11 +306,14 @@ This may cause downstream log processing systems to reject or fail to index affe
 An attacker can exploit this issue only if both of the following conditions are met:
 
 * The application uses `JsonTemplateLayout`.
-* The application logs a `MapMessage` containing an attacker-controlled floating-point value.]]></description>
-        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j JSON Template Layout version `2.25.4`, which corrects this issue.]]></recommendation>
+* The application logs a `MapMessage`, or logs an object directly (e.g., via `Logger.info(Object)`, which wraps it in an `ObjectMessage`), where the message contains an attacker-controlled floating-point value.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4j JSON Template Layout version `2.25.4`, which corrects this issue.
+
+NOTE: The fix released in version `2.25.4` did not cover all affected code paths.
+CVE-2026-49844 was assigned to the remaining issue, which concerns the `MapMessage.asJson()` serialization in Apache Log4j API and is fixed in versions `2.25.5` and `2.26.1`.]]></recommendation>
         <created>2026-04-10T11:53:17Z</created>
         <published>2026-04-10T11:53:17Z</published>
-        <updated>2026-04-10T11:53:17Z</updated>
+        <updated>2026-07-10T20:53:31Z</updated>
         <credits>
             <individuals>
                 <individual>
