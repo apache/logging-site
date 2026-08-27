@@ -208,9 +208,14 @@ Log4j provides **no guarantee** that deserializing a stream containing its class
 
 Log4j 1 shipped a `SocketServer` and a `SocketAppender` that exchanged log events over the network using Java serialization.
 
-In Log4j 2:
+Log4j 2 inherited this functionality: up to and including the 2.8.x releases, `log4j-core` contained TCP and UDP socket servers (`TcpSocketServer` and `UdpSocketServer`) that received serialized log events from other applications.
+As with any endpoint that consumes serialized data from the network, these servers were dangerous to operate and resulted in xref:security.adoc#CVE-2017-5645[CVE-2017-5645].
 
-* The `SocketServer` receiver was never reintroduced into the production codebase.
+The vulnerability was patched in version `2.8.2` by introducing `FilteredObjectInputStream`, an allowlist-based equivalent for Java 7 of the `ObjectInputFilter` API introduced in Java 9.
+Since this fix could not cover all cases, the socket servers were removed entirely in the next release, `2.9.0`.
+Since then:
+
+* No socket server has ever been reintroduced into the production codebase.
 * `SerializedLayout`, originally provided for Log4j 1 compatibility, has been **deprecated since version 2.9** and should not be used.
 See the {site-url}/log4j/2.x/manual/layouts.html#SerializedLayout[SerializedLayout documentation] for details.
 * Several Log4j 2 classes, most notably `Logger`, `Message` and `LogEvent`, remain `Serializable` for backward compatibility.
