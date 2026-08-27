@@ -140,6 +140,8 @@ In either case, while the Apache Logging Services project thanks you for your su
 * https://github.com/sponsors/jvz[Matt Sicker]
 * https://github.com/sponsors/ppkarwasz[Piotr P. Karwasz]
 * https://github.com/sponsors/rgoers[Ralph Goers]
+* https://github.com/sponsors/ramanathan1504[Ramanathan Muthu]
+
 * https://github.com/sponsors/vy[Volkan Yazıcı]
 
 [#sponsors]
