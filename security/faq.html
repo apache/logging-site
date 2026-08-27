@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Frequently Reported Vulnerabilities :: Apache Logging Services</title>
     <link rel="canonical" href="https://logging.apache.org/security/faq.html">
-    <meta name="generator" content="Antora 3.2.0-rc.2">
+    <meta name="generator" content="Antora 3.2.0-rc.3">
 <link rel="stylesheet" href="../_/css/site.css">
 <link rel="icon" href="../_/../_images/favicon.ico" type="image/x-icon">
 <!-- `@asciidoctor/tabs` extension styles -->
@@ -502,12 +502,18 @@ The fact that Log4j classes happen to appear in such a stream does not make Log4
 <p>Log4j 1 shipped a <code>SocketServer</code> and a <code>SocketAppender</code> that exchanged log events over the network using Java serialization.</p>
 </div>
 <div class="paragraph">
-<p>In Log4j 2:</p>
+<p>Log4j 2 inherited this functionality: up to and including the 2.8.x releases, <code>log4j-core</code> contained TCP and UDP socket servers (<code>TcpSocketServer</code> and <code>UdpSocketServer</code>) that received serialized log events from other applications.
+As with any endpoint that consumes serialized data from the network, these servers were dangerous to operate and resulted in <a href="../security.html#CVE-2017-5645" class="xref page">CVE-2017-5645</a>.</p>
+</div>
+<div class="paragraph">
+<p>The vulnerability was patched in version <code>2.8.2</code> by introducing <code>FilteredObjectInputStream</code>, an allowlist-based equivalent for Java 7 of the <code>ObjectInputFilter</code> API introduced in Java 9.
+Since this fix could not cover all cases, the socket servers were removed entirely in the next release, <code>2.9.0</code>.
+Since then:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>SocketServer</code> receiver was never reintroduced into the production codebase.</p>
+<p>No socket server has ever been reintroduced into the production codebase.</p>
 </li>
 <li>
 <p><code>SerializedLayout</code>, originally provided for Log4j 1 compatibility, has been <strong>deprecated since version 2.9</strong> and should not be used.
