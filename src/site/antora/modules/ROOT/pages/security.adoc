@@ -39,7 +39,17 @@ These instructions can be found in `BUILDING.adoc`, `BUILDING.md`, etc. files di
 [#reporting]
 == Reporting vulnerabilities
 
-If you have encountered an unlisted security vulnerability or other unexpected behaviour that has a security impact, or if the descriptions here are incomplete, please report them **privately** to mailto:security@logging.apache.org[the Logging Services Security Team].
+If you have encountered an unlisted security vulnerability or other unexpected behavior that has a security impact, or if the descriptions here are incomplete, please report them **privately** to mailto:security@logging.apache.org[the Logging Services Security Team].
+
+Reports should follow the https://security.apache.org/report-code/[reporting guidelines of the ASF Security Team]:
+
+- Start the subject line with `[SECURITY]` so that your report is not mistaken for spam.
+- Report only one finding per e-mail.
+- Write your report in plain text.
+- Do not attach documents (DOCX, PDF, Markdown, etc.) whose content could just as easily be included in the body of the e-mail.
+
+By sending a report, you agree that the information it contains may be made public, either after triage (for invalid reports) or after the release of a fix, unless you explicitly request otherwise.
+If your report turns out to be invalid, your identity will not be disclosed, unless you explicitly request otherwise.
 
 [IMPORTANT]
 ====
@@ -59,8 +69,8 @@ include::_threat-model-common.adoc[leveloffset=+1]
 
 The Logging Services Security Team follows the https://www.apache.org/security/committers.html[ASF Project Security] guide for handling security vulnerabilities.
 
-Reported security vulnerabilities are subject to voting (by means of https://logging.apache.org/guidelines.html[_lazy approval_], preferably) in the private mailto:security@logging.apache.org[security mailing list] before creating a CVE and populating its associated content.
-This procedure involves only the creation of CVEs and blocks neither (vulnerability) fixes, nor releases.
+Reported security vulnerabilities are subject to voting (preferably by https://logging.apache.org/guidelines.html[_lazy approval_]) in the private mailto:security@logging.apache.org[security mailing list] before creating a CVE and populating its associated content.
+This procedure involves only the creation of CVEs and blocks neither (vulnerability) fixes nor releases.
 
 [#vdr]
 == Vulnerability Disclosure Report (VDR)
