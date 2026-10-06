@@ -29,6 +29,222 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-105244]
+== {cve-url-prefix}/CVE-2026-105244[CVE-2026-105244]
+
+[cols="1h,5"]
+|===
+|Summary |RemoteSyslogAppender silently deletes non-ASCII content
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.12, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105244-description]
+=== Description
+
+Improper Encoding or Escaping of Output vulnerability in the RemoteSyslogAppender of Apache log4net.
+
+Every character outside visible ASCII and space was removed from the record instead of being escaped, so non-ASCII text and control characters such as tabs disappeared without notice. A party whose data reaches a log message could make a distinct value look identical in the record, for example a user name holding a zero-width space logged as admin. Only applications that use RemoteSyslogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.12 before 3.5.0.
+
+[#CVE-2026-105244-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105244-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105244-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105244[CVE-2026-105244]
+* https://github.com/apache/logging-log4net/pull/315[Pull request that fixes the issue]
+
+[#CVE-2026-105243]
+== {cve-url-prefix}/CVE-2026-105243[CVE-2026-105243]
+
+[cols="1h,5"]
+|===
+|Summary |Oversize EventLogAppender record silently discarded
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105243-description]
+=== Description
+
+Insufficient Logging vulnerability in the EventLogAppender of Apache log4net.
+
+Long messages were truncated to a fixed size that exceeds what the Windows Event Log accepts once the log and source names are counted, and the event log then stored nothing and reported nothing. A party whose data reaches a log message could suppress the whole record by making it long enough. Only applications on Windows that use EventLogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.
+
+[#CVE-2026-105243-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105243-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105243-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105243[CVE-2026-105243]
+* https://github.com/apache/logging-log4net/pull/315[Pull request that fixes the issue]
+
+[#CVE-2026-105242]
+== {cve-url-prefix}/CVE-2026-105242[CVE-2026-105242]
+
+[cols="1h,5"]
+|===
+|Summary |Request validation failure drops the event in the aspnet-request converter
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.11, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105242-description]
+=== Description
+
+Improper Handling of Exceptional Conditions vulnerability in the aspnet-request pattern converter of Apache log4net.
+
+Reading request parameters triggers ASP.NET request validation, so a request carrying content such as markup made the layout throw and the appender discarded the whole event. A sender could suppress the log record of their own request. Only applications on ASP.NET for .NET Framework whose layout uses %aspnet-request are affected.
+
+This issue affects Apache log4net: from 1.2.11 before 3.5.0.
+
+[#CVE-2026-105242-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105242-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105242-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105242[CVE-2026-105242]
+* https://github.com/apache/logging-log4net/pull/316[Pull request that fixes the issue]
+
+[#CVE-2026-105241]
+== {cve-url-prefix}/CVE-2026-105241[CVE-2026-105241]
+
+[cols="1h,5"]
+|===
+|Summary |Unencodable content discards a whole SmtpPickupDirAppender batch
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105241-description]
+=== Description
+
+Improper Handling of Unicode Encoding vulnerability in the SmtpPickupDirAppender of Apache log4net.
+
+Content that the mail file writer cannot encode, such as an unpaired UTF-16 surrogate, made the write throw. Every buffered event in the batch was discarded, not only the one carrying the content, and a truncated mail could be left in the pickup directory. A party whose data reaches a log message could suppress the records of other events. Only applications that use SmtpPickupDirAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.
+
+[#CVE-2026-105241-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105241-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105241-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105241[CVE-2026-105241]
+* https://github.com/apache/logging-log4net/pull/315[Pull request that fixes the issue]
+
+[#CVE-2026-105240]
+== {cve-url-prefix}/CVE-2026-105240[CVE-2026-105240]
+
+[cols="1h,5"]
+|===
+|Summary |NUL character truncates OutputDebugStringAppender records
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105240-description]
+=== Description
+
+Improper Neutralization of Null Byte or NUL Character vulnerability in the OutputDebugStringAppender of Apache log4net.
+
+A NUL character in logged content ended the debug output record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently lost. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use OutputDebugStringAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.
+
+[#CVE-2026-105240-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105240-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105240-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105240[CVE-2026-105240]
+* https://github.com/apache/logging-log4net/pull/315[Pull request that fixes the issue]
+
+[#CVE-2026-105239]
+== {cve-url-prefix}/CVE-2026-105239[CVE-2026-105239]
+
+[cols="1h,5"]
+|===
+|Summary |NUL character truncates EventLogAppender records
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.5.0)`
+|Versions fixed |`3.5.0`
+|===
+
+[#CVE-2026-105239-description]
+=== Description
+
+Improper Neutralization of Null Byte or NUL Character vulnerability in the EventLogAppender of Apache log4net.
+
+A NUL character in logged content ended the Windows Event Log record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently not stored. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use EventLogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.
+
+[#CVE-2026-105239-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.
+
+[#CVE-2026-105239-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Claude Security.
+
+[#CVE-2026-105239-references]
+=== References
+* {cve-url-prefix}/CVE-2026-105239[CVE-2026-105239]
+* https://github.com/apache/logging-log4net/pull/315[Pull request that fixes the issue]
+
 [#CVE-2026-49844]
 == {cve-url-prefix}/CVE-2026-49844[CVE-2026-49844]
 
