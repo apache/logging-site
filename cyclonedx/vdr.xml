@@ -40,11 +40,11 @@
 <bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://cyclonedx.org/schema/bom/1.6"
      xsi:schemaLocation="http://cyclonedx.org/schema/bom/1.6 https://cyclonedx.org/schema/bom-1.6.xsd"
-     version="8"
+     version="9"
      serialNumber="urn:uuid:dfa35519-9734-4259-bba1-3e825cf4be06">
 
   <metadata>
-    <timestamp>2026-07-10T20:53:31Z</timestamp>
+    <timestamp>2026-10-06T19:33:32Z</timestamp>
     <manufacturer>
       <name>Apache Logging Services</name>
       <url>https://logging.apache.org</url>
@@ -94,6 +94,312 @@
   </components>
 
   <vulnerabilities>
+
+    <vulnerability>
+        <id>CVE-2026-105244</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105244</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>116</cwe>
+        </cwes>
+        <description><![CDATA[Improper Encoding or Escaping of Output vulnerability in the RemoteSyslogAppender of Apache log4net.
+
+Every character outside visible ASCII and space was removed from the record instead of being escaped, so non-ASCII text and control characters such as tabs disappeared without notice. A party whose data reaches a log message could make a distinct value look identical in the record, for example a user name holding a zero-width space logged as admin. Only applications that use RemoteSyslogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.12 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.12|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2026-105243</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105243</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>778</cwe>
+        </cwes>
+        <description><![CDATA[Insufficient Logging vulnerability in the EventLogAppender of Apache log4net.
+
+Long messages were truncated to a fixed size that exceeds what the Windows Event Log accepts once the log and source names are counted, and the event log then stored nothing and reported nothing. A party whose data reaches a log message could suppress the whole record by making it long enough. Only applications on Windows that use EventLogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.9|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2026-105242</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105242</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>755</cwe>
+        </cwes>
+        <description><![CDATA[Improper Handling of Exceptional Conditions vulnerability in the aspnet-request pattern converter of Apache log4net.
+
+Reading request parameters triggers ASP.NET request validation, so a request carrying content such as markup made the layout throw and the appender discarded the whole event. A sender could suppress the log record of their own request. Only applications on ASP.NET for .NET Framework whose layout uses %aspnet-request are affected.
+
+This issue affects Apache log4net: from 1.2.11 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.11|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2026-105241</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105241</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>176</cwe>
+        </cwes>
+        <description><![CDATA[Improper Handling of Unicode Encoding vulnerability in the SmtpPickupDirAppender of Apache log4net.
+
+Content that the mail file writer cannot encode, such as an unpaired UTF-16 surrogate, made the write throw. Every buffered event in the batch was discarded, not only the one carrying the content, and a truncated mail could be left in the pickup directory. A party whose data reaches a log message could suppress the records of other events. Only applications that use SmtpPickupDirAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.9|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2026-105240</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105240</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>158</cwe>
+        </cwes>
+        <description><![CDATA[Improper Neutralization of Null Byte or NUL Character vulnerability in the OutputDebugStringAppender of Apache log4net.
+
+A NUL character in logged content ended the debug output record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently lost. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use OutputDebugStringAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.9|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
+
+    <vulnerability>
+        <id>CVE-2026-105239</id>
+        <source>
+            <name>NVD</name>
+            <url>https://nvd.nist.gov/vuln/detail/CVE-2026-105239</url>
+        </source>
+        <ratings>
+            <rating>
+                <source>
+                    <name>The Apache Software Foundation</name>
+                    <url>
+                        <![CDATA[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N&version=3.1]]></url>
+                </source>
+                <score>5.3</score>
+                <severity>medium</severity>
+                <method>CVSSv3</method>
+                <vector>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N</vector>
+            </rating>
+        </ratings>
+        <cwes>
+            <cwe>158</cwe>
+        </cwes>
+        <description><![CDATA[Improper Neutralization of Null Byte or NUL Character vulnerability in the EventLogAppender of Apache log4net.
+
+A NUL character in logged content ended the Windows Event Log record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently not stored. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use EventLogAppender are affected.
+
+This issue affects Apache log4net: from 1.2.9 before 3.5.0.]]></description>
+        <recommendation><![CDATA[Users are advised to upgrade to Apache Log4net version `3.5.0`, which fixes this issue.]]></recommendation>
+        <created>2026-10-06T19:33:32Z</created>
+        <published>2026-10-06T19:33:32Z</published>
+        <updated>2026-10-06T19:33:32Z</updated>
+        <credits>
+            <organizations>
+                <organization>
+                    <name>The Apache Software Foundation</name>
+                    <url>https://www.apache.org/</url>
+                </organization>
+            </organizations>
+        </credits>
+        <affects>
+            <target>
+                <ref>log4net</ref>
+                <versions>
+                    <version>
+                        <range><![CDATA[vers:nuget/>=1.2.9|<3.5.0]]></range>
+                    </version>
+                </versions>
+            </target>
+        </affects>
+    </vulnerability>
 
     <vulnerability>
         <id>CVE-2026-49844</id>

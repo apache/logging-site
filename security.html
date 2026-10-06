@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Security :: Apache Logging Services</title>
     <link rel="canonical" href="https://logging.apache.org/security.html">
-    <meta name="generator" content="Antora 3.2.0">
+    <meta name="generator" content="Antora 3.2.1">
 <link rel="stylesheet" href="./_/css/site.css">
 <link rel="icon" href="./_/../_images/favicon.ico" type="image/x-icon">
 <!-- `@asciidoctor/tabs` extension styles -->
@@ -809,6 +809,414 @@ We choose to pool all information on this one page, allowing easy searching for 
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105244"><a class="anchor" href="#CVE-2026-105244"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105244">CVE-2026-105244</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RemoteSyslogAppender silently deletes non-ASCII content</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.12, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105244-description"><a class="anchor" href="#CVE-2026-105244-description"></a>Description</h4>
+<div class="paragraph">
+<p>Improper Encoding or Escaping of Output vulnerability in the RemoteSyslogAppender of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>Every character outside visible ASCII and space was removed from the record instead of being escaped, so non-ASCII text and control characters such as tabs disappeared without notice. A party whose data reaches a log message could make a distinct value look identical in the record, for example a user name holding a zero-width space logged as admin. Only applications that use RemoteSyslogAppender are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.12 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105244-remediation"><a class="anchor" href="#CVE-2026-105244-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105244-credits"><a class="anchor" href="#CVE-2026-105244-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105244-references"><a class="anchor" href="#CVE-2026-105244-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105244">CVE-2026-105244</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/315">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105243"><a class="anchor" href="#CVE-2026-105243"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105243">CVE-2026-105243</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Oversize EventLogAppender record silently discarded</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.9, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105243-description"><a class="anchor" href="#CVE-2026-105243-description"></a>Description</h4>
+<div class="paragraph">
+<p>Insufficient Logging vulnerability in the EventLogAppender of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>Long messages were truncated to a fixed size that exceeds what the Windows Event Log accepts once the log and source names are counted, and the event log then stored nothing and reported nothing. A party whose data reaches a log message could suppress the whole record by making it long enough. Only applications on Windows that use EventLogAppender are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.9 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105243-remediation"><a class="anchor" href="#CVE-2026-105243-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105243-credits"><a class="anchor" href="#CVE-2026-105243-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105243-references"><a class="anchor" href="#CVE-2026-105243-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105243">CVE-2026-105243</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/315">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105242"><a class="anchor" href="#CVE-2026-105242"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105242">CVE-2026-105242</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request validation failure drops the event in the aspnet-request converter</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.11, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105242-description"><a class="anchor" href="#CVE-2026-105242-description"></a>Description</h4>
+<div class="paragraph">
+<p>Improper Handling of Exceptional Conditions vulnerability in the aspnet-request pattern converter of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>Reading request parameters triggers ASP.NET request validation, so a request carrying content such as markup made the layout throw and the appender discarded the whole event. A sender could suppress the log record of their own request. Only applications on ASP.NET for .NET Framework whose layout uses %aspnet-request are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.11 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105242-remediation"><a class="anchor" href="#CVE-2026-105242-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105242-credits"><a class="anchor" href="#CVE-2026-105242-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105242-references"><a class="anchor" href="#CVE-2026-105242-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105242">CVE-2026-105242</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/316">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105241"><a class="anchor" href="#CVE-2026-105241"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105241">CVE-2026-105241</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unencodable content discards a whole SmtpPickupDirAppender batch</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.9, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105241-description"><a class="anchor" href="#CVE-2026-105241-description"></a>Description</h4>
+<div class="paragraph">
+<p>Improper Handling of Unicode Encoding vulnerability in the SmtpPickupDirAppender of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>Content that the mail file writer cannot encode, such as an unpaired UTF-16 surrogate, made the write throw. Every buffered event in the batch was discarded, not only the one carrying the content, and a truncated mail could be left in the pickup directory. A party whose data reaches a log message could suppress the records of other events. Only applications that use SmtpPickupDirAppender are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.9 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105241-remediation"><a class="anchor" href="#CVE-2026-105241-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105241-credits"><a class="anchor" href="#CVE-2026-105241-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105241-references"><a class="anchor" href="#CVE-2026-105241-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105241">CVE-2026-105241</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/315">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105240"><a class="anchor" href="#CVE-2026-105240"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105240">CVE-2026-105240</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NUL character truncates OutputDebugStringAppender records</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.9, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105240-description"><a class="anchor" href="#CVE-2026-105240-description"></a>Description</h4>
+<div class="paragraph">
+<p>Improper Neutralization of Null Byte or NUL Character vulnerability in the OutputDebugStringAppender of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>A NUL character in logged content ended the debug output record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently lost. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use OutputDebugStringAppender are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.9 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105240-remediation"><a class="anchor" href="#CVE-2026-105240-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105240-credits"><a class="anchor" href="#CVE-2026-105240-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105240-references"><a class="anchor" href="#CVE-2026-105240-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105240">CVE-2026-105240</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/315">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="CVE-2026-105239"><a class="anchor" href="#CVE-2026-105239"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105239">CVE-2026-105239</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NUL character truncates EventLogAppender records</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">CVSS 3.x Score &amp; Vector</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Components affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log4net</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions affected</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[1.2.9, 3.5.0)</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Versions fixed</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.5.0</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="CVE-2026-105239-description"><a class="anchor" href="#CVE-2026-105239-description"></a>Description</h4>
+<div class="paragraph">
+<p>Improper Neutralization of Null Byte or NUL Character vulnerability in the EventLogAppender of Apache log4net.</p>
+</div>
+<div class="paragraph">
+<p>A NUL character in logged content ended the Windows Event Log record at that point, so everything the layout rendered after it, including exception text and trailing fields, was silently not stored. A party whose data reaches a log message could hide the rest of that record. Only applications on Windows that use EventLogAppender are affected.</p>
+</div>
+<div class="paragraph">
+<p>This issue affects Apache log4net: from 1.2.9 before 3.5.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105239-remediation"><a class="anchor" href="#CVE-2026-105239-remediation"></a>Remediation</h4>
+<div class="paragraph">
+<p>Users are advised to upgrade to Apache Log4net version <code>3.5.0</code>, which fixes this issue.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105239-credits"><a class="anchor" href="#CVE-2026-105239-credits"></a>Credits</h4>
+<div class="paragraph">
+<p>This issue was found by The Apache Software Foundation using Claude Security.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="CVE-2026-105239-references"><a class="anchor" href="#CVE-2026-105239-references"></a>References</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105239">CVE-2026-105239</a></p>
+</li>
+<li>
+<p><a href="https://github.com/apache/logging-log4net/pull/315">Pull request that fixes the issue</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="CVE-2026-49844"><a class="anchor" href="#CVE-2026-49844"></a><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-49844">CVE-2026-49844</a></h3>
