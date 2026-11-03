@@ -26,6 +26,7 @@ The Apache Logging Services project creates and maintains open-source software r
 * xref:support.adoc[Get **support** for subprojects]
 * xref:download.adoc[**Download** subprojects]
 * xref:security.adoc[Vulnerabilities and threat model]
+* xref:support.adoc#website-issues[Report a problem with this website]
 
 [#subprojects]
 == Subprojects
