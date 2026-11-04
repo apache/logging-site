@@ -104,7 +104,8 @@ Make sure to check xref:security.adoc[the Security page] before sending an email
 
 Logging Services projects use GitHub Issues (https://github.com/apache/logging-log4cxx/issues[Log4cxx], https://github.com/apache/logging-log4j2/issues[Log4j], https://github.com/apache/logging-log4net/issues[Log4net]) as their issue tracking system.
 The old issue tracking system, JIRA (https://issues.apache.org/jira/projects/LOGCXX[Log4cxx], https://issues.apache.org/jira/projects/LOG4J2[Log4j]), is still accessible, though only recommended for issues that were already created there.
-For issues that are not project-specific, <<#discussions-maintainer,get in touch with maintainers instead>>.
+For problems with this website, see <<#website-issues>>.
+For other issues that are not project-specific, <<#discussions-maintainer,get in touch with maintainers instead>>.
 
 Issues get resolved in one of the following ways:
 
@@ -123,6 +124,12 @@ Issues likely to result in protracted discussion must be posted to the mailing l
 No Questions::
 Do not post questions as issues!
 These will be removed, and you will be asked to post questions to the mailing lists instead.
+
+[#website-issues]
+=== Website issues
+
+Problems with this website, such as broken links or typos, go to https://github.com/apache/logging-site/issues[the website issue tracker].
+Problems with a subproject go to the issue tracker of that subproject, as explained above.
 
 [#sponsorship]
 == Sponsorship

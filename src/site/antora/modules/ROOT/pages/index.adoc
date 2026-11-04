@@ -26,6 +26,7 @@ The Apache Logging Services project creates and maintains open-source software r
 * xref:support.adoc[Get **support** for subprojects]
 * xref:download.adoc[**Download** subprojects]
 * xref:security.adoc[Vulnerabilities and threat model]
+* xref:support.adoc#website-issues[Report a problem with this website]
 
 [#subprojects]
 == Subprojects
@@ -42,30 +43,30 @@ A logging framework for C++ patterned after Log4j®.
 https://logging.apache.org/log4net[Log4net]::
 A port of the Log4j® to the Microsoft .NET runtime.
 
+https://flume.apache.org[Flume]::
+Distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data.
+
 .Click to see list of inactive subprojects
 [%collapsible]
 ====
-https://logging.apache.org/chainsaw[Chainsaw]::
+https://github.com/apache/logging-chainsaw[Chainsaw]::
 A GUI-based log viewer intended as a companion to Log4j®.
-
-https://logging.apache.org/flume[Flume]::
-Distributed, reliable, and available service for efficiently collecting, aggregating, and moving large amounts of log data.
 
 https://logging.apache.org/log4j/1.x[Log4j® 1]::
 The very first Log4j® major release.
 Reached End-Of-Life in August 2015.
 +
-https://logging.apache.org/log4j/audit[Log4j® Audit]:::
+https://github.com/apache/logging-log4j-audit[Log4j® Audit]:::
 Audit logging framework built upon Log4j®.
 +
 https://logging.apache.org/log4j/extras[Log4j® Extras]:::
 Extras for Log4j® 1; companions, receivers, and more.
 +
-https://logging.apache.org/log4j/kotlin[Log4j® Scala]:::
+https://logging.apache.org/log4j/scala[Log4j® Scala]:::
 A Scala-friendly interface to log against the Log4j® API.
 Retired on 2026-01-19.
 
-https://logging.apache.org/log4php[Log4php]::
+https://github.com/apache/logging-log4php[Log4php]::
 A versatile logging framework for PHP.
 Originally a port of Log4j® to PHP, it has grown to include various PHP specific features.
 ====
