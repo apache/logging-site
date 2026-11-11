@@ -179,6 +179,94 @@ Consider `${ctx:...}` lookups as an example: some applications populate the thre
 In practice, trustworthiness often varies even at the per-key level: some context map keys may be safe to use in file paths, while others may not.
 ====
 
+The same reasoning applies to every configuration attribute, not only to file paths: see <<untrusted-interpolation>>.
+
+[#untrusted-interpolation]
+== https://cwe.mitre.org/data/definitions/15.html[CWE-15: External Control of Configuration Setting] through interpolation
+
+Configuration files can use **interpolation** features,
+such as {site-url}/log4j/2.x/manual/lookups.html[Log4j Core lookups],
+to insert values from other sources into configuration attributes.
+A frequently reported issue is that some of these sources may hold user-provided data,
+most notably the {site-url}/log4j/2.x/manual/thread-context.html[thread context map] read by the `${ctx:...}` lookup,
+and that this data then flows into the configuration.
+
+**Claim**: Log4j lets attackers control its configuration because values from the thread context are substituted into configuration attributes.
+
+Reports in this class differ only in the attribute that receives the value and in the consequence that follows.
+Examples include:
+
+* file names of appenders, leading to path traversal (see <<path-traversal>>),
+* host names and ports of network appenders, leading to connections to arbitrary destinations,
+* routing keys of the {site-url}/log4j/2.x/manual/appenders/delegating.html#RoutingAppender[Routing appender], leading to unbounded creation of appenders,
+* script sources and script file paths, leading to code execution,
+* layout patterns, leading to the substituted value becoming part of the pattern,
+* any attribute substituted while the configuration is loaded or reloaded, when the thread performing that operation has user-provided data in its thread context.
+
+[#untrusted-interpolation-why-not]
+=== Why this is not a vulnerability
+
+According to our xref:security.adoc#threat-common-sources-configuration[threat model],
+configuration is **trusted** and supplied by the operator.
+The operator decides which interpolation expressions appear in the configuration and in which attributes,
+and the threat model makes the operator responsible for using only trusted data sources in them.
+It specifically warns that values read from the thread context may contain user-provided data, such as HTTP headers.
+
+The Logging Services libraries cannot make this decision on the operator's behalf:
+as explained in <<path-traversal-problematic-contexts>>,
+whether a source is trustworthy depends on the application, often down to the individual context map key.
+
+Once an interpolation expression is resolved,
+the attribute behaves exactly as if the operator had written the resolved value into the configuration file:
+a file name opens a file, a host name opens a connection, a script is compiled and run.
+This is the documented behavior of each attribute, and it does not depend on where the value came from.
+
+[NOTE]
+====
+Log4j Core evaluates interpolation expressions **at most once in each evaluation context**:
+once when the configuration is loaded,
+and once for each log event in attributes that are evaluated at runtime
+(see {site-url}/log4j/2.x/manual/lookups.html#evaluation-contexts[lookup evaluation contexts]).
+Within a context, the value returned by a lookup is not evaluated again.
+
+Versions that evaluated lookup results recursively were affected by
+xref:security.adoc#CVE-2021-45046[CVE-2021-45046] and xref:security.adoc#CVE-2021-45105[CVE-2021-45105].
+If you find a way to make Log4j Core evaluate an expression more than once in the same context,
+please report it: it is in scope of our threat model.
+====
+
+[#untrusted-interpolation-configuration-time]
+=== Interpolation at configuration time
+
+Most attributes are substituted **once**, when the configuration is loaded or reloaded.
+At that moment there is no log event,
+so the `${ctx:...}` lookup reads the thread context of the thread that performs the (re)configuration.
+This is documented in the {site-url}/log4j/2.x/manual/lookups.html#ContextMapLookup[Context Map Lookup] reference.
+
+If the configuration interpolates a thread context key that may hold user-provided data,
+the value captured at that moment stays in the configuration until the next reconfiguration.
+
+From then on, the value is processed like any value written by the operator.
+For example, a value substituted into a layout pattern is parsed as pattern syntax,
+and the expressions it contains are evaluated in the runtime context.
+Users rely on this behavior, for example, to supply an entire layout pattern through a system property.
+
+This is the same operator decision as above, not a separate issue.
+
+[#untrusted-interpolation-recommendations]
+=== Recommendations
+
+* Use thread context lookups only with keys whose values your application generates or validates itself,
+(for example, request IDs).
+If you need user-provided data in such a key, validate it
+or match it against an allowlist **before** adding it to the thread context.
+* To include thread context data in log output,
+use the {site-url}/log4j/2.x/manual/pattern-layout.html#converter-thread-context-map[`%X\{key}` pattern converter] (or the equivalent field of a structured layout) instead of a `${ctx:key}` lookup.
+Pattern converters only write the value to the output of each log event:
+the value never becomes part of the configuration.
+* Do not interpolate untrusted sources into attributes that select a destination or execute code: file names, host names, ports, routing keys, and script attributes.
+* When the routing key of a {site-url}/log4j/2.x/manual/appenders/delegating.html#RoutingAppender[Routing appender] is derived from user-provided data, configure a {site-url}/log4j/2.x/manual/appenders/delegating.html#PurgePolicy[purge policy] to bound the number of appenders it creates.
+
 [#deserialization]
 == https://cwe.mitre.org/data/definitions/502.html[CWE-502: Deserialization of Untrusted Data] in Log4j
 
