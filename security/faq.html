@@ -456,6 +456,143 @@ In practice, trustworthiness often varies even at the per-key level: some contex
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The same reasoning applies to every configuration attribute, not only to file paths: see <a href="#untrusted-interpolation">CWE-15: External Control of Configuration Setting through interpolation</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="untrusted-interpolation"><a class="anchor" href="#untrusted-interpolation"></a><a href="https://cwe.mitre.org/data/definitions/15.html">CWE-15: External Control of Configuration Setting</a> through interpolation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration files can use <strong>interpolation</strong> features,
+such as <a href="https://logging.apache.org/log4j/2.x/manual/lookups.html">Log4j Core lookups</a>,
+to insert values from other sources into configuration attributes.
+A frequently reported issue is that some of these sources may hold user-provided data,
+most notably the <a href="https://logging.apache.org/log4j/2.x/manual/thread-context.html">thread context map</a> read by the <code>${ctx:&#8230;&#8203;}</code> lookup,
+and that this data then flows into the configuration.</p>
+</div>
+<div class="paragraph">
+<p><strong>Claim</strong>: Log4j lets attackers control its configuration because values from the thread context are substituted into configuration attributes.</p>
+</div>
+<div class="paragraph">
+<p>Reports in this class differ only in the attribute that receives the value and in the consequence that follows.
+Examples include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>file names of appenders, leading to path traversal (see <a href="#path-traversal">CWE-35: Path Traversal</a>),</p>
+</li>
+<li>
+<p>host names and ports of network appenders, leading to connections to arbitrary destinations,</p>
+</li>
+<li>
+<p>routing keys of the <a href="https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#RoutingAppender">Routing appender</a>, leading to unbounded creation of appenders,</p>
+</li>
+<li>
+<p>script sources and script file paths, leading to code execution,</p>
+</li>
+<li>
+<p>layout patterns, leading to the substituted value becoming part of the pattern,</p>
+</li>
+<li>
+<p>any attribute substituted while the configuration is loaded or reloaded, when the thread performing that operation has user-provided data in its thread context.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="untrusted-interpolation-why-not"><a class="anchor" href="#untrusted-interpolation-why-not"></a>Why this is not a vulnerability</h3>
+<div class="paragraph">
+<p>According to our <a href="../security.html#threat-common-sources-configuration" class="xref page">threat model</a>,
+configuration is <strong>trusted</strong> and supplied by the operator.
+The operator decides which interpolation expressions appear in the configuration and in which attributes,
+and the threat model makes the operator responsible for using only trusted data sources in them.
+It specifically warns that values read from the thread context may contain user-provided data, such as HTTP headers.</p>
+</div>
+<div class="paragraph">
+<p>The Logging Services libraries cannot make this decision on the operator&#8217;s behalf:
+as explained in <a href="#path-traversal-problematic-contexts">Problematic contexts</a>,
+whether a source is trustworthy depends on the application, often down to the individual context map key.</p>
+</div>
+<div class="paragraph">
+<p>Once an interpolation expression is resolved,
+the attribute behaves exactly as if the operator had written the resolved value into the configuration file:
+a file name opens a file, a host name opens a connection, a script is compiled and run.
+This is the documented behavior of each attribute, and it does not depend on where the value came from.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Log4j Core evaluates interpolation expressions <strong>at most once in each evaluation context</strong>:
+once when the configuration is loaded,
+and once for each log event in attributes that are evaluated at runtime
+(see <a href="https://logging.apache.org/log4j/2.x/manual/lookups.html#evaluation-contexts">lookup evaluation contexts</a>).
+Within a context, the value returned by a lookup is not evaluated again.</p>
+</div>
+<div class="paragraph">
+<p>Versions that evaluated lookup results recursively were affected by
+<a href="../security.html#CVE-2021-45046" class="xref page">CVE-2021-45046</a> and <a href="../security.html#CVE-2021-45105" class="xref page">CVE-2021-45105</a>.
+If you find a way to make Log4j Core evaluate an expression more than once in the same context,
+please report it: it is in scope of our threat model.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="untrusted-interpolation-configuration-time"><a class="anchor" href="#untrusted-interpolation-configuration-time"></a>Interpolation at configuration time</h3>
+<div class="paragraph">
+<p>Most attributes are substituted <strong>once</strong>, when the configuration is loaded or reloaded.
+At that moment there is no log event,
+so the <code>${ctx:&#8230;&#8203;}</code> lookup reads the thread context of the thread that performs the (re)configuration.
+This is documented in the <a href="https://logging.apache.org/log4j/2.x/manual/lookups.html#ContextMapLookup">Context Map Lookup</a> reference.</p>
+</div>
+<div class="paragraph">
+<p>If the configuration interpolates a thread context key that may hold user-provided data,
+the value captured at that moment stays in the configuration until the next reconfiguration.</p>
+</div>
+<div class="paragraph">
+<p>From then on, the value is processed like any value written by the operator.
+For example, a value substituted into a layout pattern is parsed as pattern syntax,
+and the expressions it contains are evaluated in the runtime context.
+Users rely on this behavior, for example, to supply an entire layout pattern through a system property.</p>
+</div>
+<div class="paragraph">
+<p>This is the same operator decision as above, not a separate issue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="untrusted-interpolation-recommendations"><a class="anchor" href="#untrusted-interpolation-recommendations"></a>Recommendations</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Use thread context lookups only with keys whose values your application generates or validates itself,
+(for example, request IDs).
+If you need user-provided data in such a key, validate it
+or match it against an allowlist <strong>before</strong> adding it to the thread context.</p>
+</li>
+<li>
+<p>To include thread context data in log output,
+use the <a href="https://logging.apache.org/log4j/2.x/manual/pattern-layout.html#converter-thread-context-map"><code>%X{key}</code> pattern converter</a> (or the equivalent field of a structured layout) instead of a <code>${ctx:key}</code> lookup.
+Pattern converters only write the value to the output of each log event:
+the value never becomes part of the configuration.</p>
+</li>
+<li>
+<p>Do not interpolate untrusted sources into attributes that select a destination or execute code: file names, host names, ports, routing keys, and script attributes.</p>
+</li>
+<li>
+<p>When the routing key of a <a href="https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#RoutingAppender">Routing appender</a> is derived from user-provided data, configure a <a href="https://logging.apache.org/log4j/2.x/manual/appenders/delegating.html#PurgePolicy">purge policy</a> to bound the number of appenders it creates.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
