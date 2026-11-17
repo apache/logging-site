@@ -29,6 +29,116 @@ Version ranges follow the https://github.com/package-url/vers-spec/blob/main/VER
 For brevity, mathematical interval notation is used, with the union operator (`∪`) to represent multiple ranges.
 ====
 
+[#CVE-2026-129512]
+== {cve-url-prefix}/CVE-2026-129512[CVE-2026-129512]
+
+[cols="1h,5"]
+|===
+|Summary |AdoNetAppender loses an event whose text the database cannot store
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.6.0)`
+|Versions fixed |`3.6.0`
+|===
+
+[#CVE-2026-129512-description]
+=== Description
+
+Improper Neutralization of Null Byte or NUL Character vulnerability in the AdoNetAppender of Apache log4net.
+
+Text parameters were bound unchanged, so a NUL character or an unpaired UTF-16 surrogate reached the database as it was. A database that refuses such a value, such as PostgreSQL, rejected the insert and the event was lost; only the first such loss per appender was reported. A party whose data reaches a log message could suppress that event.
+
+This issue affects Apache log4net: from 1.2.9 before 3.6.0.
+
+[#CVE-2026-129512-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.6.0`, which fixes this issue.
+
+[#CVE-2026-129512-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Anthropic OSS Scanner.
+
+[#CVE-2026-129512-references]
+=== References
+* {cve-url-prefix}/CVE-2026-129512[CVE-2026-129512]
+* https://github.com/apache/logging-log4net/pull/355[Pull request that fixes the issue]
+
+[#CVE-2026-129511]
+== {cve-url-prefix}/CVE-2026-129511[CVE-2026-129511]
+
+[cols="1h,5"]
+|===
+|Summary |Best-fit encoding in FileAppender lets fullwidth text forge XML log events
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.6.0)`
+|Components affected |`log4net.Ext.Mail`
+|Versions affected |`[3.4.0, 3.6.0)`
+|Versions fixed |`3.6.0`
+|===
+
+[#CVE-2026-129511-description]
+=== Description
+
+Improper Output Neutralization for Logs vulnerability in the FileAppender, RollingFileAppender, UdpAppender and SmtpAppender of Apache log4net.
+
+Characters the configured encoding could not represent were converted by that encoding's best-fit fallback, which turns fullwidth characters such as U+FF1C, U+FF1E and U+FF02 into <, > and ". The conversion happened after XmlLayout or XmlLayoutSchemaLog4J had escaped the text, so a party whose data reaches a log message could forge complete log events in an XML log, for example a fake audit entry. On .NET Framework this needs no configuration where the ANSI code page is single-byte, since that is the default encoding; on .NET it needs a configured single-byte encoding such as ISO-8859-1. This is the best-fit conversion described by the WorstFit research.
+
+This issue affects Apache log4net: from 1.2.9 before 3.6.0.
+
+[#CVE-2026-129511-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.6.0`, which fixes this issue.
+
+[#CVE-2026-129511-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Anthropic OSS Scanner.
+
+[#CVE-2026-129511-references]
+=== References
+* {cve-url-prefix}/CVE-2026-129511[CVE-2026-129511]
+* https://github.com/apache/logging-log4net/pull/355[Pull request that fixes the issue]
+
+[#CVE-2026-129510]
+== {cve-url-prefix}/CVE-2026-129510[CVE-2026-129510]
+
+[cols="1h,5"]
+|===
+|Summary |Culture-sensitive CDATA end search in XmlLayout hides later log events
+|CVSS 3.x Score & Vector |5.3 MEDIUM (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N)
+|Components affected |Log4net
+|Versions affected |`[1.2.9, 3.6.0)`
+|Versions fixed |`3.6.0`
+|===
+
+[#CVE-2026-129510-description]
+=== Description
+
+Improper Output Neutralization for Logs vulnerability in the XmlLayout and XmlLayoutSchemaLog4J of Apache log4net.
+
+Both layouts split a message holding the CDATA end marker into several CDATA sections, but searched for the marker with a culture-sensitive comparison. Ignorable characters or a combining mark around the marker made the search miss it, so the CDATA section stayed open. From 3.3.1 on, an XML parser then reads the following log events as part of that message; earlier versions leave the log file not well-formed. A party whose data reaches a log message could hide later log events from a consumer that parses the XML log.
+
+This issue affects Apache log4net: from 1.2.9 before 3.6.0.
+
+[#CVE-2026-129510-remediation]
+=== Remediation
+
+Users are advised to upgrade to Apache Log4net version `3.6.0`, which fixes this issue.
+
+[#CVE-2026-129510-credits]
+=== Credits
+
+This issue was found by The Apache Software Foundation using Anthropic OSS Scanner.
+
+[#CVE-2026-129510-references]
+=== References
+* {cve-url-prefix}/CVE-2026-129510[CVE-2026-129510]
+* https://github.com/apache/logging-log4net/pull/355[Pull request that fixes the issue]
+
 [#CVE-2026-105244]
 == {cve-url-prefix}/CVE-2026-105244[CVE-2026-105244]
 
