@@ -40,10 +40,8 @@ This is why we understand users that never upgrade Log4j.
 Until we disclosed xref:security.adoc#CVE-2025-68161[CVE-2025-68161] in December 2025,
 Log4j Core `2.17.1` was still downloaded more than any other version:
 the first release without any known vulnerability at the time, published at the end of 2021.
-The next patch release, `2.17.2`, received only a fraction as many downloads.
-////
-TODO: source for the 2.17.1 and 2.17.2 download figures (asked Sonatype).
-////
+In November 2025, it accounted for 22% of `log4j-core` downloads from Maven Central,
+while the next patch release, `2.17.2`, received only half as many.
 
 We do understand them, but running a three- or four-year-old version that is no longer maintained carries its own risk: **upgrade risk**.
 
@@ -69,7 +67,8 @@ Since patch releases only contain fixes, this should be a low-risk, low-effort u
 
 We chose `2.25.x` because many of you ended up there anyway:
 after CVE-2025-68161, users following the "CVE+1" upgrade strategy moved to `2.25.3`, the first fixed version.
-In October 2026, `2.25.x` releases accounted for more than a third of all `log4j-core` downloads from Maven Central.
+Between November 2025 and October 2026, the share of `log4j-core` downloads going to `2.25.x` releases grew from 8% to 34%,
+while the share of `2.17.1` dropped from 22% to 11%.
 
 Our LTS line is available to all users, free of charge:
 if you are running a moderately old Log4j version, `2.25.x` is your path to a supported release.
