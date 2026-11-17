@@ -17,6 +17,7 @@
 
 = Blog
 
+* 2026-11-17 xref:blog/20261117-log4j-2.25-lts.adoc[Stop the carousel, we want to get off: Log4j 2.25.x is a Long-Term Support release]
 * 2025-07-28 xref:blog/20250728-introduction-to-vex-files.adoc[]
 * 2024-08-12 xref:blog/20240812-log4j-bug-bounty.adoc[]
 * 2024-08-08 xref:blog/20240808-welcome-to-the-pmc-jan.adoc[]
