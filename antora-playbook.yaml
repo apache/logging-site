@@ -82,6 +82,8 @@ ui:
           .doc h4 { font-size: 1.3rem; font-weight: 500; }
           .doc h5 { font-size: 1.1rem; font-weight: 500; text-decoration: underline; }
           .doc h6 { font-size: 0.9rem; font-weight: 500; text-decoration: underline; }
+          /* Subtitle set by the `page-subtitle` attribute, see `partials/article.hbs`: */
+          .doc p.subtitle { font-size: 1.3rem; font-weight: 400; color: #5d5d5d; margin-top: 0.25rem; }
           /* Default `code`, `pre`, and `.colist` (source code annotations) fonts are too big, adjust them: */
           .doc .colist>table code, .doc p code, .doc thead code { font-size: 0.8em; }
           .doc pre { font-size: 0.7rem; }
@@ -134,6 +136,20 @@ ui:
         </footer>
 
     # Disable component version selector
+    # Adds support for an optional subtitle, set by the `page-subtitle` document attribute
+    - path: partials/article.hbs
+      contents: |
+        <article class="doc">
+        {{#with page.title}}
+        <h1 class="page">{{{this}}}</h1>
+        {{/with}}
+        {{#with page.attributes.subtitle}}
+        <p class="subtitle">{{this}}</p>
+        {{/with}}
+        {{{page.contents}}}
+        {{> pagination}}
+        </article>
+
     - path: partials/nav-explore.hbs
       contents: ""
 
