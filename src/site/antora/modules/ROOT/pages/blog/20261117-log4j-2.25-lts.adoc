@@ -1,0 +1,129 @@
+////
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+////
+
+= Stop the carousel, we want to get off
+:page-subtitle: Log4j 2.25.x is a Long-Term Support release
+
+image::blog/log4j-lts-dependency-carousel.webp[Dependency update carousel with an exit ramp to Log4j 2.25.x LTS]
+
+The past few years have taught all of us that dependencies must be updated regularly:
+not too often, to avoid pulling in a freshly published malicious package,
+but not too rarely either, to avoid running code with known vulnerabilities.
+
+The result is an eternal carousel of updates.
+Every upgrade of a library triggers upgrades of its dependents, which trigger upgrades of _their_ dependents, and so on.
+The carousel causes upgrade fatigue and burns enormous amounts of CI time:
+a new release of a popular library can keep the GitHub Actions runners of a whole ecosystem busy for days.
+
+And for most users, it is all for nothing.
+The vast majority of them do not benefit from any of the bug fixes or new features in a new release.
+
+**Stop the carousel, we want to get off.**
+
+== Why users don't upgrade Log4j
+
+This is why we understand users that never upgrade Log4j.
+Until we disclosed xref:security.adoc#CVE-2025-68161[CVE-2025-68161] in December 2025,
+Log4j Core `2.17.1` was still downloaded more than any other version:
+the first release without any known vulnerability at the time, published at the end of 2021.
+In November 2025, it accounted for 22% of `log4j-core` downloads from Maven Central,
+while the next patch release, `2.17.2`, received only half as many.
+
+We do understand them, but running a three- or four-year-old version that is no longer maintained carries its own risk: **upgrade risk**.
+
+Log4j follows https://semver.org/[semantic versioning], so upgrading to a newer `2.x` release _should_ be seamless.
+In practice, users may depend on undocumented behavior or rely on what we consider a bug, so an upgrade is rarely seamless for _everyone_.
+The bigger the gap between versions, especially when it spans several minor releases,
+the harder it becomes to upgrade quickly when a vulnerability is finally discovered in the version you use.
+
+== Log4j 2.25.x: our first LTS release
+
+This is why in December 2025 we put in place a plan we had been pondering for a couple of years:
+a Long-Term Support (LTS) line for Log4j.
+The rules are simple:
+
+* We will maintain the `2.25.x` line at least until **June 2027** (two years from the `2.25.0` release),
+and longer if our bandwidth permits.
+* We only backport vulnerability fixes and other important bug fixes.
+No new features, no deprecations, no behavior changes beyond what a fix requires.
+* We publish `2.25.x` patch releases together with the releases of our latest line.
+We only disclose a vulnerability after the `2.25.x` release that fixes it is out.
+* In exchange, we ask you to upgrade to the latest `2.25.x` patch release as soon as it comes out.
+Since patch releases only contain fixes, this should be a low-risk, low-effort upgrade.
+
+We chose `2.25.x` because many of you ended up there anyway:
+after CVE-2025-68161, users following the "CVE+1" upgrade strategy moved to `2.25.3`, the first fixed version.
+Between November 2025 and October 2026, the share of `log4j-core` downloads going to `2.25.x` releases grew from 8% to 34%,
+while the share of `2.17.1` dropped from 22% to 11%.
+
+Our LTS line is available to all users, free of charge:
+if you are running a moderately old Log4j version, `2.25.x` is your path to a supported release.
+Commercial LTS vendors offer a different service, which complements ours:
+they cover branches we stopped maintaining long ago, such as `2.3.x` for Java 6 or `2.12.x` for Java 7.
+If you want to support our LTS effort, our xref:support.adoc#sponsorship[support page] lists the maintainers you can sponsor individually.
+
+New features continue to land in our latest line (`2.26.x` at the time of writing),
+which remains the recommended choice for users that want to stay on the latest version.
+
+== A note to library maintainers
+
+There has always been a conflict of interest between library developers, who want the latest and best version of their library to be adopted,
+and users, who want a stable version that they do not have to touch.
+Log4j is on both sides of this conflict: we are users of our dependencies, and a dependency of many other libraries.
+
+Because we did not announce `2.25.x` as an LTS release, many libraries upgraded their Log4j dependency to `2.26.x`.
+Gradle resolves version conflicts by picking the highest requested version, and Maven by picking the nearest one,
+so applications often end up on whatever Log4j version their dependencies declare,
+even if they do not need any `2.26.x` feature.
+
+We recommend that library developers declare a dependency on the latest `2.25.x` LTS release.
+This avoids unnecessarily moving applications to the latest feature release,
+while applications remain free to select either the `2.25.x` LTS line or the latest Log4j release through dependency management.
+Bumping the Log4j dependency just because a new release is out only keeps the carousel spinning.
+The supported public API of `log4j-api`, including its provider-facing SPI,
+is unchanged between `2.24.x`, `2.25.x`, and `2.26.x`.
+The main `org.apache.logging.log4j` package has remained unchanged for even longer.
+New releases mostly improve implementations of the API, especially Log4j Core.
+
+== What's next: Log4j 2.25.6
+
+The next LTS release, `2.25.6`, will fix https://guide.sonatype.com/vulnerability/sonatype-2026-006746[sonatype-2026-006746].
+
+The advisory points to a real gap (not a vulnerability) in how Log4j classes deserialize themselves.
+Since `2.8.2`, a serialized log event has carried its message inside a `java.rmi.MarshalledObject`,
+which is deserialized on a separate, nested stream.
+The `ObjectInputFilter` of the outer stream also applies to the nested one,
+but the allowlist of Log4j's own `FilteredObjectInputStream` does not.
+`2.25.6` no longer uses `MarshalledObject`, so the allowlist now applies to the whole log event.
+
+In practice, this affects virtually no one, not even Log4j itself, which does not deserialize data from any source.
+To be exposed, an application would have to:
+
+* deserialize untrusted data, which our xref:security/faq.adoc#deserialization[security FAQ] advises against,
+* without configuring an `ObjectInputFilter`,
+* and rely only on `FilteredObjectInputStream` to restrict the classes it accepts.
+
+[NOTE]
+====
+If your application uses Java serialization on Log4j classes, note that the serialized form of some classes
+(e.g., `Log4jLogEvent` and `ParameterizedMessage`) changes in `2.25.6`:
+data serialized by `2.25.5` or earlier cannot be deserialized by `2.25.6`, and vice versa.
+====
+
+Since the advisory currently lists no fixed version, scanners flag every Log4j release,
+which prevents many of you from upgrading without asking your security team for an exception.
+The same hardening will also ship in the upcoming `2.26.2`, and we will reach out to Sonatype to list both `2.25.6` and `2.26.2` as fixed versions.
